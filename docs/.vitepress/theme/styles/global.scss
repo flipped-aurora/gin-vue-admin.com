@@ -1,0 +1,11 @@
+body {
+    cursor: url('/blue.cur'), auto;
+}
+// 重置首页 logo大小
+.VPImage.image-src{
+    width: 400px !important;
+}
+// 重置首页 logo 背景颜色
+.image-bg{
+    background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);
+}
