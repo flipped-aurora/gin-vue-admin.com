@@ -111,12 +111,12 @@ export default defineConfig({
               link: '/guide/manual/'
             },
             {
-              text: '准备环境',
-              link: '/guide/manual/environment'
+              text: '快速开始',
+              link: '/guide/manual/quick-start'
             },
             {
-              text: '快速开始',
-              link: '/guide/manual/qulick-start'
+              text: '准备环境',
+              link: '/guide/manual/environment'
             },
             {
               text: '进阶知识',
@@ -129,6 +129,31 @@ export default defineConfig({
             {
               text: '常见问题',
               link: '/guide/manual/qa'
+            },
+          ]
+        },
+        {
+          text: '视频教程',
+          items: [
+            {
+              text: 'golang教程',
+              link: '/guide/video/golang'
+            },
+            {
+              text: 'gin教程',
+              link: '/guide/video/gin'
+            },
+            {
+              text: 'gorm教程',
+              link: '/guide/video/gorm'
+            },
+            {
+              text: 'server项目教程',
+              link: '/guide/video/server'
+            },
+            {
+              text: 'web项目教程',
+              link: '/guide/video/web'
             },
           ]
         },
