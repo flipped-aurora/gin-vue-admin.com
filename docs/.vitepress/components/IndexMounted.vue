@@ -14,8 +14,8 @@ export default {
     const text = licenseElm.textContent
     const handleHtml = /* html */ `
         <a
-          target='_blank' 
-          href='${oscUrl}' 
+          target='_blank'
+          href='${oscUrl}'
           style='text-decoration: none; color: inherit;'
         >
           ${text}

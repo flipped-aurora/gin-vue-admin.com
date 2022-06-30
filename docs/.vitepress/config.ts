@@ -83,6 +83,19 @@ export default defineConfig({
         items: ITEMS.knowledge
       },
       {
+        text : '🎁 特惠服务器',
+        items :[
+          {
+            text: '腾讯云服务器',
+            link :'https://cloud.tencent.com/act/new?fromSource=gwzcw.4325959.4325959.4325959&utm_medium=cps&utm_id=gwzcw.4325959.4325959.4325959&cps_key=962a7fdaa930cda1c06e36a7608e95cc'
+          },
+          {
+            text: '阿里云服务器',
+            link :'https://www.aliyun.com/minisite/goods?userCode=xqe01uob'
+          }
+        ]
+      },
+      {
         text: '✨ 插件市场',
         link: 'https://plugin.gin-vue-admin.com/#/layout/plugin'
       },
@@ -94,6 +107,7 @@ export default defineConfig({
         text: '🎉 关于我们',
         link: '/about/join',
       },
+
     ],
 
     sidebar: {

@@ -1,4 +1,3 @@
-import { h } from 'vue'
 import Theme from 'vitepress/theme'
 import './styles/vars.css'
 import './styles/global.scss'
@@ -16,6 +15,8 @@ import IndexMounted from '../components/IndexMounted.vue'
 // @ts-ignore
 import MicroApp from '../components/MicroApp.vue'
 
+import GvaLayout from './gvaLayout.vue'
+
 const components = {
   PluginInfo,
   Badge,
@@ -25,14 +26,14 @@ const components = {
   MicroApp
 }
 
+
 export default {
   ...Theme,
-  Layout() {
-    return h(Theme.Layout, null, {
-    })
-  },
-  enhanceApp({ app }) {
+  Layout : GvaLayout,
+  // @ts-ignore
+  enhanceApp({ app}) {
     Object.keys(components).forEach(c => {
+      // @ts-ignore
       app.component(c, components[c])
     })
   }
