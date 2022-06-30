@@ -13,29 +13,12 @@
 - 打开终端工具, 输入以下命令
 
 ```go
+go mod tidy
+# 选择上下命令其一执行即可
 go generate -x // -x 显示并执行命令
 ```
 
 > [Go编译工具命令](https://www.cnblogs.com/binHome/p/14845617.html)
-
-
-
-:::tip 您可能遇到的问题
-
-在终端 输入`go generate -x` 之后并没有执行成功,显示以下错误
-
-```bash
-go: github.com/360EntSecGroup-Skylar/excelize/v2@v2.3.2: missing go.sum entry; to add it:
-go mod download github.com/360EntSecGroup-Skylar/excelize/v2
-```
-
-![image-20210710083515570](/first/image-20210710083515570.png)
-
-看到这个不要慌,使用 `go mod download github.com/360EntSecGroup-Skylar/excelize/v2` 或者 `go mod tidy`
-:::
-
-
-
 
 2. 启动server项目
 
