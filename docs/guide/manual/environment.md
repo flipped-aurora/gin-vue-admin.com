@@ -3,8 +3,6 @@
 本教程将带领你从零开始，循序渐进搭建并启动 Gin-Vue-Admin 项目 ，若读者已具备相关知识，可选择性阅读。
 
 
-
-
 ## 前端环境
 
 1. 前往[https://nodejs.org/zh-cn/](https://nodejs.org/zh-cn/)下载当前版本node
@@ -18,13 +16,6 @@
     - 国内: [https://golang.google.cn/dl/](https://golang.google.cn/dl/)
 2. 命令行运行 go 若控制台输出各类提示命令 则安装成功 输入 go version 确认版本大于1.14
 3. 开发工具推荐 [Goland](https://www.jetbrains.com/go/)
-
-## 版本列表
-
-- master: 2.0, 用于生产环境
-- develop: 2.0, 用于测试环境
-- [gin-vue-admin_v2_dev](https://github.com/flipped-aurora/gin-vue-admin/tree/gin-vue-admin_v2_dev) (v2.0 [GormV1版本](https://v1.gorm.io/)稳定分支)
-- [gva_gormv2_dev](https://github.com/flipped-aurora/gin-vue-admin/tree/gva_gormv2_dev) (v2.0 [GormV2版本](https://v2.gorm.io/)开发分支)
 
 ## 使用说明
 

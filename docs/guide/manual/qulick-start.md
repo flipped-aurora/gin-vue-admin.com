@@ -84,7 +84,7 @@ go mod download github.com/360EntSecGroup-Skylar/excelize/v2
 
 ![image-20210710092428018](/first/image-20210710092428018.png)
 
-如果没有正常打开此页面, 请手动打开浏览器 输入网址 http://localhost:8080/ 或者 http://127.0.0.1:8080/
+如果没有正常打开此页面, 请手动打开浏览器 输入网址 `http://localhost:8080/` 或者 `http://127.0.0.1:8080/`
 
 
 ## 3 init

@@ -1,10 +1,10 @@
 import { defineConfig } from 'vitepress'
 
 const lang = 'zh-CN'
-const ogDescription = 'OPQ 文档站'
+const ogDescription = 'gin+vue编写的自动化代码开发脚手架，是gin+vue全栈学习最好的项目，腾讯阿里开发均有采用gin-vue-admin为模型进行相关业务开发，代码自动化，加快开发速度，权限系统齐全，减少重复工作'
 const ogImage = 'https://opqbot.com/opq.1200x630.v2.jpg'
 const ogTitle = ogDescription
-const ogUrl = 'https://docs.opqbot.com'
+const ogUrl = 'https://www.gin-vue-admin.com'
 
 const ITEMS = {
   project: [
@@ -27,14 +27,20 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/svg.svg' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: ogTitle }],
+    ['meta', { property: 'og:title', content: 'gin-vue-admin' }],
     ['meta', { property: 'og:image', content: ogImage }],
     ['meta', { property: 'og:url', content: ogUrl }],
     ['meta', { property: 'twitter:description', content: ogDescription }],
     ['meta', { property: 'twitter:title', content: ogTitle }],
     ['meta', { property: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { property: 'twitter:image', content: ogImage }],
-    ['meta', { property: 'twitter:url', content: ogUrl }]
+    ['meta', { property: 'twitter:url', content: ogUrl }],
+    [
+    'script',
+        {
+          src: 'https://cdn.usefathom.com/script.js',
+        },
+    ],
   ],
 
   vue: {
@@ -55,8 +61,10 @@ export default defineConfig({
 
     footer: {
       message: 'Flipped-aurora Open Source Community',
-      copyright: 'MIT Licensed | Copyright © 2022'
+      copyright: `Copyright © 2020-${new Date().getFullYear()} Flipped-aurora`
     },
+
+
 
     nav: [
       {
@@ -76,9 +84,7 @@ export default defineConfig({
       },
       {
         text: '✨ 插件市场',
-        items: [
-          { text: '插件市场', link: 'https://plugin.gin-vue-admin.com/#/layout/plugin' },
-        ]
+        link: 'https://plugin.gin-vue-admin.com/#/layout/plugin'
       },
       {
         text: '⛓ 在线体验',
@@ -128,6 +134,19 @@ export default defineConfig({
             {
               text: 'Docker 指南',
               link: '/guide/docker-start'
+            }
+          ]
+        },
+        {
+          text: 'Gva前后端分离',
+          items: [
+            {
+              text: '前端 指南',
+              link: '/guide/web/'
+            },
+            {
+              text: '后端 指南',
+              link: '/guide/server/'
             }
           ]
         }

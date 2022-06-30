@@ -35,7 +35,7 @@ features:
   - icon: 🌈
     title: Standardized catalog
     details: 项目目录分层清晰， 项目模式结构清晰， 包名语义化， 让你更加容易理解目录结构， 读懂代码更加方便！
-  - icon: 🌈
+  - icon: 🦄
     title: Rich open source
     details: 已集成各类鉴权功能， 对各类基础服务提供支持， 安装依赖完成即可轻松使用。
   - icon: 🌈

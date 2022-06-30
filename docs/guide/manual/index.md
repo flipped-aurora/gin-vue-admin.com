@@ -18,7 +18,7 @@ GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的开发基�
 
 ## 技术选型
 
-- 前端：用基于`vue`的`Element-UI`构建基础页面。
+- 前端：用基于`vue`(3.*)的`ElementPlus`构建基础页面。
 - 后端：用`Gin`快速搭建基础restful风格API，`Gin`是一个go语言编写的Web框架。
 - 数据库：采用`MySql`(5.6.44)版本，使用`gorm`实现对数据库的基本操作,已添加对sqlite数据库的支持。
 - 缓存：使用`Redis`实现记录当前活跃用户的`jwt`令牌并实现多点登录限制。
@@ -38,10 +38,12 @@ GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的开发基�
 - 富文本编辑器：MarkDown编辑器功能嵌入。
 - 条件搜索：增加条件搜索示例。
 - restful示例：可以参考用户管理模块中的示例API。
+- 
 ```
 前端文件参考: src\view\superAdmin\api\api.vue 
 后台文件参考: model\dnModel\api.go 
 ```
+
 - 多点登录限制：需要在`config.yaml`中把`system`中的`useMultipoint`修改为true(需要自行配置Redis和Config中的Redis参数，测试阶段，有bug请及时反馈)。
 - 分片长传：提供文件分片上传和大文件分片上传功能示例。
 - 表单生成器：表单生成器借助 [@form-generator](https://github.com/JakHuang/form-generator)。
