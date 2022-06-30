@@ -87,8 +87,12 @@ export default defineConfig({
         link: 'https://plugin.gin-vue-admin.com/#/layout/plugin'
       },
       {
-        text: '⛓ 在线体验',
-        link : 'https://demo.gin-vue-admin.com'
+        text: '⛓ 体验项目',
+        items: [
+          { text: '在线体验', link: 'https://demo.gin-vue-admin.com' },
+          { text: 'Docker Playground', link: '/experience/docker-playground' },
+          { text: 'docker-compose', link: '/experience/docker-compose' },
+        ],
       },
       {
         text: '🎉 关于我们',
@@ -139,6 +143,7 @@ export default defineConfig({
         },
         {
           text: 'Gva前后端分离',
+          collapsible: true,
           items: [
             {
               text: '前端 指南',
@@ -149,7 +154,27 @@ export default defineConfig({
               link: '/guide/server/'
             }
           ]
-        }
+        },
+      ],
+      '/experience/': [
+        {
+          text: '体验项目',
+          collapsible: true,
+          items : [
+            {
+              text: '在线体验',
+              link: '/experience/online'
+            },
+            {
+              text: 'DockerPlayground',
+              link: '/experience/docker-playground'
+            },
+            {
+              text: 'docker-compose',
+              link: '/experience/docker-compose'
+            }
+          ]
+        },
       ],
       // '/project/': [
       //   {

@@ -3,3 +3,4 @@
 /docs/.vitepress/dist
 /docs-old
 .pnpm-*.log
+.idea/
