@@ -157,11 +157,7 @@ export default defineConfig({
               link: '/guide/deployment/'
             },
             {
-              text: 'k8s资源配置',
-              link: '/guide/deployment/k8s'
-            },
-            {
-              text: 'docker快速开发',
+              text: 'docker',
               link: '/guide/deployment/docker'
             },
             {
@@ -169,8 +165,12 @@ export default defineConfig({
               link: '/guide/deployment/docker-compose'
             },
             {
-              text: 'docker',
-              link: '/guide/deployment/docker'
+              text: 'docker快速开发',
+              link: '/guide/deployment/docker_develop'
+            },
+            {
+              text: 'kubernetes',
+              link: '/guide/deployment/k8s'
             },
           ]
         },
