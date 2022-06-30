@@ -227,15 +227,6 @@ export default defineConfig({
           ]
         },
         {
-          text: '使用 Docker 快速搭建',
-          items: [
-            {
-              text: 'Docker 指南',
-              link: '/guide/docker-start'
-            }
-          ]
-        },
-        {
           text: 'Gva前后端分离',
           collapsible: true,
           items: [
@@ -244,9 +235,61 @@ export default defineConfig({
               link: '/guide/web/'
             },
             {
+              text: '按钮权限',
+              link: '/guide/web/button-auth'
+            },
+            {
+              text: '侧边栏样式自定义',
+              link: '/guide/web/menu-theme'
+            },
+          ]
+        },
+        {
+          text: '代码生成器',
+          collapsible: true,
+          items: [
+            {
+              text: '代码生成器使用指南',
+              link: '/guide/generator/server',
+            },
+            {
+              text: '表单生成器 `127.0.0.1` 拒绝连接',
+              link: '/guide/generator/web',
+            },
+            {
+              text: '表单生成器生产使用指南',
+              link: '/guide/generator/web-produce',
+            },
+          ]
+        },
+        {
+          text: '后端项目指南',
+          collapsible: true,
+          items: [
+            {
               text: '后端 指南',
               link: '/guide/server/'
-            }
+            },
+            {
+              text: '多数据库支持',
+              link: '/guide/server/multiple-databases'
+            },
+            {
+              text: 'viper',
+              link: '/guide/server/core/viper'
+            },
+            {
+              text: 'zap',
+              link: '/guide/server/core/zap'
+            },
+            {
+              text: 'gorm',
+              link: '/guide/server/gorm'
+            },
+            {
+              text: '定时任务',
+              link: '/guide/server/timer'
+            },
           ]
         },
       ],
