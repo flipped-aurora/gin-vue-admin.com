@@ -70,7 +70,7 @@ export default defineConfig({
       {
         text: '🚀 Guide',
         items: [
-          { text: '快速开始', link: '/guide/manual/' },
+          { text: '快速开始', link: '/guide/start-quickly/initialization' },
           { text: 'Docker 快速搭建指南', link: '/guide/docker-start' },
         ],
       },
@@ -117,16 +117,42 @@ export default defineConfig({
     sidebar: {
       '/guide/': [
         {
+          text: '介绍',
+          items: [
+            {
+              text: '项目介绍',
+              link: '/guide/introduce/project'
+            }
+          ]
+        },
+        {
+          text: '快速开始',
+          items: [
+            {
+              text: '环境配置',
+              link: '/guide/start-quickly/env'
+            },
+            {
+              text: '初始化',
+              link: '/guide/start-quickly/initialization'
+            },
+            {
+              text: 'swagger',
+              link: '/guide/start-quickly/swagger'
+            },
+            {
+              text: 'vscode',
+              link: '/guide/start-quickly/vscode'
+            },
+          ]
+        },
+        {
           text: '从零开始搭建 Gva',
           collapsible: true,
           items: [
             {
               text: '简介',
               link: '/guide/manual/'
-            },
-            {
-              text: '快速开始',
-              link: '/guide/manual/quick-start'
             },
             {
               text: '准备环境',
