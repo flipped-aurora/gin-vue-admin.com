@@ -22,7 +22,7 @@ export default defineConfig({
   title: 'Gin-Vue-Admin',
   description: ogDescription,
   lang,
-  lastUpdated: true,
+  lastUpdated: false,
 
   head: [
     ['link', { rel: 'icon', href: '/svg.svg' }],
