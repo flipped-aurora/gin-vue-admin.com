@@ -71,7 +71,7 @@ export default defineConfig({
         text: '🚀 Guide',
         items: [
           { text: '快速开始', link: '/guide/start-quickly/initialization' },
-          { text: 'Docker 快速搭建指南', link: '/guide/docker-start' },
+          { text: '项目上线', link: '/guide/deployment/' },
         ],
       },
       // {
@@ -118,6 +118,7 @@ export default defineConfig({
       '/guide/': [
         {
           text: '介绍',
+          collapsible: true,
           items: [
             {
               text: '项目介绍',
@@ -127,6 +128,7 @@ export default defineConfig({
         },
         {
           text: '快速开始',
+          collapsible: true,
           items: [
             {
               text: '环境配置',
@@ -143,6 +145,32 @@ export default defineConfig({
             {
               text: 'vscode',
               link: '/guide/start-quickly/vscode'
+            },
+          ]
+        },
+        {
+          text: '部署指南',
+          collapsible: true,
+          items: [
+            {
+              text: '项目上线',
+              link: '/guide/deployment/'
+            },
+            {
+              text: 'k8s资源配置',
+              link: '/guide/deployment/k8s'
+            },
+            {
+              text: 'docker快速开发',
+              link: '/guide/deployment/docker'
+            },
+            {
+              text: 'docker-compose',
+              link: '/guide/deployment/docker-compose'
+            },
+            {
+              text: 'docker',
+              link: '/guide/deployment/docker'
             },
           ]
         },
@@ -174,6 +202,7 @@ export default defineConfig({
         },
         {
           text: '视频教程',
+          collapsible: true,
           items: [
             {
               text: 'golang教程',
