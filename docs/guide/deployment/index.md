@@ -7,7 +7,7 @@
 ## 后端
 在 server下 go build . 得到一个可执行文件然后将可执行文件和config.ymal 以及 resource 文件夹上传至服务器 三者最好放在同一路径下 最终服务器目录结构可能如下 
 
-```shell
+```
 
     ├── breakpointDir  // 后续断点续传自动生成
     ├── chunk   // 后续断点续传自动生成

@@ -1,7 +1,7 @@
 <template>
   <div class="gvaaside-ad" >
     <div class="company-box">
-      <a  class="company-box-item" v-for="(item , index) in ad" :key="index" :href="item.href">
+      <a  class="company-box-item" v-for="(item , index) in ad" :key="index" :href="item.href" target="_blank">
         <img :src="item.img" alt="geelevel">
       </a>
     </div>
@@ -11,6 +11,7 @@
 <script setup>
 import miaodian from '/guanwang/miaodian.png'
 import flippedaurora from '/guanwang/flipped-aurora.svg'
+import huoxian from '/guanwang/huoxian.png'
 const ad = [
   {
     img : miaodian,
@@ -21,7 +22,10 @@ const ad = [
     href :'https://github.com/flipped-aurora'
   },{
     img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
-    href :'https://www.madlocker.cn/about#blank'
+    href :'https://www.madlocker.cn'
+  },{
+    img : huoxian,
+    href :'https://zone.huoxian.cn/'
   },
 ]
 </script>
@@ -52,7 +56,7 @@ const ad = [
     height: calc(var(--max-width) / 2 - 6px);
     background-color: var(--vp-c-bg-soft);
     border-radius: 4px;
-    padding: 10px;
+    //padding: 10px;
   }
 
   .company-box .company-box-item img{

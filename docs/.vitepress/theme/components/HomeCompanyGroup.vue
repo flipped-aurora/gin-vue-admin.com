@@ -27,7 +27,7 @@ const ad = [
     href :'https://github.com/flipped-aurora'
   },{
     img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
-    href :'https://www.madlocker.cn/about#blank'
+    href :'https://www.madlocker.cn'
   },
 ]
 

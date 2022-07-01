@@ -9,7 +9,7 @@ hero:
   text: A management platform using Golang and Vue
   tagline: 使用gin+vue进行极速开发的全栈开发基础平台
   image:
-    src: /logo.svg
+    src: /logo.png
     alt: gin-vue-admin
   actions:
     - theme: brand

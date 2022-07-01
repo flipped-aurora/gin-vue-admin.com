@@ -1,7 +1,4 @@
----
-id: docker-compose
-title: docker-compose
----
+# docker-compose
 
 ## Web使用Docker打包示例
 

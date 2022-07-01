@@ -26,6 +26,32 @@ const components = {
   MicroApp
 }
 
+const initWebStyle = () =>{
+  let media = window.matchMedia('(prefers-color-scheme: dark)');
+  const dom = document.documentElement
+  if(media.matches){
+    dom.className = 'dark'
+  }
+  let callback = (e:any) => {
+    let prefersDarkMode = e.matches;
+    if (prefersDarkMode) {
+      if(dom.className !== 'dark'){
+        dom.className = 'dark'
+      }
+    }else{
+      if(dom.className === 'dark'){
+        dom.className = ''
+      }
+    }
+  };
+  if (typeof media.addEventListener === 'function') {
+    media.addEventListener('change', callback);
+  } else if (typeof media.addListener === 'function') {
+    media.addListener(callback);
+  }
+}
+
+initWebStyle()
 
 export default {
   ...Theme,

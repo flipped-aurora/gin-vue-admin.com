@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 const lang = 'zh-CN'
 const ogDescription = 'gin+vue编写的自动化代码开发脚手架，是gin+vue全栈学习最好的项目，腾讯阿里开发均有采用gin-vue-admin为模型进行相关业务开发，代码自动化，加快开发速度，权限系统齐全，减少重复工作'
-const ogImage = 'https://www.gin-vue-admin.com/logo.svg'
+const ogImage = 'https://www.gin-vue-admin.com/logo.png'
 const ogTitle = ogDescription
 const ogUrl = 'https://www.gin-vue-admin.com'
 
@@ -25,7 +25,7 @@ export default defineConfig({
   lastUpdated: false,
 
   head: [
-    ['link', { rel: 'icon', href: '/logo.svg' }],
+    ['link', { rel: 'icon', href: '/logo.png' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'gin-vue-admin' }],
     ['meta', { property: 'og:image', content: ogImage }],
@@ -48,7 +48,7 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: '/logo.svg',
+    logo: '/logo.png',
 
     editLink: {
       pattern: 'https://github.com/opq-osc/opq-helper/edit/main/docs/:path',
@@ -142,6 +142,10 @@ export default defineConfig({
               text: 'vscode',
               link: '/guide/start-quickly/vscode'
             },
+            {
+              text: '常见问题',
+              link: '/guide/manual/qa'
+            },
           ]
         },
         {
@@ -171,32 +175,6 @@ export default defineConfig({
             },
           ]
         },
-        // {
-        //   text: '从零开始搭建 Gva',
-        //   collapsible: true,
-        //   items: [
-        //     {
-        //       text: '简介',
-        //       link: '/guide/manual/'
-        //     },
-        //     {
-        //       text: '准备环境',
-        //       link: '/guide/manual/environment'
-        //     },
-        //     {
-        //       text: '进阶知识',
-        //       link: '/guide/manual/advanced'
-        //     },
-        //     {
-        //       text: '最佳实践',
-        //       link: '/guide/manual/practices'
-        //     },
-        //     {
-        //       text: '常见问题',
-        //       link: '/guide/manual/qa'
-        //     },
-        //   ]
-        // },
         {
           text: '视频教程',
           collapsible: true,

@@ -1,16 +1,13 @@
----
-id: docker-develop
-title: Docker 快速开发
----
+# Docker 快速开发
 
-### Docker   &   Docker-compose 环境
+## Docker   &   Docker-compose 环境
 
 1. 前往[https://hub.docker.com]([Docker Desktop for Windows by Docker | Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/))下载最新版本 Docker
 2. 前往[https://github.com]([Release v2.3.3 · docker/compose (github.com)](https://github.com/docker/compose/releases/tag/v2.3.3))下载最新版本 Docker-Compose
 
 
 
-### 一、要使用docker快速开发，需要进行两处项目文件修改
+## 一、要使用docker快速开发，需要进行两处项目文件修改
 
 1. 打开前端目录下的文件  web/vite.config.js，大约第57行。
 

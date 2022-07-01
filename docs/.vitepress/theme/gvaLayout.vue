@@ -3,7 +3,6 @@
     <template #aside-outline-after>
       <AsideAd></AsideAd>
     </template>
-
   </layout>
 </template>
 
