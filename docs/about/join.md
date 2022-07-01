@@ -23,12 +23,29 @@ qq交流2群群号： `650421081`
 个人技术栈为前端 `VUE`  `React`  `Uni`  `weex`  `RN`  等， 后端`golang`  `python`  `node`期待更多小伙伴加入Gin-Vue-Admin的大家庭。
 
 
-## 开发小组
+<VPTeamPage>
+  <VPTeamPageTitle>
+    <template #title>
+      核心开发小组
+    </template>
+    <template #lead>
+      The development of Gin-Vue-admin is guided by an international
+      team, some of whom have chosen to be featured below.
+    </template>
+  </VPTeamPageTitle>
+  <VPTeamMembers size="small" :members="memberList"/>
+    <VPTeamPageSection>
+        <template #title>鸣谢</template>
+        <template #members>
+          <VPTeamMembers size="small" :members="memberList2" />
+        </template>
+    </VPTeamPageSection>
+</VPTeamPage>
 
-<VPTeamMembers
-size="small"
-:members="memberList"
-/>
+
+
+
+
 
 <script setup>
 import {
@@ -81,32 +98,11 @@ const memberList = [
         sponsor : 'https://github.com/LLemonGreen'
     },
     { 
-        avatar: djl, 
-        name: 'djl' ,
-        org : '前端研发· 北京' , 
-        desc :'vue使用者， go学习者， 前端开发。 负责gin - vue - admin的前端页面开发， UI样式维护' , 
-        sponsor : 'https://github.com/piexlmax'
-    },
-    { 
         avatar: lw, 
         name: 'LeonardWang' ,
         org : '开发· 杭州' , 
         desc :'跟着gva大佬们打怪升级， 喜欢搞一些底层骚操作， 乐于“ 折腾” 的垃圾佬.负责gin - vue - admin的静态文件打包功能开发， 搬砖工程师。' , 
         sponsor : 'https://github.com/LeonardWang'
-    },
-    { 
-        avatar: yr, 
-        name: 'rainyan' ,
-        org : '架构师· 深圳' , 
-        desc :'架构设计， 前沿技术探索， 技术应用.武大本硕， 鹅厂员工， 单身没颜缺钱。 善于人际交往， 有领导能力， 喜欢体验新鲜的事物， 喜欢旅游， 口才很好。 雅思7 .5， 喜欢学习各种语言和各种方言.' , 
-        sponsor : 'https://github.com/Ruio9244'
-    },
-    { 
-        avatar: GL, 
-        name: 'Granty1' ,
-        org : '服务器开发· 上海' , 
-        desc :'编写部分服务端代码。' , 
-        sponsor : 'https://github.com/piexlmax'
     },
     { 
         avatar: bin, 
@@ -123,18 +119,45 @@ const memberList = [
         sponsor : 'https://github.com/bypanghu'
     },
     { 
-        avatar: hongyi, 
-        name: '弘一' ,
-        org : 'UE设计师·长沙' , 
-        desc :' 行走在路上的UE， PM学习者， 佛学爱好者。' , 
-        sponsor : 'https://github.com/piexlmax'
-    },
-    { 
         avatar: tscuite, 
         name: 'tscuite' ,
         org : '运维·北京' , 
         desc :'奇淼的小迷弟二号，(英文名全称：The sun comes up in the east)，接触的技术越多越感觉是井底之蛙。负责项目的自动化更新，不学习就会焦虑的萌新' , 
         sponsor : 'https://github.com/tscuite'
+    },
+
+]
+
+
+
+const memberList2 = [
+    { 
+        avatar: djl, 
+        name: 'djl' ,
+        org : '前端研发· 北京' , 
+        desc :'vue使用者， go学习者， 前端开发。 负责gin - vue - admin的前端页面开发， UI样式维护' , 
+        sponsor : 'https://github.com/piexlmax'
+    },
+    { 
+        avatar: yr, 
+        name: 'rainyan' ,
+        org : '架构师· 深圳' , 
+        desc :'架构设计， 前沿技术探索， 技术应用.武大本硕， 鹅厂员工， 单身没颜缺钱。 善于人际交往， 有领导能力， 喜欢体验新鲜的事物， 喜欢旅游， 口才很好。 雅思7 .5， 喜欢学习各种语言和各种方言.' , 
+        sponsor : 'https://github.com/Ruio9244'
+    },
+    { 
+        avatar: GL, 
+        name: 'Granty1' ,
+        org : '服务器开发· 上海' , 
+        desc :'编写部分服务端代码。' , 
+        sponsor : 'https://github.com/piexlmax'
+    },
+    { 
+        avatar: hongyi, 
+        name: '弘一' ,
+        org : 'UE设计师·长沙' , 
+        desc :' 行走在路上的UE， PM学习者， 佛学爱好者。' , 
+        sponsor : 'https://github.com/piexlmax'
     },
     { 
         avatar: jianguo, 
