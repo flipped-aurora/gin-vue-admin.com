@@ -73,14 +73,14 @@ const memberList = [
         avatar: jjz, 
         name: '奇淼' ,
         org : '全栈开发· 北京' , 
-        desc :'用魔法打败魔法， 用代码打败代码， 一个普普通通的IT从业者， 一台 se 无情的编码机器。gin - vue - admin项目发起者， 团队一块砖， 随便用， 随便搬， 负责gin - vue - admin的整体功能开发， 基础设施建设。' , 
+        desc :'用魔法打败魔法， 用代码打败代码， 一个普普通通的IT从业者， 一台无情的编码机器。gin-vue-admin项目发起者， 团队一块砖， 随便用， 随便搬， 负责gin - vue - admin的整体功能开发， 基础设施建设。' , 
         sponsor : 'https://github.com/piexlmax'
     },
     { 
         avatar: sc, 
         name: 'krank' ,
         org : '前端开发· 北京' , 
-        desc :'风暴中出生的krank， vue使用者， go学习者， 前端开发， 奇淼的马仔。负责gin - vue - admin的前端页面开发， 功能完善， 基础前端工具开发。 辅助进行前端基础架构建设， 通用功能组件封装。' , 
+        desc :'风暴中出生的krank， vue使用者， go学习者， 前端开发， 奇淼的马仔。负责gin-vue-admin的前端页面开发， 功能完善， 基础前端工具开发。 辅助进行前端基础架构建设， 通用功能组件封装。' , 
         sponsor : 'https://github.com/piexlmax'
     },
     { 
@@ -94,14 +94,14 @@ const memberList = [
         avatar: ll, 
         name: 'LLemonGreen' ,
         org : '创业· 深圳' , 
-        desc :' 敲代码， 做潮牌， 玩音乐， 拍视频。 目前在代码外包、潮牌同步发展阶段。github缝合怪。参与gin - vue - admin的一些功能测试和文档维护， 参与社区吹水' , 
+        desc :' 敲代码， 做潮牌， 玩音乐， 拍视频。 目前在代码外包、潮牌同步发展阶段。github缝合怪。参与gin-vue-admin的一些功能测试和文档维护， 参与社区吹水' , 
         sponsor : 'https://github.com/LLemonGreen'
     },
     { 
         avatar: lw, 
         name: 'LeonardWang' ,
         org : '开发· 杭州' , 
-        desc :'跟着gva大佬们打怪升级， 喜欢搞一些底层骚操作， 乐于“ 折腾” 的垃圾佬.负责gin - vue - admin的静态文件打包功能开发， 搬砖工程师。' , 
+        desc :'跟着gva大佬们打怪升级， 喜欢搞一些底层骚操作， 乐于“ 折腾” 的垃圾佬.负责gin-vue-admin的静态文件打包功能开发， 搬砖工程师。' , 
         sponsor : 'https://github.com/LeonardWang'
     },
     { 
