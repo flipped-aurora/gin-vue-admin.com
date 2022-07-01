@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 const lang = 'zh-CN'
 const ogDescription = 'gin+vue编写的自动化代码开发脚手架，是gin+vue全栈学习最好的项目，腾讯阿里开发均有采用gin-vue-admin为模型进行相关业务开发，代码自动化，加快开发速度，权限系统齐全，减少重复工作'
-const ogImage = 'https://opqbot.com/opq.1200x630.v2.jpg'
+const ogImage = 'https://www.gin-vue-admin.com/logo.svg'
 const ogTitle = ogDescription
 const ogUrl = 'https://www.gin-vue-admin.com'
 
@@ -38,7 +38,7 @@ export default defineConfig({
     [
     'script',
         {
-          src: 'https://cdn.usefathom.com/script.js',
+          src: 'https://hm.baidu.com/hm.js?40635ef25e31fa2a58ed58f935d0a1a0',
         },
     ],
   ],
@@ -74,10 +74,6 @@ export default defineConfig({
           { text: '项目上线', link: '/guide/deployment/' },
         ],
       },
-      // {
-      //   text: '🌈 Project',
-      //   items: ITEMS.project
-      // },
       {
         text: '📚︎ Knowledge',
         items: ITEMS.knowledge
@@ -151,6 +147,7 @@ export default defineConfig({
         {
           text: '部署指南',
           collapsible: true,
+          collapsed : true,
           items: [
             {
               text: '项目上线',
@@ -174,35 +171,36 @@ export default defineConfig({
             },
           ]
         },
-        {
-          text: '从零开始搭建 Gva',
-          collapsible: true,
-          items: [
-            {
-              text: '简介',
-              link: '/guide/manual/'
-            },
-            {
-              text: '准备环境',
-              link: '/guide/manual/environment'
-            },
-            {
-              text: '进阶知识',
-              link: '/guide/manual/advanced'
-            },
-            {
-              text: '最佳实践',
-              link: '/guide/manual/practices'
-            },
-            {
-              text: '常见问题',
-              link: '/guide/manual/qa'
-            },
-          ]
-        },
+        // {
+        //   text: '从零开始搭建 Gva',
+        //   collapsible: true,
+        //   items: [
+        //     {
+        //       text: '简介',
+        //       link: '/guide/manual/'
+        //     },
+        //     {
+        //       text: '准备环境',
+        //       link: '/guide/manual/environment'
+        //     },
+        //     {
+        //       text: '进阶知识',
+        //       link: '/guide/manual/advanced'
+        //     },
+        //     {
+        //       text: '最佳实践',
+        //       link: '/guide/manual/practices'
+        //     },
+        //     {
+        //       text: '常见问题',
+        //       link: '/guide/manual/qa'
+        //     },
+        //   ]
+        // },
         {
           text: '视频教程',
           collapsible: true,
+          collapsed : true,
           items: [
             {
               text: 'golang教程',
@@ -226,9 +224,23 @@ export default defineConfig({
             },
           ]
         },
+
         {
-          text: 'Gva前后端分离',
+          text: '代码生成器',
           collapsible: true,
+          collapsed : true,
+          items: [
+            {
+              text: '代码生成器使用指南',
+              link: '/guide/generator/server',
+            },
+
+          ]
+        },
+        {
+          text: '前端项目指南',
+          collapsible: true,
+          collapsed : true,
           items: [
             {
               text: '前端 指南',
@@ -241,16 +253,6 @@ export default defineConfig({
             {
               text: '侧边栏样式自定义',
               link: '/guide/web/menu-theme'
-            },
-          ]
-        },
-        {
-          text: '代码生成器',
-          collapsible: true,
-          items: [
-            {
-              text: '代码生成器使用指南',
-              link: '/guide/generator/server',
             },
             {
               text: '表单生成器 `127.0.0.1` 拒绝连接',
@@ -265,6 +267,7 @@ export default defineConfig({
         {
           text: '后端项目指南',
           collapsible: true,
+          collapsed : true,
           items: [
             {
               text: '后端 指南',

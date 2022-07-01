@@ -1,16 +1,61 @@
 # 按钮权限
 
+> 实现方式是采用 vue 原生的注册指令方式，
+> 实现代码
+```js
+// 权限按钮展示指令
+import { useUserStore } from '@/pinia/modules/user'
+export default {
+  install: (app) => {
+    const userStore = useUserStore()
+    app.directive('auth', {
+      // 当被绑定的元素插入到 DOM 中时……
+      mounted: function(el, binding) {
+        const userInfo = userStore.userInfo
+        let type = ''
+        switch (Object.prototype.toString.call(binding.value)) {
+          case '[object Array]':
+            type = 'Array'
+            break
+          case '[object String]':
+            type = 'String'
+            break
+          case '[object Number]':
+            type = 'Number'
+            break
+          default:
+            type = ''
+            break
+        }
+        if (type === '') {
+          el.parentNode.removeChild(el)
+          return
+        }
+        const waitUse = binding.value.toString().split(',')
+        let flag = waitUse.some(item => item === userInfo.authorityId)
+        if (binding.modifiers.not) {
+          flag = !flag
+        }
+        if (!flag) {
+          el.parentNode.removeChild(el)
+        }
+      }
+    })
+  }
+}
+```
+
 ## 创建按钮
 
 进入`菜单管理`界面，点击新增或编辑，点击下方的`新增可控按钮`填入按钮名称（英文且不重复）和描述后点击确定
 
-![one](../static/btn/one.png)
+![one](/btn/one.png)
 
 进入`权限管理`，点击设置权限-->分配菜单，如果此菜单有可控按钮，则会显示`分配按钮权限`字样，点击进行分配
 
-![two](../static/btn/two.png)
+![two](/btn/two.png)
 
-![three](../static/btn/three.png)
+![three](/btn/three.png)
 
 点击确定，完成分配。
 
