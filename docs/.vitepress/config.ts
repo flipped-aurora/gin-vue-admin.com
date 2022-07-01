@@ -25,7 +25,7 @@ export default defineConfig({
   lastUpdated: false,
 
   head: [
-    ['link', { rel: 'icon', href: '/svg.svg' }],
+    ['link', { rel: 'icon', href: '/logo.svg' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'gin-vue-admin' }],
     ['meta', { property: 'og:image', content: ogImage }],
@@ -48,7 +48,7 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: '/svg.svg',
+    logo: '/logo.svg',
 
     editLink: {
       pattern: 'https://github.com/opq-osc/opq-helper/edit/main/docs/:path',
