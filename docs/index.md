@@ -14,7 +14,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: guide/introduce/project
+      link: guide/start-quickly/initialization
     - theme: alt
       text: Open PluginShop
       link: https://plugin.gin-vue-admin.com/

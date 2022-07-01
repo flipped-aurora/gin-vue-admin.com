@@ -87,7 +87,7 @@ const memberList = [
         avatar: sh, 
         name: 'SliverHorn' ,
         org : '后端开发· 广州' , 
-        desc :'热爱编程, 对代码有洁癖, 好的代码就是気持ちいい。 任何时候， 绝不骄傲， 绝不轻敌， 摸清对方心里， 使劲浑身解数， 保持笑容和品行， 无论发生什么， 千万不要忘记扑克脸。负责gin - vue - admin的新功能研发测试与改进, gf - vue - admin的后端开发及维护, 社区日常维护管理等工作。' , 
+        desc :'任何时候，绝不骄傲，绝不轻敌，摸清对方心里，使劲浑身解数，保持笑容和品行，无论发生什么，千万不要忘记扑克脸。负责gin-vue-admin的新功能研发测试与改进,kratos-vue-admin微服务开发与维护, gf-vue-admin的后端维护, 社区日常维护管理等工作。' , 
         sponsor : 'https://github.com/SliverHorn'
     },
     { 
