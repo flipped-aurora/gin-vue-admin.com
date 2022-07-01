@@ -60,8 +60,8 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Flipped-aurora Open Source Community',
-      copyright: `Copyright © 2020-${new Date().getFullYear()} Flipped-aurora`
+      message: `Copyright © 2020-${new Date().getFullYear()} Flipped-aurora Open Source Community`,
+      copyright: `鲁ICP备17040210号-2`
     },
 
 

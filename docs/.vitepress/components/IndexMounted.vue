@@ -4,10 +4,8 @@
 import { oscUrl } from '../constants'
 
 export default {
-  // hack footer 部分
-  // 使其可以点击跳转到 osc
   mounted() {
-    const licenseElm = document.querySelector('.VPFooter .message')
+    const licenseElm = document.querySelector('.VPFooter .copyright')
     if (!licenseElm) {
       return
     }
@@ -15,7 +13,7 @@ export default {
     const handleHtml = /* html */ `
         <a
           target='_blank'
-          href='${oscUrl}'
+          href='https://beian.miit.gov.cn/#/Integrated/index'
           style='text-decoration: none; color: inherit;'
         >
           ${text}
