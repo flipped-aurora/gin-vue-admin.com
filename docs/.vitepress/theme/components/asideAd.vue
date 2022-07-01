@@ -47,8 +47,8 @@ const ad = [
     column-gap: 4px;
   }
  .company-box .company-box-item{
-    margin-bottom: 10px;
-    margin-right: 10px;
+    margin-bottom: 12px;
+    margin-right: 12px;
     display: flex;
     justify-content: space-around;
     align-items: center;

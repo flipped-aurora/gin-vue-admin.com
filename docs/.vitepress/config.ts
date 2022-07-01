@@ -75,7 +75,7 @@ export default defineConfig({
         ],
       },
       {
-        text: '📚︎ Knowledge',
+        text: '📚︎ 学习&捐赠',
         items: ITEMS.knowledge
       },
       {

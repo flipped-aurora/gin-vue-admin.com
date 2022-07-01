@@ -64,7 +64,7 @@ export default {
   border-radius: 5px;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, .15);
   padding: 20px 30px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   cursor: pointer;
   transition: all .4s ease;
   min-width: 200px;

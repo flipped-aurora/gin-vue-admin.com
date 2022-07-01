@@ -18,7 +18,7 @@ qq交流2群群号： `650421081`
 
 ## 作者简介
 
-<span style="color:var(--vp-c-brand)">Mr.奇淼</span> ,本名蒋吉兆，目前工作于北京某创业公司。 个人本职为公司前端技术负责人，
+<span style="color:var(--vp-c-brand)">Mr.奇淼</span> ,目前工作于北京某创业公司。 个人本职为公司前端技术负责人，
 业余时间会做一些开源的小东西，Gin-vue-admin就是疫情期间的无心插柳。
 个人技术栈为前端 `VUE`  `React`  `Uni`  `weex`  `RN`  等， 后端`golang`  `python`  `node`期待更多小伙伴加入Gin-Vue-Admin的大家庭。
 

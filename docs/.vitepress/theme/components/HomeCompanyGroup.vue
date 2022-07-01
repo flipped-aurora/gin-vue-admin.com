@@ -56,7 +56,7 @@ const ad = [
   column-gap: 4px;
 }
 #company-group .company-box .company-box-item{
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   margin-right: 10px;
   display: flex;
   justify-content: space-around;
