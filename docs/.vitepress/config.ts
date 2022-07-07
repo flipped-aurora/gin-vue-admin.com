@@ -6,17 +6,13 @@ const ogImage = 'https://www.gin-vue-admin.com/logo.png'
 const ogTitle = ogDescription
 const ogUrl = 'https://www.gin-vue-admin.com'
 
-const ITEMS = {
-  project: [
-    { text: '开发 SDK', link: '/project/sdk' },
-    { text: '开源插件', link: '/project/plugins' },
-    { text: '实用工具', link: '/project/tools' },
-  ],
-  knowledge: [
-    { text: '捐赠列表', link: '/other/ranking' },
-    { text: '相关站点', link: '/other/site' },
-  ]
-}
+// const ITEMS = {
+//   project: [
+//     { text: '开发 SDK', link: '/project/sdk' },
+//     { text: '开源插件', link: '/project/plugins' },
+//     { text: '实用工具', link: '/project/tools' },
+//   ]
+// }
 
 export default defineConfig({
   title: 'Gin-Vue-Admin',
@@ -75,8 +71,12 @@ export default defineConfig({
         ],
       },
       {
-        text: '📚︎ 学习&捐赠',
-        items: ITEMS.knowledge
+        text: '📚︎ 学习',
+        link: '/study/index'
+      },
+      {
+        text: '📚︎ 捐赠',
+        link: '/coffee/index'
       },
       {
         text : '🎁 特惠服务器',
@@ -202,7 +202,6 @@ export default defineConfig({
             },
           ]
         },
-
         {
           text: '代码生成器',
           collapsible: true,
@@ -273,6 +272,21 @@ export default defineConfig({
             },
           ]
         },
+        {
+          text: '插件使用教程',
+          collapsed: true,
+          collapsible: true,
+          items: [
+            {
+              text: '后端插件使用',
+              link: '/guide/plugin/server'
+            },
+            {
+              text: '前端插件使用',
+              link: '/guide/plugin/web'
+            },
+          ]
+        }
       ],
       '/experience/': [
         {
@@ -294,16 +308,27 @@ export default defineConfig({
           ]
         },
       ],
-      // '/project/': [
-      //   {
-      //     text: 'Project',
-      //     items: ITEMS.project
-      //   }
-      // ],
-      '/other/': [
+      '/study/': [
         {
-          text: 'Knowledge',
-          items: ITEMS.knowledge
+          text: '学习',
+          items: [
+            {text: '相关站点', link: '/study/site'}
+          ]
+        },
+        {
+          text: '对象存储插件',
+          items: [
+            {text: '阿里云', link: '/study/aliyun'}
+          ]
+        }
+      ],
+      '/coffee/': [
+        {
+          text: '捐赠',
+          items: [
+            {text: '捐赠列表', link:'/coffee/index'},
+            {text: '付费支持', link:'/coffee/payment'}
+          ]
         }
       ],
     }

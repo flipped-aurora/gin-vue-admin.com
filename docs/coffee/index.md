@@ -5,8 +5,8 @@ gin-vue-admin是一款非商业性的可快速开发基础架构，开箱即用�
 :::
 
 <div style="display: flex; align-items: center">
-    <img class="py-img" src="/guanwang/zfb.png">
-    <img class="py-img" src="/guanwang/wxzf.png">
+    <img class="py-img" src="/coffee/alipay.png">
+    <img class="py-img" src="/coffee/wechat-pay.png">
 </div>
 
 ::: tip 🎉 致谢
