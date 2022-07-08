@@ -142,3 +142,8 @@ docker run -d -p 8888:8888 --name gva-server-v1 gva-server:1.0
 # gva-server:1.0为docker build时的-t的参数
 docker run -it -p 8888:8888 --name gva-server-v1 gva-server:1.0
 ```
+
+
+
+
+

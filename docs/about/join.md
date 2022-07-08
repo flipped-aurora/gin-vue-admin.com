@@ -122,7 +122,7 @@ const memberList = [
         avatar: tscuite, 
         name: 'tscuite' ,
         org : '运维·北京' , 
-        desc :'奇淼的小迷弟二号，(英文名全称：The sun comes up in the east)，接触的技术越多越感觉是井底之蛙。负责项目的自动化更新，不学习就会焦虑的萌新' , 
+        desc :'奇淼的小迷弟二号，(英文名全称：The sun comes up in the east)，负责项目的devops，不学习就会焦虑的萌新' , 
         sponsor : 'https://github.com/tscuite'
     },
 

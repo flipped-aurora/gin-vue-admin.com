@@ -41,13 +41,13 @@
 
    ```
    // 启动, 第一次启动可能会稍微慢一点
-   docker-compose -f docker-compose-dev.yaml  up
+   docker-compose -f deploy/docker-compose/docker-compose-dev.yaml  up
    
    // 后台启动
-   docker-compose -f docker-compose-dev.yaml  up  -d
+   docker-compose -f deploy/docker-compose/docker-compose-dev.yaml  up  -d
    
    // 停止
-   docker-compose -f docker-compose-dev.yaml  stop
+   docker-compose -f deploy/docker-compose/docker-compose-dev.yaml  stop
    ```
 
 2. 启动完成请打开浏览器访问

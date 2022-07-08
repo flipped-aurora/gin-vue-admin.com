@@ -123,7 +123,7 @@ ENTRYPOINT ./server -c config.docker.yaml
 
 ## docker-compose.yaml详解
 
-`dockerfile-compose.yaml` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的 [dockerfile-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml)
+`docker-compose.yaml` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的 [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml)
 
 ```yaml
 version: "3"
@@ -135,6 +135,10 @@ networks:
       driver: default
       config:
         - subnet: '177.7.0.0/16'
+
+# 设置mysql，redis持久化保存
+volumes:
+  mysql:
 
 services:
   # web服务
@@ -200,7 +204,7 @@ services:
       MYSQL_ROOT_PASSWORD: 'Aa@6447985' # root管理员用户密码
     # 映射数据卷到数据库
     volumes:
-      - '.docker-compose/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d'
+      - mysql:/var/lib/mysql
     networks:
       network:
         # 在network网络下的容器内部的Ipv4地址
@@ -227,13 +231,13 @@ services:
 
 ```shell
 # 使用docker-compose启动四个容器
-docker-compose up
+docker-compose -f deploy/docker-compose/docker-compose.yaml up
 # 如果您修改了某些配置选项,可以使用此命令重新打包镜像
-docker-compose up --build
+docker-compose -f deploy/docker-compose/docker-compose.yaml up --build
 # 使用docker-compose 后台启动
-docker-compose up -d
+docker-compose -f deploy/docker-compose/docker-compose.yaml up -d
 # 使用docker-compose 重新打包镜像并后台启动
-docker-compose up --build -d
+docker-compose -f deploy/docker-compose/docker-compose.yaml up --build -d
 # 服务都启动成功后,使用此命令行可清除none镜像
 docker system prune
 ```
