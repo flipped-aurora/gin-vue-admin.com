@@ -36,18 +36,19 @@
 
 4. 根据上诉操作得到配置文件
 ```yaml
-aliyun-oss:
+# aliyun oss configuration
+AliyunOss:
   # 文件存储文件夹
-  path: 'gva'
-  # 文件名前缀, 可为空了
-  prefix: 'oss_'
+  Path: 'gva'
+  # 自定义文件名前缀, 可以不写为空了
+  Prefix: 'oss_'
   # Bucket 域名
-  domain: 'https://sliver-horn.oss-cn-shenzhen.aliyuncs.com'
+  Domain: 'https://sliver-horn.oss-cn-shenzhen.aliyuncs.com'
   # Bucket 名称
-  bucket: 'sliver-horn'
+  Bucket: 'sliver-horn'
   # 地域节点
-  endpoint: 'oss-cn-shenzhen.aliyuncs.com'
+  Endpoint: 'oss-cn-shenzhen.aliyuncs.com'
   # 阿里云账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM用户进行API访问或日常运维，请登录RAM控制台创建RAM用户。
-  access-key-id: 'LTAI5t7dSHRh2MHhaAo3gSGR'
-  access-key-secret: 'V4dc2lXiaJhGi40e7FcdiaLDDGtQ35' 
+  AccessKeyId: 'LTAI5t7dSHRh2MHhaAo3gSGR'
+  AccessKeySecret: 'V4dc2lXiaJhGi40e7FcdiaLDDGtQ35'
 ```
