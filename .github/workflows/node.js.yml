@@ -27,3 +27,14 @@ jobs:
           npm install -g pnpm
           pnpm install --no-frozen-lockfile
           pnpm docs:build
+      - name: restart
+        env:
+          KEY: ${{ secrets.KEY }}
+          HOST: ${{ secrets.HOST }}
+          USER: ${{ secrets.USER }}
+          PROT: ${{ secrets.PROT }}
+          MKDIR: ${{ secrets.MKDIR }}
+        run: |
+          mkdir -p ~/.ssh/ && echo "$KEY" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          scp -P ${PROT} -o StrictHostKeyChecking=no -r docs/.vitepress/dist/* ${USER}@${HOST}:${MKDIR}build/
