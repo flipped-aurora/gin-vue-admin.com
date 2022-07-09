@@ -2,63 +2,69 @@
 /* eslint-disable */
 export const PLUGINS = [
   {
-    "name": "xiyaowong",
-    "count": 11
+    "name": "名称",
+    "count": '捐款数',
+    "tips" : '留言'
   },
   {
-    "name": "yuban10703",
-    "count": 5
+    "name": "LLemonGreen",
+    "count": '1966￥',
+    "tips" : '付款码--转账'
   },
   {
-    "name": "HeiLAAS",
-    "count": 5
+    "name": "阿乐",
+    "count": '1001￥',
+    "tips" : '各位辛苦，我再添把柴'
   },
   {
-    "name": "HYLnP",
-    "count": 3
+    "name": "WangLeonard",
+    "count": '1000￥',
+    "tips" : '不愿意透漏姓名的王哥'
   },
   {
-    "name": "mcoo",
-    "count": 2
-  },
-  {
-    "name": "kitUIN",
-    "count": 1
-  },
-  {
-    "name": "BrandTime",
-    "count": 1
-  },
-  {
-    "name": "Teeoo",
-    "count": 1
-  },
-  {
-    "name": "LukWang",
-    "count": 1
-  },
-  {
-    "name": "aoguai",
-    "count": 1
-  },
-  {
-    "name": "AZhrZho",
-    "count": 1
-  },
-  {
-    "name": "MengXin001",
-    "count": 1
-  },
-  {
-    "name": "spirit1431007",
-    "count": 1
-  },
-  {
-    "name": "XJLZ",
-    "count": 1
-  },
-  {
-    "name": "xuxiaofen2",
-    "count": 1
+    "name": "e*o",
+    "count": '666￥',
+    "tips" : '微信转账'
+  },{
+    "name": "桀骜的jerry不朽Yen",
+    "count": '786￥',
+    "tips" : '捐服务器'
+  },{
+    "name": "迂实",
+    "count": '600￥',
+    "tips" : '微信红包'
+  },{
+    "name": "李靖",
+    "count": '600￥',
+    "tips" : '微信转账'
+  },{
+    "name": "每一天旋律",
+    "count": '600￥',
+    "tips" : '感谢答疑'
+  },{
+    "name": "韦平",
+    "count": '588￥',
+    "tips" : '授权'
+  },{
+    "name": "7k",
+    "count": '500￥',
+    "tips" : '钱不多。。谢谢大佬的项目'
+  },{
+    "name": "**东",
+    "count": '500￥',
+    "tips" : '支付宝付款'
+  },{
+    "name": "张智征",
+    "count": '500￥',
+    "tips" : '定制化开发'
+  },{
+    "name": "Super",
+    "count": '500￥',
+    "tips" : '知识经验传播！感谢！'
+  },{
+    "name": "A*",
+    "count": '500￥',
+    "tips" : '定制化开发'
   }
+
 ]
