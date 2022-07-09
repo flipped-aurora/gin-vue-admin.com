@@ -165,7 +165,7 @@ export default defineConfig({
               link: '/guide/deployment/docker-compose'
             },
             {
-              text: 'docker快速开发',
+              text: 'docker-compose快速开发',
               link: '/guide/deployment/docker_develop'
             },
             {
