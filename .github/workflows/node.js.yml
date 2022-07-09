@@ -1,0 +1,36 @@
+name: gin-vue-admin build test
+
+on:
+  push:
+    branches:
+      - "*"
+    paths-ignore:
+      - "./db/**"
+      - "**.md"
+  pull_request:
+    branches:
+      - "*"
+    paths-ignore:
+      - "./db/**"
+      - "**.md"
+
+jobs:
+  frontend:
+    name: Frontend build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.16.0]
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Build test
+        run: |
+          yarn install
+          yarn docs:build
