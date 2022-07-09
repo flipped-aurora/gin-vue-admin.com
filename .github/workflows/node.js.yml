@@ -32,5 +32,6 @@ jobs:
 
       - name: Build test
         run: |
+          npm install -g pnpm
           pnpm install
           pnpm docs:build
