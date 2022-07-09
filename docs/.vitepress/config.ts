@@ -277,12 +277,12 @@ export default defineConfig({
           collapsible: true,
           items: [
             {
-              text: '后端插件使用',
-              link: '/guide/plugin/server'
+              text: '插件安装教程',
+              link: '/guide/plugin/install'
             },
             {
-              text: '前端插件使用',
-              link: '/guide/plugin/web'
+              text: '插件研发教程',
+              link: '/guide/plugin/develop'
             },
           ]
         }
