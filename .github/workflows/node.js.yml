@@ -4,15 +4,6 @@ on:
   push:
     branches:
       - "*"
-    paths-ignore:
-      - "./db/**"
-      - "**.md"
-  pull_request:
-    branches:
-      - "*"
-    paths-ignore:
-      - "./db/**"
-      - "**.md"
 
 jobs:
   frontend:
