@@ -34,5 +34,5 @@ jobs:
         run: |
           npm config set registry https://registry.npmmirror.com
           npm install -g pnpm
-          pnpm install
+          pnpm install --no-frozen-lockfile
           pnpm docs:build
