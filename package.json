@@ -5,7 +5,7 @@
   "scripts": {
     "build:ranking": "node scripts/refreshRanking.js",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "pnpm build:ranking && vitepress build docs",
+    "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {

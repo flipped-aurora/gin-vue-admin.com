@@ -19,7 +19,6 @@ export default defineConfig({
   description: ogDescription,
   lang,
   lastUpdated: false,
-
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
     ['meta', { property: 'og:type', content: 'website' }],

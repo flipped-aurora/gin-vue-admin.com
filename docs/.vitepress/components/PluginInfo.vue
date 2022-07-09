@@ -46,11 +46,13 @@ export default {
   methods: {
     onOwnerClick() {
       setTimeout(() => {
-        window.open(
-          `https://github.com/${this.handleOwner}`,
-          '_blank',
-          'noopener'
-        )
+        if (typeof window !== 'undefined' && !window.qiankunStarted) {
+            window.open(
+              `https://github.com/${this.handleOwner}`,
+              '_blank',
+              'noopener'
+            )
+        }
       }, 500)
     },
   },

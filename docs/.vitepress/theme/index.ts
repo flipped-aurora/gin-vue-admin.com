@@ -51,7 +51,7 @@ const initWebStyle = () =>{
   }
 }
 
-initWebStyle()
+// initWebStyle()
 
 export default {
   ...Theme,
