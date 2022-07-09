@@ -71,7 +71,7 @@ export default defineConfig({
       },
       {
         text: '📚︎ 学习',
-        link: '/study/site'
+        link: '/study/index'
       },
       {
         text: '📚︎ 捐赠',
