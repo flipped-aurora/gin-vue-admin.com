@@ -238,6 +238,10 @@ export default defineConfig({
               text: '表单生成器生产使用指南',
               link: '/guide/generator/web-produce',
             },
+            {
+              text: '开启TypeScript',
+              link: '/guide/web/typescript',
+            },
           ]
         },
         {

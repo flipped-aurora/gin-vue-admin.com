@@ -2,7 +2,7 @@
 layout: home
 
 title: gin-vue-admin
-titleTemplate: Gva 文档站
+titleTemplate: GVA 文档站
 
 hero:
   name: Gin-Vue-Admin

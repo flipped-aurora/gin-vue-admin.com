@@ -12,7 +12,7 @@
         />
       </picture>
     </a>
-    <span>A Plugin Market for Gva</span>
+    <span>A Plugin Market for GVA</span>
   </section>
 </template>
 
