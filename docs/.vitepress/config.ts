@@ -46,7 +46,7 @@ export default defineConfig({
     logo: '/logo.png',
 
     editLink: {
-      pattern: 'https://github.com/opq-osc/opq-helper/edit/main/docs/:path',
+      pattern: 'https://github.com/flipped-aurora/gin-vue-admin.com/edit/master/docs/:path',
       text: '在Github上编辑此页'
     },
 
