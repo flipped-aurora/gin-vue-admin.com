@@ -28,9 +28,6 @@ const ad = [
   },{
     img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
     href :'https://www.madlocker.cn'
-  },{
-    img : 'https://www.vform666.com/vform-logo.png',
-    href :'https://www.vform666.com'
   }
 ]
 
