@@ -322,7 +322,8 @@ export default defineConfig({
           text: '对象存储插件',
           items: [
             {text: '阿里云对象存储', link: '/study/aliyun'},
-            {text: '腾讯对象存储', link: '/study/tencent'}
+            {text: '腾讯对象存储', link: '/study/tencent'},
+            {text: '七牛云对象存储', link: '/study/qiniu'},
           ]
         }
       ],
