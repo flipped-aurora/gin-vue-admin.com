@@ -6,7 +6,11 @@
       </div>
       <div class="company-box">
         <a  class="company-box-item" v-for="(item , index) in ad" :key="index" :href="item.href">
-          <img :src="item.img" alt="geelevel">
+          <img :src="item.img" :alt="item.href">
+          <div v-if="item.meta" style="margin-left: 20px">
+            <div class="company-box-item-title" >{{item.meta.title}}</div>
+            <div class="company-box-item-description">{{item.meta.description}}</div>
+          </div>
         </a>
       </div>
     </div>
@@ -16,6 +20,8 @@
 <script lang="ts" setup>
 import miaodian from '/guanwang/miaodian.png'
 import flippedaurora from '/guanwang/flipped-aurora.svg'
+import  vform from '/advertising/vform-banner.png'
+import huoxian from '/guanwang/huoxian.png'
 
 const ad = [
   {
@@ -27,7 +33,19 @@ const ad = [
     href :'https://github.com/flipped-aurora'
   },{
     img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
-    href :'https://www.madlocker.cn'
+    href :'https://www.madlocker.cn',
+    meta:{
+      title : '深圳疯柜科技',
+      description : '盡量别開生靣'
+    }
+  }
+  // ,{
+  //   img : huoxian,
+  //   href :'https://www.madlocker.cn'
+  // }
+  ,{
+    img : vform,
+    href :'https://www.vform666.com'
   }
 ]
 
@@ -59,7 +77,7 @@ const ad = [
   margin-bottom: 12px;
   margin-right: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   transition: background-color .2s ease;
   height: calc(var(--max-width) / 2 - 6px);
@@ -70,5 +88,25 @@ const ad = [
 
 #company-group .company-box .company-box-item img{
   max-height: 100% ;
+}
+
+
+#company-group .company-box .company-box-item .company-box-item-title{
+  font-size: 20px;
+  font-weight: 600;
+  width: 80px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#company-group .company-box .company-box-item .company-box-item-description{
+  font-size: 12px;
+  font-weight: 400;
+  overflow: hidden;
+  max-width: 80px;
+  width: 80px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>
