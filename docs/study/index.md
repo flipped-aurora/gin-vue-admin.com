@@ -15,8 +15,5 @@
 [插件市场](https://plugin.gin-vue-admin.com/#/layout/plugin) <Badge text="测试版本" type="warning"/>
 
 ## 友情链接
-[melody](https://github.com/flipped-aurora/melody)
-
-[H5-Dooring ｜ H5页面制作神器](http://h5.dooring.cn/)
 
 [golang 开发工具包，json、sql 转 struct](http://www.golangs.cn/)

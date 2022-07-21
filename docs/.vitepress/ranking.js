@@ -66,5 +66,4 @@ export const PLUGINS = [
     "count": '500￥',
     "tips" : '定制化开发'
   }
-
 ]

@@ -1,8 +1,12 @@
 <template>
   <div class="gvaaside-ad" >
     <div class="company-box">
-      <a  class="company-box-item" v-for="(item , index) in ad" :key="index" :href="item.href" target="_blank">
+      <a  class="company-box-item" v-for="(item , index) in ad" :key="index" :href="item.href" target="_blank" style="padding: 0">
         <img :src="item.img" alt="geelevel">
+        <div v-if="item.meta" style="margin-left: 10px">
+          <div class="company-box-item-title" >{{item.meta.title}}</div>
+          <div class="company-box-item-description">{{item.meta.description}}</div>
+        </div>
       </a>
     </div>
   </div>
@@ -12,6 +16,7 @@
 import miaodian from '/guanwang/miaodian.png'
 import flippedaurora from '/guanwang/flipped-aurora.svg'
 import huoxian from '/guanwang/huoxian.png'
+import  vform from '/advertising/vform-banner.png'
 const ad = [
   {
     img : miaodian,
@@ -22,11 +27,19 @@ const ad = [
     href :'https://github.com/flipped-aurora'
   },{
     img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
-    href :'https://www.madlocker.cn'
+    href :'https://www.madlocker.cn',
+    meta:{
+      title : '深圳疯柜科技',
+      description : '盡量别開生靣'
+    }
   },{
     img : huoxian,
     href :'https://zone.huoxian.cn/'
-  },
+  }
+  // ,{
+  //   img : vform,
+  //   href :'https://www.vform666.com'
+  // }
 ]
 </script>
 
@@ -34,6 +47,7 @@ const ad = [
 .gvaaside-ad{
   margin-top: 40px;
   font-size: 12px;
+  --max-width : 160px;
   .company-title{
     font-size: 20px;
     font-weight: 600;
@@ -50,18 +64,37 @@ const ad = [
     margin-bottom: 12px;
     margin-right: 12px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     transition: background-color .2s ease;
     height: calc(var(--max-width) / 2 - 6px);
     background-color: var(--vp-c-bg-soft);
     border-radius: 4px;
-    //padding: 10px;
+    padding: 4px;
   }
 
   .company-box .company-box-item img{
     max-width: 100% ;
     max-height: 60px;
+    object-fit: cover;
+  }
+
+  .company-box .company-box-item .company-box-item-title{
+    font-size: 18px;
+    font-weight: 600;
+    width: 120px;
+    max-width: 120px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .company-box .company-box-item .company-box-item-description{
+    font-size: 12px;
+    font-weight: 400;
+    overflow: hidden;
+    max-width: 80px;
+    width: 80px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 </style>

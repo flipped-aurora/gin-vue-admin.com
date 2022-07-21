@@ -310,7 +310,7 @@ export default defineConfig({
         {
           text: '学习',
           items: [
-            {text: '相关站点', link: '/study/site'}
+            {text: '相关站点', link: '/study/'}
           ]
         },
         {
