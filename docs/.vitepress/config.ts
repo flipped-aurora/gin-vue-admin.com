@@ -74,21 +74,12 @@ export default defineConfig({
         link: '/study/index'
       },
       {
-        text: '📚︎ 捐赠',
+        text: '🎁 捐赠',
         link: '/coffee/index'
       },
       {
-        text : '🎁 特惠服务器',
-        items :[
-          {
-            text: '腾讯云服务器',
-            link :'https://cloud.tencent.com/act/new?fromSource=gwzcw.4325959.4325959.4325959&utm_medium=cps&utm_id=gwzcw.4325959.4325959.4325959&cps_key=962a7fdaa930cda1c06e36a7608e95cc'
-          },
-          {
-            text: '阿里云服务器',
-            link :'https://www.aliyun.com/minisite/goods?userCode=xqe01uob'
-          }
-        ]
+        text : '💰 购买授权',
+        link: '/empower/index'
       },
       {
         text: '✨ 插件市场',
@@ -319,15 +310,6 @@ export default defineConfig({
             {text: '阿里云对象存储', link: '/study/aliyun'},
             {text: '腾讯对象存储', link: '/study/tencent'},
             {text: '七牛云对象存储', link: '/study/qiniu'},
-          ]
-        }
-      ],
-      '/coffee/': [
-        {
-          text: '捐赠',
-          items: [
-            {text: '捐赠列表', link:'/coffee/index'},
-            {text: '付费支持', link:'/coffee/payment'}
           ]
         }
       ],
