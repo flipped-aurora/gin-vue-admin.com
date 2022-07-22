@@ -6,6 +6,9 @@
 ## 初始化的时候出现 `time-out`等字样
  尝试在前端和后端分别设置 超时时间。
 
+## 初始化的时候出现 `github.com/casbin/gorm-adapter/v3@v3.7.3/adapter.go:389 Error 1071: Specified key was too long; max key length is 1000 bytes`字样
+修改数据库默认引擎为 innoDB 或者单独修改 `casbin` 表的引擎为 innoDB
+
 ## 自定义接口返回 `404`
 请尝试重新启动后端项目，如果还是出现`404`，则需要查看启动时，命令行打印的log，如果您注册了您自定义的路由，下放会打印。具体注册路由的方法，请前往路由模块查看
 
