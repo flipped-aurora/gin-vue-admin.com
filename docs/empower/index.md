@@ -1,5 +1,12 @@
 # 购买授权
 
+::: warning 注意
+
+授权并不包含定制服务。如需定制服务，请联系邮箱
+business@gin-vue-admin.com
+
+:::
+
 ## 授权说明
 
 如果您不需要剔除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，则无需购买授权，如下位置所示。
