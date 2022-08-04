@@ -83,7 +83,7 @@ export default defineConfig({
       },
       {
         text: '✨ 插件市场',
-        link: 'https://plugin.gin-vue-admin.com/#/layout/plugin'
+        link: 'https://plugin.gin-vue-admin.com/#/layout/home'
       },
       {
         text: '⛓ 体验项目',
