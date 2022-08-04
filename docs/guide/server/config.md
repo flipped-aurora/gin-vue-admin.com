@@ -199,6 +199,9 @@ system:
   db-type: 'mysql'
   oss-type: 'local'
   use-multipoint: false
+  use-redis: false
+  iplimit-count: 15000
+  iplimit-time: 3600
 ```
 
 ### struct
@@ -222,6 +225,9 @@ type System struct {
 | db-type        | string | 可以使用mysql 后续支持pgsql |
 | oss-type       | string | 可以指定上传头像的oss为local/qiniu/aliyun/minio<br />local:本地的 `local.path` 目录<br />qiniu:七牛云<br />aliyun与minio可能框架不会集成,需自己添加,或者参考 [额外功能](oss) |
 | use-multipoint | bool   | 单点登录,默认为关闭                                          |
+| use-redis | bool   | 使用redis,默认为关闭                                          |
+| iplimit-count | int   | time时间段内同IP最多访问次数,默认为15000                                          |
+| iplimit-time | int   | 限制时间区间,默认为3600                                          |
 
 ## captcha
 

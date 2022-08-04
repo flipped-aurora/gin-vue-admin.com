@@ -1,10 +1,16 @@
 # 生成swagger自动化API文档
 
+:::danger 注意
+version 对应gin-vue-admin/server/go.mod的swag库的版本,如`github.com/swaggo/swag v1.7.0`,则version的值为 `v1.7.0`
+如果想要使用最新版的swag,version的值为latest, 在server目录下执行以下命令会自动更新server/go.mod中的swag库版本为最新版, 
+如果更新则需要手动把gin-vue-admin/server/go.mod的 `github.com/swaggo/swag 最新版版本号`
+:::
+
 ## 1 安装 swagger
 
 - 可以翻墙
 ````
-go install github.com/swaggo/swag/cmd/swag@latest
+go install github.com/swaggo/swag/cmd/swag@version
 ````
 
 - 无法翻墙
@@ -18,7 +24,7 @@ go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct
 
 # 使用如下命令下载swag
-go install github.com/swaggo/swag/cmd/swag@latest
+go install github.com/swaggo/swag/cmd/swag@version
 ```
 
 ## 2 生成API文档
