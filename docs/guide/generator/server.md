@@ -1,5 +1,8 @@
 # 代码代码生成器使用指南
 
+## 2.5.3以后需先创造package
+参考视频：https://www.bilibili.com/video/BV1kv4y1g7nT?p=3
+
 ## 参数界面说明
 
 ![image-20201026165650624](/generator/image-20201026165650624.png)

@@ -159,6 +159,10 @@ export default defineConfig({
                             link: '/guide/web/'
                         },
                         {
+                            text: '环境变量',
+                            link: '/guide/web/env',
+                        },
+                        {
                             text: '按钮权限',
                             link: '/guide/web/button-auth'
                         },
