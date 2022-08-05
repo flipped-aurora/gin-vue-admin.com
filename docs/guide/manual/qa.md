@@ -26,3 +26,15 @@
 其原因是因为7月12号左右 vite 官方发版本，导致 `vite`、`vitejs/plugin-vue `升级了一个大版本。但是Gva 的前端package.json 包里面的`vitejs/plugin-vue `使用的是 lastest ，但是vite 限制了大版本。导致出现了版本不匹配。
 
 解决方法是： 将web目录下的`vitejs/plugin-vue` 后面的 `lastest` 改成`^2.3.3`
+
+## 权限不足排查方案
+
+1. 前往`超级管理员>api管理` 菜单里进行检查, 检查目标接口的路径和请求方式数据是否含有空格, 去掉空格并保存, 然后到`超级管理员>角色管理` 菜单对需要改接口的角色重新分配api权限
+2. 检查 casbin_rule 是否存在规则, 请求路由，请求方式，角色id，去casbin_rule表查，v0=角色id，v1=请求路由，v2=请求方式
+```sql
+SELECT * FROM casbin_rule WHERE v0='角色id' AND v1='请求路由' AND v2='请求方式'
+```
+没有就手动填上去
+```sql
+INSERT INTO zy_ad_ms.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', '角色id', '请求路由', '请求方式', null, null, null);
+```
