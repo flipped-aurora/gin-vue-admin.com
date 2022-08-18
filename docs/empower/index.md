@@ -54,7 +54,7 @@ business@gin-vue-admin.com
 <tr><td>Bug修复</td><td>不定期</td><td>提供修复方案</td><td>快速修复并提交</td><td>快速修复并提交</td></tr></tbody>
 </table>
 
-**注：企业级服务包含给出Gin-Vue-Admin二次开发指导，提供场景处理方案等不包含基础教学。**
+**注：企业级服务包含给出Gin-Vue-Admin二次开发指导，提供场景处理方案等，不包含基础教学。**
 
 ## 授权协议示例
 
