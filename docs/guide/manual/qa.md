@@ -22,8 +22,7 @@
 <img width="895" alt="image" src="https://user-images.githubusercontent.com/56402715/179184409-a3eafab6-52b5-48f1-8e99-c94efb7c016d.png">
 
 
-
-其原因是因为7月12号左右 vite 官方发版本，导致 `vite`、`vitejs/plugin-vue `升级了一个大版本。但是Gva 的前端package.json 包里面的`vitejs/plugin-vue `使用的是 lastest ，但是vite 限制了大版本。导致出现了版本不匹配。
+其原因是因为7月12号左右 vite 官方发版本，导致 `vite`、`vitejs/plugin-vue `升级了一个大版本。Gva 的前端package.json 包里面的`vitejs/plugin-vue `使用的是 lastest ，但是vite 限制了大版本。导致出现了版本不匹配。
 
 解决方法是： 将web目录下的`vitejs/plugin-vue` 后面的 `lastest` 改成`^2.3.3`
 
@@ -38,3 +37,8 @@ SELECT * FROM casbin_rule WHERE v0='角色id' AND v1='请求路由' AND v2='请�
 ```sql
 INSERT INTO zy_ad_ms.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', '角色id', '请求路由', '请求方式', null, null, null);
 ```
+
+
+## 前端运行出现 `node:***` 等字段错误
+由于新版gva 前端使用vite最新的vite3版本，vite 官方文档强制 vite版本为 `Vite requires Node.js version 14.18+, 16+. `
+vite 官方强制原文为`Vite requires Node.js version 14.18+, 16+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.` [vitejs](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) 请悉知！如果您的版本不正确，请先升级版本。
