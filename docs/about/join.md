@@ -81,7 +81,7 @@ const memberList = [
         name: 'krank' ,
         org : '前端开发· 北京' , 
         desc :'风暴中出生的krank， vue使用者， go学习者， 前端开发， 奇淼的马仔。负责gin-vue-admin的前端页面开发， 功能完善， 基础前端工具开发。 辅助进行前端基础架构建设， 通用功能组件封装。' , 
-        sponsor : 'https://github.com/piexlmax'
+        sponsor : 'https://github.com/krank666'
     },
     { 
         avatar: sh, 
@@ -102,7 +102,7 @@ const memberList = [
         name: 'LeonardWang' ,
         org : '开发· 杭州' , 
         desc :'跟着gva大佬们打怪升级， 喜欢搞一些底层骚操作， 乐于“ 折腾” 的垃圾佬.负责gin-vue-admin的静态文件打包功能开发， 搬砖工程师。' , 
-        sponsor : 'https://github.com/LeonardWang'
+        sponsor : 'https://github.com/WangLeonard'
     },
     { 
         avatar: bin, 
