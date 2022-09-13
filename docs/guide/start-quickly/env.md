@@ -24,7 +24,7 @@
 
 
 ::: warning 🧁 需要本地具有 `git` `node` `golang` 环境
-- node版本 >= 14.16.0
+- node版本 >= 16.14.2
 - golang版本 >= v1.16
 - IDE推荐：Goland
 - 各位在clone项目以后，最好前往七牛云申请自己的空间地址。
