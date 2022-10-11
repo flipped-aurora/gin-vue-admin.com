@@ -36,15 +36,15 @@ git clone https://github.com/flipped-aurora/gin-vue-admin.git && cd gin-vue-admi
 ### 使用 docker-compose up 一键启动项目
 
 ```shell
-# 使用 docker-compose 启动四个容器
-docker-compose up
-# 如果您修改了某些配置选项, 可以使用此命令重新打包镜像
-docker-compose up --build
+# 使用docker-compose启动四个容器
+docker-compose -f deploy/docker-compose/docker-compose.yaml up
+# 如果您修改了某些配置选项,可以使用此命令重新打包镜像
+docker-compose -f deploy/docker-compose/docker-compose.yaml up --build
 # 使用docker-compose 后台启动
-docker-compose up -d
-# 使用 docker-compose 重新打包镜像并后台启动
-docker-compose up --build -d
-# 服务都启动成功后, 使用此命令行可清除 none 镜像
+docker-compose -f deploy/docker-compose/docker-compose.yaml up -d
+# 使用docker-compose 重新打包镜像并后台启动
+docker-compose -f deploy/docker-compose/docker-compose.yaml up --build -d
+# 服务都启动成功后,使用此命令行可清除none镜像
 docker system prune
 ```
 
@@ -56,10 +56,17 @@ docker system prune
 ### 使用 docker-compose 体验时需注意的问题
 
 1. 在初始化数据页面中
-- ip 请填写 [docker-compose56.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml#L56) 的第 56 行的 ip
+- ip 请填写 [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml#L56) 的第 56 行的 ip，或直接使用  `mysql`，如下图
+
+- 数据库为  `qmPlus`
+
 - 端口为 `3306`
-- 用户名为 `root`
+
+- 用户名为 `gva`
+
 - 密码为 [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml#L53) 的 52行定义的数据库密码
+
+![docker-playground](/experience/image-docker-compose.jpg)
 
 2. 如果 server 的 177.7.0.12 这个容器内部ip被占用了, 需要修改地方为
 - [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml#L42) 的第 42 行的 177.7.0.12 更换为你想要的 ip
