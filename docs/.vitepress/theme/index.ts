@@ -13,7 +13,6 @@ import Link from '../components/Link.vue'
 // @ts-ignore
 import IndexMounted from '../components/IndexMounted.vue'
 // @ts-ignore
-import MicroApp from '../components/MicroApp.vue'
 
 import GvaLayout from './gvaLayout.vue'
 
@@ -23,7 +22,6 @@ const components = {
   PluginRanking,
   Link,
   IndexMounted,
-  MicroApp
 }
 
 const initWebStyle = () =>{
