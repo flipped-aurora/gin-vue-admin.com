@@ -51,4 +51,4 @@ import HomeCenterAd from '/@theme/components/HomeCenterAd.vue';
 
 <HomeCompanyGroup/>
 
-<IndexMounted />
+[//]: # (<IndexMounted />)

@@ -64,6 +64,7 @@ export default defineConfig({
             {
                 text: '🚀 Guide',
                 items: [
+                    {text: '项目介绍', link: '/guide/introduce/project'},
                     {text: '快速开始', link: '/guide/start-quickly/initialization'},
                     {text: '项目上线', link: '/guide/deployment/'},
                 ],
