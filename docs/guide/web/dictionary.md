@@ -25,5 +25,6 @@ const label = showDictLabel(sexDict,0)
 // label即返回的内容
 // 男
 
+// 或者在html部分直接使用 {{showDictLabel(sexDict,0)}} 获得文字 男
 
 ```
