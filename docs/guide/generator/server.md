@@ -1,4 +1,4 @@
-# 代码代码生成器使用指南
+# 代码生成器使用指南
 
 ## 2.5.3以后需先创造package
 参考视频：https://www.bilibili.com/video/BV1kv4y1g7nT?p=3
