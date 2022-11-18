@@ -156,7 +156,7 @@ export default defineConfig({
                     collapsed: true,
                     items: [
                         {
-                            text: '前端 指南',
+                            text: '前端指南',
                             link: '/guide/web/'
                         },
                         {
@@ -167,6 +167,10 @@ export default defineConfig({
                             text: '按钮权限',
                             link: '/guide/web/button-auth'
                         },
+												{		
+														text: '字典方法',
+                            link: '/guide/web/dictionary'
+												},
                         {
                             text: '侧边栏样式自定义',
                             link: '/guide/web/menu-theme'
