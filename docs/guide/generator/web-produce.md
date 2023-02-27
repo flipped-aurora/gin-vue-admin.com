@@ -1,6 +1,6 @@
 # 生产使用表单生成器
 
-- 1.需修改`web/src/view/systemTools/formCreate/indev.vue`
+- 1.需修改`web/src/view/systemTools/formCreate/index.vue`
 
   ```
   <template>
