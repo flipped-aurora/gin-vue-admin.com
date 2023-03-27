@@ -8,8 +8,8 @@
 # jwt configuration
 jwt:
   signing-key: 'qmPlus'
-  expires-time: 604800
-  buffer-time: 86400
+  expires-time: 7d
+  buffer-time: 1d
 ```
 
 ### struct
@@ -17,8 +17,8 @@ jwt:
 ```go
 type JWT struct {
 	SigningKey  string `mapstructure:"signing-key" json:"signingKey" yaml:"signing-key"`    // jwt签名
-	ExpiresTime int64  `mapstructure:"expires-time" json:"expiresTime" yaml:"expires-time"` // 过期时间
-	BufferTime  int64  `mapstructure:"buffer-time" json:"bufferTime" yaml:"buffer-time"`    // 缓冲时间
+	ExpiresTime string  `mapstructure:"expires-time" json:"expiresTime" yaml:"expires-time"` // 过期时间
+	BufferTime  string  `mapstructure:"buffer-time" json:"bufferTime" yaml:"buffer-time"`    // 缓冲时间
 	Issuer  string  `mapstructure:"issuer" json:"issuer" yaml:"issuer"`                     // jwt签发者 
 }
 ```
