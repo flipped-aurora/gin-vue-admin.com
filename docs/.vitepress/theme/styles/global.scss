@@ -1,6 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     cursor: url('/blue.cur'), auto;
 }
+
 // 重置首页 logo大小
 .VPImage.image-src{
     width: 400px !important;
@@ -9,3 +14,7 @@ body {
 .image-bg{
     background-image: linear-gradient( 135deg, #6DCFFA 10%, #94F2D4 100%) !important;
 }
+
+//.main .name .clip{
+//    @extend inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent;
+//}
