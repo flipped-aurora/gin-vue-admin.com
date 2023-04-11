@@ -24,7 +24,7 @@ jobs:
       - name: Build test
         run: |
           npm install
-          npm docs:build
+          npm run docs:build
       - name: restart
         env:
           KEY: ${{ secrets.KEY }}
