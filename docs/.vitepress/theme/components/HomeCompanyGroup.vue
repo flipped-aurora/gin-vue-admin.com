@@ -39,10 +39,14 @@ const ad = [
       description : '盡量别開生靣'
     }
   }
-  // ,{
-  //   img : huoxian,
-  //   href :'https://www.madlocker.cn'
-  // }
+  ,{
+    img : 'https://github.com/test-instructor/yangfan/raw/main/docs/img/logoLogin.jpg',
+    href :'https://github.com/test-instructor/yangfan',
+     meta:{
+      title : '扬帆测试平台',
+      description : `扬帆测试平台`
+    }
+  }
   ,{
     img : vform,
     href :'https://www.vform666.com'
