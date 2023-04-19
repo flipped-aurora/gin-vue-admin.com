@@ -26,15 +26,8 @@ const ad = [
     img : flippedaurora,
     href :'https://github.com/flipped-aurora'
   },{
-    img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
-    href :'https://www.madlocker.cn',
-    meta:{
-      title : '深圳疯柜科技',
-      description : '盡量别開生靣'
-    }
-  },{
-    img : 'https://gitee.com/test-instructor/yangfan/raw/main/docs/img/logoLogin.jpg',
-    href :'https://zone.huoxian.cn/',
+    img : 'https://github.com/test-instructor/yangfan/raw/main/docs/img/logoLogin.jpg',
+    href :'https://github.com/test-instructor/yangfan',
      meta:{
       title : '扬帆测试平台',
       description : `前后端采用gin-vue-admin v2.5.3, Gin + Vue全栈开发基础平台
@@ -42,6 +35,15 @@ const ad = [
 测试平台接入HttpRunner V4`
     }
   }
+  
+  //{
+   // img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
+  //  href :'https://www.madlocker.cn',
+  //  meta:{
+ //     title : '深圳疯柜科技',
+  //    description : '盡量别開生靣'
+  //  }
+ // },
   // ,{
   //   img : vform,
   //   href :'https://gitee.com/test-instructor/yangfan'
