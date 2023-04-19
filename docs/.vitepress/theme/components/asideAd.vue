@@ -33,12 +33,18 @@ const ad = [
       description : '盡量别開生靣'
     }
   },{
-    img : huoxian,
-    href :'https://zone.huoxian.cn/'
+    img : 'https://gitee.com/test-instructor/yangfan/raw/main/docs/img/logoLogin.jpg',
+    href :'https://zone.huoxian.cn/',
+     meta:{
+      title : '扬帆测试平台',
+      description : `前后端采用gin-vue-admin v2.5.3, Gin + Vue全栈开发基础平台
+测试引擎采用HttpRunner V4,支持 HTTP(S)/HTTP2/WebSocket/RPC 等网络协议，涵盖接口测试、性能测试、数字体验监测等测试类型。简单易用，功能强大，具有丰富的插件化机制和高度的可扩展能力。
+测试平台接入HttpRunner V4`
+    }
   }
   // ,{
   //   img : vform,
-  //   href :'https://www.vform666.com'
+  //   href :'https://gitee.com/test-instructor/yangfan'
   // }
 ]
 </script>
