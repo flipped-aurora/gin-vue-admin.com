@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto">
-    <div class="not-prose my-12 grid  gap-6 sm:grid-cols-1 lg:grid-cols-3 md:grid-cols-2  md:mx-12 sm:mx-4 mx-32">
+    <div class="not-prose my-12 grid  gap-6 sm:grid-cols-1 lg:grid-cols-3 md:grid-cols-2  md:mx-12 mx-2 sm:mx-4">
 
 
       <div class="group relative rounded-xl border border-slate-200 dark:border-slate-800">

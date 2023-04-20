@@ -21,7 +21,7 @@
 import miaodian from '/guanwang/miaodian.png'
 import flippedaurora from '/guanwang/flipped-aurora.svg'
 import  vform from '/advertising/vform-banner.png'
-import huoxian from '/guanwang/huoxian.png'
+import  yangfan from '/advertising/yangfan.jpg'
 
 const ad = [
   {
@@ -31,16 +31,17 @@ const ad = [
   ,{
     img : flippedaurora,
     href :'https://github.com/flipped-aurora'
-  },{
-    img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
-    href :'https://www.madlocker.cn',
-    meta:{
-      title : '深圳疯柜科技',
-      description : '盡量别開生靣'
-    }
   }
+  // ,{
+  //   img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
+  //   href :'https://www.madlocker.cn',
+  //   meta:{
+  //     title : '深圳疯柜科技',
+  //     description : '盡量别開生靣'
+  //   }
+  // }
   ,{
-    img : 'https://github.com/test-instructor/yangfan/raw/main/docs/img/logoLogin.jpg',
+    img : yangfan,
     href :'https://github.com/test-instructor/yangfan',
      meta:{
       title : '扬帆测试平台',
