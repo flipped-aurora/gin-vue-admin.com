@@ -14,7 +14,7 @@ gva-doc
     npm install -g pnpm
 
     # install deps
-    pnpm
+    pnpm install
 
     # start project
     pnpm docs:dev
