@@ -1,19 +1,15 @@
 # 项目介绍
 
-GIN-VUE-ADMIN 是一款基于GIN+VUE+ElementUI开发的全栈基础开发平台
+GIN-VUE-ADMIN 是一款基于GIN+VUE+ElementPlus开发的全栈基础开发平台
 
-* GitHub地址:[https://github.com/flipped-aurora/gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin)
-
-* 在线测试地址:[http://demo.gin-vue-admin.com/](http://demo.gin-vue-admin.com/)
-
-* 用户名：admin
-
-* 密码：123456
+* GitHub地址: [https://github.com/flipped-aurora/gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin)
+* 在线测试地址: [http://demo.gin-vue-admin.com/](http://demo.gin-vue-admin.com/)
+* 用户名：`admin`
+* 密码： `123456`
 
 GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的开发基础平台，拥有jwt鉴权，动态路由，动态菜单，casbin鉴权，表单生成器，代码生成器等功能，提供了多种示例文件，让大家把更多时间专注在业务开发上。
 
 ## 技术选型
-
 - 前端：用基于`vue3`的`Element-Plus`构建基础页面。
 - 后端：用`Gin`快速搭建基础restful风格API，`Gin`是一个go语言编写的Web框架。
 - 数据库：采用`MySql`>5.7版本,数据库引擎 innoDB<Badge type="danger" class="bg-red-600 font-medium dark:bg-red-500" text="important" />，使用`gorm`实现对数据库的基本操作,已添加对sqlite数据库的支持。
@@ -42,6 +38,13 @@ GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的开发基�
 - 分片长传：提供文件分片上传和大文件分片上传功能示例。
 - 表单生成器：表单生成器借助 [Variant Form](https://www.vform666.com/)。
 - 代码生成器：后台基础逻辑以及简单curd的代码生成器。
+
+## 如何贡献
+
+在以任何形式的参与前，请先阅读开发指南。如有任何的意见或建议，欢迎您通过创建 [Issue](https://github.com/flipped-aurora/gin-vue-admin/issues)或 [PR](https://github.com/flipped-aurora/gin-vue-admin/pulls)的方式告知我们。也可以选择gva [官方讨论组](https://plugin.gin-vue-admin.com/#/layout/vip)
+::: warning 🧁
+强烈推荐阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way) 和 [《如何向开源社区提问题》](https://github.com/seajs/seajs/issues/545) ，更好的问题更容易获得帮助。
+:::
 
 ## 项目架构
 

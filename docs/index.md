@@ -14,7 +14,7 @@ hero:
   actions:
     - theme: bg-blue-500 text-white dark:bg-blue:600 hover:bg-blue-800 border border-blue-900
       text: Get Started
-      link: guide/start-quickly/initialization
+      link: guide/introduce/project
     - theme: alt
       text: Open PluginShop
       link: https://plugin.gin-vue-admin.com/
