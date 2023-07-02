@@ -15,17 +15,13 @@
 <script setup>
 import miaodian from '/guanwang/miaodian.png'
 import flippedaurora from '/guanwang/flipped-aurora.svg'
-import mingdao from '/guanwang/mingdao.png'
 import  vform from '/advertising/vform-banner.png'
 const ad = [
   {
     img : miaodian,
     href :'https://www.geelevel.com/'
   }
-  ,{
-    img : mingdao,
-    href :'https://www.mingdao.com?s=utm_83&utm_source=gin-vue-admin&utm_medium=banner&utm_campaign=IT%E7%BD%91%E7%AB%99&utm_content=IT%E8%B5%8B%E8%83%BD%E4%B8%9A%E5%8A%A1'
-  }
+  
   ,{
     img : flippedaurora,
     href :'https://github.com/flipped-aurora'
