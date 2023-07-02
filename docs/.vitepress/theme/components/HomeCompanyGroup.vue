@@ -5,7 +5,7 @@
         合作企业
       </div>
       <div class="company-box">
-        <a  class="company-box-item" target="_blank" v-for="(item , index) in ad" :key="index" :href="item.href">
+        <a class="company-box-item" target="_blank" v-for="(item , index) in ad" :key="index" :href="item.href">
           <img :src="item.img" :alt="item.href">
           <div v-if="item.meta" style="margin-left: 20px">
             <div class="company-box-item-title" >{{item.meta.title}}</div>
@@ -26,7 +26,7 @@ const ad = [
   {
     img : miaodian,
     href :'https://www.geelevel.com/'
-  },
+  }
   // ,{
   //   img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
   //   href :'https://www.madlocker.cn',
