@@ -1,6 +1,6 @@
 <template>
   <div class="gvaaside-ad" >
-    <div class="wwads-cn wwads-vertical wwads-sticky" data-id="260" style="max-width:180px"></div>
+    <div class="wwads-cn wwads-vertical wwads-sticky" data-id="260" style="max-width:180px;z-index:9999;"></div>
 <!--    <div class="company-box">-->
 <!--      <a  class="company-box-item" v-for="(item , index) in ad" :key="index" :href="item.href" target="_blank" style="padding: 0">-->
 <!--        <img :src="item.img" alt="geelevel">-->
