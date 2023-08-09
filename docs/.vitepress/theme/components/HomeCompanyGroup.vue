@@ -12,10 +12,10 @@
             <div class="company-box-item-description">{{item.meta.description}}</div>
           </div>
         </a>
+        <div class="wwads-cn wwads-horizontal" data-id="260" style="max-width:350px"></div>
       </div>
     </div>
 
-  <AsideAd></AsideAd>
 
   </section>
 </template>
@@ -24,7 +24,6 @@
 import miaodian from '/guanwang/miaodian.png'
 import  vform from '/advertising/vform-banner.png'
 import  yangfan from '/advertising/yangfan.jpg'
-import AsideAd from './asideAd.vue'
 
 const ad = [
   {
