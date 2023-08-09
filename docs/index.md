@@ -32,4 +32,5 @@ import Quicks from "/@theme/components/quicks.vue"
 
 <HomeCompanyGroup/>
 
+
 [//]: # (<IndexMounted />)

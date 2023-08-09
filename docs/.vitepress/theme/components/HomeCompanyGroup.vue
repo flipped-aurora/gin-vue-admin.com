@@ -14,6 +14,9 @@
         </a>
       </div>
     </div>
+
+  <AsideAd></AsideAd>
+
   </section>
 </template>
 
@@ -21,6 +24,7 @@
 import miaodian from '/guanwang/miaodian.png'
 import  vform from '/advertising/vform-banner.png'
 import  yangfan from '/advertising/yangfan.jpg'
+import AsideAd from './asideAd.vue'
 
 const ad = [
   {
