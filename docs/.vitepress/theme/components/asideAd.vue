@@ -1,14 +1,15 @@
 <template>
   <div class="gvaaside-ad" >
-    <div class="company-box">
-      <a  class="company-box-item" v-for="(item , index) in ad" :key="index" :href="item.href" target="_blank" style="padding: 0">
-        <img :src="item.img" alt="geelevel">
-        <div v-if="item.meta" style="margin-left: 10px">
-          <div class="company-box-item-title" >{{item.meta.title}}</div>
-          <div class="company-box-item-description">{{item.meta.description}}</div>
-        </div>
-      </a>
-    </div>
+    <div class="wwads-cn wwads-vertical wwads-sticky" data-id="260" style="max-width:180px"></div>
+<!--    <div class="company-box">-->
+<!--      <a  class="company-box-item" v-for="(item , index) in ad" :key="index" :href="item.href" target="_blank" style="padding: 0">-->
+<!--        <img :src="item.img" alt="geelevel">-->
+<!--        <div v-if="item.meta" style="margin-left: 10px">-->
+<!--          <div class="company-box-item-title" >{{item.meta.title}}</div>-->
+<!--          <div class="company-box-item-description">{{item.meta.description}}</div>-->
+<!--        </div>-->
+<!--      </a>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -21,7 +22,7 @@ const ad = [
     img : miaodian,
     href :'https://www.geelevel.com/'
   }
-  
+
   ,{
     img : flippedaurora,
     href :'https://github.com/flipped-aurora'

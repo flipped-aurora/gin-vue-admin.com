@@ -36,6 +36,13 @@ export default defineConfig({
                 src: 'https://hm.baidu.com/hm.js?40635ef25e31fa2a58ed58f935d0a1a0',
             },
         ],
+        [
+            'script',
+            {
+                src: 'https://cdn.wwads.cn/js/makemoney.js',
+                async: "true",
+            },
+        ],
     ],
 
     vue: {
@@ -167,7 +174,7 @@ export default defineConfig({
                             text: '按钮权限',
                             link: '/guide/web/button-auth'
                         },
-												{		
+												{
 														text: '字典方法',
                             link: '/guide/web/dictionary'
 												},
