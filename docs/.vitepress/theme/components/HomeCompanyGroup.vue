@@ -15,9 +15,9 @@
       </div>
 
       <div class="company-title">
-        广告位
+        广告
       </div>
-      <div>
+      <div class="flex justify-center">
         <div class="wwads-cn wwads-horizontal" data-id="260" style="max-width:350px"></div>
       </div>
     </div>
