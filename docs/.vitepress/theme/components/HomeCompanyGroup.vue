@@ -12,6 +12,12 @@
             <div class="company-box-item-description">{{item.meta.description}}</div>
           </div>
         </a>
+      </div>
+
+      <div class="company-title">
+        广告位
+      </div>
+      <div>
         <div class="wwads-cn wwads-horizontal" data-id="260" style="max-width:350px"></div>
       </div>
     </div>
