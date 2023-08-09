@@ -28,7 +28,7 @@ type Mysql struct {
 
 ## pgsql
 
-### server/config/gorm_mysql.go
+### server/config/gorm_pgsql.go
 
 - gorm-pgsql
 
