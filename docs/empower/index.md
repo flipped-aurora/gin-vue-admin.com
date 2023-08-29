@@ -1,77 +1,119 @@
-# 购买授权
+---
+layout: home
+---
+<div class="bg-white py-12 sm:py-16">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl sm:text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">购买授权</h2>
+      <p class="mt-6 text-lg leading-8 text-gray-600">如果您需要剔除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，则默认您用于商业行为，需要进行授权。</p>
+    </div>
+    <div class="mx-auto mt-4 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-10 lg:mx-0 lg:flex lg:max-w-none">
+      <div class="p-8 sm:p-10 lg:flex-auto">
+        <h3 class="text-2xl font-bold tracking-tight text-gray-900">企业自用版授权</h3>
+        <p class="mt-6 text-base leading-7 text-gray-600">此授权您可以剔除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，但在本授权模式下，您所开发的软件不可以做为项目进行对外出售，仅用于本公司运营项目使用。</p>
+        <div class="mt-10 flex items-center gap-x-4">
+          <h4 class="flex-none text-sm font-semibold leading-6 text-indigo-600">相关权益</h4>
+          <div class="h-px flex-auto bg-gray-100"></div>
+        </div>
+        <ul role="list" class="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6">
+          <li class="flex gap-x-3">
+            <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+            </svg>
+            可以剔除版权标识
+          </li>
+          <li class="flex gap-x-3">
+            <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+            </svg>
+            专属交互式文档
+          </li>
+          <li class="flex gap-x-3">
+            <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+            </svg>
+            及时的团队答疑
+          </li>
+          <li class="flex gap-x-3">
+            <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+            </svg>
+            【赠送】14天体验版企业服务
+          </li>
+        </ul>
+      </div>
+      <div class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+        <div class="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 h-full">
+          <div class="mx-auto max-w-xs px-8">
+            <p class="text-base font-semibold text-gray-600">一次购买，终身有效</p>
+            <p class="mt-6 flex items-baseline justify-center gap-x-2">
+              <span class="text-5xl font-bold tracking-tight text-gray-900">￥888</span>
+              <span class="text-sm font-semibold leading-6 tracking-wide text-gray-600">CNY</span>
+            </p>
+            <a href="https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d?from=from_copylink" target="_blank" class="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">获取授权</a>
+            <p class="mt-6 text-xs leading-5 text-gray-600">可提供相关收据，发票。</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-::: warning 注意
+ <div class="mx-auto mt-4 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-10 lg:mx-0 lg:flex lg:max-w-none">
+      <div class="p-8 sm:p-10 lg:flex-auto">
+        <h3 class="text-2xl font-bold tracking-tight text-gray-900">项目版授权</h3>
+        <p class="mt-6 text-base leading-7 text-gray-600">此授权您可以剔除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，在本授权模式下，您所开发的软件可以做为项目进行对外出售。</p>
+        <div class="mt-10 flex items-center gap-x-4">
+          <h4 class="flex-none text-sm font-semibold leading-6 text-indigo-600">相关权益</h4>
+          <div class="h-px flex-auto bg-gray-100"></div>
+        </div>
+        <ul role="list" class="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6">
+          <li class="flex gap-x-3">
+            <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+            </svg>
+            可以剔除版权标识
+          </li>
+          <li class="flex gap-x-3">
+            <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+            </svg>
+            专属交互式文档
+          </li>
+          <li class="flex gap-x-3">
+            <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+            </svg>
+            及时的团队答疑
+          </li>
+          <li class="flex gap-x-3">
+            <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+            </svg>
+            【赠送】14天体验版企业服务
+          </li>
+            <li class="flex gap-x-3">
+            <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+            </svg>
+            可出售基于Gin-Vue-Admin开发的项目代码
+          </li>
+        </ul>
+      </div>
+      <div class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+        <div class="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 h-full">
+          <div class="mx-auto max-w-xs px-8">
+            <p class="text-base font-semibold text-gray-600">一次购买，终身有效</p>
+            <p class="mt-6 flex items-baseline justify-center gap-x-2">
+              <span class="text-5xl font-bold tracking-tight text-gray-900">￥1288</span>
+              <span class="text-sm font-semibold leading-6 tracking-wide text-gray-600">CNY</span>
+            </p>
+            <a href="https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d?from=from_copylink" target="_blank" class="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">获取授权</a>
+            <p class="mt-6 text-xs leading-5 text-gray-600">可提供相关收据，发票。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-授权并不包含定制服务。如需定制服务，请联系邮箱
-business@gin-vue-admin.com
 
-:::
 
-## 授权说明
-
-如果您不需要剔除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，则无需购买授权，如下位置所示。
-
-![empower](https://qmplusimg.henrongyi.top/empower.png)
-
-授权版与开源版无任何代码区别，仅出于对版权保护。开源不易，请尊重作者版权。
-
-::: tip 常见需购买授权场景如下
-
-开发者因商业目的（包括但不限于对第三方用户收费、项目投标、企业盈利性产品管理系统、任何其他直接或间接获取收益或利益等）使用Gin-Vue-Admin作为基础开发基座，进行二次开发或直接销售，需事先获得Gin-Vue-Admin商用授权。
-
-目前授权分为以下两类：
-
-企业自用：用于开发者自身基于Gin-Vue-Admin开发的自运营的营利性产品或服务。
-
-项目专用：用于开发者向第三方交付的指定项目
-
-请您根据自身需求联系Gin-Vue-Admin官方人员，授权将以合同形式邮寄。
-:::
-
-## 产品区别
-
-<table>
-<thead>
-    <tr><th width="100">权益对比</th><th width="130">标准版</th><th width="130">捐赠版</th><th>授权版</th><th>项目专用授权</th></tr>
-</thead>
-<tbody>
-<tr><td>费用</td><td>免费</td><td>&gt; 68元</td><td>888元</td><td>1288元</td></tr>
-<tr><td>商用权限</td><td>仅供学习交流</td><td>仅供学习交流</td><td>企业自有产品商用</td><td>三方交付类产品商用</td></tr>
-<tr><td>社区</td><td>微信交流群</td><td>微信VIP群</td><td>授权用户飞书群</td><td>授权用户飞书群</td></tr>
-
-<tr><td>服务</td><td>微信群答疑</td><td>团队答疑</td><td>团队答疑（赠送一个月企业咨询服务）</td><td>团队答疑（赠送一个月企业咨询服务）</td></tr>
-<tr><td>源码</td><td>开源源码</td><td>开源源码</td><td>开源源码</td><td>开源源码</td></tr>
-
-<tr><td>权限标识</td><td>不可修改</td><td>不可修改</td><td>可修改</td><td>可修改</td></tr>
-
-<tr><td>更新推送</td><td>无</td><td>vip群推送</td><td>vip群推送携带升级指南</td><td>vip群推送携带升级指南</td></tr>
-<tr><td>安装指导</td><td>无</td><td>无</td><td>提供</td><td>提供</td></tr>
-
-<tr><td>技术咨询</td><td>无</td><td>无</td><td>提供</td><td>提供</td></tr>
-
-<tr><td>部署指导</td><td>无</td><td>无</td><td>提供</td><td>提供</td></tr>
-
-<tr><td>Bug修复</td><td>不定期</td><td>提供修复方案</td><td>快速修复并提交</td><td>快速修复并提交</td></tr></tbody>
-</table>
-
-**注：企业级服务包含给出Gin-Vue-Admin二次开发指导，提供场景处理方案等，不包含基础教学。**
-
-## 授权协议示例
-
-![ht](https://qmplusimg.henrongyi.top/ht.jpeg)
-
-## 联系授权
-
-![wechat](/coffee/wechat.jpg "微信")
-
-## 其他服务
-
-:::info 其他服务
-
-广告位：1200元/月
-
-驰名赞助商 3000元/月 每个月免费提供4小时咨询时间以及30分钟远程协作 （官网首页悬挂赞助商商标以及地址）
-
-作者微信：shouzi_1994
-
-:::

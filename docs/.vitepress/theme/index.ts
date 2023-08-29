@@ -9,6 +9,8 @@ import Badge from '../compatible/Badge.vue'
 // @ts-ignore
 import PluginRanking from '../components/PluginRanking.vue'
 // @ts-ignore
+import EmPower from '../components/EmPower.vue'
+// @ts-ignore
 import Link from '../components/Link.vue'
 // @ts-ignore
 import IndexMounted from '../components/IndexMounted.vue'
@@ -22,6 +24,7 @@ const components = {
   PluginRanking,
   Link,
   IndexMounted,
+  EmPower
 }
 
 const initWebStyle = () =>{
