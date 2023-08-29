@@ -13,15 +13,11 @@ hero:
     alt: gin-vue-admin
   actions:
     - theme: bg-blue-500 text-white dark:bg-blue:600 hover:bg-blue-800 border border-blue-900
-      text: Get Started
+      text: 快速开始
       link: guide/introduce/project
     - theme: alt
-      text: Open PluginShop
-      link: https://plugin.gin-vue-admin.com/
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/flipped-aurora/gin-vue-admin
-
+      text: 购买授权
+      link: empower/index.html
 ---
 <script setup>
 import HomeCompanyGroup from '/@theme/components/HomeCompanyGroup.vue';
