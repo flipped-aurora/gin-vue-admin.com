@@ -25,10 +25,7 @@
               </li>
             </ul>
           </div>
-
-
-
-          <a href="https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d?from=from_copylink" target="_blank"  :class="[tier.mostPopular ? 'bg-indigo-500 text-white hover:bg-indigo-600' : 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100', 'mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium']">{{ tier.cta }}</a>
+          <a :href="tier.link" target="_blank"  :class="[tier.mostPopular ? 'bg-indigo-500 text-white hover:bg-indigo-600' : 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100', 'mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium']">{{ tier.cta }}</a>
         </div>
       </div>
     </div>
@@ -46,6 +43,7 @@
           features: ['可以剔除版权标识', '专属交互式文档', '及时的团队答疑', '【赠送】14天体验版企业服务'],
           cta: '购买授权',
           mostPopular: false,
+          link:'https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d?from=from_copylink',
         },
         {
           title: '项目版授权',
@@ -55,6 +53,7 @@
           features:  ['可以剔除版权标识', '专属交互式文档', '及时的团队答疑', '【赠送】14天体验版企业服务','可出售基于Gin-Vue-Admin开发的项目代码'],
           cta: '购买授权',
           mostPopular: true,
+          link:'https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d?from=from_copylink',
         },
         {
           title: '企业服务',
@@ -64,6 +63,7 @@
           features:  ['可以剔除版权标识', '专属交互式文档', '及时的团队答疑', '【赠送】14天体验版企业服务','可出售基于Gin-Vue-Admin开发的项目代码','团队参与项目开发'],
           cta: '联系我们',
           mostPopular: false,
+          link:'https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d#XEUbd25fpoJel5xy1NMc23kInvb',
         },
       ],
     })
