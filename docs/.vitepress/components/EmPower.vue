@@ -40,7 +40,7 @@
           price: 888,
           frequency: '终生',
           description: '此授权您可以剔除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，但在本授权模式下，您所开发的软件不可以做为项目进行对外出售，仅用于本公司运营项目使用。',
-          features: ['可以剔除版权标识', '专属交互式文档', '及时的团队答疑', '【赠送】14天体验版企业服务'],
+          features: ['可以剔除版权标识', '专属交互式文档', '专属企业飞书群', '及时的团队答疑', '【赠送】14天体验版企业服务'],
           cta: '购买授权',
           mostPopular: false,
           link:'https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d?from=from_copylink',
