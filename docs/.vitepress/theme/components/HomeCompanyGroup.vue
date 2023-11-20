@@ -2,6 +2,31 @@
   <section id="company-group">
     <div class="container">
       <div class="company-title">
+        明星用户
+      </div>
+      <div class="grid grid-cols-3">
+        <a class="flex items-center justify-center" href="#">
+          <img :width="240" src="/user/ali.jpg" alt="阿里云">
+        </a>
+        <a class="flex items-center justify-center" href="#">
+          <img :width="240" src="/user/zijie.jpg" alt="zijie">
+        </a>
+        <a class="flex items-center justify-center" href="#">
+          <img :width="240" src="/user/tengxun.png" alt="腾讯">
+        </a>
+        <a class="flex items-center justify-center" href="#">
+          <img :width="240" src="/user/ea.jpg" alt="EA">
+        </a>
+        <a class="flex items-center justify-center" href="#">
+          <img :width="240" src="/user/douyu.jpg" alt="斗鱼直播">
+        </a>
+
+        <a class="flex items-center justify-center" href="#">
+         <img :width="220" src="/user/qianxun.svg" alt="qianxun">
+        </a>
+
+      </div>
+      <div class="company-title mt-14">
         合作企业
       </div>
       <div class="company-box">
