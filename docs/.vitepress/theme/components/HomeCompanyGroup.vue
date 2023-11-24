@@ -22,7 +22,7 @@
         </a>
 
         <a class="flex items-center justify-center" href="#">
-         <img :width="220" src="/user/qianxun.svg" alt="qianxun">
+         <img :width="220" src="/user/vivo.svg" alt="vivo">
         </a>
 
       </div>
