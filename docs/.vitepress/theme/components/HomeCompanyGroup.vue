@@ -24,6 +24,16 @@
         <a class="flex items-center justify-center" href="#">
          <img :width="220" src="/user/qianxun.svg" alt="qianxun">
         </a>
+        <a class="flex items-center justify-center" href="#">
+<!--          <img :width="240" src="/user/ea.jpg" alt="EA">-->
+        </a>
+        <a class="flex items-center justify-center min-h-[173px]" href="#">
+          <img :width="240" src="/user/shenxinfu.png" alt="深信服">
+        </a>
+
+        <a class="flex items-center justify-center" href="#">
+<!--          <img :width="220" src="/user/qianxun.svg" alt="qianxun">-->
+        </a>
 
       </div>
       <div class="company-title mt-14">
