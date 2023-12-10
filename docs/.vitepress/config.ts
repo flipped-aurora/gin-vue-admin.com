@@ -183,6 +183,10 @@ export default defineConfig({
                             link: '/guide/web/menu-theme'
                         },
                         {
+                            text:'自定义图标【菜单以及直接使用】',
+                            link: '/guide/web/auto-icon'
+                        },
+                        {
                             text: '表单生成器 `127.0.0.1` 拒绝连接',
                             link: '/guide/generator/web',
                         },
