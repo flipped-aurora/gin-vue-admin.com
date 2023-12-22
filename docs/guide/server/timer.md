@@ -4,21 +4,31 @@
 接口地址 : gin-vue-admin/server/utils/timer/Timer
 ```go
 type Timer interface {
+	// 寻找所有Cron
+	FindCronList() map[string]*taskManager
+	// 添加Task 方法形式以秒的形式加入
+	AddTaskByFuncWithSecond(cronName string, spec string, fun func(), taskName string, option ...cron.Option) (cron.EntryID, error) // 添加Task Func以秒的形式加入
+	// 添加Task 接口形式以秒的形式加入
+	AddTaskByJobWithSeconds(cronName string, spec string, job interface{ Run() }, taskName string, option ...cron.Option) (cron.EntryID, error)
 	// 通过函数的方法添加任务
-	AddTaskByFunc(taskName string, spec string, task func()) (cron.EntryID, error)
+	AddTaskByFunc(cronName string, spec string, task func(), taskName string, option ...cron.Option) (cron.EntryID, error)
 	// 通过接口的方法添加任务 要实现一个带有 Run方法的接口触发
-	AddTaskByJob(taskName string, spec string, job interface{ Run() }) (cron.EntryID, error)
+	AddTaskByJob(cronName string, spec string, job interface{ Run() }, taskName string, option ...cron.Option) (cron.EntryID, error)
 	// 获取对应taskName的cron 可能会为空
-	FindCron(taskName string) (*cron.Cron, bool)
-	// StartTask 指定taskName开始执行
-	StartTask(taskName string)
-	// StopTask 指定taskName停止任务
-	StopTask(taskName string)
-	// Remove 从taskName 删除指定任务
-	Remove(taskName string, id int)
-	// Clear 清除taskName任务
-	Clear(taskName string)
-	// 关闭回收资源
+	FindCron(cronName string) (*taskManager, bool)
+	// 指定cron开始执行
+	StartCron(cronName string)
+	// 指定cron停止执行
+	StopCron(cronName string)
+	// 查找指定cron下的指定task
+	FindTask(cronName string, taskName string) (*task, bool)
+	// 根据id删除指定cron下的指定task
+	RemoveTask(cronName string, id int)
+	// 根据taskName删除指定cron下的指定task
+	RemoveTaskByName(cronName string, taskName string)
+	// 清理掉指定cronName
+	Clear(cronName string)
+	// 停止所有的cron
 	Close()
 }
 ```
