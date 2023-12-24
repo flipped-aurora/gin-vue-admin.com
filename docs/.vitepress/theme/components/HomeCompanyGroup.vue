@@ -25,7 +25,7 @@
          <img :width="220" src="/user/vivo.svg" alt="vivo">
         </a>
         <a class="flex items-center justify-center" href="#">
-<!--          <img :width="240" src="/user/ea.jpg" alt="EA">-->
+          <img :width="240" src="/user/anker.png" alt="安克">
         </a>
         <a class="flex items-center justify-center min-h-[173px]" href="#">
           <img :width="240" src="/user/shenxinfu.png" alt="深信服">
