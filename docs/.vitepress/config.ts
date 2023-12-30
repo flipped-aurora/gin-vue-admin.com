@@ -198,6 +198,10 @@ export default defineConfig({
                             text: '开启TypeScript',
                             link: '/guide/web/typescript',
                         },
+                        {
+                            text: '导出Excel',
+                            link: '/guide/web/export-excel',
+                        },
                     ]
                 },
                 {
