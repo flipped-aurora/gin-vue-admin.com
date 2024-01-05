@@ -7,8 +7,12 @@
 然后在你需要导出的页面`<script>`标签添加下方的组件
 
 ```javascript
-
+// 导出组件
 import ExportExcel from '@/components/exportExcel/exportExcel.vue'
+// 导入组件
+import ImportExcel from '@/components/exportExcel/importExcel.vue'
+// 导出模板组件
+import ExportTemplate from '@/components/exportExcel/exportTemplate.vue'
 
 ```
 
@@ -16,7 +20,14 @@ import ExportExcel from '@/components/exportExcel/exportExcel.vue'
 
 ```html
 
+<!-- 导出组件-->
 <ExportExcel templateId="api" />
+
+<!-- 导入组件 handleSuccess为导入成功后的回调函数-->
+<ImportExcel templateId="api" @on-success="handleSuccess"/>
+
+<!-- 导出模板-->
+<ExportTemplate templateId="api" />
 
 ```
 
