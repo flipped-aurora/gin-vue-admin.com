@@ -20,7 +20,7 @@ import  vform from '/advertising/vform-banner.png'
 const ad = [
   {
     img : liuliang,
-    href :'https://ym.ksjhaoka.com/?s=MDeis85S83358'
+    href :'https://ym.ksjhaoka.com/?s=srtGcMEo83371'
   }
 
   ,{
