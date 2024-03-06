@@ -1,31 +1,31 @@
 <template>
   <div class="gvaaside-ad" >
     <div class="wwads-cn wwads-vertical wwads-sticky" data-id="260" style="max-width:180px;z-index:9999;"></div>
-<!--    <div class="company-box">-->
-<!--      <a  class="company-box-item" v-for="(item , index) in ad" :key="index" :href="item.href" target="_blank" style="padding: 0">-->
-<!--        <img :src="item.img" alt="geelevel">-->
-<!--        <div v-if="item.meta" style="margin-left: 10px">-->
-<!--          <div class="company-box-item-title" >{{item.meta.title}}</div>-->
-<!--          <div class="company-box-item-description">{{item.meta.description}}</div>-->
-<!--        </div>-->
-<!--      </a>-->
-<!--    </div>-->
+    <div class="company-box">
+      <a  class="company-box-item" v-for="(item , index) in ad" :key="index" :href="item.href" target="_blank" style="padding: 0">
+        <img :src="item.img" alt="geelevel" class="rounded overflow-hidden">
+        <div v-if="item.meta" style="margin-left: 10px">
+          <div class="company-box-item-title" >{{item.meta.title}}</div>
+          <div class="company-box-item-description">{{item.meta.description}}</div>
+        </div>
+      </a>
+    </div>
   </div>
 </template>
 
 <script setup>
-import miaodian from '/guanwang/miaodian.png'
-import flippedaurora from '/guanwang/flipped-aurora.svg'
+import daili from '/advertising/daili.jpg'
+import liuliang from '/advertising/liuliang.jpg'
 import  vform from '/advertising/vform-banner.png'
 const ad = [
   {
-    img : miaodian,
-    href :'https://www.geelevel.com/'
+    img : liuliang,
+    href :'https://ym.ksjhaoka.com/?s=MDeis85S83358'
   }
 
   ,{
-    img : flippedaurora,
-    href :'https://github.com/flipped-aurora'
+    img : daili,
+    href :'https://ym.ksjhaoka.com/invite?s=ebZwN4sd82704'
   },
 
 
@@ -76,7 +76,7 @@ const ad = [
 
   .company-box .company-box-item img{
     max-width: 100% ;
-    max-height: 60px;
+    max-height: 80px;
     object-fit: cover;
   }
 

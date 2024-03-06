@@ -23,9 +23,10 @@ hero:
 import HomeCompanyGroup from '/@theme/components/HomeCompanyGroup.vue';
 import HomeCenterAd from '/@theme/components/HomeCenterAd.vue';
 import Quicks from "/@theme/components/quicks.vue"
+import Liuliang from "/@theme/components/liuliang.vue"
 </script>
 <Quicks/>
-
+<Liuliang></Liuliang>
 <HomeCompanyGroup/>
 
 
