@@ -3,7 +3,7 @@
     <a class="flex items-center justify-center rounded overflow-hidden" target="_blank" href="https://ym.ksjhaoka.com/?s=MDeis85S83358">
       <img :width="160" src="/advertising/liuliang.jpg" alt="流量">
     </a>
-    <a class="flex items-center justify-center rounded overflow-hidden" target="_blank" href="https://ym.ksjhaoka.com/invite?s=ebZwN4sd82704">
+    <a class="flex items-center justify-center rounded overflow-hidden" target="_blank" href="https://ym.ksjhaoka.com/invite?s=srtGcMEo83371">
       <img :width="160" src="/advertising/daili.jpg" alt="成为代理">
     </a>
   </div>

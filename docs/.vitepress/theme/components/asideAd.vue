@@ -25,7 +25,7 @@ const ad = [
 
   ,{
     img : daili,
-    href :'https://ym.ksjhaoka.com/invite?s=ebZwN4sd82704'
+    href :'https://ym.ksjhaoka.com/invite?s=srtGcMEo83371'
   },
 
 
