@@ -22,7 +22,24 @@ import ExportTemplate from '@/components/exportExcel/exportTemplate.vue'
 
 <!-- 导出组件-->
 <ExportExcel templateId="api" />
-
+/*
+    condition: {  // 可以传入查询条件 根据模板中配置的查询条件映射关系进行有条件导出
+        type: Object,
+        default: () => ({})
+    },
+    limit: {   // 可以限制条目 根据模板中可以配置默认的条目限制 此处入参的优先级高于模板中的配置
+        type: Number,
+        default: 0
+    },
+    offset: {  // 可以限制偏移量 根据模板中可以配置默认的偏移量 此处入参的优先级高于模板中的配置
+        type: Number,
+        default: 0
+    },
+    order: {  // 可以限制排序 根据模板中可以配置默认的排序 此处入参的优先级高于模板中的配置 
+        type: String,
+        default: ''
+    }
+*/
 <!-- 导入组件 handleSuccess为导入成功后的回调函数-->
 <ImportExcel templateId="api" @on-success="handleSuccess"/>
 
