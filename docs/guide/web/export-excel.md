@@ -21,7 +21,7 @@ import ExportTemplate from '@/components/exportExcel/exportTemplate.vue'
 ```html
 
 <!-- 导出组件-->
-<ExportExcel templateId="api" />
+<ExportExcel templateId="api" :condition="你的查询条件对象" :limit="10" :offset="10" order="id desc"/>
 /*
     condition: {  // 可以传入查询条件 根据模板中配置的查询条件映射关系进行有条件导出
         type: Object,
