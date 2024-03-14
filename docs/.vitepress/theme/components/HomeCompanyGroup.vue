@@ -32,7 +32,7 @@
         </a>
 
         <a class="flex items-center justify-center" href="#">
-          <img :width="220" src="/user/cadence.jpeg" alt="cadence">
+          <img :width="240" src="/user/cadence.jpeg" alt="cadence">
         </a>
 
       </div>
