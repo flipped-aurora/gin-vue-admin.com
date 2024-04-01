@@ -51,7 +51,7 @@ type Pgsql struct {
 
 ### server/config/config.go
 
-### 在system选项下 选择db-type为mysql或者qgsql
+### 在system选项下 选择db-type为mysql或者pgsql
 
 ```yaml
 system:
