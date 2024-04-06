@@ -14,18 +14,13 @@
 </template>
 
 <script setup>
-import daili from '/advertising/daili.jpg'
+import cms from '/advertising/cms.png'
 import liuliang from '/advertising/liuliang.jpg'
 import  vform from '/advertising/vform-banner.png'
 const ad = [
   {
-    img : liuliang,
-    href :'https://ym.ksjhaoka.com/?s=srtGcMEo83371'
-  }
-
-  ,{
-    img : daili,
-    href :'https://ym.ksjhaoka.com/invite?s=srtGcMEo83371'
+    img : cms,
+    href :'https://plugin.gin-vue-admin.com/#/layout/newPluginInfo?id=69'
   },
 
 
