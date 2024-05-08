@@ -23,16 +23,13 @@
 
 ## 使用说明
 
-
-::: warning 🧁 需要本地具有 `git` `node` `golang` 环境
+::: warning 🧁 需要本地具有 `git` `node` `go` 环境
 - node版本 >= 16.18.2
 - go版本 >= v1.22
 - mysql 引擎需要是  <span class="bg-red-600 text-white rounded font-medium dark:bg-red-500 px-1" >innoDB</span>
 - IDE推荐：Goland
 
 :::
-
-
 
 ## 版本列表
 

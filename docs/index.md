@@ -6,7 +6,7 @@ titleTemplate: GVA 文档站
 
 hero:
   name: Gin-Vue-Admin
-  text: A management platform using Golang and Vue
+  text: A management platform using Go and Vue
   tagline: 使用gin+vue进行极速开发的全栈开发基础平台
   image:
     src: /logo.png

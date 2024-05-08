@@ -287,15 +287,15 @@ export default defineConfig({
                     collapsed: true,
                     items: [
                         {
-                            text: 'golang教程',
+                            text: 'Go教程',
                             link: '/guide/video/golang'
                         },
                         {
-                            text: 'gin教程',
+                            text: 'Gin教程',
                             link: '/guide/video/gin'
                         },
                         {
-                            text: 'gorm教程',
+                            text: 'Gorm教程',
                             link: '/guide/video/gorm'
                         },
                         {
