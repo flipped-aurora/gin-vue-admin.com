@@ -1,7 +1,7 @@
   <template>
     <div class="max-w-7xl mx-auto py-24 px-4 bg-white sm:px-6 lg:px-8">
       <h2 class="text-3xl font-extrabold text-gray-900 sm:text-5xl sm:leading-none sm:tracking-tight lg:text-6xl">购买授权</h2>
-      <p class="mt-6 max-w-2xl text-xl text-gray-500">如果您需要剔除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，则默认您用于商业行为，需要进行授权。</p>
+      <p class="mt-6 max-w-2xl text-xl text-gray-500">如果您需要去除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，这表明您打算将项目用于商业目的。根据授权协议，您必须获得相应的授权。项目内置了隐蔽的指纹识别功能，您需获取授权文件以去除指纹标记。</p>
 
       <!-- Tiers -->
       <div class="mt-12 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8">
@@ -11,6 +11,7 @@
             <p v-if="tier.mostPopular" class="absolute top-0 py-1.5 px-4 bg-indigo-500 rounded-full text-xs font-semibold uppercase tracking-wide text-white transform -translate-y-1/2">最多购买</p>
             <p class="mt-4 flex items-baseline text-gray-900">
               <span class="text-5xl font-extrabold tracking-tight">￥{{ tier.price }}</span>
+              <span v-if="tier.nextPrice" class="text-sm text-gray-400 line-through font-extrabold tracking-tight">￥{{ tier.nextPrice }}</span>
               <span class="ml-1 text-xl font-semibold">{{ tier.frequency }}</span>
             </p>
             <p class="mt-6 text-gray-500">{{ tier.description }}</p>
@@ -38,6 +39,7 @@
         {
           title: '企业自用版授权',
           price: 888,
+          nextPrice: 1088,
           frequency: '终生',
           description: '此授权您可以剔除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，但在本授权模式下，您所开发的软件不可以做为项目进行对外出售，仅用于本公司运营项目使用。',
           features: ['可以剔除版权标识', '专属交互式文档', '专属企业飞书群', '及时的团队答疑','插件享受企业版优惠价格'],
@@ -48,6 +50,7 @@
         {
           title: '项目版授权',
           price: 1288,
+          nextPrice: 1688,
           frequency: '终生',
           description: '此授权您可以剔除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，在本授权模式下，您所开发的软件可以做为项目进行对外出售。',
           features:  ['可以剔除版权标识','可对外出售源码', '专属交互式文档', '专属企业飞书群', '及时的团队答疑', '插件享受项目版优惠价格'],
