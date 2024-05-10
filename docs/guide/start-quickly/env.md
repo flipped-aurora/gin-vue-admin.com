@@ -19,8 +19,6 @@
 2. 命令行运行 go 若控制台输出各类提示命令 则安装成功 输入 go version 确认版本大于 `1.22`
 3. 开发工具推荐 [Goland](https://www.jetbrains.com/go/)
 
-
-
 ## 使用说明
 
 ::: warning 🧁 需要本地具有 `git` `node` `go` 环境
@@ -33,11 +31,8 @@
 
 ## 版本列表
 
-- [main](https://github.com/flipped-aurora/gin-vue-admin/tree/main): 主版本 用于生产环境
-- [组合式API多语言(i18n)版](https://github.com/flipped-aurora/gin-vue-admin/tree/i18n-dev-new)
-- [声明式API版](https://github.com/flipped-aurora/gin-vue-admin/tree/v2.4.x)
-- [声明式API多语言(i18n)版](https://github.com/flipped-aurora/gin-vue-admin/tree/i18n-dev)
-- [develop](https://github.com/flipped-aurora/gin-vue-admin/tree/develop): 2.0, 用于测试环境
-- [gin-vue-admin_v2_dev](https://github.com/flipped-aurora/gin-vue-admin/tree/gin-vue-admin_v2_dev) (v2.0 [GormV1版本](https://v1.gorm.io/)稳定分支)
-- [gva_gormv2_dev](https://github.com/flipped-aurora/gin-vue-admin/tree/gva_gormv2_dev) (v2.0 [GormV2版本](https://v2.gorm.io/)开发分支)
+- [main](https://github.com/flipped-aurora/gin-vue-admin/tree/main): 主版本 用于生产环境，持续更新
+- [组合式API多语言(i18n)版](https://github.com/flipped-aurora/gin-vue-admin/tree/i18n-dev-new)已暂停更新
+- [声明式API版](https://github.com/flipped-aurora/gin-vue-admin/tree/v2.4.x)已停止更新
+- [声明式API多语言(i18n)版](https://github.com/flipped-aurora/gin-vue-admin/tree/i18n-dev)已停止更新
 

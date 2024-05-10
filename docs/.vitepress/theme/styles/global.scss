@@ -26,3 +26,7 @@ body {
     -webkit-filter: progid:dximagetransform.microsoft.basicimage(grayscale=1);
     filter: progid:dximagetransform.microsoft.basicimage(grayscale=1);
 }
+
+.vp-doc table {
+   word-break: break-all;
+}
