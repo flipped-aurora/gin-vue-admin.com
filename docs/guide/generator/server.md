@@ -3,22 +3,6 @@
 ## 2.5.3以后需先创造package
 参考视频：https://www.bilibili.com/video/BV1kv4y1g7nT?p=3
 
-## 创建package
-点击左侧菜单栏的自动化Package进入页面，点击新增打开抽屉
-![image-package](/generator/image-package.png)
-
-抽屉中关键属性为包名，此处填写小写字母开头的驼峰式命名单词，这是你自动化代码的基础包，所有在创建自动化代码时候选择本package的代码，都会创建在由本功能自动创建出的文件夹下。此处展示以showGva为例，自动生成的文件目录。
-
-![image-package](/generator/image-create.png)
-创建完成后，会在web和server下创建对应的package文件夹，如下所示
-web/src/api/showGva
-web/src/view/showGva
-server/api/showGva 内含文件 `enter.go`
-server/router/showGva 内含文件 `enter.go`
-server/service/showGva 内含文件 `enter.go`
-
-后续使用自动化代码创建的内容会自动填充进入这些文件夹下
-
 ## 代码生成器
 
 最上方的点这里从现有数据库创建代码，可以选择数据库中的表，然后生成对应的代码。
@@ -107,71 +91,34 @@ server/service/showGva 内含文件 `enter.go`
 
 :::
 
+代码会自动移动到前后端你所创建的package文件夹下
+前端分别会移动到 `/api/${pageageName}` 和 `/view/${pageageName}` 下
+后端分别会移动到 `/api/${pageageName}`、 `/service/${pageageName}` 、 `/router/${pageageName}` 下、 `/model/${pageageName}` 下
 
-
-- 点击后就可以看到左下角或者下载内容里有一个下载好了的`ginvueadmin.zip `文件
-
-- ![image-20200915162032096](/generator/image-20200915162032096.png)
-
-解压`ginvueadmin.zip `后会看到里面有个 autoCode 文件夹，autoCode 里的 `server` 文件夹为自动生成的后端代码，`web` 文件夹为自动生成的前端代码。
-
-![image-20200915162153474](/generator/image-20200915162153474.png)
-
-:::info 注意
-
-[PackageName](#packagename) (文件夹自建）--> 代表图片上的sysUsers 新版自动迁移会在autocode下每个功能的enter下自动注册生成的新的代码模块 如果不使用自动迁移功能 还需要自行注册
-
+:::tip 提示
+在创建自动化代码时候会自动创建enter.go 一下为关于enter.go的介绍
 :::
-
-| 示例路径                                         | 移动到对应路径 (web/view/sysUsers目录下的sysUsers文件夹需要自己新建) |
-| ------------------------------------------------ | ------------------------------------------------------------ |
-| `autoCode/server/sysUsers/service/sysUsers.go`   | `server/service/autocode/sysUsers.go`                                 |
-| `autoCode/server/sysUsers/router/sysUsers.go`    | `server/router/autocode/sysUsers.go`                                  |
-| `autoCode/server/sysUsers/request/sysUsers.go`   | `server/model/autocode/request/sysUsers.go`                           |
-| `autoCode/server/sysUsers/model/sysUsers.go`     | `server/model/autocode/sysUsers.go`                                   |
-| `autoCode/server/sysUsers/api/sysUsers.go`       | `server/api/autocode/sysUsers.go`                                     |
-| `autoCode/web/sysUsers/table/sysUsers.vue`        | `web/src/view/sysUsers/sysUsers.vue`                          |
-| `autoCode/web/sysUsers/form/sysUsers.vue`         | `web/src/view/sysUsers/sysUsersForm.vue` (文件需要重命名)     |
-| `autoCode/web/sysUsers/api/sysUsers.js`          | `web/src/api/sysUsers.js`                                    |
-
-
-
-代码迁移完成后，go代码如果需要做模块化，则需要创建enter.go
 
 enter.go内部将所有的相关功能模块下的结构统一为一个总结构体，然后将可以通过new这个总结构体实现对本模块的所有结构统一实例化使用 我们此处仅以api下的system分类为例（其他模块操作类似 model模块无enter.go）
 
-system下目录结构如下
-
- 	enter.go
-
-    sys_api.go
-
-    sys_authority.go
-
-    sys_auto_code.go
-
-    sys_auto_code_history.go
-
-    sys_captcha.go
-
-    sys_casbin.go
-
-    sys_dictionary.go
-
-    sys_dictionary_detail.go
-
-    sys_initdb.go
-
-    sys_jwt_blacklist.go
-
-    sys_menu.go
-
-    sys_operation_record.go
-
-    sys_system.go
-	
-    sys_user.go
-
+我们以system这个package为例
+```
+enter.go
+  sys_api.go
+  sys_authority.go
+  sys_auto_code.go
+  sys_auto_code_history.go
+  sys_captcha.go
+  sys_casbin.go
+  sys_dictionary.go
+  sys_dictionary_detail.go
+  sys_initdb.go
+  sys_jwt_blacklist.go
+  sys_menu.go
+  sys_operation_record.go
+  sys_system.go
+  sys_user.go
+```
 enter.go
 文件中存在如下结构
 
@@ -219,8 +166,6 @@ var (
 	dictionaryDetailService = service.ServiceGroupApp.SystemServiceGroup.DictionaryDetailService
 )
 
-
-
 ```
 
 这里我们介绍完了声明enter的过程 和使用其他包下enter的过程  然后我们找到实例化enter的过程
@@ -260,20 +205,9 @@ var ApiGroupApp = new(ApiGroup)
 
 ![image-20210224151109195](/generator/image-20210224151109195.png)
 
-- 效果预览
-- ![image-20210224151320620](/generator/image-20210224151320620.png)
+效果预览
 
-### 1.5 自动移动文件
-
-- 操作指引
-
-- ![image-20210224152346906](/generator/image-20210224152346906.png)
-
-- ![image-20210224152545924](/generator/image-20210224152545924.png)
-
-- 芜湖,起飞!!!!!! 这样不用手动去解压文件和移动文件, 太舒服了!
-
-- ![image-20210224152815684](/generator/image-20210224152815684.png)
+![image-20210224151320620](/generator/image-20210224151320620.png)
 
 ## 2. 注册路由和数据库表
 
@@ -541,14 +475,17 @@ func AutoCreateApi(a *model.AutoCodeStruct) (err error) {
 
 ## 5.配置角色权限
 
-- 进入系统 `超级管理员` → `角色管理` 菜单，找到需要设置权限的角色，点击对应的 **设置权限** 按钮，配置角色相关权限。
+进入系统 `超级管理员` → `角色管理` 菜单，找到需要设置权限的角色，点击对应的 **设置权限** 按钮，配置角色相关权限。
 
-- ![image-20210224144035326](/generator/image-20210224144035326.png)
+![image-20210224144035326](/generator/image-20210224144035326.png)
 
-- 角色菜单：勾选该角色可以访问的目录菜单
-- ![image-20210224144517336](/generator/image-20210224144517336.png)
-- 角色api：勾选该角色可以访问的接口
-- ![image-20210224144708399](/generator/image-20210224144708399.png)
+角色菜单：勾选该角色可以访问的目录菜单
+
+![image-20210224144517336](/generator/image-20210224144517336.png)
+
+角色api：勾选该角色可以访问的接口
+
+![image-20210224144708399](/generator/image-20210224144708399.png)
 
 ## 6：完善新增表单弹窗/页面
 

@@ -218,16 +218,16 @@ type System struct {
 
 ### description
 
-| 配置名         | 类型   | 说明                                                         |
-| -------------- | ------ | ------------------------------------------------------------ |
-| env            | string | 更改为“develop”以跳过开发模式的身份验证                      |
-| addr           | int    | 后端端口,默认8888                                            |
-| db-type        | string | 可以使用mysql 后续支持pgsql |
+| 配置名         | 类型   | 说明                                                                                                                                   |
+| -------------- | ------ |--------------------------------------------------------------------------------------------------------------------------------------|
+| env            | string | 更改为“develop”以跳过开发模式的身份验证                                                                                                             |
+| addr           | int    | 后端端口,默认8888                                                                                                                          |
+| db-type        | string | 可以使用 pgsql,sqlite,mssql,oracle                                                                                                                                |
 | oss-type       | string | 可以指定上传头像的oss为local/qiniu/aliyun/minio<br />local:本地的 `local.path` 目录<br />qiniu:七牛云<br />aliyun与minio可能框架不会集成,需自己添加,或者参考 [额外功能](oss) |
-| use-multipoint | bool   | 单点登录,默认为关闭                                          |
-| use-redis | bool   | 使用redis,默认为关闭                                          |
-| iplimit-count | int   | time时间段内同IP最多访问次数,默认为15000                                          |
-| iplimit-time | int   | 限制时间区间,默认为3600                                          |
+| use-multipoint | bool   | 单点登录,默认为关闭                                                                                                                           |
+| use-redis | bool   | 使用redis,默认为关闭                                                                                                                        |
+| iplimit-count | int   | time时间段内同IP最多访问次数,默认为15000                                                                                                           |
+| iplimit-time | int   | 限制时间区间,默认为3600                                                                                                                       |
 
 ## captcha
 
@@ -259,7 +259,7 @@ type Captcha struct {
 | img-width  | int  | 验证码宽度 |
 | img-height | int  | 验证码高度 |
 
-## Mysql
+## Mysql [pgsql,sqlite,mssql,oracle]
 
 ### yaml
 
@@ -306,26 +306,6 @@ type Mysql struct {
 | max-open-conns | int    | 设置打开到数据库的最大连接数 |
 | log-mode       | string   | 开启Gorm全局日志等级  "silent"、"error"、"warn"、"info" 不填默认info  填入silent可以关闭控制台日志       |
 | log-zap       | bool   | 是否写入zap         |
-
-## Postgresql （研发中）
-
-### yaml
-
-```yaml
-# Postgresql connect configuration
-pgsql:
-  path: ''
-  port: ''
-  config: ''
-  db-name: ''
-  username: ''
-  password: ''
-  max-idle-conns: 10
-  max-open-conns: 100
-  log-mode: ""
-  log-zap: false
-
-```
 
 ### struct
 

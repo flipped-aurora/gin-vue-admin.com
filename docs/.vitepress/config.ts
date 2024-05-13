@@ -152,6 +152,10 @@ export default defineConfig({
                     collapsed: true,
                     items: [
                         {
+                            text: '自动化package',
+                            link: '/guide/generator/package',
+                        },
+                        {
                             text: '代码生成器使用指南',
                             link: '/guide/generator/server',
                         },
@@ -187,7 +191,7 @@ export default defineConfig({
                             link: '/guide/web/dictionary'
 												},
                         {
-                            text: '侧边栏样式自定义',
+                            text: '自定义全局皮肤',
                             link: '/guide/web/menu-theme'
                         },
                         {
@@ -202,6 +206,10 @@ export default defineConfig({
                             text: '导出Excel',
                             link: '/guide/web/export-excel',
                         },
+                        {
+                            text: '开发指导文档',
+                            link: 'https://www.gin-vue-admin.com/empower/index.html'
+                        }
                     ]
                 },
                 {
@@ -210,7 +218,7 @@ export default defineConfig({
                     collapsed: true,
                     items: [
                         {
-                            text: '后端 指南',
+                            text: '后端指南',
                             link: '/guide/server/'
                         },
                         {
@@ -237,6 +245,10 @@ export default defineConfig({
                             text: '定时任务',
                             link: '/guide/server/timer'
                         },
+                        {
+                            text: '开发指导文档',
+                            link: 'https://www.gin-vue-admin.com/empower/index.html'
+                        }
                     ]
                 },
                 {
@@ -279,6 +291,10 @@ export default defineConfig({
                             text: 'kubernetes',
                             link: '/guide/deployment/k8s'
                         },
+                        {
+                            text: '更详部署指南',
+                            link: 'https://www.gin-vue-admin.com/empower/index.html'
+                        }
                     ]
                 },
                 {
