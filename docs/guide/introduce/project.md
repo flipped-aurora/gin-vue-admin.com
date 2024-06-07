@@ -15,7 +15,7 @@ GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的开发基�
 ::: warning 需要本地具有 `git` `node` `go` 环境
 如果您使用 mysql 作为数据库的话 虽然我们并不禁止您使用 `phpstudy` `小皮` 这样的集成环境创建的数据库，但请注意，请将数据引擎改为innoDB
 
-我们推荐您使用 docker 创建 musql 数据库
+我们推荐您使用 docker 创建 mysql 数据库
 :::
 - 前端：用基于`vue3`的`Element-Plus`构建基础页面。
 - 后端：用`Gin`快速搭建基础API，`Gin`是一个go语言编写的Web框架。
