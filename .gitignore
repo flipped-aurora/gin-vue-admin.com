@@ -4,3 +4,5 @@
 /docs-old
 .pnpm-*.log
 .idea/
+
+bun.lockb
