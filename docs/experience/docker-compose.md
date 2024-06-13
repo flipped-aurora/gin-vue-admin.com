@@ -9,7 +9,7 @@
 
 ```shell
 # 1.1 运行此命令以下载Docker Compose的当前稳定版本
-sudo curl -L "https://github.com/docker/compose/releases/download/2.27.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 # 1.2 将可执行权限应用于二进制文件
 sudo chmod +x /usr/local/bin/docker-compose 
 ```
