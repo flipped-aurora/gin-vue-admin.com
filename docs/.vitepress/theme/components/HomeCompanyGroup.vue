@@ -35,6 +35,20 @@
           <img :width="240" src="/user/cadence.jpeg" alt="cadence">
         </a>
 
+        <a class="flex items-center justify-center invisible" href="#">
+          <img :width="240" src="/user/mobile.png" alt="中国移动">
+        </a>
+
+
+        <a class="flex items-center justify-center" href="#">
+          <img :width="240" src="/user/mobile.png" alt="中国移动">
+        </a>
+
+        <a class="flex items-center justify-center invisible" href="#">
+          <img :width="240" src="/user/mobile.png" alt="中国移动">
+        </a>
+
+
       </div>
       <div class="company-title mt-14">
         合作企业
