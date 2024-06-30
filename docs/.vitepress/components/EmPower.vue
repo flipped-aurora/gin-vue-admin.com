@@ -52,7 +52,7 @@
     const pricing = ref({
       tiers: [
         {
-          title: '企业自用版授权',
+          title: '自用版授权',
           price: 1288,
           nextPrice: 1688,
           frequency: '终生',
@@ -63,7 +63,7 @@
           link:'https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d?from=from_copylink',
         },
         {
-          title: '项目版授权',
+          title: '无限制版授权',
           price: 1688,
           nextPrice: 2088,
           frequency: '终生',
@@ -74,7 +74,7 @@
           link:'https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d?from=from_copylink',
         },
         {
-          title: '企业服务',
+          title: '企业服务/集团授权',
           price: '面议',
           frequency: '',
           description: '专业团队为您的项目提供最合理的解决方案，可参与项目部分研发。',
