@@ -112,8 +112,10 @@ LABEL MAINTAINER="SliverHorn@sliver_horn@qq.com"
 # 声明工作目录
 WORKDIR /go/src/gin-vue-admin
 
-# 把/go/src/gin-vue-admin整个文件夹的文件到当前工作目录
-COPY --from=0 /go/src/gin-vue-admin ./
+# 把/go/src/gin-vue-admin中的可执行文件以及配置文件(resource模板文件)添加进入docker中
+COPY --from=0 /go/src/gin-vue-admin/server ./
+COPY --from=0 /go/src/gin-vue-admin/config.docker.yaml ./
+COPY --from=0 /go/src/gin-vue-admin/resource ./
 
 EXPOSE 8888
 
