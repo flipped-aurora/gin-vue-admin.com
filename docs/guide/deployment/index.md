@@ -6,6 +6,43 @@
 
 ## 后端
 
+### 交叉编译
+
+在Windows 编译到 Linux 和Mac：
+```
+# 交叉编译到Linux
+set GOOS=linux
+set GOARCH=amd64
+go build -o app-linux
+
+# 交叉编译到Mac
+set GOOS=darwin
+set GOARCH=amd64
+go build -o app-mac
+```
+
+在Linux下交叉编译到Windows和Mac：
+
+```
+# 交叉编译到Windows
+GOOS=windows GOARCH=amd64 go build -o app-windows.exe
+
+# 交叉编译到Mac
+GOOS=darwin GOARCH=amd64 go build -o app-mac
+```
+
+在Mac下交叉编译到Windows和Linux：
+
+```
+# 交叉编译到Windows
+GOOS=windows GOARCH=amd64 go build -o app-windows.exe
+
+# 交叉编译到Linux
+GOOS=linux GOARCH=amd64 go build -o app-linux
+```
+
+
+
 在 server下 go build . 得到一个可执行文件然后将可执行文件和config.yaml 以及 resource 文件夹上传至服务器 三者最好放在同一路径下 最终服务器目录结构可能如下 
 
 ```
