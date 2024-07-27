@@ -83,6 +83,7 @@ vim /etc/nginx/nginx.conf
 参考配置代码如下
 
 ```nginx
+user root;
 events {
   worker_connections  1024;  ## Default: 1024
 } 
