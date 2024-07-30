@@ -56,7 +56,7 @@ export const PLUGINS = [{
     }, {
         "name": "张智征",
         "count": '500￥',
-        "tips": '定制化开发'
+        "tips": '感谢答疑'
     }, {
         "name": "Super",
         "count": '500￥',
@@ -64,6 +64,6 @@ export const PLUGINS = [{
     }, {
         "name": "A*",
         "count": '500￥',
-        "tips": '定制化开发'
+        "tips": '感谢答疑'
     }
 ]
