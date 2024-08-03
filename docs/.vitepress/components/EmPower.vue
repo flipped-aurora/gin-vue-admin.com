@@ -1,10 +1,10 @@
   <template>
-    <div class="flex items-center gap-x-6   bg-orange-600 px-2 md:px-6 py-2.5 sm:px-3.5 sm:before:flex-1 " @click="">
+    <div class="flex items-center gap-x-6   bg-orange-600 dark:bg-orange-800 px-2 md:px-6 py-2.5 sm:px-3.5 sm:before:flex-1 " @click="">
       <div class="text-sm leading-6 text-white max-w-7xl container">
         <div class="cursor-pointer text-base pb-1">
           gin-vue-admin 再此承诺，项目除必须联网的
-            <span class="px-2 rounded bg-orange-200 text-orange-600">AI服务</span>，
-            <span class="px-2 rounded bg-orange-200 text-orange-600">部分"插件"</span> 外，不会主动请求任何外部gva服务。
+            <span class="px-2 rounded bg-orange-200 text-orange-600 dark:bg-orange-400 dark:text-orange-100">AI服务</span>，
+            <span class="px-2 rounded bg-orange-200 text-orange-600 dark:bg-orange-400 dark:text-orange-100">部分"插件"</span> 外，不会主动请求任何外部gva服务。
         </div>
           <div>如后期增加主动查询授权协议等功能，会在官网和 github 提前通知，告知所有用户（目前内部暂无此计划)</div>
       </div>
@@ -14,21 +14,21 @@
         </button>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto py-24 px-4 bg-white sm:px-6 lg:px-0">
-      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-5xl sm:leading-none sm:tracking-tight lg:text-6xl">购买授权</h2>
-      <p class="mt-6 max-w-2xl text-xl text-gray-500">如果您需要去除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，这表明您打算将项目用于商业目的。根据授权协议，您必须获得相应的授权。项目内置了隐蔽的指纹识别功能【无安全隐患】，获取授权文件后在官方指导下去除指纹标记。</p>
+    <div class="max-w-7xl mx-auto py-24 px-4 bg-white dark:bg-[#242424] sm:px-6 lg:px-0">
+      <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-200 sm:text-5xl sm:leading-none sm:tracking-tight lg:text-6xl">购买授权</h2>
+      <p class="mt-6 max-w-2xl text-xl text-gray-500 dark:text-gray-400">如果您需要去除系统下方的Gin-Vue-Admin以及flipped-aurora技术支持标识，这表明您打算将项目用于商业目的。根据授权协议，您必须获得相应的授权。项目内置了隐蔽的指纹识别功能【无安全隐患】，获取授权文件后在官方指导下去除指纹标记。</p>
       <!-- Tiers -->
       <div class="mt-12 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8">
-        <div v-for="tier in pricing.tiers" :key="tier.title" class="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm flex flex-col group cursor-pointer">
+        <div v-for="tier in pricing.tiers" :key="tier.title" class="relative p-8 bg-white dark:bg-[#242424]  border border-gray-200 dark:border-gray-600 rounded-2xl shadow-sm flex flex-col group cursor-pointer">
           <div class="flex-1">
-            <h3 class="text-xl font-semibold text-gray-900">{{ tier.title }}</h3>
+            <h3 class="text-xl font-semibold text-gray-900  dark:text-gray-300">{{ tier.title }}</h3>
             <p v-if="tier.mostPopular" class="absolute top-0 py-1.5 px-4 bg-indigo-500 rounded-full text-xs font-semibold uppercase tracking-wide text-white transform -translate-y-1/2">最多购买</p>
-            <p class="mt-4 flex items-baseline text-gray-900">
+            <p class="mt-4 flex items-baseline text-gray-900 dark:text-gray-300">
               <span class="text-5xl font-extrabold tracking-tight">￥{{ tier.price }}</span>
-              <span v-if="tier.nextPrice" class="text-sm text-gray-400 line-through font-extrabold tracking-tight">￥{{ tier.nextPrice }}</span>
+              <span v-if="tier.nextPrice" class="text-sm text-gray-400 dark:text-gray-600 line-through font-extrabold tracking-tight">￥{{ tier.nextPrice }}</span>
               <span class="ml-1 text-xl font-semibold">{{ tier.frequency }}</span>
             </p>
-            <p class="mt-6 text-gray-500">{{ tier.description }}</p>
+            <p class="mt-6 text-gray-500 dark:text-gray-400">{{ tier.description }}</p>
 
             <!-- Feature list -->
             <ul role="list" class="mt-6 space-y-6">
@@ -40,7 +40,8 @@
               </li>
             </ul>
           </div>
-          <a :href="tier.link" target="_blank"  :class="[tier.mostPopular ? 'bg-indigo-500 text-white hover:bg-indigo-600' : 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100', 'mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium group-hover:-translate-y-1 ease-in-out ']">{{ tier.cta }}</a>
+          <a :href="tier.link" target="_blank"
+             :class="[tier.mostPopular ? 'bg-indigo-500 text-white hover:bg-indigo-600' : 'bg-indigo-50 dark:bg-indigo-200  text-indigo-700 hover:bg-indigo-100', 'mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium group-hover:-translate-y-1 group-hover:ease-in-out ']">{{ tier.cta }}</a>
         </div>
       </div>
     </div>
