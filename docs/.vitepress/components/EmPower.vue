@@ -1,11 +1,13 @@
   <template>
-    <div class="flex items-center gap-x-6 bg-orange-500 px-6 py-2.5 sm:px-3.5 sm:before:flex-1 " @click="">
-      <p class="text-sm leading-6 text-white max-w-7xl">
-        <span class="cursor-pointer">
-          gin-vue-admin 再此承诺，项目除必须联网的   <span>AI服务</span>， <span>部分`插件`</span> 外，不会主动请求任何外部gva服务。
-如后期增加主动查询授权协议等功能，会在官网和 github 提前通知，告知所有用户（目前内部暂无此计划)
-        </span>
-      </p>
+    <div class="flex items-center gap-x-6   bg-orange-600 px-2 md:px-6 py-2.5 sm:px-3.5 sm:before:flex-1 " @click="">
+      <div class="text-sm leading-6 text-white max-w-7xl container">
+        <div class="cursor-pointer text-base pb-1">
+          gin-vue-admin 再此承诺，项目除必须联网的
+            <span class="px-2 rounded bg-orange-200 text-orange-600">AI服务</span>，
+            <span class="px-2 rounded bg-orange-200 text-orange-600">部分"插件"</span> 外，不会主动请求任何外部gva服务。
+        </div>
+          <div>如后期增加主动查询授权协议等功能，会在官网和 github 提前通知，告知所有用户（目前内部暂无此计划)</div>
+      </div>
       <div class="flex flex-1 justify-end">
         <button type="button" class="-m-3 p-3 focus-visible:outline-offset-[-4px]">
           <span class="sr-only">Dismiss</span>
