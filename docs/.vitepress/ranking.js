@@ -6,14 +6,14 @@ export const PLUGINS = [{
         "tips": '留言'
     },
     {
+        "name": "李靖",
+        "count": '2200￥',
+        "tips": '微信转账'
+    },
+    {
         "name": "LLemonGreen",
         "count": '1966￥',
         "tips": '付款码--转账'
-    },
-    {
-        "name": "李靖",
-        "count": '1100￥',
-        "tips": '微信转账'
     },
     {
         "name": "阿乐",
@@ -56,7 +56,7 @@ export const PLUGINS = [{
     }, {
         "name": "张智征",
         "count": '500￥',
-        "tips": '定制化开发'
+        "tips": '感谢答疑'
     }, {
         "name": "Super",
         "count": '500￥',
@@ -64,6 +64,6 @@ export const PLUGINS = [{
     }, {
         "name": "A*",
         "count": '500￥',
-        "tips": '定制化开发'
+        "tips": '感谢答疑'
     }
 ]

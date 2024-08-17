@@ -6,6 +6,11 @@ body {
     cursor: url('/blue.cur'), auto;
 }
 
+#app{
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
 // 重置首页 logo大小
 .VPImage.image-src{
     width: 400px !important;
