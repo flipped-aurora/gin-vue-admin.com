@@ -74,6 +74,7 @@ export default defineConfig({
                     {text: '项目介绍', link: '/guide/introduce/project'},
                     {text: '快速开始', link: '/guide/start-quickly/initialization'},
                     {text: '项目上线', link: '/guide/deployment/'},
+                    {text: '更新日志', link: 'https://flipped-aurora.feishu.cn/docx/LPufdOPWxo3zcpxNSVGcr1vcn71?from=from_copylink'},
                 ],
             },
             {
@@ -323,7 +324,7 @@ export default defineConfig({
                             link: '/guide/video/web'
                         },
                     ]
-                },
+                }
             ],
             '/experience/': [
                 {
