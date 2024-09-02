@@ -194,26 +194,34 @@ type Casbin struct {
 ```yaml
 # system configuration
 system:
-  env: 'public'  # Change to "develop" to skip authentication for development mode
-  addr: 8888
-  db-type: 'mysql'
-  oss-type: 'local'
-  use-multipoint: false
-  use-redis: false
-  iplimit-count: 15000
-  iplimit-time: 3600
+	db-type: mysql
+	oss-type: local
+	router-prefix: ""
+	addr: 8888
+	iplimit-count: 15000
+	iplimit-time: 3600
+	use-multipoint: false
+	use-redis: false
+	use-mongo: false
+	use-strict-auth: false
 ```
 
 ### struct
 
 ```go
 type System struct {
-	Env           string `mapstructure:"env" json:"env" yaml:"env"`
-	Addr          int    `mapstructure:"addr" json:"addr" yaml:"addr"`
-	DbType        string `mapstructure:"db-type" json:"dbType" yaml:"db-type"`
-	OssType       string `mapstructure:"oss-type" json:"ossType" yaml:"oss-type"`
-	UseMultipoint bool   `mapstructure:"use-multipoint" json:"useMultipoint" yaml:"use-multipoint"`
+	DbType        string `mapstructure:"db-type" json:"db-type" yaml:"db-type"`    // 数据库类型:mysql(默认)|sqlite|sqlserver|postgresql
+	OssType       string `mapstructure:"oss-type" json:"oss-type" yaml:"oss-type"` // Oss类型
+	RouterPrefix  string `mapstructure:"router-prefix" json:"router-prefix" yaml:"router-prefix"`
+	Addr          int    `mapstructure:"addr" json:"addr" yaml:"addr"` // 端口值
+	LimitCountIP  int    `mapstructure:"iplimit-count" json:"iplimit-count" yaml:"iplimit-count"`
+	LimitTimeIP   int    `mapstructure:"iplimit-time" json:"iplimit-time" yaml:"iplimit-time"`
+	UseMultipoint bool   `mapstructure:"use-multipoint" json:"use-multipoint" yaml:"use-multipoint"`    // 多点登录拦截
+	UseRedis      bool   `mapstructure:"use-redis" json:"use-redis" yaml:"use-redis"`                   // 使用redis
+	UseMongo      bool   `mapstructure:"use-mongo" json:"use-mongo" yaml:"use-mongo"`                   // 使用mongo
+	UseStrictAuth bool   `mapstructure:"use-strict-auth" json:"use-strict-auth" yaml:"use-strict-auth"` // 使用树形角色分配模式
 }
+
 ```
 
 ### description
@@ -222,12 +230,14 @@ type System struct {
 | -------------- | ------ |--------------------------------------------------------------------------------------------------------------------------------------|
 | env            | string | 更改为“develop”以跳过开发模式的身份验证                                                                                                             |
 | addr           | int    | 后端端口,默认8888                                                                                                                          |
-| db-type        | string | 可以使用 pgsql,sqlite,mssql,oracle                                                                                                                                |
+| db-type        | string | 可以使用 pgsql,sqlite,mssql,oracle                                                                                                       |
 | oss-type       | string | 可以指定上传头像的oss为local/qiniu/aliyun/minio<br />local:本地的 `local.path` 目录<br />qiniu:七牛云<br />aliyun与minio可能框架不会集成,需自己添加,或者参考 [额外功能](oss) |
 | use-multipoint | bool   | 单点登录,默认为关闭                                                                                                                           |
 | use-redis | bool   | 使用redis,默认为关闭                                                                                                                        |
 | iplimit-count | int   | time时间段内同IP最多访问次数,默认为15000                                                                                                           |
 | iplimit-time | int   | 限制时间区间,默认为3600                                                                                                                       |
+| use-mongo | bool   | 是否使用mongodb                                                                                                                          |
+| use-strict-auth | bool   | 是否开启[严格角色模式](strictAuth)                                                                                                             |
 
 ## captcha
 
