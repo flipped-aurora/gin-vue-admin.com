@@ -227,6 +227,10 @@ export default defineConfig({
                             link: '/guide/server/config'
                         },
                         {
+                            text: '对象存储',
+                            link: '/guide/server/oss'
+                        },
+                        {
                             text: '多数据库支持',
                             link: '/guide/server/multiple-databases'
                         },
