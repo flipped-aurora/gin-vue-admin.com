@@ -78,6 +78,7 @@
 import miaodian from '/guanwang/miaodian.png'
 import  vform from '/advertising/vform-banner.png'
 import  yangfan from '/advertising/yangfan.jpg'
+import  cuiliang from '/advertising/cuiliang.png'
 
 const ad = [
   {
@@ -98,6 +99,14 @@ const ad = [
      meta:{
       title : '扬帆测试平台',
       description : `扬帆测试平台`
+    }
+  }
+  ,{
+    img : cuiliang,
+    href :'https://github.com/test-instructor/yangfan',
+    meta:{
+      title : '崔亮的博客',
+      description : `运维研发博客`
     }
   }
   ,{
