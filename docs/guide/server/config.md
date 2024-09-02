@@ -237,7 +237,7 @@ type System struct {
 | iplimit-count | int   | time时间段内同IP最多访问次数,默认为15000                                                                                                           |
 | iplimit-time | int   | 限制时间区间,默认为3600                                                                                                                       |
 | use-mongo | bool   | 是否使用mongodb                                                                                                                          |
-| use-strict-auth | bool   | 是否开启[严格角色模式](strictAuth)                                                                                                             |
+| use-strict-auth | bool   | 是否开启[严格角色模式](strict-auth)                                                                                                             |
 
 ## captcha
 

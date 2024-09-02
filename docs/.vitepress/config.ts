@@ -231,6 +231,10 @@ export default defineConfig({
                             link: '/guide/server/multiple-databases'
                         },
                         {
+                            text: '严格角色模式',
+                            link: '/guide/server/strict-auth'
+                        },
+                        {
                             text: 'viper',
                             link: '/guide/server/core/viper'
                         },
