@@ -103,7 +103,7 @@ const ad = [
   }
   ,{
     img : cuiliang,
-    href :'https://github.com/test-instructor/yangfan',
+    href :'https://www.cuiliangblog.cn',
     meta:{
       title : '崔亮的博客',
       description : `运维研发博客`
