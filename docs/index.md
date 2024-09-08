@@ -6,8 +6,8 @@ titleTemplate: GVA 文档站
 
 hero:
   name: Gin-Vue-Admin
-  text: A management platform using Go and Vue
-  tagline: 使用gin+vue进行极速开发的全栈开发基础平台
+  text:  A management platform using Go and Vue.js
+  tagline: 基于Go与Vue.js打造的企业级高效研发解决方案
   image:
     src: /logo.png
     alt: gin-vue-admin
@@ -23,10 +23,10 @@ hero:
       link: empower/index.html
 ---
 <script setup>
-import HomeCompanyGroup from '/@theme/components/HomeCompanyGroup.vue';
-import HomeCenterAd from '/@theme/components/HomeCenterAd.vue';
-import Quicks from "/@theme/components/quicks.vue";
-import Liuliang from "/@theme/components/liuliang.vue";
+import HomeCompanyGroup from '.vitepress/theme/components/HomeCompanyGroup.vue';
+import HomeCenterAd from '.vitepress/theme/components/HomeCenterAd.vue';
+import Quicks from ".vitepress/theme/components/quicks.vue";
+import Liuliang from ".vitepress/theme/components/liuliang.vue";
 </script>
 <Quicks/>
 <Liuliang></Liuliang>

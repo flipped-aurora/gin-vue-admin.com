@@ -3,6 +3,8 @@
 GIN-VUE-ADMIN 是一款基于GIN+VUE+ElementPlus开发的全栈基础开发平台
 
 * GitHub地址: [https://github.com/flipped-aurora/gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin)
+* GitCode地址: [https://gitCode.com/flipped-aurora/gin-vue-admin](https://gitCode.com/flipped-aurora/gin-vue-admin)
+* Gitee地址: [https://gitee.com/pixelmax/gin-vue-admin](https://gitee.com/pixelmax/gin-vue-admin)
 * 在线测试地址: [http://demo.gin-vue-admin.com/](http://demo.gin-vue-admin.com/)
 * 用户名：`admin`
 * 密码： `123456`

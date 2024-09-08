@@ -6,8 +6,33 @@
 强烈建议将本分P视频看完后再进行开发，新版UI样式有些许差别，单基础操作无变化。
 :::
 
-[【gin-vue-admin】手把手教你使用gin-vue-admin(分P合集)](https://www.bilibili.com/video/BV1kv4y1g7nT)
+[1.clone项目和安装依赖](https://www.bilibili.com/video/BV1jx4y1s7xx)
 
+[2.初始化项目](https://www.bilibili.com/video/BV1sr421K7sv)
+
+[3.开启调试工具+创建初始化包](https://www.bilibili.com/video/BV1iH4y1c7Na)
+
+[4.手动使用自动化创建功能](https://www.bilibili.com/video/BV1UZ421T7fV)
+
+[5.使用已有表格创建业务](https://www.bilibili.com/video/BV1NE4m1977s)
+
+[6.使用AI创建业务和创建数据源模式的可选项](https://www.bilibili.com/video/BV17i421a7DE)
+
+[7.创建自己的后端方法](https://www.bilibili.com/video/BV1Yw4m1k7fg)
+
+[8.新增一个前端页面](https://www.bilibili.com/video/BV12y411i7oE)
+
+[9.配置一个前端二级页面](https://www.bilibili.com/video/BV1ZM4m1y7i3)
+
+[10.配置一个前端菜单参数](https://www.bilibili.com/video/BV1WS42197DZ)
+
+[11.菜单参数实战+动态菜单标题+菜单高亮配置](https://www.bilibili.com/video/BV1NE4m1979c)
+
+[12.增加菜单可控按钮](https://www.bilibili.com/video/BV1Sw4m1k746)
+
+[14.新增客户角色和其相关配置教学](https://www.bilibili.com/video/BV1Ki421a7X2)
+
+[15.发布项目上线](https://www.bilibili.com/video/BV1Lx4y1s77D)
 
 ## 1.server
 

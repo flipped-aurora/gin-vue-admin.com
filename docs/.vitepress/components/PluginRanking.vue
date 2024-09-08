@@ -89,14 +89,14 @@ export default {
 }
 
 ._line {
+  width: 100%;
+  overflow: hidden;
+  @extend .x_flex;
+  justify-content: flex-start;
+
   & + & {
     margin-top: 18px;
   }
-  width: 100%;
-  overflow: hidden;
-
-  @extend .x_flex;
-  justify-content: flex-start;
 }
 
 ._rank {

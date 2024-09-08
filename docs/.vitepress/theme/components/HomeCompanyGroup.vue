@@ -56,7 +56,7 @@
         <a class="company-box-item" target="_blank" v-for="(item , index) in ad" :key="index" :href="item.href">
           <img :src="item.img" :alt="item.href">
           <div v-if="item.meta" style="margin-left: 20px">
-            <div class="company-box-item-title" >{{item.meta.title}}</div>
+            <div class="company-box-item-title">{{item.meta.title}}</div>
             <div class="company-box-item-description">{{item.meta.description}}</div>
           </div>
         </a>
@@ -158,12 +158,13 @@ const ad = [
 
 
 #company-group .company-box .company-box-item .company-box-item-title{
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   width: 80px;
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
+  @apply text-gray-900;
 }
 #company-group .company-box .company-box-item .company-box-item-description{
   font-size: 12px;
@@ -174,5 +175,6 @@ const ad = [
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
+  @apply text-gray-700;
 }
 </style>
