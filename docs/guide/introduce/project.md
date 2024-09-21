@@ -21,7 +21,7 @@ GIN-VUE-ADMIN是一个基于vue和gin开发的全栈前后端分离的开发基�
 :::
 - 前端：用基于`vue3`的`Element-Plus`构建基础页面。
 - 后端：用`Gin`快速搭建基础API，`Gin`是一个go语言编写的Web框架。
-- 数据库：采用`MySql`>5.7版本,数据库引擎 innoDB<Badge type="danger" class="bg-red-600 font-medium dark:bg-red-500" text="important" />，使用`gorm`实现对数据库的基本操作,目前已支持`Sqlite`,`PostgreSQL(人大金仓)`,`Mssql`,`Oracle`。
+- 数据库：采用`MySql`>5.7版本,数据库引擎 innoDB<Badge type="danger" class="bg-red-600 font-medium dark:bg-red-500" text="important" />，使用`gorm`实现对数据库的基本操作,目前已支持`Sqlite`,`PostgreSQL(人大金仓)`,`Mysql`,`Oracle`。
 - 缓存：使用`Redis`进行一系列缓存操作，默认关闭，如果需要可自行到配置中开启。
 - API文档：使用`Swagger`构建自动化文档。
 - 配置文件：使用`fsnotify`和`viper`实现`yaml`格式的配置文件。
