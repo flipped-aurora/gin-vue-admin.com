@@ -15,10 +15,36 @@ body {
 .VPImage.image-src{
     width: 400px !important;
 }
+
+
 // 重置首页 logo 背景颜色
 .image-bg{
     background-image: linear-gradient( 135deg, #6DCFFA 10%, #94F2D4 100%) !important;
 }
+.main .name .clip{
+    background: var(--vp-home-hero-name-background);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: var(--vp-home-hero-name-color);
+    position: relative;
+}
+.main .name .clip::after{
+    content: "";
+    position: absolute;
+    top: -12px;
+    right: -40px;
+    background-color: #4FA1D7;
+    border-radius: 12px;
+    z-index: 99;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='currentColor'  stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 16v-6a2 2 0 1 1 4 0v6m-4-3h4m4-5v8'/%3E%3C/svg%3E");
+    background-image: url("/tabler--ai.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+}
+
 
 .gray {
     -webkit-filter: grayscale(100%);
