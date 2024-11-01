@@ -16,6 +16,11 @@ export const PLUGINS = [{
         "tips": '付款码--转账'
     },
     {
+        "name": "del-xiong",
+        "count": '1002￥',
+        "tips": '闲着没事 再给淼哥捐个kfc'
+    },
+    {
         "name": "阿乐",
         "count": '1001￥',
         "tips": '各位辛苦，我再添把柴'
@@ -45,10 +50,6 @@ export const PLUGINS = [{
         "name": "韦平",
         "count": '588￥',
         "tips": '微信转账'
-    },{
-        "name": "del-xiong",
-        "count": '501￥',
-        "tips": '闲着没事 再给淼哥捐个kfc'
     }, {
         "name": "7k",
         "count": '500￥',
