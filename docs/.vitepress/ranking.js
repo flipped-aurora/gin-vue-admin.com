@@ -51,7 +51,7 @@ export const PLUGINS = [{
         "tips": '钱不多。。谢谢大佬的项目'
     },{
         "name": "不愿透露姓名的熊先生",
-        "count": '500￥',
+        "count": '501￥',
         "tips": '闲着没事 再给淼哥捐个kfc'
     }, {
         "name": "**东",
