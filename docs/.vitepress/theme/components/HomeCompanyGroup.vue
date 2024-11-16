@@ -79,12 +79,13 @@ import miaodian from '/guanwang/miaodian.png'
 import  vform from '/advertising/vform-banner.png'
 import  yangfan from '/advertising/yangfan.jpg'
 import  cuiliang from '/advertising/cuiliang.png'
+import  jianguo from '/advertising/jianguo.png'
 
 const ad = [
-  {
-    img : miaodian,
-    href :'https://www.geelevel.com/'
-  }
+  // {
+  //   img : miaodian,
+  //   href :'https://www.geelevel.com/'
+  // }
   // ,{
   //   img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
   //   href :'https://www.madlocker.cn',
@@ -93,7 +94,7 @@ const ad = [
   //     description : '盡量别開生靣'
   //   }
   // }
-  ,{
+  {
     img : yangfan,
     href :'https://github.com/test-instructor/yangfan',
      meta:{
@@ -112,6 +113,10 @@ const ad = [
   ,{
     img : vform,
     href :'https://www.vform666.com'
+  }
+  ,{
+    img : jianguo,
+    href :'https://www.nutpi.net'
   }
 ]
 

@@ -15,6 +15,7 @@
 
 <script setup>
 import cms from '/advertising/cms.png'
+import shop from '/advertising/shop.jpg'
 import liuliang from '/advertising/liuliang.jpg'
 import  vform from '/advertising/vform-banner.png'
 const ad = [
@@ -22,7 +23,10 @@ const ad = [
     img : cms,
     href :'https://plugin.gin-vue-admin.com/#/layout/newPluginInfo?id=69'
   },
-
+  {
+    img : shop,
+    href :'https://plugin.gin-vue-admin.com/#/layout/newPluginInfo?id=90'
+  },
 
 //{
    // img : 'https://webcdn.madlocker.cn/wp-content/uploads/2022/06/cropped-madlocker%C2%B7logo-01.jpg',
