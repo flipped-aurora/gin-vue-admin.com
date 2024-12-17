@@ -43,3 +43,33 @@ INSERT INTO zy_ad_ms.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', '
 ## 前端运行出现 `node:***` 等字段错误
 由于新版gva 前端使用vite最新的vite3版本，vite 官方文档强制 vite版本为 `Vite requires Node.js version 14.18+, 16+. `
 vite 官方强制原文为`Vite requires Node.js version 14.18+, 16+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.` [vitejs](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) 请悉知！如果您的版本不正确，请先升级版本。
+
+## 前端界面白屏一直在加载状态(无错误弹窗提示)
+
+当前加载的页面文件中 import的内容路径/内容有误 , (路径错误 , 或者import的内容不在这个路径下)包括第三方包的路径错误也会导致(且多数无报错),仔细排查。
+
+## 菜单添加之后左侧没有显示对应的菜单
+
+需要到超级管理员→角色管理下勾选可查看菜单）
+
+## 时间比真实时间少8小时均为时区问题 
+
+需要自己排查 , 重点排查后端获取到的time.now等的时间是否是符合预期的时间 , 如果是docker中则多数是docker中的系统时间不同(docker时区不是默认和宿主机相同)。如果只是navicat等数据库工具显示内容不对 , 实际的前后端数据是正常的,则为数据库时间时区问题,根据不同的数据库执行对应的sql即可。
+
+```
+pgsql为例(sql交互式命令执行)
+
+ALTER SYSTEM SET timezone TO 'Asia/Shanghai';
+   
+SELECT pg_reload_conf();
+
+SHOW TIMEZONE;
+```
+
+## 宝塔部署图片等静态资源无法访问
+
+(确定路径是对的) 需要把nginx的拦截删除(删除所有带.jpg的内容)。PS:如果是后端资源需要放在public下
+
+## 重新初始化数据库
+
+只需要更改config.yaml让后端无法连接数据库即可 , 例如乱写数据库配置 乱填ip等 , 重启之后再去前端点击初始化
