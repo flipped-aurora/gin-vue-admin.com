@@ -91,8 +91,9 @@ export default defineConfig({
                 ],
             },
             {
-                text: '📚︎ 学习',
-                link: '/study/index'
+                text: '📚︎ 著作权',
+                link: '/copyright.pdf',
+                target: '_blank'
             },
             {
                 text: '🎁 捐赠',
