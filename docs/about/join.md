@@ -77,7 +77,7 @@ const memberList = [
         name: '奇淼' ,
         org : '全栈开发· 北京' , 
         desc :'用魔法打败魔法， 用代码打败代码， 一个普普通通的IT从业者， 一台无情的编码机器。gin-vue-admin项目发起者， 团队一块砖， 随便用， 随便搬， 负责gin - vue - admin的整体功能开发， 基础设施建设。' , 
-        sponsor : 'https://github.com/piexlmax'
+        sponsor : 'https://www.gin-vue-admin.com/coffee/'
     },
     { 
         avatar: sc, 
