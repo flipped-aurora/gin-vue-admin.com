@@ -82,7 +82,7 @@
           nextPrice: 20888,
           frequency: '',
           description: '如贵司需对授权协议内容进行定制化修改（包括但不限于对协议条款的重大调整，以及提供相关资质文件或文书等），或因签约流程复杂导致付款周期预计超过20个工作日，请选择此授权模式。',
-          features:  ['可以剔除版权标识','可对外出售源码','专属交互式文档', '专属企业飞书群', '及时的团队答疑', '插件享受项目版优惠价格','专业团队参与项目开发'],
+          features:  ['可以剔除版权标识','可对外出售源码','专属交互式文档', '专属企业飞书群', '及时的团队答疑', '插件享受项目版优惠价格',],
           cta: '购买授权',
           mostPopular: false,
           link:'https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d#XEUbd25fpoJel5xy1NMc23kInvb',
