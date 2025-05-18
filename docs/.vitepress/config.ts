@@ -269,6 +269,10 @@ export default defineConfig({
                             link: '/guide/server/timer'
                         },
                         {
+                            text: 'MCP TOOLS',
+                            link: '/guide/server/mcp'
+                        },
+                        {
                             text: '开发指导文档',
                             link: 'https://www.gin-vue-admin.com/empower/index.html'
                         }
