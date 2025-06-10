@@ -2,6 +2,10 @@
 
 自动化创建MCP工具模板
 
+## 授权用户内部培训文档【公开】
+
+[MCP内部培训文档]([https://www.bilibili.com/video/BV1cNJgzbEHT](https://flipped-aurora.feishu.cn/docx/DWvvdLVfvoZajJxwDR1cDThhnAh?from=from_copylink))
+
 ## 视频教程
 
 [点击观看](https://www.bilibili.com/video/BV1cNJgzbEHT)
