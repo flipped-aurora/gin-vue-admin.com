@@ -21,11 +21,11 @@ import  vform from '/advertising/vform-banner.png'
 const ad = [
   {
     img : cms,
-    href :'https://plugin.gin-vue-admin.com/#/layout/newPluginInfo?id=69'
+    href :'https://plugin.gin-vue-admin.com/details/69'
   },
   {
     img : shop,
-    href :'https://plugin.gin-vue-admin.com/#/layout/newPluginInfo?id=90'
+    href :'https://plugin.gin-vue-admin.com/details/139'
   },
 
 //{
