@@ -101,7 +101,7 @@ export default defineConfig({
             },
             {
                 text: '💰 购买授权',
-                link: '/empower/index'
+                link: 'https://plugin.gin-vue-admin.com/license'
             },
             {
                 text: '✨ 插件市场',
