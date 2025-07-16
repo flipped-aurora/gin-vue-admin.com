@@ -101,7 +101,7 @@ export default defineConfig({
             },
             {
                 text: '💰 购买授权',
-                link: '/empower/index'
+                link: 'https://plugin.gin-vue-admin.com/license'
             },
             {
                 text: '✨ 插件市场',
@@ -267,6 +267,10 @@ export default defineConfig({
                         {
                             text: '定时任务',
                             link: '/guide/server/timer'
+                        },
+                        {
+                            text: 'MCP TOOLS',
+                            link: '/guide/server/mcp'
                         },
                         {
                             text: '开发指导文档',

@@ -48,7 +48,10 @@
   </template>
 
   <script setup>
-    import {ref} from "vue"
+  import {onMounted, ref} from "vue"
+    onMounted(()=>{
+      window.location.href= "https://plugin.gin-vue-admin.com/license"
+    })
     const toLink = () => {
       window.open('https://flipped-aurora.feishu.cn/docx/KwjxdnvatozgwIxGV0rcpkZSn4d?from=from_copylink')
     }
