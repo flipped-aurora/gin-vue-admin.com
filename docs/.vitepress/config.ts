@@ -76,7 +76,7 @@ export default defineConfig({
 
         footer: {
             message: `Copyright © 2020-${new Date().getFullYear()} Flipped-aurora Open Source Community`,
-            copyright: `鲁ICP备17040210号-2`
+            copyright: `<a href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备17040210号-2</a>`
         },
 
 
