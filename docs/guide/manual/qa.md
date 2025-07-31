@@ -1,75 +1,424 @@
 # 常见问题
 
-## 前端无验证码
- 确保后端已经启动，并且通过系统提供的初始化，初始化了系统。
+本文档收集了 Gin-Vue-Admin 使用过程中的常见问题和解决方案，帮助您快速定位和解决问题。
 
-## 初始化的时候出现 `time-out`等字样
- 尝试在前端和后端分别设置 超时时间。
+## 快速导航
 
-## 初始化的时候出现 `github.com/casbin/gorm-adapter/v3@v3.7.3/adapter.go:389 Error 1071: Specified key was too long; max key length is 1000 bytes`字样
-修改数据库默认引擎为 innoDB 或者单独修改 `casbin` 表的引擎为 innoDB
+- [系统初始化问题](#系统初始化问题)
+- [前端相关问题](#前端相关问题)
+- [后端相关问题](#后端相关问题)
+- [权限管理问题](#权限管理问题)
+- [部署相关问题](#部署相关问题)
+- [数据库相关问题](#数据库相关问题)
 
-## 自定义接口返回 `404`
-请尝试重新启动后端项目，如果还是出现`404`，则需要查看启动时，命令行打印的log，如果您注册了您自定义的路由，下方会打印。具体注册路由的方法，请前往路由模块查看
+## 系统初始化问题
 
+### 前端无验证码显示
 
-## 前端访问路由发现路由前缀并非定义的前缀
-为了防止浏览器跨域问题的存在，gva在前端通过`vite`(老版本为`webpack`)进行了路由代理。
+**问题描述：** 登录页面验证码图片无法显示或显示空白
 
-## 前端打包出现了 `vite.createFilter is not a function`等错误字样
-如果使用yarn 安装，不会在安装的时候报错，它只会在运行的时候报错` vite.createFilter is not a function`
-如果使用npm 安装，则会出现 `vitejs/plugin-vue ` 和 `vite` 版本不一致。
+**解决方案：**
+1. **检查后端服务状态**
+   ```bash
+   # 确认后端服务是否正常启动
+   curl http://localhost:8888/api/base/captcha
+   ```
 
-<img width="895" alt="image" src="https://user-images.githubusercontent.com/56402715/179184409-a3eafab6-52b5-48f1-8e99-c94efb7c016d.png">
+2. **确认系统初始化**
+   - 确保已通过系统初始化页面完成数据库初始化
+   - 检查数据库连接是否正常
+   - 验证配置文件 `config.yaml` 中的数据库配置
 
+3. **检查网络连接**
+   - 确认前后端网络连通性
+   - 检查防火墙设置
+   - 验证代理配置是否正确
 
-其原因是因为7月12号左右 vite 官方发版本，导致 `vite`、`vitejs/plugin-vue `升级了一个大版本。Gva 的前端package.json 包里面的`vitejs/plugin-vue `使用的是 lastest ，但是vite 限制了大版本。导致出现了版本不匹配。
+### 初始化超时问题
 
-解决方法是： 将web目录下的`vitejs/plugin-vue` 后面的 `lastest` 改成`^2.3.3`
+**问题描述：** 初始化过程中出现 `time-out` 等超时错误
 
-## 权限不足排查方案
+**解决方案：**
+1. **调整前端超时设置**
+   ```javascript
+   // 在 requset.js 配置中增加超时时间
+   timeout = 30000; // 30秒
+   ```
 
-1. 前往`超级管理员>api管理` 菜单里进行检查, 检查目标接口的路径和请求方式数据是否含有空格, 去掉空格并保存, 然后到`超级管理员>角色管理` 菜单对需要改接口的角色重新分配api权限
-2. 检查 casbin_rule 是否存在规则, 请求路由，请求方式，角色id，去casbin_rule表查，v0=角色id，v1=请求路由，v2=请求方式
-```sql
-SELECT * FROM casbin_rule WHERE v0='角色id' AND v1='请求路由' AND v2='请求方式'
-```
-没有就手动填上去
-```sql
-INSERT INTO zy_ad_ms.casbin_rule (p_type, v0, v1, v2, v3, v4, v5) VALUES ('p', '角色id', '请求路由', '请求方式', null, null, null);
-```
+2. **调整后端超时设置**
+ 在core/server.go配置时间
 
+3. **检查数据库性能**
+   - 确认数据库服务器性能
+   - 检查网络延迟
+   - 优化数据库配置
 
-## 前端运行出现 `node:***` 等字段错误
-由于新版gva 前端使用vite最新的vite3版本，vite 官方文档强制 vite版本为 `Vite requires Node.js version 14.18+, 16+. `
-vite 官方强制原文为`Vite requires Node.js version 14.18+, 16+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.` [vitejs](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) 请悉知！如果您的版本不正确，请先升级版本。
+### 数据库引擎错误
 
-## 前端界面白屏一直在加载状态(无错误弹窗提示)
+**问题描述：** 初始化时出现 `Error 1071: Specified key was too long; max key length is 1000 bytes`
 
-当前加载的页面文件中 import的内容路径/内容有误 , (路径错误 , 或者import的内容不在这个路径下)包括第三方包的路径错误也会导致(且多数无报错),仔细排查。
+**解决方案：**
+1. **修改数据库默认引擎**
+   ```sql
+   -- 修改数据库默认引擎为 InnoDB
+   ALTER DATABASE your_database_name DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   ```
 
-## 菜单添加之后左侧没有显示对应的菜单
+2. **单独修改 casbin 表引擎**
+   ```sql
+   -- 修改 casbin_rule 表引擎
+   ALTER TABLE casbin_rule ENGINE=InnoDB;
+   ```
 
-需要到超级管理员→角色管理下勾选可查看菜单）
+3. **创建数据库时指定引擎**
+   ```sql
+   CREATE DATABASE gin_vue_admin CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   ```
 
-## 时间比真实时间少8小时均为时区问题 
+## 前端相关问题
 
-需要自己排查 , 重点排查后端获取到的time.now等的时间是否是符合预期的时间 , 如果是docker中则多数是docker中的系统时间不同(docker时区不是默认和宿主机相同)。如果只是navicat等数据库工具显示内容不对 , 实际的前后端数据是正常的,则为数据库时间时区问题,根据不同的数据库执行对应的sql即可。
+### 路由前缀问题
 
-```
-pgsql为例(sql交互式命令执行)
+**问题描述：** 前端访问路由时发现路由前缀与定义的不一致
 
-ALTER SYSTEM SET timezone TO 'Asia/Shanghai';
+**解决方案：**
+- **原因说明**：为防止浏览器跨域问题，GVA 在前端通过 Vite（老版本为 Webpack）进行了路由代理
+- **配置检查**：
+  ```javascript
+  // vite.config.js
+  export default {
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8888',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        }
+      }
+    }
+  }
+  ```
+
+### Vite 版本兼容问题
+
+**问题描述：** 前端打包时出现 `vite.createFilter is not a function` 错误
+
+**问题原因：**
+- Vite 官方版本更新导致 `@vitejs/plugin-vue` 与 `vite` 版本不匹配
+- package.json 中使用 `latest` 版本导致版本冲突
+
+**解决方案：**
+1. **修改 package.json**
+   ```json
+   {
+     "devDependencies": {
+       "@vitejs/plugin-vue": "^2.3.3",
+       "vite": "^3.0.0"
+     }
+   }
+   ```
+
+2. **重新安装依赖**
+   ```bash
+   # 删除 node_modules 和 package-lock.json
+   rm -rf node_modules package-lock.json
    
-SELECT pg_reload_conf();
+   # 重新安装
+   npm install
+   ```
 
-SHOW TIMEZONE;
+3. **使用固定版本**
+   - 避免使用 `latest` 标签
+   - 使用具体版本号或兼容版本范围
+
+### Node.js 版本问题
+
+**问题描述：** 前端运行时出现 `node:***` 等字段错误
+
+**解决方案：**
+1. **检查 Node.js 版本**
+   ```bash
+   node --version
+   # 确保版本 >= 14.18 或 >= 16.0
+   ```
+
+2. **升级 Node.js**
+   ```bash
+   # 使用 nvm 管理 Node.js 版本
+   nvm install 16
+   nvm use 16
+   ```
+
+3. **版本要求说明**
+   - Vite 3 要求 Node.js 版本 >= 14.18+ 或 16+
+   - 建议使用 LTS 版本以确保稳定性
+
+### 前端白屏问题
+
+**问题描述：** 前端界面白屏，一直处于加载状态，无错误提示
+
+**排查步骤：**
+1. **检查控制台错误**
+   - 打开浏览器开发者工具
+   - 查看 Console 和 Network 选项卡
+   - 检查是否有 JavaScript 错误
+
+2. **检查导入路径**
+   ```javascript
+   // 检查所有 import 语句的路径是否正确
+   import Component from '@/components/Component.vue' // 确保路径存在
+   ```
+
+3. **检查第三方包**
+   ```bash
+   # 重新安装依赖
+   npm install
+   
+   # 检查包版本兼容性
+   npm ls
+   ```
+
+4. **逐步排查**
+   - 注释掉可疑的导入语句
+   - 逐个恢复，定位问题代码
+
+## 后端相关问题
+
+### 自定义接口 404 错误
+
+**问题描述：** 自定义接口返回 404 错误
+
+**解决方案：**
+1. **重启后端服务**
+   ```bash
+   # 停止服务
+   Ctrl + C
+   
+   # 重新启动
+   go run main.go
+   ```
+
+2. **检查路由注册**
+   - 查看启动日志中的路由注册信息
+   - 确认自定义路由是否正确注册
+   - 参考 [路由模块文档](../server/router.md)
+
+3. **验证路由配置**
+   ```go
+   // 确保路由正确注册
+   func InitRouter() {
+       Router.POST("/api/custom/endpoint", customHandler)
+   }
+   ```
+
+## 权限管理问题
+
+### 权限不足错误
+
+**问题描述：** 访问接口时提示权限不足
+
+**排查步骤：**
+
+1. **检查 API 管理配置**
+   - 进入 `系统管理` → `API 管理`
+   - 检查目标接口的路径和请求方式
+   - **重要**：确保路径和请求方式中没有多余空格
+   - 保存修改后，重新分配角色权限
+
+2. **检查角色权限分配**
+   - 进入 `系统管理` → `角色管理`
+   - 为相应角色重新分配 API 权限
+   - 确认权限保存成功
+
+3. **数据库权限规则检查**
+   ```sql
+   -- 查询权限规则是否存在
+   SELECT * FROM casbin_rule 
+   WHERE v0='角色ID' AND v1='请求路由' AND v2='请求方式';
+   ```
+
+4. **手动添加权限规则**
+   ```sql
+   -- 如果规则不存在，手动添加
+   INSERT INTO casbin_rule (p_type, v0, v1, v2, v3, v4, v5) 
+   VALUES ('p', '角色ID', '请求路由', '请求方式', null, null, null);
+   ```
+
+### 菜单不显示问题
+
+**问题描述：** 添加菜单后左侧导航栏没有显示
+
+**解决方案：**
+1. **检查菜单权限**
+   - 进入 `系统管理` → `角色管理`
+   - 找到对应角色，编辑权限
+   - 在菜单权限中勾选新添加的菜单
+   - 保存权限设置
+
+2. **检查菜单配置**
+   - 确认菜单状态为启用
+   - 检查菜单层级关系
+   - 验证路由配置是否正确
+
+3. **刷新权限缓存**
+   - 重新登录系统
+   - 或清除浏览器缓存
+
+## 部署相关问题
+
+### 静态资源访问问题
+
+**问题描述：** 宝塔部署后图片等静态资源无法访问
+
+**解决方案：**
+1. **检查 Nginx 配置**
+   ```nginx
+   # 删除对静态资源的拦截规则
+   # 注释或删除类似以下的配置
+   # location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
+   #     deny all;
+   # }
+   ```
+
+2. **配置静态资源服务**
+   ```nginx
+   location /uploads/ {
+       alias /path/to/gin-vue-admin/uploads/;
+       expires 30d;
+   }
+   ```
+
+3. **后端资源配置**
+   - 确保后端静态资源放在 `public` 目录下
+   - 检查文件权限设置
+
+## 数据库相关问题
+
+### 时区问题
+
+**问题描述：** 时间比真实时间少 8 小时
+
+**排查步骤：**
+1. **检查系统时区**
+   ```bash
+   # 查看系统时区
+   date
+   timedatectl status
+   ```
+
+2. **检查 Docker 时区**
+   ```dockerfile
+   # Dockerfile 中设置时区
+   ENV TZ=Asia/Shanghai
+   RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+   ```
+
+3. **数据库时区配置**
+   
+   **MySQL：**
+   ```sql
+   -- 查看时区
+   SELECT @@global.time_zone, @@session.time_zone;
+   
+   -- 设置时区
+   SET GLOBAL time_zone = '+8:00';
+   SET SESSION time_zone = '+8:00';
+   ```
+   
+   **PostgreSQL：**
+   ```sql
+   -- 设置时区
+   ALTER SYSTEM SET timezone TO 'Asia/Shanghai';
+   SELECT pg_reload_conf();
+   SHOW TIMEZONE;
+   ```
+
+4. **应用程序时区配置**
+   ```go
+   // 在 main.go 中设置时区
+   import "time"
+   
+   func init() {
+       loc, _ := time.LoadLocation("Asia/Shanghai")
+       time.Local = loc
+   }
+   ```
+
+### 重新初始化数据库
+
+**问题描述：** 需要重新初始化数据库
+
+**操作步骤：**
+1. **临时断开数据库连接**
+   ```yaml
+   # 修改 config.yaml，使后端无法连接数据库
+   mysql:
+     path: "wrong_host:3306"  # 故意填写错误的主机
+     db-name: "wrong_db"      # 故意填写错误的数据库名
+   ```
+
+2. **重启后端服务**
+   ```bash
+   # 重启后端
+   go run main.go
+   ```
+
+3. **执行重新初始化**
+   - 访问前端初始化页面
+   - 填写正确的数据库配置
+   - 点击初始化按钮
+
+4. **恢复正确配置**
+   - 初始化完成后，恢复 `config.yaml` 中的正确配置
+   - 重启服务
+
+## 调试技巧
+
+### 日志查看
+
+1. **后端日志**
+   ```bash
+   # 查看实时日志
+   tail -f logs/server.log
+   
+   # 查看错误日志
+   grep "ERROR" logs/server.log
+   ```
+
+2. **前端调试**
+   - 使用浏览器开发者工具
+   - 检查 Network 选项卡中的请求响应
+   - 查看 Console 中的错误信息
+
+### 常用调试命令
+
+```bash
+# 检查端口占用
+netstat -tulpn | grep :8888
+
+# 检查进程状态
+ps aux | grep gin-vue-admin
+
+# 检查磁盘空间
+df -h
+
+# 检查内存使用
+free -h
 ```
 
-## 宝塔部署图片等静态资源无法访问
+## 获取帮助
 
-(确定路径是对的) 需要把nginx的拦截删除(删除所有带.jpg的内容)。PS:如果是后端资源需要放在public下
+如果以上解决方案无法解决您的问题，可以通过以下方式获取帮助：
 
-## 重新初始化数据库
+- **官方文档**：查阅详细的技术文档
+- **GitHub Issues**：[提交问题报告](https://github.com/flipped-aurora/gin-vue-admin/issues)
+- **社区论坛**：[参与讨论](https://github.com/flipped-aurora/gin-vue-admin/discussions)
+- **QQ 群**：加入官方 QQ 群交流
+- **微信群**：关注官方微信获取群二维码
 
-只需要更改config.yaml让后端无法连接数据库即可 , 例如乱写数据库配置 乱填ip等 , 重启之后再去前端点击初始化
+## 相关文档
+
+- [快速开始](../start-quickly/index.md) - 项目快速启动指南
+- [部署指南](../deployment/index.md) - 生产环境部署
+- [故障排除](../troubleshooting/index.md) - 详细故障排除指南
+- [最佳实践](../best-practices/index.md) - 开发最佳实践

@@ -144,6 +144,10 @@ export default defineConfig({
                             link: '/guide/start-quickly/initialization'
                         },
                         {
+                            text: 'AI助手配置',
+                            link: '/guide/server/mcp'
+                        },
+                        {
                             text: 'swagger',
                             link: '/guide/start-quickly/swagger'
                         },
@@ -154,11 +158,7 @@ export default defineConfig({
                         {
                             text: '常见问题',
                             link: '/guide/manual/qa'
-                        },
-                        {
-                            text: 'AI助手配置',
-                            link: '/guide/server/mcp'
-                        },
+                        }
                     ]
                 },
                 {
@@ -238,6 +238,18 @@ export default defineConfig({
                             link: '/guide/server/config'
                         },
                         {
+                            text: '认证系统',
+                            link: '/guide/server/authentication'
+                        },
+                        {
+                            text: '权限系统',
+                            link: '/guide/server/authorization'
+                        },
+                        {
+                            text: '代码生成器',
+                            link: '/guide/server/code-generator'
+                        },
+                        {
                             text: '对象存储',
                             link: '/guide/server/oss'
                         },
@@ -270,8 +282,32 @@ export default defineConfig({
                             link: '/guide/server/mcp'
                         },
                         {
+                            text: '数据库设计',
+                            link: '/guide/server/database-design'
+                        },
+                        {
                             text: '开发指导文档',
                             link: 'https://www.gin-vue-admin.com/empower/index.html'
+                        }
+                    ]
+                },
+                {
+                    text: '最佳实践',
+                    collapsed: false,
+                    items: [
+                        {
+                            text: '开发规范指南',
+                            link: '/guide/best-practices/development-standards'
+                        }
+                    ]
+                },
+                {
+                    text: '故障排除',
+                    collapsed: false,
+                    items: [
+                        {
+                            text: '常见问题解答',
+                            link: '/guide/troubleshooting/common-issues'
                         }
                     ]
                 },
@@ -308,6 +344,10 @@ export default defineConfig({
                         {
                             text: 'kubernetes',
                             link: '/guide/deployment/k8s'
+                        },
+                        {
+                            text: '生产环境部署',
+                            link: '/guide/deployment/production'
                         },
                         {
                             text: '更详部署指南',
