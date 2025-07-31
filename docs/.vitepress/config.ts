@@ -45,10 +45,6 @@ export default defineConfig({
         ],
     ],
 
-    vue: {
-        reactivityTransform: true
-    },
-
     themeConfig: {
         logo: '/logo.png',
 
@@ -86,6 +82,7 @@ export default defineConfig({
                 items: [
                     {text: '项目介绍', link: '/guide/introduce/project'},
                     {text: '快速开始', link: '/guide/start-quickly/initialization'},
+                    {text: 'AI助手集成', link: '/guide/server/mcp'},
                     {text: '项目上线', link: '/guide/deployment/'},
                     {text: '更新日志', link: 'https://flipped-aurora.feishu.cn/docx/LPufdOPWxo3zcpxNSVGcr1vcn71?from=from_copylink'},
                 ],
@@ -126,7 +123,7 @@ export default defineConfig({
             '/guide/': [
                 {
                     text: '介绍',
-                    collapsible: true,
+                    collapsed: false,
                     items: [
                         {
                             text: '项目介绍',
@@ -137,7 +134,6 @@ export default defineConfig({
                 {
                     text: '快速开始',
                     collapsed: true,
-                    collapsible: true,
                     items: [
                         {
                             text: '环境配置',
@@ -159,11 +155,14 @@ export default defineConfig({
                             text: '常见问题',
                             link: '/guide/manual/qa'
                         },
+                        {
+                            text: 'AI助手配置',
+                            link: '/guide/server/mcp'
+                        },
                     ]
                 },
                 {
                     text: '代码生成器',
-                    collapsible: true,
                     collapsed: true,
                     items: [
                         {
@@ -186,7 +185,6 @@ export default defineConfig({
                 },
                 {
                     text: '前端项目指南',
-                    collapsible: true,
                     collapsed: true,
                     items: [
                         {
@@ -229,7 +227,6 @@ export default defineConfig({
                 },
                 {
                     text: '后端项目指南',
-                    collapsible: true,
                     collapsed: true,
                     items: [
                         {
@@ -269,7 +266,7 @@ export default defineConfig({
                             link: '/guide/server/timer'
                         },
                         {
-                            text: 'MCP TOOLS',
+                            text: 'MCP AI助手集成',
                             link: '/guide/server/mcp'
                         },
                         {
@@ -281,7 +278,6 @@ export default defineConfig({
                 {
                     text: '插件使用教程',
                     collapsed: true,
-                    collapsible: true,
                     items: [
                         {
                             text: '插件安装教程',
@@ -295,7 +291,6 @@ export default defineConfig({
                 },
                 {
                     text: '部署指南',
-                    collapsible: true,
                     collapsed: true,
                     items: [
                         {
@@ -322,7 +317,6 @@ export default defineConfig({
                 },
                 {
                     text: '视频教程',
-                    collapsible: true,
                     collapsed: true,
                     items: [
                         {
@@ -351,7 +345,7 @@ export default defineConfig({
             '/experience/': [
                 {
                     text: '体验项目',
-                    collapsible: true,
+                    collapsed: false,
                     items: [
                         {
                             text: '在线体验',
