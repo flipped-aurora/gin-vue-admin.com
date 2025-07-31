@@ -751,7 +751,7 @@ A: 在生成的代码基础上添加自定义方法，避免直接修改生成�
 
 ## 📚 相关文档
 
-- [数据库设计](../manual/database-design.md)
-- [API 设计规范](./api-design.md)
-- [前端开发指南](../web/development.md)
-- [模板开发指南](../advanced/template-development.md)
+- [数据库设计](./database-design.md)
+- [服务端配置](./config.md)
+- [前端开发指南](../web/index.md)
+- [代码生成器](../generator/server.md)

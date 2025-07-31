@@ -779,7 +779,7 @@ docker-compose up -d
 
 ## 许可证
 
-[MIT License](LICENSE)
+本项目采用 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) 开源许可证
 ```
 
 #### API 文档规范
@@ -1177,5 +1177,5 @@ func BenchmarkUserService_GetUserList(b *testing.B) {
 ## 📚 相关文档
 
 - [项目介绍](/guide/introduce/project)
-- [快速开始](/guide/start-quickly/)
+- [快速开始](/guide/start-quickly/initialization)
 - [故障排除指南](/guide/troubleshooting/common-issues)

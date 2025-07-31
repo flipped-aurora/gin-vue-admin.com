@@ -923,6 +923,6 @@ docker exec -it container_name /bin/sh
 
 ## 📚 相关文档
 
-- [快速开始](/guide/start-quickly/)
+- [快速开始](/guide/start-quickly/initialization)
 - [项目配置](/guide/server/config)
 - [部署指南](/guide/deployment/)

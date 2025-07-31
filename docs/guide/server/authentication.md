@@ -341,4 +341,4 @@ A: 立即更换密钥，使所有现有 Token 失效，要求用户重新登录�
 
 - [权限系统](./authorization.md)
 - [配置管理](./config.md)
-- [Redis 配置](../deployment/redis.md)
+- [部署配置](../deployment/index.md)

@@ -201,7 +201,7 @@
 2. **检查路由注册**
    - 查看启动日志中的路由注册信息
    - 确认自定义路由是否正确注册
-   - 参考 [路由模块文档](../server/router.md)
+   - 参考 [服务端文档](../server/index.md)
 
 3. **验证路由配置**
    ```go
@@ -418,7 +418,7 @@ free -h
 
 ## 相关文档
 
-- [快速开始](../start-quickly/index.md) - 项目快速启动指南
+- [快速开始](../start-quickly/initialization.md) - 项目快速启动指南
 - [部署指南](../deployment/index.md) - 生产环境部署
-- [故障排除](../troubleshooting/index.md) - 详细故障排除指南
-- [最佳实践](../best-practices/index.md) - 开发最佳实践
+- [故障排除](../troubleshooting/common-issues.md) - 详细故障排除指南
+- [最佳实践](../best-practices/development-standards.md) - 开发最佳实践

@@ -173,7 +173,7 @@ go run main.go
 
 在浏览器中访问 Swagger UI：
 
-**本地访问**: [http://localhost:8888/swagger/index.html](http://localhost:8888/swagger/index.html)
+**本地访问**: `http://localhost:8888/swagger/index.html`
 
 ### 3. 文档功能
 

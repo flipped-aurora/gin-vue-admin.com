@@ -132,7 +132,7 @@ go run main.go
 [GIN-debug] Listening and serving HTTP on :8888
 ```
 
-访问 [http://localhost:8888/health](http://localhost:8888/health) 检查服务状态。
+访问 `http://localhost:8888/health` 检查服务状态。
 
 ## 🎨 前端应用启动
 
@@ -190,7 +190,7 @@ pnpm serve
 
 ### 1. 访问初始化页面
 
-在浏览器中访问：[http://localhost:8080/#/init](http://localhost:8080/#/init)
+在浏览器中访问：`http://localhost:8080/#/init`
 
 ### 2. 配置数据库信息
 
