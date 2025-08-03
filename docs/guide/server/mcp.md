@@ -6,6 +6,8 @@
 使用MCP功能需要GVA版本 **≥ 2.8.4**，请确保您的项目版本满足要求。
 :::
 
+尽量使用 claude > gemini > gpt = kimi 模型 已达到更好效果
+
 ## ✨ 核心特性
 
 - 🚀 **智能代码生成**：AI自动创建完整的CRUD模板
@@ -16,7 +18,7 @@
 ## 🛠️ AI编辑工具配置
 
 ### 支持的AI编辑工具
-- Trae
+- Trae （尽量使用 trae.io 国外版）
 - Cursor
 - Claude Code
 - Windsurf  
