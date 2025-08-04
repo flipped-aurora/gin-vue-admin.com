@@ -21,7 +21,8 @@
 - Trae （尽量使用 trae.ai 国外版）
 - Cursor
 - Claude Code
-- Windsurf  
+- Windsurf
+- Codebubby
 - 其他支持MCP协议的AI编辑器
 
 ### 配置步骤
