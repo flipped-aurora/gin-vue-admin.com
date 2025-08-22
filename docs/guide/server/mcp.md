@@ -46,17 +46,7 @@
 <img src="/mcp/ai-config-demo.svg" alt="AI编辑器MCP配置示例" style="width: 100%; max-width: 800px; margin: 20px 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 
 #### 第三步：重启编辑器
-保存配置后重启你的AI编辑工具，等待MCP连接建立
-
-#### 第四步：验证连接
-访问 http://127.0.0.1:8888/sse
-
-返回 
-```
-event: endpoint
-data: /message?sessionId=哈希串
-```
-即表明链接成功
+保存配置后重启你的AI编辑工具，等待MCP连接建立，MCP状态显示绿色即表示连接成功
 
 ### 🚀 AI助手新能力
 
