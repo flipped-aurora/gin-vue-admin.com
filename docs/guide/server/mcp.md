@@ -6,6 +6,8 @@
 使用MCP功能需要GVA版本 **≥ 2.8.4**，请确保您的项目版本满足要求。
 :::
 
+尽量使用 claude > gemini > gpt = kimi 模型 已达到更好效果
+
 ## ✨ 核心特性
 
 - 🚀 **智能代码生成**：AI自动创建完整的CRUD模板
@@ -16,10 +18,11 @@
 ## 🛠️ AI编辑工具配置
 
 ### 支持的AI编辑工具
-- Trae
+- Trae （尽量使用 trae.ai 国外版）
 - Cursor
 - Claude Code
-- Windsurf  
+- Windsurf
+- Codebubby
 - 其他支持MCP协议的AI编辑器
 
 ### 配置步骤
@@ -43,10 +46,7 @@
 <img src="/mcp/ai-config-demo.svg" alt="AI编辑器MCP配置示例" style="width: 100%; max-width: 800px; margin: 20px 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 
 #### 第三步：重启编辑器
-保存配置后重启你的AI编辑工具，等待MCP连接建立
-
-#### 第四步：验证连接
-在AI助手中输入："帮我检查GVA项目状态"，如果AI能够识别项目结构，说明配置成功！
+保存配置后重启你的AI编辑工具，等待MCP连接建立，MCP状态显示绿色即表示连接成功
 
 ### 🚀 AI助手新能力
 
