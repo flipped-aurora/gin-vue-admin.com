@@ -6,8 +6,8 @@ titleTemplate: GVA 文档站
 
 hero:
   name: Gin-Vue-Admin
-  text:  A management platform using Go and Vue.js
-  tagline: 基于Go与Vue.js打造的企业级高效研发解决方案
+  text:  A management platform using Go and Vue.js with AI+
+  tagline: 基于Go与Vue.js打造的企业级高效研发AI+解决方案
   image:
     src: /logo.png
     alt: gin-vue-admin
