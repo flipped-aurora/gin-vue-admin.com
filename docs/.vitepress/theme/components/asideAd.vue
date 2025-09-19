@@ -16,9 +16,13 @@
 <script setup>
 import cms from '/advertising/cms.png'
 import shop from '/advertising/shop.jpg'
-import liuliang from '/advertising/liuliang.jpg'
+import fwq from '/advertising/fwq.jpg'
 import  vform from '/advertising/vform-banner.png'
 const ad = [
+   {
+    img : fwq,
+    href :'https://flipped-aurora.feishu.cn/wiki/HNnPwI9TbifCvwk51A2cLqOjnac?from=from_copylink'
+  },
   {
     img : cms,
     href :'https://plugin.gin-vue-admin.com/details/69'
