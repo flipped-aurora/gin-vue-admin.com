@@ -6,45 +6,45 @@
       </div>
       <div class="grid grid-cols-3">
         <a class="flex items-center justify-center" href="#">
-          <img :width="240" src="/user/ali.jpg" alt="阿里云">
+          <img :width="240" src="/user/ali.jpg" alt="阿里云" data-nosnippet>
         </a>
         <a class="flex items-center justify-center" href="#">
-          <img :width="240" src="/user/zijie.jpg" alt="zijie">
+          <img :width="240" src="/user/zijie.jpg" alt="zijie" data-nosnippet>
         </a>
         <a class="flex items-center justify-center" href="#">
-          <img :width="240" src="/user/tengxun.png" alt="腾讯">
+          <img :width="240" src="/user/tengxun.png" alt="腾讯" data-nosnippet>
         </a>
         <a class="flex items-center justify-center" href="#">
-          <img :width="240" src="/user/ea.jpg" alt="EA">
+          <img :width="240" src="/user/ea.jpg" alt="EA" data-nosnippet>
         </a>
         <a class="flex items-center justify-center" href="#">
-          <img :width="240" src="/user/douyu.jpg" alt="斗鱼直播">
+          <img :width="240" src="/user/douyu.jpg" alt="斗鱼直播" data-nosnippet>
         </a>
 
         <a class="flex items-center justify-center" href="#">
-         <img :width="220" src="/user/vivo.svg" alt="vivo">
+         <img :width="220" src="/user/vivo.svg" alt="vivo" data-nosnippet>
         </a>
         <a class="flex items-center justify-center" href="#">
-          <img :width="240" src="/user/anker.png" alt="安克">
+          <img :width="240" src="/user/anker.png" alt="安克" data-nosnippet>
         </a>
         <a class="flex items-center justify-center min-h-[173px]" href="#">
-          <img :width="240" src="/user/shenxinfu.png" alt="深信服">
+          <img :width="240" src="/user/shenxinfu.png" alt="深信服" data-nosnippet>
         </a>
 
         <a class="flex items-center justify-center" href="#">
-          <img :width="240" src="/user/cadence.jpeg" alt="cadence">
+          <img :width="240" src="/user/cadence.jpeg" alt="cadence" data-nosnippet>
         </a>
 
         <a class="flex items-center justify-center" href="#">
-          <img :width="240" src="/user/transsion.svg" alt="传音控股">
+          <img :width="240" src="/user/transsion.svg" alt="传音控股" data-nosnippet>
         </a>
 
         <a class="flex items-center justify-center" href="#">
-          <img :width="240" src="/user/mobile.png" alt="中国移动">
+          <img :width="240" src="/user/mobile.png" alt="中国移动" data-nosnippet>
         </a>
 
         <a class="flex items-center justify-center" href="#">
-          <img :width="240" src="/user/huashu.png" alt="中国移动">
+          <img :width="240" src="/user/huashu.png" alt="中国移动" data-nosnippet>
         </a>
 
 
@@ -54,7 +54,7 @@
       </div>
       <div class="company-box">
         <a class="company-box-item" target="_blank" v-for="(item , index) in ad" :key="index" :href="item.href">
-          <img :src="item.img" :alt="item.href">
+          <img :src="item.img" :alt="item.href" data-nosnippet>
           <div v-if="item.meta" style="margin-left: 20px">
             <div class="company-box-item-title">{{item.meta.title}}</div>
             <div class="company-box-item-description">{{item.meta.description}}</div>
