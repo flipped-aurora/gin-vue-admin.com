@@ -39,7 +39,7 @@
   "packageManager": "pnpm@9.9.0",
   "license": "MIT",
   "engines": {
-    "pnpm": "^7.2.1",
+    "pnpm": ">=7.2.1",
     "node": ">=16",
     "yarn": "forbidden, use pnpm",
     "npm": "forbidden, use pnpm"
