@@ -118,6 +118,7 @@ import sh from '/guanwang/sh.jpg'
 import ll from '/guanwang/LL.jpg'
 import yr from '/guanwang/YR.jpg'
 import tscuite from '/guanwang/tscuite.jpg'
+import azir from '/guanwang/azir.jpg'
 
 const memberList = [
     { 
@@ -176,6 +177,13 @@ const memberList = [
         desc :'奇淼的小迷弟二号，(英文名全称：The sun comes up in the east)，负责项目的devops，不学习就会焦虑的萌新' , 
         sponsor : 'https://github.com/tscuite'
     },
+    {
+        avatar: azir, 
+        name: 'Azir' ,
+        org : '全栈开发·广东' , 
+        desc :'负责 gva 前端部分内容开发迭代，UI 美化。对开源与技术充满热情，喜欢折腾各种新技术。' , 
+        sponsor : 'https://github.com/Azir-11',
+    }
 
 ]
 
