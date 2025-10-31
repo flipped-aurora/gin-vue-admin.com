@@ -65,3 +65,34 @@ body {
 a{
     text-decoration: none !important;
 }
+
+/* 顶栏样式调整 */
+.VPNavBar, .VPNav, .VPLocalNav {
+    background-color: white !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.VPNavBar .content, .VPNav .content {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(8px);
+}
+
+/* 暗夜模式下的顶栏样式 */
+.dark .VPNavBar, .dark .VPNav, .dark .VPLocalNav {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .VPNavBar .content, .dark .VPNav .content {
+    background-color: rgba(26, 26, 26, 0.8) !important;
+    backdrop-filter: blur(8px);
+}
+
+/* 内容区域背景色调整 */
+.content {
+    background-color: white;
+}
+
+.dark .content {
+    background-color: #1a1a1a;
+}
