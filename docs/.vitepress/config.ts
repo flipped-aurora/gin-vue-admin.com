@@ -383,10 +383,6 @@ export default defineConfig({
                             link: '/guide/deployment/k8s'
                         },
                         {
-                            text: '生产环境部署',
-                            link: '/guide/deployment/production'
-                        },
-                        {
                             text: '更详部署指南',
                             link: 'https://www.gin-vue-admin.com/empower/index.html'
                         }

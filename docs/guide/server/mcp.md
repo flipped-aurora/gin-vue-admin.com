@@ -87,6 +87,9 @@ mcp:
     sse_path: /sse # SSE路径
     message_path: /message # 消息路径
     url_prefix: '' # URL前缀
+    ## v2.8.6后可用
+    addr: 8889 # 监听地址 在separate为true时有效 （暂时未实现独立运行功能，敬请期待）
+    separate: false # 是否隔离 开启以后mcp将不会跟随gva本体启动 建议在生产环境开启
 ```
 
 ## 自动填写页面参数示例

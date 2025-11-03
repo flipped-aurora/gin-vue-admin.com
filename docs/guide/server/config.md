@@ -217,6 +217,7 @@ system:
   use-redis: false
   use-mongo: false
   use-strict-auth: false
+  disabled-auto-migrate: false
 ```
 
 ### struct
@@ -234,6 +235,7 @@ type System struct {
 	UseRedis      bool   `mapstructure:"use-redis" json:"use-redis" yaml:"use-redis"`                   // 使用redis
 	UseMongo      bool   `mapstructure:"use-mongo" json:"use-mongo" yaml:"use-mongo"`                   // 使用mongo
 	UseStrictAuth bool   `mapstructure:"use-strict-auth" json:"use-strict-auth" yaml:"use-strict-auth"` // 使用树形角色分配模式
+  DisabledAutoMigrate   bool   `mapstructure:"disabled-auto-migrate" json:"disabled-auto-migrate" yaml:"disabled-auto-migrate"`           // 是否关闭自动迁移数据库
 }
 ```
 
@@ -252,7 +254,7 @@ type System struct {
 | iplimit-time     | int    | IP限流：限制时间窗口（秒），默认3600                                                                                                               |
 | use-mongo        | bool   | 是否使用MongoDB数据库，默认false                                                                                                              |
 | use-strict-auth  | bool   | 是否开启严格角色模式（树形角色分配），默认false                                                                                                         |
-
+| disabled-auto-migrate      | bool   | 是否自动迁移数据库，默认false,生产环境建议开启 （本配置在>=v2.8.6后可用）                                                                                                        |
 ## captcha
 
 ### yaml

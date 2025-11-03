@@ -1,0 +1,29 @@
+# Robots.txt for Gin-Vue-Admin Documentation Site
+# 防止第三方企业logo被搜索引擎误收录为网站logo
+
+User-agent: *
+Allow: /
+
+# 禁止收录第三方企业logo目录
+Disallow: /user/
+Disallow: /user/ali.jpg
+Disallow: /user/zijie.jpg
+Disallow: /user/tengxun.png
+Disallow: /user/ea.jpg
+Disallow: /user/douyu.jpg
+Disallow: /user/vivo.svg
+Disallow: /user/anker.png
+Disallow: /user/shenxinfu.png
+Disallow: /user/cadence.jpeg
+Disallow: /user/transsion.svg
+Disallow: /user/mobile.png
+Disallow: /user/huashu.png
+
+# 允许收录网站自有资源
+Allow: /logo.png
+Allow: /logo.svg
+Allow: /favicon.ico
+Allow: /favicon.svg
+
+# 网站地图
+Sitemap: https://www.gin-vue-admin.com/sitemap.xml
