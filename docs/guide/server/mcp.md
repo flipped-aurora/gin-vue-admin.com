@@ -37,6 +37,7 @@
 {
   "mcpServers": {
     "GVA Helper": {
+      "type": "sse",
       "url": "http://127.0.0.1:8888/sse"
     }
   }
