@@ -258,7 +258,7 @@ export default defineConfig({
                         },
                         {
                             text: '开发指导文档',
-                            link: 'https://www.gin-vue-admin.com/empower/index.html'
+                            link: 'https://plugin.gin-vue-admin.com/license'
                         }
                     ]
                 },
@@ -324,7 +324,7 @@ export default defineConfig({
                         },
                         {
                             text: '开发指导文档',
-                            link: 'https://www.gin-vue-admin.com/empower/index.html'
+                            link: 'https://plugin.gin-vue-admin.com/license'
                         }
                     ]
                 },
@@ -384,7 +384,7 @@ export default defineConfig({
                         },
                         {
                             text: '更详部署指南',
-                            link: 'https://www.gin-vue-admin.com/empower/index.html'
+                            link: 'https://plugin.gin-vue-admin.com/license'
                         }
                     ]
                 },
