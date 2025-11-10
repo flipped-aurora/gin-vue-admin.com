@@ -103,7 +103,7 @@ a[href="/empower/index.html"] {
   position: relative;
 }
 a[href="/empower/index.html"]::after {
-  content: "折扣";
+  content: "限时折扣";
   position: absolute;
   top: -8px;
   right: -8px;
@@ -121,19 +121,4 @@ a[href="/empower/index.html"]::after {
 /* 顶栏导航中的“购买授权” */
 .VPNavBar a[href="https://plugin.gin-vue-admin.com/license"] {
   position: relative;
-}
-.VPNavBar a[href="https://plugin.gin-vue-admin.com/license"]::after {
-  content: "折扣";
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background: #ef4444; /* red-500 */
-  color: #fff;
-  font-size: 10px;
-  line-height: 1;
-  padding: 2px 6px;
-  border-radius: 9999px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.15);
-  transform: rotate(8deg);
-  pointer-events: none;
 }
