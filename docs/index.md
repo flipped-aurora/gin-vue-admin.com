@@ -20,7 +20,7 @@ hero:
       link: https://plugin.gin-vue-admin.com
     - theme: bg-amber-500 text-white dark:bg-amber-600 hover:bg-amber-800
       text: 🥇 购买授权
-      link: /empower/index.html
+      link: https://plugin.gin-vue-admin.com/license
 ---
 <script setup>
 import HomeCompanyGroup from '.vitepress/theme/components/HomeCompanyGroup.vue';

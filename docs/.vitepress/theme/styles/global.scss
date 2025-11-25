@@ -99,21 +99,21 @@ a{
 
 /* 购买授权按钮与导航的折扣标签样式 */
 /* 首页 Hero 区的“购买授权”按钮 */
-a[href="/empower/index.html"] {
-  position: relative;
-}
-a[href="/empower/index.html"]::after {
-  content: "限时折扣";
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: #ef4444; /* red-500 */
-  color: #fff;
-  font-size: 11px;
-  line-height: 1;
-  padding: 3px 8px;
-  border-radius: 9999px;
-  box-shadow: 0 2px 6px rgba(0,0,0,.15);
-  transform: rotate(8deg);
-  pointer-events: none;
-}
+// a[href="/empower/index.html"] {
+//   position: relative;
+// }
+// a[href="/empower/index.html"]::after {
+//   content: "限时折扣";
+//   position: absolute;
+//   top: -8px;
+//   right: -8px;
+//   background: #ef4444; /* red-500 */
+//   color: #fff;
+//   font-size: 11px;
+//   line-height: 1;
+//   padding: 3px 8px;
+//   border-radius: 9999px;
+//   box-shadow: 0 2px 6px rgba(0,0,0,.15);
+//   transform: rotate(8deg);
+//   pointer-events: none;
+// }
