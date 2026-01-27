@@ -14,8 +14,6 @@ import EmPower from '../components/EmPower.vue'
 import Link from '../components/Link.vue'
 // @ts-ignore
 import IndexMounted from '../components/IndexMounted.vue'
-// @ts-ignore
-import GiteeBanner from './components/GiteeBanner.vue'
 
 import GvaLayout from './gvaLayout.vue'
 
@@ -25,8 +23,7 @@ const components = {
   PluginRanking,
   Link,
   IndexMounted,
-  EmPower,
-  GiteeBanner
+  EmPower
 }
 
 const initWebStyle = () =>{
