@@ -1,71 +1,88 @@
 <template>
-  <div class="gitee-banner" v-if="showBanner">
+  <div v-if="showBanner" class="gitee-banner">
     <div class="banner-container">
-      <div class="banner-content">
-        <div class="banner-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#C71D23"/>
+      <div class="banner-shell">
+        <a
+          class="banner-main"
+          href="https://plugin.gin-vue-admin.com/license"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="banner-content">
+            <div class="banner-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#C71D23" />
+              </svg>
+            </div>
+            <div class="banner-text">
+              <span class="banner-title">🎉 授权打折活动正在进行中</span>
+              <span class="banner-highlight">点击查看优惠授权方案</span>
+              <span class="banner-subtitle">限时优惠，欢迎了解详情</span>
+            </div>
+            <div class="banner-actions">
+              <span class="vote-button">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 1L9.5 5.5L14 7L9.5 8.5L8 13L6.5 8.5L2 7L6.5 5.5L8 1Z" fill="currentColor" />
+                </svg>
+                立即查看
+              </span>
+            </div>
+          </div>
+        </a>
+        <button
+          class="close-button"
+          type="button"
+          aria-label="关闭活动通知"
+          title="关闭"
+          @click="closeBanner"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
           </svg>
-        </div>
-        <div class="banner-text">
-          <span class="banner-title">🎉 我们正在参与</span>
-          <span class="banner-highlight">Gitee 2025最受欢迎开源项目评选</span>
-          <span class="banner-subtitle">希望能得到您宝贵的一票！</span>
-        </div>
-        <div class="banner-actions">
-          <a 
-            href="https://gitee.com/activity/2025opensource?ident=IIOGJ8" 
-            target="_blank" 
-            class="vote-button"
-            @click="trackVote"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 1L9.5 5.5L14 7L9.5 8.5L8 13L6.5 8.5L2 7L6.5 5.5L8 1Z" fill="currentColor"/>
-            </svg>
-            立即投票
-          </a>
-          <button class="close-button" @click="closeBanner" title="关闭">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </button>
-        </div>
+        </button>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from 'vue'
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
 
+const BANNER_CLOSE_KEY = 'gva-license-banner-closed'
 const showBanner = ref(true)
 
 const closeBanner = () => {
   showBanner.value = false
-  // 只在当前会话中隐藏banner，不保存到localStorage
-  // 这样重新打开浏览器时banner会重新显示
-}
-
-const trackVote = () => {
-  // 可以在这里添加投票点击统计
-  console.log('Gitee vote clicked')
+  window.localStorage.setItem(BANNER_CLOSE_KEY, '1')
 }
 
 onMounted(() => {
-  // 每次打开浏览器都显示banner
-  showBanner.value = true
+  showBanner.value = window.localStorage.getItem(BANNER_CLOSE_KEY) !== '1'
 })
 </script>
 
 <style scoped>
 .gitee-banner {
   position: relative;
+  display: block;
   z-index: 30;
   margin-top: var(--vp-nav-height, 64px);
   background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #c44569 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   animation: slideDown 0.5s ease-out;
+}
+
+.banner-main {
+  flex: 1;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+  transition: filter 0.2s ease;
+}
+
+.banner-main:hover {
+  filter: brightness(1.03);
 }
 
 @keyframes slideDown {
@@ -85,11 +102,17 @@ onMounted(() => {
   padding: 0 24px;
 }
 
+.banner-shell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+}
+
 .banner-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 0;
   gap: 16px;
 }
 
@@ -155,7 +178,6 @@ onMounted(() => {
   padding: 8px 16px;
   background: rgba(255, 255, 255, 0.9);
   color: #c44569;
-  text-decoration: none;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
@@ -171,42 +193,52 @@ onMounted(() => {
 }
 
 .close-button {
-  display: flex;
+  flex-shrink: 0;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 28px;
   height: 28px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 50%;
-  color: white;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .close-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.06);
+}
+
+.close-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 2px;
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .banner-shell {
+    align-items: flex-start;
+  }
+
   .banner-content {
     flex-direction: column;
     gap: 12px;
-    padding: 16px 0;
+    padding-right: 6px;
   }
-  
+
   .banner-text {
     flex-direction: column;
     text-align: center;
     gap: 4px;
   }
-  
+
   .banner-highlight {
     white-space: normal;
   }
-  
+
   .banner-actions {
     width: 100%;
     justify-content: center;
@@ -217,11 +249,11 @@ onMounted(() => {
   .banner-container {
     padding: 0 16px;
   }
-  
+
   .banner-text {
     font-size: 13px;
   }
-  
+
   .vote-button {
     padding: 10px 20px;
     font-size: 14px;
@@ -240,5 +272,13 @@ onMounted(() => {
 
 .dark .vote-button:hover {
   background: white;
+}
+
+.dark .close-button {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.dark .close-button:hover {
+  background: rgba(255, 255, 255, 0.24);
 }
 </style>
