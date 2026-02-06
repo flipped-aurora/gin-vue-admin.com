@@ -18,7 +18,7 @@ hero:
     - theme: bg-green-500 text-white dark:bg-green-600 hover:bg-green-800 
       text: 🛒 插件市场
       link: https://plugin.gin-vue-admin.com
-    - theme: bg-amber-500 text-white dark:bg-amber-600 hover:bg-amber-800
+    - theme: bg-amber-500 text-white dark:bg-amber-600 hover:bg-amber-800 gva-license-btn
       text: 🥇 购买授权
       link: https://plugin.gin-vue-admin.com/license
 ---

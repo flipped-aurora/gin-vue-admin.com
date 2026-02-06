@@ -97,23 +97,37 @@ a{
     background-color: #1a1a1a;
 }
 
-/* 购买授权按钮与导航的折扣标签样式 */
-/* 首页 Hero 区的“购买授权”按钮 */
-// a[href="/empower/index.html"] {
-//   position: relative;
-// }
-// a[href="/empower/index.html"]::after {
-//   content: "限时折扣";
-//   position: absolute;
-//   top: -8px;
-//   right: -8px;
-//   background: #ef4444; /* red-500 */
-//   color: #fff;
-//   font-size: 11px;
-//   line-height: 1;
-//   padding: 3px 8px;
-//   border-radius: 9999px;
-//   box-shadow: 0 2px 6px rgba(0,0,0,.15);
-//   transform: rotate(8deg);
-//   pointer-events: none;
-// }
+/* 首页 Hero 区“购买授权”按钮角标 */
+.VPHero .actions .VPButton.gva-license-btn {
+    position: relative;
+    overflow: visible;
+}
+
+.VPHero .actions .VPButton.gva-license-btn::after {
+    content: "新年折扣";
+    position: absolute;
+    top: -10px;
+    right: -12px;
+    z-index: 2;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.35);
+    transform: rotate(8deg);
+    transform-origin: center;
+    pointer-events: none;
+}
+
+@media (max-width: 640px) {
+    .VPHero .actions .VPButton.gva-license-btn::after {
+        top: -8px;
+        right: -10px;
+        font-size: 10px;
+        padding: 3px 7px;
+    }
+}
