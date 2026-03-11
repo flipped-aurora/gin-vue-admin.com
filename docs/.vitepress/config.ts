@@ -118,10 +118,6 @@ export default defineConfig({
                     {text: 'AI助手集成', link: '/guide/server/mcp'},
                     {text: '项目上线', link: '/guide/deployment/'},
                     {text: '更新日志', link: 'https://flipped-aurora.feishu.cn/docx/LPufdOPWxo3zcpxNSVGcr1vcn71?from=from_copylink'},
-                    {
-                    text: '特惠服务器',
-                    link: 'https://flipped-aurora.feishu.cn/wiki/HNnPwI9TbifCvwk51A2cLqOjnac?from=from_copylink'
-                }
                 ],
             },
             {
