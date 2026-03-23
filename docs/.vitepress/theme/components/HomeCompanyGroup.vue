@@ -80,6 +80,7 @@ import  vform from '/advertising/vform-banner.png'
 import  yangfan from '/advertising/yangfan.jpg'
 import  cuiliang from '/advertising/cuiliang.png'
 import  jianguo from '/advertising/jianguo.png'
+import  easysearch from '/advertising/easysearch.png'
 
 const ad = [
   // {
@@ -95,13 +96,17 @@ const ad = [
   //   }
   // }
   {
-    img : yangfan,
-    href :'https://github.com/test-instructor/yangfan',
-     meta:{
-      title : '扬帆测试平台',
-      description : `扬帆测试平台`
-    }
+    img : easysearch,
+    href :'https://easysearch.cn',
   }
+  // {
+  //   img : yangfan,
+  //   href :'https://github.com/test-instructor/yangfan',
+  //    meta:{
+  //     title : '扬帆测试平台',
+  //     description : `扬帆测试平台`
+  //   }
+  // }
   ,{
     img : cuiliang,
     href :'https://www.cuiliangblog.cn',
