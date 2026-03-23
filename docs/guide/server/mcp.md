@@ -27,6 +27,10 @@
 
 ### 配置步骤
 
+:::warning 不同版本处理
+如果您的GVA版本<=2.9.0
+:::
+
 #### 第一步：启动GVA项目
 确保你的GVA项目正在运行，MCP服务会自动在 `http://127.0.0.1:8888/sse` 启动
 
@@ -47,6 +51,42 @@
 <img src="/mcp/ai-config-demo.svg" alt="AI编辑器MCP配置示例" style="width: 100%; max-width: 800px; margin: 20px 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
 
 #### 第三步：重启编辑器
+保存配置后重启你的AI编辑工具，等待MCP连接建立，MCP状态显示绿色即表示连接成功
+
+
+:::warning 不同版本处理
+如果您的GVA版本 >2.9.0
+:::
+
+
+#### 第一步：启动GVA项目
+确保你的GVA项目正在运行，MCP服务会自动在 `http://127.0.0.1:8889/mcp` 启动
+
+### 第二步：启动mcp
+
+```
+go run ./cmd/mcp -config ./cmd/mcp/config.yaml
+```
+
+#### 第三步：配置AI编辑器
+在你的AI编辑工具的配置文件中添加以下MCP配置：
+
+```json
+{
+  "mcpServers": {
+    "GVA_MCP": {
+      "headers": {
+        "x-token": "你当前的jwt，可以在gva项目的http://localhost:8080/#/layout/systemTools/mcpTest直接粘贴获取"
+      },
+      "url": "http://127.0.0.1:8889/mcp"
+    }
+  }
+}
+```
+
+<img src="/mcp/mcp-page.png" alt="AI编辑器MCP配置示例" style="width: 100%; max-width: 800px; margin: 20px 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
+
+#### 第四步：重启编辑器
 保存配置后重启你的AI编辑工具，等待MCP连接建立，MCP状态显示绿色即表示连接成功
 
 ### 🚀 AI助手新能力
@@ -81,6 +121,7 @@
 ## 配置文件说明
 
 ```yaml
+# <=2.9.0 在主项目的config.yaml更加重要
 mcp:
     name: GVA_MCP  # MCP服务名称
     version: v1.0.0 # 版本号
@@ -90,7 +131,26 @@ mcp:
     ## v2.8.6后可用
     addr: 8889 # 监听地址 在separate为true时有效 （暂时未实现独立运行功能，敬请期待）
     separate: false # 是否隔离 开启以后mcp将不会跟随gva本体启动 建议在生产环境开启
+
+# >2.9.0 在cmd/mcp下的config.yaml更加重要
+
+mcp:
+  name: GVA_MCP # MCP服务名称
+  version: v1.0.0 # 版本号
+  path: /mcp # mcp路径
+  addr: 8889 # 监听地址
+  base_url: http://127.0.0.1:8889/mcp # 配置地址
+  upstream_base_url: http://127.0.0.1:8888 # upstream_base_url地址
+  auth_header: x-token #鉴权key
+  request_timeout: 15 #超时时间
+
+autocode: 
+  root: ../../.. # 主项目地址
+  server: server # 后端路径
+  web: web/src # 前端路径
+
 ```
+
 
 ## 自动填写页面参数示例
 
