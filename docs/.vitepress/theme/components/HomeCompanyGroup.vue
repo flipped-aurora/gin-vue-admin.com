@@ -105,8 +105,7 @@ const partners: BrandItem[] = [
       description: '\u8fd0\u7ef4\u7814\u53d1\u535a\u5ba2',
     },
   },
-  { name: 'VForm', img: '/advertising/vform-banner.png', href: 'https://www.vform666.com' },
-  { name: 'Nutpi', img: '/advertising/jianguo.png', href: 'https://www.nutpi.net' },
+  { name: 'VForm', img: '/advertising/vform-banner.png', href: 'https://www.vform666.com' }
 ]
 
 const getImageStyle = (item: BrandItem) =>
