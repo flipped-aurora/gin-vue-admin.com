@@ -176,18 +176,18 @@ engine "node" is incompatible with this module
 node --version
 ```
 
-2. 安装推荐版本（Node.js 16+）
+2. 安装推荐版本（Node.js 20.19+ 或 22.12+）
 ```bash
 # 使用 nvm 管理 Node.js 版本
-nvm install 18
-nvm use 18
+nvm install 20
+nvm use 20
 ```
 
 3. 或修改 package.json 中的引擎要求
 ```json
 {
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=20.19"
   }
 }
 ```

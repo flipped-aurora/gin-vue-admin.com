@@ -28,7 +28,7 @@ Gin-Vue-Admin 作为企业级管理系统的基础框架，专注于为开发者
 ## 🛠️ 技术栈
 
 ::: warning 环境要求
-- **Node.js**: ≥ 18.16.2
+- **Node.js**: ≥ 20.19 或 ≥ 22.12
 - **Go**: ≥ 1.22
 - **MySQL**: ≥ 5.7 (引擎必须为 InnoDB)
 - **Git**: 版本控制工具
@@ -208,11 +208,11 @@ sequenceDiagram
     A-->>F: 返回数据/拒绝访问
 ```
 
-### 前端详细设计图
+### 详细设计图
 
 *提供者: <a href="https://github.com/baobeisuper">baobeisuper</a>*
 
-![前端详细设计图](/introduce/naotu.png)
+![详细设计图](/introduce/naotu.png)
 
 ### 初始化流程
 

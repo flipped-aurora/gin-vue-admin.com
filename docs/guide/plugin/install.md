@@ -23,7 +23,7 @@ Gin-Vue-Admin 插件系统提供了丰富的功能扩展能力，支持多种安
 ### 系统要求
 
 - Gin-Vue-Admin 版本 >= 2.5.3（自动安装功能）
-- Node.js 版本 >= 16.0.0
+- Node.js 版本 >= 20.19 或 >= 22.12
 - Go 版本 >= 1.19
 - 数据库支持（MySQL/PostgreSQL/SQLite）
 

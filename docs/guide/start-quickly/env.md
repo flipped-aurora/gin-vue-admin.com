@@ -9,7 +9,7 @@
 
 ::: warning 📋 环境要求
 - **Git**: 用于代码版本管理
-- **Node.js**: >= 18.16.2 (推荐使用 LTS 版本)
+- **Node.js**: >= 20.19 或 >= 22.12 (推荐使用 LTS 版本)
 - **Go**: >= 1.22 (推荐使用最新稳定版)
 - **MySQL**: >= 8.0，存储引擎必须为 <span class="bg-red-600 text-white rounded font-medium dark:bg-red-500 px-1">InnoDB</span>
 - **Redis**: >= 6.0 (可选，用于缓存)
@@ -21,7 +21,7 @@
 
 访问 [Node.js 官网](https://nodejs.org/zh-cn/) 下载并安装 LTS 版本。
 
-**推荐版本**: Node.js 18.x 或更高版本
+**推荐版本**: Node.js 20.19+ 或 22.12+
 
 ### 2. 验证安装
 
@@ -30,7 +30,7 @@
 ```bash
 # 检查 Node.js 版本
 node -v
-# 输出示例: v18.17.0
+# 输出示例: v22.12.0
 
 # 检查 npm 版本
 npm -v

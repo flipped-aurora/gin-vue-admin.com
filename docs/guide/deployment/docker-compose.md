@@ -38,8 +38,8 @@ server {
 `Dockerfile` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的[Dockerfile](https://github.com/flipped-aurora/gin-vue-admin/blob/master/web/Dockerfile)
 
 ```
-# 声明镜像来源为node:12.16.1
-FROM node:12.16.1
+# 声明镜像来源为node:22.12
+FROM node:22.12
 
 # 声明工作目录
 WORKDIR /gva_web/

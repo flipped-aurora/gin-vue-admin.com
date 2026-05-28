@@ -145,8 +145,8 @@
 2. **升级 Node.js**
    ```bash
    # 使用 nvm 管理 Node.js 版本
-   nvm install 16
-   nvm use 16
+   nvm install 20
+   nvm use 20
    ```
 
 3. **版本要求说明**

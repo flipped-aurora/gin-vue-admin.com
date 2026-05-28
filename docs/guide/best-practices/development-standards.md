@@ -729,7 +729,7 @@ Related to #456
 ### 环境要求
 
 - Go 1.19+
-- Node.js 16+
+- Node.js 20.19+ 或 22.12+
 - MySQL 8.0+
 - Redis 6.0+
 
