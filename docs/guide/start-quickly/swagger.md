@@ -65,7 +65,7 @@ swag --help
 
 // @contact.name   API Support
 // @contact.url    https://github.com/flipped-aurora/gin-vue-admin/issues
-// @contact.email  support@gin-vue-admin.com
+// @contact.email  business@gin-vue-admin.com
 
 // @license.name  Apache 2.0
 // @license.url   http://www.apache.org/licenses/LICENSE-2.0.html

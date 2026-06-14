@@ -131,3 +131,23 @@ a{
         padding: 3px 7px;
     }
 }
+
+.gva-legal-footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px 24px 32px;
+    font-size: 14px;
+    line-height: 1.5;
+    flex-wrap: wrap;
+}
+
+.gva-legal-footer-links a {
+    color: var(--vp-c-text-2);
+    transition: color 0.2s ease;
+}
+
+.gva-legal-footer-links a:hover {
+    color: var(--vp-c-brand-1);
+}
+

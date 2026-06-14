@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"d:/gin-vue-admin.com/docs/superpowers/specs\")",
+      "Bash(pnpm docs:build)"
+    ],
+    "additionalDirectories": [
+      "d:\\gin-vue-admin.com\\docs\\superpowers"
+    ]
+  }
+}
