@@ -13,7 +13,7 @@
         <a class="gva-btn gva-btn--primary" href="https://demo.gin-vue-admin.com" target="_blank" rel="noopener">
           立即体验
         </a>
-        <a class="gva-btn gva-btn--ghost" href="/guide/introduce/project">查看文档</a>
+        <a class="gva-btn gva-btn--ghost" target="_blank" href="/guide/introduce/project">查看文档</a>
       </div>
     </div>
   </section>

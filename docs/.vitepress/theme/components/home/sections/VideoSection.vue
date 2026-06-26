@@ -16,7 +16,7 @@
           <span class="vsec__cover-hint">GVA Admin 截图（占位）</span>
         </div>
         <button class="vsec__play" aria-label="播放工作流程演示视频" @click="open = true">
-          <img class="vsec__icon vsec__icon--play" :src="playerIcon" alt="" />
+          <span class="vsec__play-triangle" aria-hidden="true"></span>
         </button>
       </div>
     </div>
@@ -135,15 +135,22 @@ onBeforeUnmount(() => {
   border-radius: 999px;
   border: none;
   cursor: pointer;
-  background: var(--gva-primary);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(10px);
   display: grid;
   place-items: center;
-  box-shadow: 0 12px 30px rgba(36, 101, 242, 0.45);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 .vsec__play:hover { transform: translate(-50%, -50%) scale(1.06); }
-.vsec__icon--play { width: 30px; height: 30px; }
+.vsec__play-triangle {
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 18px solid rgba(31, 41, 55, 0.88);
+}
 
 /* 弹层 */
 .vsec-modal {
