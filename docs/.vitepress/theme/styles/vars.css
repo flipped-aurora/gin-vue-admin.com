@@ -8,12 +8,82 @@ $opq-yellow: #FCDB29; */
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-c-brand: #128FD0;
-  --vp-c-brand-light: #128FD0;
-  --vp-c-brand-lighter: #23A3DC;
-  --vp-c-brand-dark: #077BC2;
-  --vp-c-brand-darker: #128FD0;
-  --vp-c-brand-dimm: #bfe6fb28;
+  /* Legacy brand aliases (kept for older components) */
+  --vp-c-brand: #2465F2;
+  --vp-c-brand-light: #3B78F5;
+  --vp-c-brand-lighter: #6B9BF8;
+  --vp-c-brand-dark: #1B52D4;
+  --vp-c-brand-darker: #1644B5;
+  --vp-c-brand-dimm: rgba(36, 101, 242, 0.16);
+
+  /* VitePress 1.x brand variables (nav / buttons / links) */
+  --vp-c-brand-1: #2465F2;
+  --vp-c-brand-2: #3B78F5;
+  --vp-c-brand-3: #1B52D4;
+  --vp-c-brand-soft: rgba(36, 101, 242, 0.14);
+}
+
+/**
+   * Design tokens — GVA 3.0 landing (extracted from design.pdf)
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --gva-primary: #2465F2;
+  --gva-primary-hover: #1B52D4;
+  --gva-primary-soft: rgba(36, 101, 242, 0.1);
+  --gva-primary-ring: rgba(36, 101, 242, 0.28);
+
+  --gva-text-strong: #0B0B0F;
+  --gva-text-body: #5A5F6B;
+  --gva-text-muted: #8A8F99;
+
+  --gva-bg-base: #ffffff;
+  --gva-bg-alt: #f7f7f7;
+  --gva-bg-dark: #0a0e1a;
+  --gva-bg-dark-soft: #111726;
+
+  --gva-border: rgba(15, 23, 42, 0.1);
+  --gva-border-strong: rgba(15, 23, 42, 0.16);
+
+  --gva-success: #16a34a;
+  --gva-danger: #ef4444;
+  --gva-amber: #f59e0b;
+
+  --gva-radius-sm: 10px;
+  --gva-radius: 14px;
+  --gva-radius-lg: 20px;
+
+  --gva-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.05);
+  --gva-shadow: 0 8px 24px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.04);
+  --gva-shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.1);
+  --gva-shadow-primary: 0 10px 28px rgba(36, 101, 242, 0.28);
+
+  --gva-container: 1200px;
+  --gva-ghost-num: rgba(15, 23, 42, 0.05);
+}
+
+.dark {
+  --gva-primary: #4f86ff;
+  --gva-primary-hover: #6b9bf8;
+  --gva-primary-soft: rgba(79, 134, 255, 0.16);
+  --gva-primary-ring: rgba(79, 134, 255, 0.34);
+
+  --gva-text-strong: #f3f5f9;
+  --gva-text-body: #aab2c0;
+  --gva-text-muted: #7c8595;
+
+  --gva-bg-base: #0f1115;
+  --gva-bg-alt: #15181e;
+  --gva-bg-dark: #06080f;
+  --gva-bg-dark-soft: #0d1320;
+
+  --gva-border: rgba(255, 255, 255, 0.1);
+  --gva-border-strong: rgba(255, 255, 255, 0.16);
+
+  --gva-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+  --gva-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --gva-shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+  --gva-ghost-num: rgba(255, 255, 255, 0.05);
 }
 
 /**
@@ -40,8 +110,8 @@ $opq-yellow: #FCDB29; */
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
     120deg,
-    #23A3DC 30%,
-    #077BC2
+    #2465F2 30%,
+    #1B52D4
   );
 
   --vp-home-hero-image-background-image: linear-gradient(

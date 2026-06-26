@@ -1,6 +1,7 @@
 import Theme from 'vitepress/theme'
 import './styles/vars.css'
 import './styles/global.scss'
+import './styles/landing.scss'
 
 // @ts-ignore
 import PluginInfo from '../components/PluginInfo.vue'

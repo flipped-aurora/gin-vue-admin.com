@@ -1,0 +1,339 @@
+/**
+ * GVA 3.0 landing — shared design-system classes
+ * Tokens live in vars.css (:root / .dark). Keep colors token-based, never hard-coded.
+ * -------------------------------------------------------------------------- */
+
+.gva-landing {
+  color: var(--gva-text-body);
+  font-family: var(--vp-font-family-base);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* ---- Home page: let the landing run full-bleep edge to edge ------------- */
+.VPContent.gva-home-page,
+.gva-home-page.VPContent {
+  padding: 0 !important;
+}
+.gva-home-page .VPPage {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.gva-home-page .VPPage > .vp-doc,
+.gva-home-page .vp-doc {
+  max-width: none !important;
+  padding: 0 !important;
+}
+.gva-home-page .gva-landing {
+  margin: 0;
+}
+/* the markdown wrapper sometimes adds a stray <p>; collapse empties */
+.gva-home-page .gva-landing + p:empty {
+  display: none;
+}
+
+/* ---- Section shells ---------------------------------------------------- */
+.gva-section {
+  position: relative;
+  padding: 88px 24px;
+  background: var(--gva-bg-base);
+}
+.gva-section--alt {
+  background: var(--gva-bg-alt);
+}
+.gva-section--dark {
+  background: var(--gva-bg-dark);
+  color: rgba(255, 255, 255, 0.78);
+}
+.gva-container {
+  width: 100%;
+  max-width: var(--gva-container);
+  margin: 0 auto;
+}
+.gva-container--narrow {
+  max-width: 940px;
+}
+
+/* ---- Section label  ( ● 工具兼容 ) ------------------------------------- */
+.gva-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--gva-primary);
+}
+.gva-label::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--gva-primary);
+  box-shadow: 0 0 0 4px var(--gva-primary-soft);
+}
+.gva-head {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.gva-head .gva-label {
+  margin-bottom: 16px;
+}
+
+/* ---- Headings ---------------------------------------------------------- */
+.gva-h1 {
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--gva-text-strong);
+}
+.gva-h2 {
+  font-size: clamp(28px, 3.6vw, 40px);
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--gva-text-strong);
+}
+.gva-h3 {
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--gva-text-strong);
+}
+/* keyword highlight inside a heading */
+.gva-hl {
+  color: var(--gva-primary);
+}
+.gva-section--dark .gva-h1,
+.gva-section--dark .gva-h2,
+.gva-section--dark .gva-h3 {
+  color: #fff;
+}
+
+.gva-lead {
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.7;
+  color: var(--gva-text-body);
+  max-width: 720px;
+}
+.gva-head .gva-lead {
+  margin: 16px auto 0;
+}
+.gva-muted {
+  color: var(--gva-text-muted);
+  font-size: 13px;
+}
+
+/* ---- Buttons ----------------------------------------------------------- */
+.gva-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.gva-btn--primary {
+  background: var(--gva-primary);
+  color: #fff;
+  box-shadow: var(--gva-shadow-primary);
+}
+.gva-btn--primary:hover {
+  background: var(--gva-primary-hover);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.gva-btn--ghost {
+  background: transparent;
+  color: var(--gva-text-strong);
+  border-color: var(--gva-border-strong);
+}
+.gva-btn--ghost:hover {
+  border-color: var(--gva-primary);
+  color: var(--gva-primary);
+}
+.gva-section--dark .gva-btn--ghost {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.gva-section--dark .gva-btn--ghost:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* inline text link with arrow */
+.gva-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gva-primary);
+  font-weight: 600;
+  font-size: 15px;
+}
+.gva-link:hover {
+  color: var(--gva-primary-hover);
+}
+.gva-link .gva-arrow {
+  transition: transform 0.15s ease;
+}
+.gva-link:hover .gva-arrow {
+  transform: translateX(3px);
+}
+
+/* ---- Cards ------------------------------------------------------------- */
+.gva-card {
+  background: var(--gva-bg-base);
+  border: 1px solid var(--gva-border);
+  border-radius: var(--gva-radius);
+  box-shadow: var(--gva-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.gva-card--hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--gva-shadow);
+  border-color: var(--gva-border-strong);
+}
+
+/* two-column feature layout */
+.gva-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.gva-two-col__text .gva-label {
+  margin-bottom: 16px;
+}
+.gva-two-col__text .gva-lead {
+  margin: 18px 0 24px;
+}
+
+/* bullet list with blue dots */
+.gva-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: grid;
+  gap: 14px;
+}
+.gva-bullets li {
+  position: relative;
+  padding-left: 26px;
+  color: var(--gva-text-body);
+  font-size: 15px;
+}
+.gva-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--gva-primary);
+  box-shadow: 0 0 0 4px var(--gva-primary-soft);
+}
+
+/* pill tags */
+.gva-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.gva-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--vp-font-family-mono);
+  background: var(--gva-primary-soft);
+  color: var(--gva-primary);
+  border: 1px solid transparent;
+}
+
+/* ghost number 01–04 */
+.gva-ghost-num {
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--gva-ghost-num);
+  letter-spacing: -0.02em;
+}
+
+/* ---- Mac-style terminal ------------------------------------------------ */
+.gva-terminal {
+  background: var(--gva-bg-dark);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--gva-radius);
+  overflow: hidden;
+  box-shadow: var(--gva-shadow-lg);
+  font-family: var(--vp-font-family-mono);
+}
+.gva-terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.gva-terminal__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+.gva-terminal__dot--r { background: #ff5f57; }
+.gva-terminal__dot--y { background: #febc2e; }
+.gva-terminal__dot--g { background: #28c840; }
+.gva-terminal__title {
+  margin-left: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+.gva-terminal__body {
+  padding: 20px;
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: #cdd6e4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.gva-t-dim { color: rgba(255, 255, 255, 0.45); }
+.gva-t-green { color: #4ade80; }
+.gva-t-red { color: #f87171; }
+.gva-t-blue { color: #7aa6ff; }
+.gva-t-yellow { color: #fbbf24; }
+.gva-t-white { color: #f3f5f9; }
+
+/* ---- Responsive -------------------------------------------------------- */
+@media (max-width: 860px) {
+  .gva-section {
+    padding: 60px 20px;
+  }
+  .gva-head {
+    margin-bottom: 40px;
+  }
+  .gva-two-col {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  /* visual block goes under the text on mobile */
+  .gva-two-col--reverse .gva-two-col__text {
+    order: -1;
+  }
+  .gva-btn {
+    height: 48px;
+  }
+}
