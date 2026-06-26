@@ -39,19 +39,22 @@
   overflow: hidden;
 }
 .hero__inner { max-width: var(--gva-content); text-align: center; display: flex; flex-direction: column; align-items: center; }
+@media (min-width: 861px) {
+  .hero__inner { transform: translateY(20%); }
+}
 .hero__title { margin: 0 0 20px; }
-.hero__lead { margin: 0 auto 30px; max-width: 760px; }
+.hero__lead { margin: 40px 0 30px ; max-width: 760px; color: #808080; }
 .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
 
 /* 按钮标准已下沉到全局 .gva-btn（圆角矩形 8px / 高 52px / padding 0 28）。
    首屏两个 CTA 额外用等宽 min-width。 */
-.hero__actions .gva-btn { min-width: 200px; }
+.hero__actions .gva-btn { min-width: 160px; }
 
 @media (max-width: 860px) {
   .hero {
     min-height: auto;
     padding: 96px 20px 64px;
   }
-  .hero__actions .gva-btn { flex: 1; min-width: 140px; }
+  .hero__actions .gva-btn { flex: 1; min-width: 160px; }
 }
 </style>

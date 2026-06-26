@@ -47,7 +47,7 @@
 <script setup>
 const caps = ['查看数据', '导入', '批量操作', '删除', '导出']
 const roles = [
-  { name: '管理员', color: '#2465f2', perms: [true, true, true, true, true] },
+  { name: '管理员', color: '#2264F2', perms: [true, true, true, true, true] },
   { name: '普通成员', color: '#16a34a', perms: [true, true, false, false, true] },
   { name: 'AI Agent', color: '#f59e0b', perms: [true, false, true, false, false] },
 ]

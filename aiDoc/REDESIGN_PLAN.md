@@ -7,7 +7,7 @@
 
 - 首页 = `docs/index.md`(`layout: home`)+ 默认 VitePress Hero + 注入组件 `Quicks` / `Liuliang` / `HomeCompanyGroup`。
 - **没有 i18n**:站点 `lang: 'zh-CN'`,无 `locales`,全站中文硬编码。设计稿也是中文 → **保持中文静态文案即符合现有方案**(简报 §1.7 的 i18n 要求是「如果项目有 i18n」的条件句,此处不适用,不新建 i18n 体系)。
-- 主题色当前 `--vp-c-brand: #128FD0` 家族(`vars.css`)。设计主蓝 `#2465F2` → 落到该变量。
+- 主题色当前 `--vp-c-brand: #128FD0` 家族(`vars.css`)。设计主蓝 `#2264F2` → 落到该变量。
 - Tailwind 工具类可用(`postcss.config.cjs` + `@tailwind` in `global.scss`)。暗色走原生 `.dark`。
 - 资产:`/logo.svg`、`/user/*.svg`(明星用户 logo:ali/zijie/tengxun/huashu…)、`/icons/gitee.png`、`/icons/gitcode.svg`、`/tabler--ai.svg`。**缺**:AI 工具 logo(Claude/Cursor/Codex/Trae/Windsurf/OpenClaw)、GVA 后台真实截图、视频文件 → 用内联 SVG / HTML-CSS mockup 还原。
 
@@ -42,8 +42,8 @@
 
 ## 2. Token 落地(阶段 1)
 
-- 改 `vars.css`:`--vp-c-brand*` → `#2465F2` 家族;`--vp-home-hero-name-background` 渐变改蓝。
-- 新增 landing 设计 token(放 `vars.css` `:root`):`--gva-primary:#2465F2`、`--gva-text-strong:#0B0B0F`、`--gva-text-body:#5A5F6B`、`--gva-text-muted:#8A8F99`、`--gva-bg-alt:#F7F7F7`、`--gva-bg-dark:#0A0E1A`、`--gva-success:#16A34A`、`--gva-danger:#EF4444`、圆角/阴影/容器宽度。暗色模式在 `.dark` 下给替代值。
+- 改 `vars.css`:`--vp-c-brand*` → `#2264F2` 家族;`--vp-home-hero-name-background` 渐变改蓝。
+- 新增 landing 设计 token(放 `vars.css` `:root`):`--gva-primary:#2264F2`、`--gva-text-strong:#0B0B0F`、`--gva-text-body:#5A5F6B`、`--gva-text-muted:#8A8F99`、`--gva-bg-alt:#F7F7F7`、`--gva-bg-dark:#0A0E1A`、`--gva-success:#16A34A`、`--gva-danger:#EF4444`、圆角/阴影/容器宽度。暗色模式在 `.dark` 下给替代值。
 - 共享类放新文件 `theme/styles/landing.scss`(`@import` 进 `global.scss` 或 theme index):区块容器、`●`标签、标题高亮、卡片、终端、按钮等。
 
 ## 3. 组件结构
@@ -90,7 +90,7 @@ theme/components/home/
 
 **视觉**
 - [x] 16 区块顺序/文案/布局与 §4 一致;● 标签、标题关键词蓝色高亮、浅灰/白交替、卡片圆角阴影、幽灵数字、深色终端/页脚到位。
-- [x] 主蓝 `#2465F2` 落到 `--vp-c-brand*` 与 landing token,Nav/按钮/链接同步变蓝。
+- [x] 主蓝 `#2264F2` 落到 `--vp-c-brand*` 与 landing token,Nav/按钮/链接同步变蓝。
 - [x] 终端块、权限表、四步流程、彩色生态 3×3 网格特殊视觉还原。
 
 **响应式 / 工程**

@@ -52,7 +52,7 @@
 <script setup>
 const PLUGIN = 'https://plugin.gin-vue-admin.com/#/layout/home'
 const tiles = [
-  { name: '极光论坛', bg: 'linear-gradient(135deg,#2465f2,#5b8cff)', link: PLUGIN },
+  { name: '极光论坛', bg: 'linear-gradient(135deg,#2264F2,#5b8cff)', link: PLUGIN },
   { name: '支付中心', bg: 'linear-gradient(135deg,#16a34a,#4ade80)', link: PLUGIN },
   { name: '消息队列', bg: 'linear-gradient(135deg,#f59e0b,#fbbf24)', link: PLUGIN },
   { name: '对象存储', bg: 'linear-gradient(135deg,#8b5cf6,#c084fc)', link: PLUGIN },

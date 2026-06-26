@@ -92,7 +92,7 @@ const rows = [
 .dark .amock__search { background: rgba(255,255,255,0.06); }
 .amock__tools { display: flex; align-items: center; gap: 10px; }
 .amock__dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(15,23,42,0.18); }
-.amock__avatar { width: 22px; height: 22px; border-radius: 999px; background: linear-gradient(135deg, #6b9bf8, #2465f2); }
+.amock__avatar { width: 22px; height: 22px; border-radius: 999px; background: linear-gradient(135deg, #6b9bf8, #2264F2); }
 
 .amock__body { display: flex; min-height: 0; }
 .amock__side {

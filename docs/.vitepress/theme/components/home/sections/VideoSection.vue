@@ -4,10 +4,7 @@
       <!-- 标题行：左对齐，小播放图标 + 文案 -->
       <div class="vsec__head">
         <span class="vsec__head-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="18" height="18">
-            <rect x="3" y="4" width="18" height="16" rx="3" fill="currentColor" opacity="0.16" />
-            <path d="M10 9.2v5.6l4.6-2.8z" fill="currentColor" />
-          </svg>
+          <img class="vsec__icon vsec__icon--head" :src="playerIcon" alt="" />
         </span>
         <span class="vsec__head-text">观看工作流程演示</span>
       </div>
@@ -19,9 +16,7 @@
           <span class="vsec__cover-hint">GVA Admin 截图（占位）</span>
         </div>
         <button class="vsec__play" aria-label="播放工作流程演示视频" @click="open = true">
-          <svg viewBox="0 0 24 24" width="26" height="26">
-            <path d="M8 5v14l11-7z" fill="currentColor" />
-          </svg>
+          <img class="vsec__icon vsec__icon--play" :src="playerIcon" alt="" />
         </button>
       </div>
     </div>
@@ -53,6 +48,7 @@
 
 <script setup>
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import playerIcon from '@/public/web/player.png'
 
 // TODO: 填入工作流程演示视频地址（留空时弹层显示占位提示）
 const videoSrc = ''
@@ -83,10 +79,10 @@ onBeforeUnmount(() => {
 .vsec__card {
   max-width: var(--gva-content);
   margin: 0 auto;
-  padding: 32px;
+  padding: 16px;
   background: #fff;
   border-radius: 16px;
-  box-shadow: var(--gva-shadow-lg);
+  box-shadow: var(--gva-shadow-sm);
 }
 .dark .vsec__card { background: var(--gva-bg-dark-soft); }
 
@@ -95,11 +91,13 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .vsec__head-icon { display: inline-flex; color: var(--gva-primary); }
+.vsec__icon { display: block; }
+.vsec__icon--head { width: 18px; height: 18px; }
 .vsec__head-text {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--gva-text-strong);
 }
@@ -109,7 +107,7 @@ onBeforeUnmount(() => {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 12px;
+  border-radius: 4px;
   overflow: hidden;
 }
 .vsec__cover {
@@ -145,7 +143,7 @@ onBeforeUnmount(() => {
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 .vsec__play:hover { transform: translate(-50%, -50%) scale(1.06); }
-.vsec__play svg { margin-left: 3px; }
+.vsec__icon--play { width: 30px; height: 30px; }
 
 /* 弹层 */
 .vsec-modal {

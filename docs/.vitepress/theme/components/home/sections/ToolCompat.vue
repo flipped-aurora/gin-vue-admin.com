@@ -31,7 +31,7 @@ const tools = [
   { name: 'Claude Code', glyph: 'C', bg: 'rgba(217,119,87,0.14)', fg: '#d97757' },
   { name: 'Cursor', glyph: '⌁', bg: 'rgba(15,23,42,0.08)', fg: '#0f172a' },
   { name: 'Codex', glyph: '◎', bg: 'rgba(16,163,127,0.14)', fg: '#10a37f' },
-  { name: 'Trae', glyph: 'T', bg: 'rgba(36,101,242,0.14)', fg: '#2465f2' },
+  { name: 'Trae', glyph: 'T', bg: 'rgba(36,101,242,0.14)', fg: '#2264F2' },
   { name: 'Windsurf', glyph: '≈', bg: 'rgba(20,184,166,0.14)', fg: '#14b8a6' },
   { name: 'OpenClaw', glyph: '✦', bg: 'rgba(245,158,11,0.16)', fg: '#f59e0b' },
 ]

@@ -47,11 +47,16 @@
 }
 .gva-container {
   width: 100%;
-  max-width: var(--gva-container);
+  max-width: var(--gva-content);
   margin: 0 auto;
 }
 .gva-container--narrow {
   max-width: 940px;
+}
+
+/* 首页 footer 保持更宽的落版，不跟随内容区收窄。 */
+.sf > .gva-container {
+  max-width: var(--gva-container);
 }
 
 /* ---- Section label  ( ● 工具兼容 ) ------------------------------------- */
@@ -132,11 +137,11 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 52px;
+  height: 43px;
   padding: 0 28px;
   border-radius: 8px;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: normal;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease,
     border-color 0.2s ease, color 0.2s ease;
@@ -154,8 +159,8 @@
 }
 .gva-btn--ghost {
   background: transparent;
-  color: var(--gva-text-strong);
-  border-color: var(--gva-border-strong);
+  color: var(--gva-primary);
+  border-color: var(--gva-primary);
 }
 .gva-btn--ghost:hover {
   border-color: var(--gva-primary);
