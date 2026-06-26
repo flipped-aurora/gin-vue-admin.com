@@ -33,16 +33,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  background:
-    radial-gradient(900px 460px at 50% -8%, rgba(36, 101, 242, 0.1), transparent 70%),
-    var(--gva-bg-base);
+  /* 顶部 padding 抵消顶栏(64px)与底部缩短(64px)的偏置，使内容在视口中真正垂直居中。 */
+  padding: 66px 24px 0;
+  background: var(--gva-bg-base);
   overflow: hidden;
 }
-.hero__inner { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.hero__inner { max-width: var(--gva-content); text-align: center; display: flex; flex-direction: column; align-items: center; }
 .hero__title { margin: 0 0 20px; }
 .hero__lead { margin: 0 auto 30px; max-width: 760px; }
-.hero__actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.hero__actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+/* 按钮标准已下沉到全局 .gva-btn（圆角矩形 8px / 高 52px / padding 0 28）。
+   首屏两个 CTA 额外用等宽 min-width。 */
+.hero__actions .gva-btn { min-width: 200px; }
 
 @media (max-width: 860px) {
   .hero {

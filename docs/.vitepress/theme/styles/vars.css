@@ -8,8 +8,8 @@ $opq-yellow: #FCDB29; */
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-font-family-base: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  
+  --vp-font-family-base: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
   /* Legacy brand aliases (kept for older components) */
   --vp-c-brand: #2465F2;
   --vp-c-brand-light: #3B78F5;
@@ -30,10 +30,10 @@ $opq-yellow: #FCDB29; */
    * -------------------------------------------------------------------------- */
 
 :root {
-  --gva-primary: #4E80EE;
-  --gva-primary-hover: #3B6AD9;
-  --gva-primary-soft: rgba(78, 128, 238, 0.1);
-  --gva-primary-ring: rgba(78, 128, 238, 0.28);
+  --gva-primary: #2465F2;
+  --gva-primary-hover: #1B52D4;
+  --gva-primary-soft: rgba(36, 101, 242, 0.1);
+  --gva-primary-ring: rgba(36, 101, 242, 0.28);
 
   --gva-text-strong: #0B0B0F;
   --gva-text-body: #5A5F6B;
@@ -61,6 +61,8 @@ $opq-yellow: #FCDB29; */
   --gva-shadow-primary: 0 10px 28px rgba(36, 101, 242, 0.28);
 
   --gva-container: 1200px;
+  /* 统一版心：首屏文字 = 次屏视频卡片，共用此标准宽度 */
+  --gva-content: 1100px;
   --gva-ghost-num: rgba(15, 23, 42, 0.05);
 }
 

@@ -81,7 +81,7 @@ onBeforeUnmount(() => {
 }
 
 .vsec__card {
-  max-width: 1100px;
+  max-width: var(--gva-content);
   margin: 0 auto;
   padding: 32px;
   background: #fff;
