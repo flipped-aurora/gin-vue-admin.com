@@ -182,7 +182,23 @@ onBeforeUnmount(() => {
 .vsec-modal-enter-from, .vsec-modal-leave-to { opacity: 0; }
 
 @media (max-width: 860px) {
-  .vsec { padding: 24px 16px 56px; }
-  .vsec__card { padding: 20px; }
+  .vsec { padding: 28px 16px 0; }
+  .vsec__card { padding: 16px; border-radius: 14px; }
+  .vsec__head { margin-bottom: 12px; }
+  .vsec__head-text { font-size: 14px; font-weight: 600; }
+  .vsec__player {
+    aspect-ratio: 306 / 236;
+    border-radius: 8px;
+  }
+  .vsec__play {
+    width: 40px;
+    height: 40px;
+  }
+  .vsec__play-triangle {
+    margin-left: 3px;
+    border-top-width: 8px;
+    border-bottom-width: 8px;
+    border-left-width: 13px;
+  }
 }
 </style>

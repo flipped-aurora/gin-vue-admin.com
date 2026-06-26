@@ -1,21 +1,27 @@
 <template>
-  <section class="gva-section">
+  <section class="gva-section tools">
     <div class="gva-container">
-      <div class="gva-two-col">
+      <div class="gva-two-col tools__layout">
         <div class="gva-two-col__text">
-          <span class="gva-label">工具兼容</span>
-          <h3 class="gva-h3">你熟悉的 <span class="gva-hl">AI 工具</span> 直接接入 GVA</h3>
+          <p class="tools__title">你熟悉的 <span class="gva-hl">AI 工具</span> <br />
+            直接接入 GVA</p>
           <p class="gva-lead">
-            所有支持 MCP 协议的主流 AI Coding Agent，无需任何额外适配，即可直接读取、理解并操作你的
-            GVA 项目，把开发流程接入你已经在用的工具链。
+            所有支持 MCP 协议的主流 AI Coding Agent，<br />
+            无需任何额外适配，直接连接 GVA，<br />开始搭建。
           </p>
-          <a class="gva-link" href="/guide/server/mcp">查看接入文档 <span class="gva-arrow">→</span></a>
+          <a class="gva-link" href="/guide/server/mcp" target="_blank">
+            查看接入文档
+            <img class="tools__link-icon" :src="arrRightIcon" alt="" aria-hidden="true" />
+          </a>
         </div>
 
         <div class="gva-card tools__card">
           <div class="tools__grid">
             <div v-for="t in tools" :key="t.name" class="tools__item">
-              <span class="tools__icon" :style="{ background: t.bg, color: t.fg }">{{ t.glyph }}</span>
+              <span class="tools__icon" :class="t.iconClass">
+                <img v-if="t.icon" :src="t.icon" :alt="t.name" loading="lazy" />
+                <span v-else>{{ t.glyph }}</span>
+              </span>
               <span class="tools__name">{{ t.name }}</span>
             </div>
           </div>
@@ -27,39 +33,254 @@
 </template>
 
 <script setup>
+import claudeIcon from '@/public/web/claude.png'
+import codexIcon from '@/public/web/icon-chatgpt.png'
+import hermesIcon from '@/public/web/hermes.png'
+import openClawIcon from '@/public/web/openclaw.png'
+import traeIcon from '@/public/web/trae.png'
+import arrRightIcon from '@/public/web/arr-right.png'
+
 const tools = [
-  { name: 'Claude Code', glyph: 'C', bg: 'rgba(217,119,87,0.14)', fg: '#d97757' },
-  { name: 'Cursor', glyph: '⌁', bg: 'rgba(15,23,42,0.08)', fg: '#0f172a' },
-  { name: 'Codex', glyph: '◎', bg: 'rgba(16,163,127,0.14)', fg: '#10a37f' },
-  { name: 'Trae', glyph: 'T', bg: 'rgba(36,101,242,0.14)', fg: '#2264F2' },
-  { name: 'Windsurf', glyph: '≈', bg: 'rgba(20,184,166,0.14)', fg: '#14b8a6' },
-  { name: 'OpenClaw', glyph: '✦', bg: 'rgba(245,158,11,0.16)', fg: '#f59e0b' },
+  { name: 'Claude Code', icon: claudeIcon },
+  { name: 'Cursor', glyph: 'I', iconClass: 'tools__icon--cursor' },
+  { name: 'Codex', icon: codexIcon },
+  { name: 'Trae', icon: traeIcon },
+  { name: 'Hermes', icon: hermesIcon },
+  { name: 'OpenClaw', icon: openClawIcon },
 ]
 </script>
 
 <style scoped>
-.tools__card { padding: 28px; }
-.tools__grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-}
-.tools__item {
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-  padding: 22px 10px; border: 1px solid var(--gva-border); border-radius: 12px;
-  background: var(--gva-bg-base); transition: border-color 0.2s ease, transform 0.2s ease;
-}
-.tools__item:hover { border-color: var(--gva-primary-ring); transform: translateY(-2px); }
-.tools__icon {
-  width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center;
-  font-size: 22px; font-weight: 800;
-}
-.dark .tools__item .tools__icon[style*="15,23,42"] { color: #e2e8f0 !important; }
-.tools__name { font-size: 13.5px; font-weight: 600; color: var(--gva-text-strong); }
-.tools__foot {
-  margin: 22px 0 0; text-align: center; font-size: 13px; color: var(--gva-text-muted);
-  padding-top: 18px; border-top: 1px dashed var(--gva-border);
+.tools {
+  padding: 92px 24px 116px;
+  background: #fff;
 }
 
-@media (max-width: 560px) {
-  .tools__grid { grid-template-columns: repeat(2, 1fr); }
+.tools .gva-container {
+  max-width: var(--gva-content);
+}
+
+.tools__layout {
+  grid-template-columns: 378px minmax(0, 1fr);
+  gap: 56px;
+}
+
+.tools .gva-label {
+  display: inline-flex;
+  margin-bottom: 33px;
+  gap: 13px;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #1268ff;
+}
+
+.tools .gva-label::before {
+  width: 15px;
+  height: 15px;
+  box-shadow: none;
+  background: #1268ff;
+}
+
+.tools__title {
+  max-width: 432px;
+  margin: 0;
+  font-size: 46px;
+  line-height: 1.43;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #030303;
+}
+
+.tools__title .gva-hl {
+  color: #1268ff;
+}
+
+.tools .gva-lead {
+  max-width: 432px;
+  margin: 34px 0 42px;
+  font-size: 16px;
+  line-height: 1.72;
+  font-weight: 400;
+  color: #60656f;
+}
+
+.tools .gva-link {
+  position: relative;
+  gap: 10px;
+  padding-bottom: 13px;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 500;
+  color: #0b72ff;
+}
+
+.tools .gva-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #287cff;
+}
+
+.tools .gva-arrow {
+  font-size: 27px;
+  line-height: 0.75;
+}
+
+.tools__link-icon {
+  display: block;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.tools__card {
+  min-height: 446px;
+  padding: 44px 26px 34px;
+  border-color: #dfe5ee;
+  border-radius: 16px;
+  box-shadow: 0 10px 34px rgba(18, 37, 63, 0.04);
+}
+
+.tools__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px 24px;
+}
+
+.tools__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  gap: 14px;
+  width: 98%;
+  height: 148px;
+  padding: 18px 8px 16px;
+  border: 1px solid #dfe5ee;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 5px 13px rgba(16, 24, 40, 0.045);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tools__item:hover {
+  border-color: rgba(36, 101, 242, 0.28);
+  box-shadow: 0 8px 18px rgba(16, 24, 40, 0.065);
+}
+
+.tools__icon {
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.tools__icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tools__icon--cursor {
+  background: radial-gradient(circle at 50% 50%, #202126 0%, #111217 68%, #08090c 100%);
+  color: #fff;
+  font-size: 43px;
+  font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1;
+  box-shadow: 0 3px 8px rgba(15, 17, 22, 0.16);
+}
+
+.tools__name {
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 400;
+  color: #626770;
+}
+
+.tools__foot {
+  margin: 28px 0 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+  color: #8d929b;
+}
+
+.dark .tools {
+  background: var(--gva-bg-base);
+}
+
+.dark .tools__title {
+  color: var(--gva-text-strong);
+}
+
+.dark .tools__card,
+.dark .tools__item {
+  background: var(--gva-bg-dark-soft);
+  border-color: var(--gva-border);
+}
+
+@media (max-width: 1120px) {
+  .tools__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 42px;
+  }
+
+  .tools__title,
+  .tools .gva-lead {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 720px) {
+  .tools {
+    padding: 56px 16px;
+  }
+
+  .tools__title {
+    font-size: 34px;
+  }
+
+  .tools .gva-lead,
+  .tools .gva-link,
+  .tools__foot {
+    font-size: 17px;
+  }
+
+  .tools__card {
+    min-height: auto;
+    padding: 28px 18px;
+  }
+
+  .tools__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .tools__item {
+    height: 132px;
+    padding: 12px 8px;
+  }
+
+  .tools__icon {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 420px) {
+  .tools__grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
