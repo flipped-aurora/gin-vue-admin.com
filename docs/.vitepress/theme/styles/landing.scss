@@ -83,10 +83,10 @@
 /* ---- Headings ---------------------------------------------------------- */
 .gva-h1 {
   font-size: clamp(34px, 5vw, 56px);
-  line-height: 1.1;
-  font-weight: 800;
+  line-height: 1.2;
+  font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--gva-text-strong);
+  color: #1a1a1a;
 }
 .gva-h2 {
   font-size: clamp(28px, 3.6vw, 40px);
@@ -114,9 +114,9 @@
 
 .gva-lead {
   font-size: clamp(15px, 1.5vw, 18px);
-  line-height: 1.7;
+  line-height: 2;
   color: var(--gva-text-body);
-  max-width: 720px;
+  max-width: 820px;
 }
 .gva-head .gva-lead {
   margin: 16px auto 0;
@@ -146,7 +146,6 @@
 .gva-btn--primary {
   background: var(--gva-primary);
   color: #fff;
-  box-shadow: var(--gva-shadow-primary);
 }
 .gva-btn--primary:hover {
   background: var(--gva-primary-hover);

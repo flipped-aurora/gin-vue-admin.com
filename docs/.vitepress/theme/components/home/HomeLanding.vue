@@ -1,6 +1,7 @@
 <template>
   <div class="gva-landing">
     <HeroSection />
+    <VideoSection />
     <BuildIntro />
     <ToolCompat />
     <SkillsSystem />
@@ -20,6 +21,7 @@
 
 <script setup>
 import HeroSection from './sections/HeroSection.vue'
+import VideoSection from './sections/VideoSection.vue'
 import BuildIntro from './sections/BuildIntro.vue'
 import ToolCompat from './sections/ToolCompat.vue'
 import SkillsSystem from './sections/SkillsSystem.vue'
