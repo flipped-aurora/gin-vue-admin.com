@@ -151,3 +151,15 @@ a{
     color: var(--vp-c-brand-1);
 }
 
+/* GVA 3.0 导航高亮 */
+.gva-nav-gva3 {
+    color: var(--gva-primary) !important;
+    font-weight: 600;
+}
+
+/* 多语言 icon 导航项紧凑化 */
+.VPNavBarMenuLink:has(svg) {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+}
+
