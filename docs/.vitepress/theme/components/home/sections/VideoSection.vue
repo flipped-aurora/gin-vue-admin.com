@@ -1,22 +1,22 @@
 <template>
-  <section class="vsec">
-    <div class="vsec__card">
+  <section class="relative pt-[60px] px-6 pb-20 bg-[var(--gva-bg-base)] max-[860px]:pt-7 max-[860px]:px-4 max-[860px]:pb-0">
+    <div class="max-w-[var(--gva-content)] mx-auto p-4 bg-white rounded-2xl shadow-[shadow:var(--gva-shadow-sm)] dark:bg-[var(--gva-bg-dark-soft)] max-[860px]:rounded-[14px]">
       <!-- 标题行：左对齐，小播放图标 + 文案 -->
-      <div class="vsec__head">
-        <span class="vsec__head-icon" aria-hidden="true">
-          <img class="vsec__icon vsec__icon--head" :src="playerIcon" alt="" />
+      <div class="flex items-center gap-2.5 mb-2.5 max-[860px]:mb-3">
+        <span class="inline-flex text-[var(--gva-primary)]" aria-hidden="true">
+          <img class="block w-[18px] h-[18px]" :src="playerIcon" alt="" />
         </span>
-        <span class="vsec__head-text">观看工作流程演示</span>
+        <span class="text-[14px] font-medium text-[var(--gva-text-strong)] max-[860px]:font-semibold">观看工作流程演示</span>
       </div>
 
       <!-- 视频区：16:9，封面（占位）+ 居中蓝色播放按钮 -->
-      <div class="vsec__player">
+      <div class="relative w-full aspect-[16/9] rounded-[4px] overflow-hidden max-[860px]:aspect-[306/236] max-[860px]:rounded-lg">
         <!-- TODO: 替换为真实 GVA Admin 截图（先用占位） -->
-        <div class="vsec__cover" role="img" aria-label="GVA Admin 系统截图（占位）">
-          <span class="vsec__cover-hint">GVA Admin 截图（占位）</span>
+        <div class="absolute inset-0 grid place-items-center bg-[linear-gradient(135deg,#eef1f6,#e3e8f0)] dark:bg-[linear-gradient(135deg,#161c2b,#10141f)]" role="img" aria-label="GVA Admin 系统截图（占位）">
+          <span class="text-[14px] text-[var(--gva-text-muted)] tracking-[0.02em]">GVA Admin 截图（占位）</span>
         </div>
-        <button class="vsec__play" aria-label="播放工作流程演示视频" @click="open = true">
-          <span class="vsec__play-triangle" aria-hidden="true"></span>
+        <button class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border-none cursor-pointer bg-[rgba(255,255,255,0.58)] backdrop-blur-[10px] grid place-items-center shadow-[0_12px_30px_rgba(15,23,42,0.18)] transition-[transform,box-shadow] duration-[180ms] hover:scale-[1.06] max-[860px]:w-10 max-[860px]:h-10" aria-label="播放工作流程演示视频" @click="open = true">
+          <span class="w-0 h-0 ml-1 border-t-[11px] border-t-transparent border-b-[11px] border-b-transparent border-l-[18px] border-l-[rgba(31,41,55,0.88)] max-[860px]:ml-[3px] max-[860px]:border-t-[8px] max-[860px]:border-b-[8px] max-[860px]:border-l-[13px]" aria-hidden="true"></span>
         </button>
       </div>
     </div>
@@ -24,20 +24,20 @@
     <!-- 播放弹层 -->
     <Teleport to="body">
       <Transition name="vsec-modal">
-        <div v-if="open" class="vsec-modal" @click.self="open = false">
-          <div class="vsec-modal__panel">
-            <button class="vsec-modal__close" aria-label="关闭" @click="open = false">✕</button>
-            <div class="vsec-modal__stage">
+        <div v-if="open" class="fixed inset-0 z-[9999] bg-[rgba(6,8,15,0.72)] backdrop-blur-[6px] grid place-items-center p-6" @click.self="open = false">
+          <div class="relative w-full max-w-[1040px] bg-[#0f1628] rounded-2xl overflow-hidden shadow-[0_40px_90px_rgba(0,0,0,0.55)] border border-[rgba(255,255,255,0.08)]">
+            <button class="absolute right-3 top-3 z-[2] w-8 h-8 rounded-lg border-none cursor-pointer bg-[rgba(255,255,255,0.12)] text-white text-[14px] hover:bg-[rgba(255,255,255,0.2)]" aria-label="关闭" @click="open = false">✕</button>
+            <div class="relative aspect-[16/9] bg-[#060810] grid place-items-center">
               <video
                 v-if="videoSrc"
-                class="vsec-modal__video"
+                class="w-full h-full"
                 :src="videoSrc"
                 controls
                 autoplay
                 playsinline
               ></video>
               <!-- TODO: 在下方 videoSrc 填入工作流程演示视频地址后即可播放 -->
-              <div v-else class="vsec-modal__placeholder">视频地址待填入（VideoSection.vue → videoSrc）</div>
+              <div v-else class="text-[rgba(255,255,255,0.6)] text-[14px]">视频地址待填入（VideoSection.vue → videoSrc）</div>
             </div>
           </div>
         </div>
@@ -68,137 +68,8 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.vsec {
-  position: relative;
-  /* 上 padding 与 Hero 的缩短值配合，使卡片顶部从首屏底部露出 ~70px。
-     下 padding 保持 80px 留白。 */
-  padding: 60px 24px 80px;
-  background: var(--gva-bg-base);
-}
-
-.vsec__card {
-  max-width: var(--gva-content);
-  margin: 0 auto;
-  padding: 16px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: var(--gva-shadow-sm);
-}
-.dark .vsec__card { background: var(--gva-bg-dark-soft); }
-
-/* 标题行 */
-.vsec__head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.vsec__head-icon { display: inline-flex; color: var(--gva-primary); }
-.vsec__icon { display: block; }
-.vsec__icon--head { width: 18px; height: 18px; }
-.vsec__head-text {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--gva-text-strong);
-}
-
-/* 视频区 16:9 */
-.vsec__player {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.vsec__cover {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, #eef1f6, #e3e8f0);
-}
-.dark .vsec__cover { background: linear-gradient(135deg, #161c2b, #10141f); }
-.vsec__cover-hint {
-  font-size: 14px;
-  color: var(--gva-text-muted);
-  letter-spacing: 0.02em;
-}
-
-/* 居中播放按钮 */
-.vsec__play {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
-  border-radius: 999px;
-  border: none;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.58);
-  backdrop-filter: blur(10px);
-  display: grid;
-  place-items: center;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-.vsec__play:hover { transform: translate(-50%, -50%) scale(1.06); }
-.vsec__play-triangle {
-  width: 0;
-  height: 0;
-  margin-left: 4px;
-  border-top: 11px solid transparent;
-  border-bottom: 11px solid transparent;
-  border-left: 18px solid rgba(31, 41, 55, 0.88);
-}
-
-/* 弹层 */
-.vsec-modal {
-  position: fixed; inset: 0; z-index: 9999;
-  background: rgba(6, 8, 15, 0.72); backdrop-filter: blur(6px);
-  display: grid; place-items: center; padding: 24px;
-}
-.vsec-modal__panel {
-  position: relative;
-  width: 100%; max-width: 1040px;
-  background: #0f1628; border-radius: 16px; overflow: hidden;
-  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-.vsec-modal__close {
-  position: absolute; right: 12px; top: 12px; z-index: 2;
-  width: 32px; height: 32px; border-radius: 8px; border: none; cursor: pointer;
-  background: rgba(255, 255, 255, 0.12); color: #fff; font-size: 14px;
-}
-.vsec-modal__close:hover { background: rgba(255, 255, 255, 0.2); }
-.vsec-modal__stage {
-  position: relative; aspect-ratio: 16 / 9; background: #060810;
-  display: grid; place-items: center;
-}
-.vsec-modal__video { width: 100%; height: 100%; }
-.vsec-modal__placeholder { color: rgba(255, 255, 255, 0.6); font-size: 14px; }
-
+/* Vue <Transition name="vsec-modal"> enter/leave classes are applied dynamically
+   by Vue to the modal element; they can't be expressed as static utility classes. */
 .vsec-modal-enter-active, .vsec-modal-leave-active { transition: opacity 0.2s ease; }
 .vsec-modal-enter-from, .vsec-modal-leave-to { opacity: 0; }
-
-@media (max-width: 860px) {
-  .vsec { padding: 28px 16px 0; }
-  .vsec__card { padding: 16px; border-radius: 14px; }
-  .vsec__head { margin-bottom: 12px; }
-  .vsec__head-text { font-size: 14px; font-weight: 600; }
-  .vsec__player {
-    aspect-ratio: 306 / 236;
-    border-radius: 8px;
-  }
-  .vsec__play {
-    width: 40px;
-    height: 40px;
-  }
-  .vsec__play-triangle {
-    margin-left: 3px;
-    border-top-width: 8px;
-    border-bottom-width: 8px;
-    border-left-width: 13px;
-  }
-}
 </style>

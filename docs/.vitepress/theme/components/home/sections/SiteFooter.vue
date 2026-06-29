@@ -1,50 +1,51 @@
 <template>
-  <footer class="gva-section gva-section--dark sf">
-    <div class="gva-container">
-      <div class="sf__top">
+  <footer class="gva-section gva-section--dark pt-16 pb-7">
+    <div class="gva-container max-w-[var(--gva-container)]">
+      <div class="grid grid-cols-[1.4fr_2fr] gap-14 pb-11 border-b border-white/[0.08] max-[860px]:grid-cols-1 max-[860px]:gap-9">
         <!-- brand + stats -->
-        <div class="sf__brand">
-          <div class="sf__logo">
-            <img src="/logo.png" alt="Gin-Vue-Admin" />
+        <div>
+          <div class="flex items-center gap-2.5 font-bold text-[18px] text-white">
+            <img src="/logo.png" alt="Gin-Vue-Admin" class="w-[30px] h-[30px] rounded-lg" />
             <span>Gin-Vue-Admin</span>
           </div>
-          <p class="sf__tagline">用 AI 构建系统，让系统为 AI 工作。基于 Go 与 Vue.js 的企业级 AI+ 全栈解决方案。</p>
-          <div class="sf__stats">
-            <span v-for="b in badges" :key="b" class="sf__badge">{{ b }}</span>
+          <p class="mt-4 mb-5 text-[14px] leading-[1.7] text-white/[0.55] max-w-[360px]">用 AI 构建系统，让系统为 AI 工作。基于 Go 与 Vue.js 的企业级 AI+ 全栈解决方案。</p>
+          <div class="flex flex-wrap gap-[9px]">
+            <span v-for="b in badges" :key="b" class="text-[12px] py-1.5 px-3 rounded-full bg-white/[0.06] border border-white/[0.1] text-white/[0.78]">{{ b }}</span>
           </div>
         </div>
 
         <!-- link columns -->
-        <div class="sf__cols">
-          <div v-for="col in columns" :key="col.title" class="sf__col">
-            <h4>{{ col.title }}</h4>
+        <div class="grid grid-cols-3 gap-7 max-[520px]:grid-cols-2">
+          <div v-for="col in columns" :key="col.title">
+            <h4 class="mt-0 mb-4 text-[13px] font-bold text-white tracking-[0.04em]">{{ col.title }}</h4>
             <a
               v-for="l in col.links"
               :key="l.text"
               :href="l.href"
               :target="l.ext ? '_blank' : undefined"
               :rel="l.ext ? 'noopener' : undefined"
+              class="block text-[14px] text-white/[0.6] mb-3 transition-[color] duration-[180ms] hover:text-white"
             >{{ l.text }}</a>
           </div>
 
-          <div class="sf__col">
-            <h4>关注</h4>
-            <div class="sf__social">
-              <a v-for="s in socials" :key="s.name" :href="s.href" :title="s.name" target="_blank" rel="noopener" v-html="s.icon"></a>
+          <div>
+            <h4 class="mt-0 mb-4 text-[13px] font-bold text-white tracking-[0.04em]">关注</h4>
+            <div class="flex gap-3 [&_img]:block [&_img]:rounded-[4px]">
+              <a v-for="s in socials" :key="s.name" :href="s.href" :title="s.name" target="_blank" rel="noopener" v-html="s.icon" class="w-[38px] h-[38px] rounded-[10px] grid place-items-center m-0 bg-white/[0.06] border border-white/[0.1] text-white/[0.8] transition-all duration-[180ms] hover:bg-[var(--gva-primary)] hover:border-[var(--gva-primary)] hover:text-white"></a>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="sf__bottom">
-        <p class="sf__copy">
+      <div class="flex items-center justify-between gap-4 flex-wrap pt-6 max-[860px]:flex-col max-[860px]:items-start">
+        <p class="m-0 text-[13px] text-white/[0.45]">
           Copyright © 2020-{{ year }} Flipped-aurora Open Source Community ·
-          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">鲁ICP备17040210号-2</a>
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" class="text-white/[0.6] hover:text-white">鲁ICP备17040210号-2</a>
         </p>
-        <nav class="sf__legal">
-          <a href="/terms">Terms of Service</a>
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/refund">Refund Policy</a>
+        <nav class="flex gap-5 flex-wrap">
+          <a href="/terms" class="text-[13px] text-white/[0.55] hover:text-white">Terms of Service</a>
+          <a href="/privacy" class="text-[13px] text-white/[0.55] hover:text-white">Privacy Policy</a>
+          <a href="/refund" class="text-[13px] text-white/[0.55] hover:text-white">Refund Policy</a>
         </nav>
       </div>
     </div>
@@ -82,51 +83,3 @@ const socials = [
   { name: 'GitCode', href: 'https://gitcode.com/flipped-aurora/gin-vue-admin', icon: '<img src="/icons/gitcode.svg" alt="GitCode" width="20" height="20" />' },
 ]
 </script>
-
-<style scoped>
-.sf { padding-top: 64px; padding-bottom: 28px; }
-.sf__top {
-  display: grid; grid-template-columns: 1.4fr 2fr; gap: 56px;
-  padding-bottom: 44px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-.sf__logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; color: #fff; }
-.sf__logo img { width: 30px; height: 30px; border-radius: 8px; }
-.sf__tagline { margin: 16px 0 20px; font-size: 14px; line-height: 1.7; color: rgba(255, 255, 255, 0.55); max-width: 360px; }
-.sf__stats { display: flex; flex-wrap: wrap; gap: 9px; }
-.sf__badge {
-  font-size: 12px; padding: 6px 12px; border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.78);
-}
-
-.sf__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.sf__col h4 { font-size: 13px; font-weight: 700; color: #fff; margin: 0 0 16px; letter-spacing: 0.04em; }
-.sf__col a { display: block; font-size: 14px; color: rgba(255, 255, 255, 0.6); margin-bottom: 12px; transition: color 0.18s ease; }
-.sf__col a:hover { color: #fff; }
-.sf__social { display: flex; gap: 12px; }
-.sf__social a {
-  width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; margin: 0;
-  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.8);
-  transition: all 0.18s ease;
-}
-.sf__social a:hover { background: var(--gva-primary); border-color: var(--gva-primary); color: #fff; }
-.sf__social :deep(img) { display: block; border-radius: 4px; }
-
-.sf__bottom {
-  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-  padding-top: 24px;
-}
-.sf__copy { margin: 0; font-size: 13px; color: rgba(255, 255, 255, 0.45); }
-.sf__copy a { color: rgba(255, 255, 255, 0.6); }
-.sf__copy a:hover { color: #fff; }
-.sf__legal { display: flex; gap: 20px; flex-wrap: wrap; }
-.sf__legal a { font-size: 13px; color: rgba(255, 255, 255, 0.55); }
-.sf__legal a:hover { color: #fff; }
-
-@media (max-width: 860px) {
-  .sf__top { grid-template-columns: 1fr; gap: 36px; }
-  .sf__bottom { flex-direction: column; align-items: flex-start; }
-}
-@media (max-width: 520px) {
-  .sf__cols { grid-template-columns: 1fr 1fr; }
-}
-</style>

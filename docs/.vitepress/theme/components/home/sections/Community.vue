@@ -1,47 +1,49 @@
 <template>
   <section class="gva-section gva-section--alt">
     <div class="gva-container">
-      <div class="gva-head">
-        <span class="gva-label">社区口碑</span>
-        <h2 class="gva-h2" style="margin-top: 16px"><span class="gva-hl">3 万+</span> 开发者 已经在用 GVA</h2>
-        <p class="gva-lead">一个被持续验证、持续生长的开源全栈框架。</p>
+      <div class="text-center mb-14 max-[860px]:mb-10">
+        <span class="inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.02em] text-[var(--gva-primary)] mb-4 before:content-[''] before:w-[7px] before:h-[7px] before:rounded-full before:bg-[var(--gva-primary)] before:shadow-[0_0_0_4px_var(--gva-primary-soft)]">社区口碑</span>
+        <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)]" style="margin-top: 16px"><span class="text-[var(--gva-primary)]">3 万+</span> 开发者 已经在用 GVA</h2>
+        <p class="text-[clamp(15px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mx-auto">一个被持续验证、持续生长的开源全栈框架。</p>
       </div>
 
-      <div class="cm__stats">
-        <div v-for="s in stats" :key="s.label" class="cm__stat">
-          <span class="cm__num">{{ s.num }}</span>
-          <span class="cm__label">{{ s.label }}</span>
+      <div class="grid grid-cols-4 gap-5 mb-[52px] max-[860px]:grid-cols-2">
+        <div v-for="s in stats" :key="s.label" class="text-center py-[26px] px-3 bg-[var(--gva-bg-base)] border border-[var(--gva-border)] rounded-[var(--gva-radius)]">
+          <span class="block text-[clamp(26px,3.2vw,36px)] font-extrabold text-[var(--gva-primary)] tracking-[-0.02em]">{{ s.num }}</span>
+          <span class="block mt-2 text-[13.5px] text-[var(--gva-text-muted)]">{{ s.label }}</span>
         </div>
       </div>
 
-      <div class="cm__carousel">
-        <button class="cm__arrow" aria-label="上一条" @click="move(-1)">‹</button>
-        <div class="cm__track">
+      <div class="flex items-center gap-3.5">
+        <button class="shrink-0 w-[42px] h-[42px] rounded-full cursor-pointer border border-[var(--gva-border-strong)] bg-[var(--gva-bg-base)] text-[22px] leading-none text-[var(--gva-text-body)] transition-all duration-[180ms] hover:border-[var(--gva-primary)] hover:text-[var(--gva-primary)]" aria-label="上一条" @click="move(-1)">‹</button>
+        <div class="flex-1 grid grid-cols-3 gap-[18px] items-stretch max-[860px]:grid-cols-1">
           <div
             v-for="(t, i) in visible"
             :key="t.key"
-            class="gva-card cm__quote"
-            :class="{ 'cm__quote--center': i === 1 }"
+            class="bg-[var(--gva-bg-base)] border rounded-[var(--gva-radius)] p-6 flex flex-col justify-between transition-all duration-[250ms]"
+            :class="i === 1
+              ? 'opacity-100 -translate-y-1.5 max-[860px]:translate-y-0 shadow-[shadow:var(--gva-shadow)] border-[var(--gva-primary-ring)]'
+              : 'opacity-[0.66] shadow-[shadow:var(--gva-shadow-sm)] border-[var(--gva-border)] max-[860px]:hidden'"
           >
-            <p class="cm__text">“{{ t.text }}”</p>
-            <div class="cm__author">
-              <span class="cm__avatar" :style="{ background: t.color }">{{ t.name[0] }}</span>
+            <p class="text-[14.5px] leading-[1.7] text-[var(--gva-text-body)] m-0 mb-5">“{{ t.text }}”</p>
+            <div class="flex items-center gap-3">
+              <span class="w-[38px] h-[38px] rounded-full grid place-items-center text-white font-bold" :style="{ background: t.color }">{{ t.name[0] }}</span>
               <span>
-                <strong>{{ t.name }}</strong>
-                <em>{{ t.role }}</em>
+                <strong class="block text-[14px] text-[var(--gva-text-strong)]">{{ t.name }}</strong>
+                <em class="not-italic text-[12.5px] text-[var(--gva-text-muted)]">{{ t.role }}</em>
               </span>
             </div>
           </div>
         </div>
-        <button class="cm__arrow" aria-label="下一条" @click="move(1)">›</button>
+        <button class="shrink-0 w-[42px] h-[42px] rounded-full cursor-pointer border border-[var(--gva-border-strong)] bg-[var(--gva-bg-base)] text-[22px] leading-none text-[var(--gva-text-body)] transition-all duration-[180ms] hover:border-[var(--gva-primary)] hover:text-[var(--gva-primary)]" aria-label="下一条" @click="move(1)">›</button>
       </div>
 
-      <div class="cm__dots">
+      <div class="flex justify-center gap-2 mt-7">
         <button
           v-for="(t, i) in testimonials"
           :key="i"
-          class="cm__dot"
-          :class="{ on: i === current }"
+          class="h-2 rounded-full border-none cursor-pointer transition-all duration-200"
+          :class="i === current ? 'w-[22px] bg-[var(--gva-primary)]' : 'w-2 bg-[var(--gva-border-strong)]'"
           :aria-label="`第 ${i + 1} 条`"
           @click="current = i"
         ></button>
@@ -81,42 +83,3 @@ const visible = computed(() => {
   })
 })
 </script>
-
-<style scoped>
-.cm__stats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 52px;
-}
-.cm__stat {
-  text-align: center; padding: 26px 12px; background: var(--gva-bg-base);
-  border: 1px solid var(--gva-border); border-radius: var(--gva-radius);
-}
-.cm__num { display: block; font-size: clamp(26px, 3.2vw, 36px); font-weight: 800; color: var(--gva-primary); letter-spacing: -0.02em; }
-.cm__label { display: block; margin-top: 8px; font-size: 13.5px; color: var(--gva-text-muted); }
-
-.cm__carousel { display: flex; align-items: center; gap: 14px; }
-.cm__arrow {
-  flex-shrink: 0; width: 42px; height: 42px; border-radius: 999px; cursor: pointer;
-  border: 1px solid var(--gva-border-strong); background: var(--gva-bg-base);
-  color: var(--gva-text-body); font-size: 22px; line-height: 1; transition: all 0.18s ease;
-}
-.cm__arrow:hover { border-color: var(--gva-primary); color: var(--gva-primary); }
-.cm__track { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
-.cm__quote { padding: 24px; display: flex; flex-direction: column; justify-content: space-between; opacity: 0.66; transition: all 0.25s ease; }
-.cm__quote--center { opacity: 1; transform: translateY(-6px); box-shadow: var(--gva-shadow); border-color: var(--gva-primary-ring); }
-.cm__text { font-size: 14.5px; line-height: 1.7; color: var(--gva-text-body); margin: 0 0 20px; }
-.cm__author { display: flex; align-items: center; gap: 12px; }
-.cm__avatar { width: 38px; height: 38px; border-radius: 999px; display: grid; place-items: center; color: #fff; font-weight: 700; }
-.cm__author strong { display: block; font-size: 14px; color: var(--gva-text-strong); }
-.cm__author em { font-style: normal; font-size: 12.5px; color: var(--gva-text-muted); }
-
-.cm__dots { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
-.cm__dot { width: 8px; height: 8px; border-radius: 999px; border: none; cursor: pointer; background: var(--gva-border-strong); transition: all 0.2s ease; }
-.cm__dot.on { width: 22px; background: var(--gva-primary); }
-
-@media (max-width: 860px) {
-  .cm__stats { grid-template-columns: repeat(2, 1fr); }
-  .cm__track { grid-template-columns: 1fr; }
-  .cm__quote:not(.cm__quote--center) { display: none; }
-  .cm__quote--center { transform: none; }
-}
-</style>

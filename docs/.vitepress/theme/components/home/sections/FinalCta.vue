@@ -1,29 +1,13 @@
 <template>
-  <section class="gva-section fcta">
-    <div class="gva-container fcta__inner">
-      <span class="gva-label">准备好了吗</span>
-      <h2 class="gva-h2 fcta__title">强大的 API，<span class="gva-hl">更强大的 AI</span></h2>
-      <p class="gva-lead fcta__lead">GVA 3.0，让 API 也能被 AI 理解、调用、自动化。</p>
-      <div class="fcta__actions">
-        <a class="gva-btn gva-btn--primary" href="https://demo.gin-vue-admin.com" target="_blank" rel="noopener">立即体验</a>
-        <a class="gva-btn gva-btn--ghost" href="/guide/introduce/project">阅读文档 →</a>
+  <section class="gva-section [background:radial-gradient(720px_360px_at_50%_120%,rgba(36,101,242,0.12),transparent_70%),var(--gva-bg-base)]">
+    <div class="gva-container text-center flex flex-col items-center">
+      <span class="inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.02em] text-[var(--gva-primary)] before:content-[''] before:w-[7px] before:h-[7px] before:rounded-full before:bg-[var(--gva-primary)] before:shadow-[0_0_0_4px_var(--gva-primary-soft)]">准备好了吗</span>
+      <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)] mt-4">强大的 API，<span class="text-[var(--gva-primary)]">更强大的 AI</span></h2>
+      <p class="text-[clamp(15px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mx-auto mb-8">GVA 3.0，让 API 也能被 AI 理解、调用、自动化。</p>
+      <div class="flex gap-3.5 flex-wrap justify-center">
+        <a class="inline-flex items-center justify-center gap-2 h-[43px] max-[860px]:h-12 px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-transparent transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-[var(--gva-primary)] text-white hover:bg-[var(--gva-primary-hover)] hover:text-white hover:-translate-y-px max-[560px]:flex-1 max-[560px]:min-w-[140px]" href="https://demo.gin-vue-admin.com" target="_blank" rel="noopener">立即体验</a>
+        <a class="inline-flex items-center justify-center gap-2 h-[43px] max-[860px]:h-12 px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-[var(--gva-primary)] transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-transparent text-[var(--gva-primary)] hover:border-[var(--gva-primary)] hover:text-[var(--gva-primary)] max-[560px]:flex-1 max-[560px]:min-w-[140px]" href="/guide/introduce/project">阅读文档 →</a>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.fcta {
-  background:
-    radial-gradient(720px 360px at 50% 120%, rgba(36, 101, 242, 0.12), transparent 70%),
-    var(--gva-bg-base);
-}
-.fcta__inner { text-align: center; display: flex; flex-direction: column; align-items: center; }
-.fcta__title { margin: 16px 0 0; }
-.fcta__lead { margin: 16px auto 32px; }
-.fcta__actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-
-@media (max-width: 560px) {
-  .fcta__actions .gva-btn { flex: 1; min-width: 140px; }
-}
-</style>

@@ -1,48 +1,48 @@
 <template>
   <section class="gva-section gva-section--alt">
     <div class="gva-container">
-      <div class="gva-two-col">
-        <div class="gva-two-col__text">
-          <span class="gva-label">框架生态</span>
-          <h2 class="gva-h2">不只是框架，<br />是一个<span class="gva-hl">持续生长</span>的生态</h2>
-          <p class="gva-lead">
+      <div class="grid grid-cols-1 gap-8 min-[860px]:grid-cols-2 min-[860px]:items-center min-[860px]:gap-14">
+        <div>
+          <span class="inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.02em] text-[var(--gva-primary)] mb-4 before:content-[''] before:w-[7px] before:h-[7px] before:rounded-full before:bg-[var(--gva-primary)] before:shadow-[0_0_0_4px_var(--gva-primary-soft)]">框架生态</span>
+          <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)]">不只是框架，<br />是一个<span class="text-[var(--gva-primary)]">持续生长</span>的生态</h2>
+          <p class="text-[clamp(15px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-[18px] mb-6">
             论坛、支付、消息、存储、工作流……数百个官方与社区插件，让你像搭积木一样扩展系统能力。
           </p>
-          <a class="gva-btn gva-btn--primary" href="https://plugin.gin-vue-admin.com/#/layout/home" target="_blank" rel="noopener">
+          <a class="inline-flex items-center justify-center gap-2 h-[43px] max-[860px]:h-12 px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-transparent transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-[var(--gva-primary)] text-white hover:bg-[var(--gva-primary-hover)] hover:text-white hover:-translate-y-px" href="https://plugin.gin-vue-admin.com/#/layout/home" target="_blank" rel="noopener">
             逛逛插件市场 →
           </a>
         </div>
 
-        <div class="eco__grid">
+        <div class="grid grid-cols-3 gap-3.5 max-[560px]:gap-2.5">
           <a
             v-for="t in tiles"
             :key="t.name"
-            class="eco__tile"
+            class="aspect-[1.5/1] rounded-[14px] grid place-items-center p-3 text-white relative overflow-hidden transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:shadow-[0_16px_34px_rgba(15,23,42,0.18)] after:content-[''] after:absolute after:inset-0 after:bg-white/[0.08] after:opacity-0 after:transition-opacity after:duration-200 hover:after:opacity-100"
             :style="{ background: t.bg }"
             :href="t.link"
             target="_blank"
             rel="noopener"
           >
-            <span class="eco__tile-name">{{ t.name }}</span>
+            <span class="text-[15px] font-bold relative z-[1] text-center max-[560px]:text-[13px]">{{ t.name }}</span>
           </a>
         </div>
       </div>
 
       <!-- 官方合作 + 赞助位（保留现有外链与广告位） -->
-      <div class="eco__partners">
-        <span class="eco__partners-label">官方合作</span>
-        <div class="eco__partners-row">
+      <div class="mt-14 pt-[30px] border-t border-[var(--gva-border)] flex items-center gap-[22px] flex-wrap justify-center">
+        <span class="text-[13px] font-semibold text-[var(--gva-text-muted)]">官方合作</span>
+        <div class="flex items-center gap-[18px] flex-wrap justify-center">
           <a
             v-for="p in partners"
             :key="p.name"
-            class="eco__partner"
+            class="grid place-items-center h-10 px-3.5 py-1.5 rounded-[10px] bg-[var(--gva-bg-base)] border border-[var(--gva-border)] transition-[border-color] duration-200 hover:border-[var(--gva-primary-ring)]"
             :href="p.href"
             target="_blank"
             rel="noopener"
           >
-            <img :src="p.img" :alt="p.name" loading="lazy" />
+            <img :src="p.img" :alt="p.name" loading="lazy" class="max-h-[26px] max-w-[130px] object-contain" />
           </a>
-          <div class="wwads-cn eco__ad" data-id="260"></div>
+          <div class="wwads-cn max-w-[320px]" data-id="260"></div>
         </div>
       </div>
     </div>
@@ -68,37 +68,3 @@ const partners = [
   { name: 'VForm', img: '/advertising/vform-banner.png', href: 'https://www.vform666.com' },
 ]
 </script>
-
-<style scoped>
-.eco__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.eco__tile {
-  aspect-ratio: 1.5 / 1; border-radius: 14px; display: grid; place-items: center; padding: 12px;
-  color: #fff; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; overflow: hidden;
-}
-.eco__tile::after {
-  content: ""; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.08); opacity: 0;
-  transition: opacity 0.2s ease;
-}
-.eco__tile:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(15, 23, 42, 0.18); }
-.eco__tile:hover::after { opacity: 1; }
-.eco__tile-name { font-size: 15px; font-weight: 700; position: relative; z-index: 1; text-align: center; }
-
-.eco__partners {
-  margin-top: 56px; padding-top: 30px; border-top: 1px solid var(--gva-border);
-  display: flex; align-items: center; gap: 22px; flex-wrap: wrap; justify-content: center;
-}
-.eco__partners-label { font-size: 13px; font-weight: 600; color: var(--gva-text-muted); }
-.eco__partners-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; }
-.eco__partner {
-  display: grid; place-items: center; height: 40px; padding: 6px 14px; border-radius: 10px;
-  background: var(--gva-bg-base); border: 1px solid var(--gva-border); transition: border-color 0.2s ease;
-}
-.eco__partner:hover { border-color: var(--gva-primary-ring); }
-.eco__partner img { max-height: 26px; max-width: 130px; object-fit: contain; }
-.eco__ad { max-width: 320px; }
-
-@media (max-width: 560px) {
-  .eco__grid { gap: 10px; }
-  .eco__tile-name { font-size: 13px; }
-}
-</style>

@@ -1,18 +1,18 @@
 <template>
   <section class="gva-section">
     <div class="gva-container">
-      <div class="gva-head">
-        <span class="gva-label">核心功能</span>
-        <h2 class="gva-h2" style="margin-top: 16px">亲自试一试：用 <span class="gva-hl">AI 驱动</span>你的 GVA 系统</h2>
-        <p class="gva-lead">三个最常用的能力，点开就能一步步看它怎么跑起来。</p>
+      <div class="text-center mb-14 max-[860px]:mb-10">
+        <span class="inline-flex items-center gap-2 mb-4 text-[13px] font-semibold tracking-[0.02em] text-[var(--gva-primary)] before:content-[''] before:w-[7px] before:h-[7px] before:rounded-full before:bg-[var(--gva-primary)] before:shadow-[0_0_0_4px_var(--gva-primary-soft)]">核心功能</span>
+        <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)]" style="margin-top: 16px">亲自试一试：用 <span class="text-[var(--gva-primary)]">AI 驱动</span>你的 GVA 系统</h2>
+        <p class="text-[clamp(15px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mb-0 mx-auto">三个最常用的能力，点开就能一步步看它怎么跑起来。</p>
       </div>
 
-      <div class="cf__grid">
-        <button v-for="(d, i) in demos" :key="d.title" class="gva-card gva-card--hover cf__card" @click="openDemo(i)">
-          <span class="gva-ghost-num cf__num">{{ d.num }}</span>
-          <h3 class="cf__title">{{ d.title }}</h3>
-          <p class="cf__desc">{{ d.desc }}</p>
-          <span class="gva-link cf__try">试一下 <span class="gva-arrow">→</span></span>
+      <div class="grid grid-cols-1 gap-[22px] min-[860px]:grid-cols-3">
+        <button v-for="(d, i) in demos" :key="d.title" class="relative overflow-hidden p-7 text-left cursor-pointer [font:inherit] bg-[var(--gva-bg-base)] border border-[var(--gva-border)] rounded-[var(--gva-radius)] shadow-[shadow:var(--gva-shadow-sm)] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[3px] hover:shadow-[shadow:var(--gva-shadow)] hover:border-[var(--gva-border-strong)]" @click="openDemo(i)">
+          <span class="block mb-2 text-[clamp(40px,5vw,64px)] font-extrabold leading-none text-[var(--gva-ghost-num)] tracking-[-0.02em]">{{ d.num }}</span>
+          <h3 class="text-[19px] font-bold text-[var(--gva-text-strong)] m-0 mb-2.5">{{ d.title }}</h3>
+          <p class="text-[14px] text-[var(--gva-text-body)] m-0 mb-[18px] leading-[1.6]">{{ d.desc }}</p>
+          <span class="group inline-flex items-center gap-1.5 text-[var(--gva-primary)] font-semibold text-[14px] hover:text-[var(--gva-primary-hover)]">试一下 <span class="transition-transform group-hover:translate-x-[3px]">→</span></span>
         </button>
       </div>
     </div>
@@ -20,30 +20,30 @@
     <!-- wizard modal -->
     <Teleport to="body">
       <Transition name="cf-modal">
-        <div v-if="active !== null" class="cf-modal" @click.self="close">
-          <div class="cf-modal__panel gva-card">
-            <div class="cf-modal__head">
+        <div v-if="active !== null" class="fixed inset-0 z-[9999] grid place-items-center p-6 bg-[rgba(6,8,15,0.6)] backdrop-blur-[6px]" @click.self="close">
+          <div class="w-full max-w-[460px] p-6 bg-[var(--gva-bg-base)] border border-[var(--gva-border)] rounded-[var(--gva-radius)] shadow-[shadow:var(--gva-shadow-sm)] transition-[transform,box-shadow,border-color] duration-200">
+            <div class="flex items-start justify-between">
               <div>
-                <span class="gva-label" style="margin: 0">{{ demos[active].title }}</span>
-                <p class="cf-modal__step">第 {{ step + 1 }} 步 / 共 {{ demos[active].steps.length }} 步</p>
+                <span class="inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.02em] text-[var(--gva-primary)] before:content-[''] before:w-[7px] before:h-[7px] before:rounded-full before:bg-[var(--gva-primary)] before:shadow-[0_0_0_4px_var(--gva-primary-soft)]" style="margin: 0">{{ demos[active].title }}</span>
+                <p class="m-0 mt-2 text-[13px] text-[var(--gva-text-muted)]">第 {{ step + 1 }} 步 / 共 {{ demos[active].steps.length }} 步</p>
               </div>
-              <button class="cf-modal__close" aria-label="关闭" @click="close">✕</button>
+              <button class="w-[30px] h-[30px] rounded-[8px] border-none cursor-pointer bg-[var(--gva-primary-soft)] text-[var(--gva-text-body)] text-[14px]" aria-label="关闭" @click="close">✕</button>
             </div>
 
-            <div class="cf-modal__progress">
-              <span v-for="(s, i) in demos[active].steps" :key="i" :class="{ on: i <= step }"></span>
+            <div class="flex gap-1.5 mt-[18px] mb-[22px]">
+              <span v-for="(s, i) in demos[active].steps" :key="i" class="flex-1 h-1 rounded-full transition-[background] duration-[250ms]" :class="{ 'bg-[var(--gva-primary)]': i <= step, 'bg-[var(--gva-border-strong)]': i > step }"></span>
             </div>
 
-            <div class="cf-modal__body">
-              <div class="cf-modal__icon">{{ demos[active].steps[step].icon }}</div>
-              <h4 class="cf-modal__title">{{ demos[active].steps[step].t }}</h4>
-              <p class="cf-modal__text">{{ demos[active].steps[step].d }}</p>
+            <div class="text-center pt-3 px-2 pb-6">
+              <div class="w-16 h-16 rounded-[18px] mx-auto mb-[18px] grid place-items-center text-[30px] bg-[var(--gva-primary-soft)]">{{ demos[active].steps[step].icon }}</div>
+              <h4 class="text-[19px] font-bold text-[var(--gva-text-strong)] m-0 mb-2.5">{{ demos[active].steps[step].t }}</h4>
+              <p class="text-[14.5px] text-[var(--gva-text-body)] m-0 leading-[1.6]">{{ demos[active].steps[step].d }}</p>
             </div>
 
-            <div class="cf-modal__foot">
-              <button class="gva-btn gva-btn--ghost" :disabled="step === 0" @click="prev">上一步</button>
-              <button v-if="step < demos[active].steps.length - 1" class="gva-btn gva-btn--primary" @click="next">下一步</button>
-              <button v-else class="gva-btn gva-btn--primary" @click="close">完成</button>
+            <div class="flex gap-3">
+              <button class="inline-flex items-center justify-center gap-2 h-[43px] max-[860px]:h-12 px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-[var(--gva-primary)] bg-transparent text-[var(--gva-primary)] transition-[transform,box-shadow,background-color,border-color,color] duration-200 hover:border-[var(--gva-primary)] hover:text-[var(--gva-primary)] flex-1 disabled:opacity-40 disabled:cursor-not-allowed" :disabled="step === 0" @click="prev">上一步</button>
+              <button v-if="step < demos[active].steps.length - 1" class="inline-flex items-center justify-center gap-2 h-[43px] max-[860px]:h-12 px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-transparent bg-[var(--gva-primary)] text-white transition-[transform,box-shadow,background-color,border-color,color] duration-200 hover:bg-[var(--gva-primary-hover)] hover:text-white hover:-translate-y-px flex-1 disabled:opacity-40 disabled:cursor-not-allowed" @click="next">下一步</button>
+              <button v-else class="inline-flex items-center justify-center gap-2 h-[43px] max-[860px]:h-12 px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-transparent bg-[var(--gva-primary)] text-white transition-[transform,box-shadow,background-color,border-color,color] duration-200 hover:bg-[var(--gva-primary-hover)] hover:text-white hover:-translate-y-px flex-1 disabled:opacity-40 disabled:cursor-not-allowed" @click="close">完成</button>
             </div>
           </div>
         </div>
@@ -104,49 +104,9 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
 </script>
 
 <style scoped>
-.cf__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.cf__card {
-  text-align: left; padding: 28px; cursor: pointer; background: var(--gva-bg-base);
-  position: relative; overflow: hidden; font: inherit;
-}
-.cf__num { display: block; margin-bottom: 8px; }
-.cf__title { font-size: 19px; font-weight: 700; color: var(--gva-text-strong); margin: 0 0 10px; }
-.cf__desc { font-size: 14px; color: var(--gva-text-body); margin: 0 0 18px; line-height: 1.6; }
-.cf__try { font-size: 14px; }
-
-/* modal */
-.cf-modal {
-  position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; padding: 24px;
-  background: rgba(6, 8, 15, 0.6); backdrop-filter: blur(6px);
-}
-.cf-modal__panel { width: 100%; max-width: 460px; padding: 24px; background: var(--gva-bg-base); }
-.cf-modal__head { display: flex; align-items: flex-start; justify-content: space-between; }
-.cf-modal__step { margin: 8px 0 0; font-size: 13px; color: var(--gva-text-muted); }
-.cf-modal__close {
-  width: 30px; height: 30px; border-radius: 8px; border: none; cursor: pointer;
-  background: var(--gva-primary-soft); color: var(--gva-text-body); font-size: 14px;
-}
-.cf-modal__progress { display: flex; gap: 6px; margin: 18px 0 22px; }
-.cf-modal__progress span {
-  flex: 1; height: 4px; border-radius: 999px; background: var(--gva-border-strong);
-  transition: background 0.25s ease;
-}
-.cf-modal__progress span.on { background: var(--gva-primary); }
-.cf-modal__body { text-align: center; padding: 12px 8px 24px; }
-.cf-modal__icon {
-  width: 64px; height: 64px; border-radius: 18px; margin: 0 auto 18px; display: grid; place-items: center;
-  font-size: 30px; background: var(--gva-primary-soft);
-}
-.cf-modal__title { font-size: 19px; font-weight: 700; color: var(--gva-text-strong); margin: 0 0 10px; }
-.cf-modal__text { font-size: 14.5px; color: var(--gva-text-body); margin: 0; line-height: 1.6; }
-.cf-modal__foot { display: flex; gap: 12px; }
-.cf-modal__foot .gva-btn { flex: 1; }
-.cf-modal__foot .gva-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
+/* Vue <Transition name="cf-modal"> enter/leave classes — applied by Vue at
+   runtime, and the name prop is markup we must not change, so these cannot be
+   expressed as static Tailwind utilities. */
 .cf-modal-enter-active, .cf-modal-leave-active { transition: opacity 0.2s ease; }
 .cf-modal-enter-from, .cf-modal-leave-to { opacity: 0; }
-
-@media (max-width: 860px) {
-  .cf__grid { grid-template-columns: 1fr; }
-}
 </style>
