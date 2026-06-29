@@ -5,4 +5,4 @@
 .pnpm-*.log
 .idea/
 
-bun.lockb
+bun.lockbdocs/.vitepress/cache
