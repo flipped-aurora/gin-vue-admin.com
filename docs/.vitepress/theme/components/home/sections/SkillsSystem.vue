@@ -4,32 +4,24 @@
       <div class="gva-two-col gva-two-col--reverse">
         <!-- terminal -->
         <div class="skills__term">
-          <div class="gva-terminal">
-            <div class="gva-terminal__bar">
-              <span class="gva-terminal__dot gva-terminal__dot--r"></span>
-              <span class="gva-terminal__dot gva-terminal__dot--y"></span>
-              <span class="gva-terminal__dot gva-terminal__dot--g"></span>
-              <span class="gva-terminal__title">my-gva-project — zsh</span>
-            </div>
-            <div class="gva-terminal__body"><span class="gva-t-dim">$</span> cd my-gva-project
-<span class="gva-t-dim">$</span> gva init
-<span class="gva-t-dim">Initializing…</span>
-<span class="gva-t-dim">Connecting…</span>
-<span class="gva-t-green">✓</span> Skills installed successfully
-<span class="gva-t-green">✓</span> 8 skills loaded: <span class="gva-t-blue">data-modeling, ui-builder, workflow,
-  permissions, plugin-dev…</span>
-<span class="gva-t-white">Ready. Your AI Agent now understands GVA.</span></div>
-          </div>
+          <img
+            class="skills__img"
+            src="/web/codeimg.png"
+            alt="执行 gva init 后的终端输出"
+            loading="lazy"
+          />
           <p class="gva-muted skills__cap">执行 gva init 后的实际输出</p>
         </div>
 
         <!-- text -->
         <div class="gva-two-col__text">
           <span class="gva-label">Skills 系统</span>
-          <h3 class="gva-h3">不只是接入，<span class="gva-hl">AI 真正理解</span>你的系统</h3>
+          <h3 class="gva-h3">不只是接入<br />AI <span class="gva-hl">真正理解</span>你的系统</h3>
           <p class="gva-lead">
-            一条 <code class="skills__code">gva init</code> 命令，GVA 把数据建模、UI 构建、工作流、权限等能力
-            打包成 Skills 注入 AI Agent，让它了解你的目录结构、数据模型与业务约定，而不是凭空猜测。
+            执行 gva init，GVA 的代码规范、模块结构、命名约定自动打包成 Skills，安装进你的 AI Agent。
+          </p>
+          <p class="gva-lead">
+            它知道 GVA 怎么组织代码，生成的结果直接符合项目规范，不需要你反复纠正。
           </p>
           <div class="gva-pills skills__pills">
             <span v-for="s in skills" :key="s" class="gva-pill">{{ s }}</span>
@@ -49,11 +41,12 @@ const skills = [
 </script>
 
 <style scoped>
+.skills__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--gva-radius);
+}
 .skills__cap { margin-top: 12px; text-align: center; }
 .skills__pills { margin: 4px 0 24px; }
-.skills__code {
-  font-family: var(--vp-font-family-mono); font-size: 0.9em;
-  background: var(--gva-primary-soft); color: var(--gva-primary);
-  padding: 2px 7px; border-radius: 6px;
-}
 </style>
