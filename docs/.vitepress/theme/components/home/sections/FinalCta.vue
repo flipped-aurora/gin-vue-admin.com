@@ -1,7 +1,6 @@
 <template>
   <section class="gva-section [background:radial-gradient(720px_360px_at_50%_120%,rgba(36,101,242,0.12),transparent_70%),var(--gva-bg-base)]">
     <div class="gva-container text-center flex flex-col items-center">
-      <span class="inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.02em] text-[var(--gva-primary)] before:content-[''] before:w-[7px] before:h-[7px] before:rounded-full before:bg-[var(--gva-primary)] before:shadow-[0_0_0_4px_var(--gva-primary-soft)]">准备好了吗</span>
       <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)] mt-4">强大的 API，<span class="text-[var(--gva-primary)]">更强大的 AI</span></h2>
       <p class="text-[clamp(15px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mx-auto mb-8">GVA 3.0，让 API 也能被 AI 理解、调用、自动化。</p>
       <div class="flex gap-3.5 flex-wrap justify-center">

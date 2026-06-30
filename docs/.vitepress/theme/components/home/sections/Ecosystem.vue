@@ -3,7 +3,6 @@
     <div class="gva-container">
       <div class="grid grid-cols-1 gap-8 min-[860px]:grid-cols-2 min-[860px]:items-center min-[860px]:gap-14">
         <div>
-          <span class="inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.02em] text-[var(--gva-primary)] mb-4 before:content-[''] before:w-[7px] before:h-[7px] before:rounded-full before:bg-[var(--gva-primary)] before:shadow-[0_0_0_4px_var(--gva-primary-soft)]">框架生态</span>
           <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)]">不只是框架，<br />是一个<span class="text-[var(--gva-primary)]">持续生长</span>的生态</h2>
           <p class="text-[clamp(15px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-[18px] mb-6">
             论坛、支付、消息、存储、工作流……数百个官方与社区插件，让你像搭积木一样扩展系统能力。
@@ -28,23 +27,6 @@
         </div>
       </div>
 
-      <!-- 官方合作 + 赞助位（保留现有外链与广告位） -->
-      <div class="mt-14 pt-[30px] border-t border-[var(--gva-border)] flex items-center gap-[22px] flex-wrap justify-center">
-        <span class="text-[13px] font-semibold text-[var(--gva-text-muted)]">官方合作</span>
-        <div class="flex items-center gap-[18px] flex-wrap justify-center">
-          <a
-            v-for="p in partners"
-            :key="p.name"
-            class="grid place-items-center h-10 px-3.5 py-1.5 rounded-[10px] bg-[var(--gva-bg-base)] border border-[var(--gva-border)] transition-[border-color] duration-200 hover:border-[var(--gva-primary-ring)]"
-            :href="p.href"
-            target="_blank"
-            rel="noopener"
-          >
-            <img :src="p.img" :alt="p.name" loading="lazy" class="max-h-[26px] max-w-[130px] object-contain" />
-          </a>
-          <div class="wwads-cn max-w-[320px]" data-id="260"></div>
-        </div>
-      </div>
     </div>
   </section>
 </template>

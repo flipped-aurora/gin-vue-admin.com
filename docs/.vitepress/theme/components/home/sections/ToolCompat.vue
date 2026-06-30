@@ -15,17 +15,17 @@
           </a>
         </div>
 
-        <div class="bg-[var(--gva-bg-base)] border border-[#dfe5ee] rounded-[16px] shadow-[0_10px_34px_rgba(18,37,63,0.04)] transition-[transform,box-shadow,border-color] duration-200 min-h-[446px] pt-11 px-[26px] pb-[34px] dark:bg-[var(--gva-bg-dark-soft)] dark:border-[var(--gva-border)] max-[720px]:min-h-[auto] max-[720px]:py-7 max-[720px]:px-[18px]">
-          <div class="grid grid-cols-3 gap-y-7 gap-x-6 max-[720px]:grid-cols-2 max-[720px]:gap-4 max-[420px]:grid-cols-1">
-            <div v-for="t in tools" :key="t.name" class="flex flex-col items-center justify-center justify-self-center gap-3.5 w-[98%] h-[148px] pt-[18px] px-2 pb-4 border border-[#dfe5ee] rounded-[10px] bg-[#fff] shadow-[0_5px_13px_rgba(16,24,40,0.045)] transition-[border-color,transform,box-shadow] duration-200 hover:border-[rgba(36,101,242,0.28)] hover:shadow-[0_8px_18px_rgba(16,24,40,0.065)] dark:bg-[var(--gva-bg-dark-soft)] dark:border-[var(--gva-border)] dark:hover:border-[var(--gva-border)] max-[720px]:h-[132px] max-[720px]:py-3">
-              <span class="w-[66px] h-[66px] grid place-items-center overflow-hidden rounded-full max-[720px]:w-14 max-[720px]:h-14" :class="t.iconClass">
+        <div class="bg-[var(--gva-bg-base)] border border-[#dfe5ee] rounded-[16px] shadow-[0_10px_34px_rgba(18,37,63,0.04)] transition-[transform,box-shadow,border-color] duration-200 min-h-[446px] pt-11 px-[26px] pb-[34px] dark:bg-[var(--gva-bg-dark-soft)] dark:border-[var(--gva-border)] max-[720px]:min-h-[auto] max-[720px]:py-5 max-[720px]:px-3.5">
+          <div class="grid grid-cols-3 gap-y-7 gap-x-6 max-[720px]:grid-cols-2 max-[720px]:gap-2.5">
+            <div v-for="t in tools" :key="t.name" class="flex flex-col items-center justify-center justify-self-center gap-3.5 w-[98%] h-[148px] pt-[18px] px-2 pb-4 border border-[#dfe5ee] rounded-[10px] bg-[#fff] shadow-[0_5px_13px_rgba(16,24,40,0.045)] transition-[border-color,transform,box-shadow] duration-200 hover:border-[rgba(36,101,242,0.28)] hover:shadow-[0_8px_18px_rgba(16,24,40,0.065)] dark:bg-[var(--gva-bg-dark-soft)] dark:border-[var(--gva-border)] dark:hover:border-[var(--gva-border)] max-[720px]:flex-row max-[720px]:justify-start max-[720px]:w-full max-[720px]:h-auto max-[720px]:gap-2.5 max-[720px]:px-3 max-[720px]:py-2.5 max-[720px]:rounded-lg">
+              <span class="w-[66px] h-[66px] shrink-0 grid place-items-center overflow-hidden rounded-full max-[720px]:w-10 max-[720px]:h-10" :class="t.iconClass">
                 <img v-if="t.icon" :src="t.icon" :alt="t.name" loading="lazy" class="block w-full h-full object-contain" />
                 <span v-else>{{ t.glyph }}</span>
               </span>
-              <span class="text-[18px] leading-none font-normal text-[#626770]">{{ t.name }}</span>
+              <span class="text-[18px] leading-none font-normal text-[#626770] max-[720px]:text-[14px]">{{ t.name }}</span>
             </div>
           </div>
-          <p class="mt-7 mx-0 mb-0 text-center text-[16px] leading-none font-normal text-[#8d929b] max-[720px]:text-[17px]">以及所有支持 MCP 协议的 AI 工具</p>
+          <p class="mt-7 mx-0 mb-0 text-center text-[16px] leading-none font-normal text-[#8d929b] max-[720px]:mt-4 max-[720px]:text-[13px]">以及所有支持 MCP 协议的 AI 工具</p>
         </div>
       </div>
     </div>
@@ -62,5 +62,12 @@ const tools = [
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1;
   box-shadow: 0 3px 8px rgba(15, 17, 22, 0.16);
+}
+
+/* keep the glyph proportional to the shrunken mobile icon */
+@media (max-width: 720px) {
+  .tools__icon--cursor {
+    font-size: 26px;
+  }
 }
 </style>

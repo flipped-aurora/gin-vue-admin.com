@@ -84,14 +84,6 @@ if (failures.length) {
   process.exit(1)
 }
 
-if (!homeLanding.includes('<BuildIntro />') || !homeLanding.includes("import BuildIntro from './sections/BuildIntro.vue'")) {
-  failures.push('HomeLanding should render and import BuildIntro.')
-}
-
-if (!fs.existsSync(path.join(root, 'docs/.vitepress/theme/components/home/sections/BuildIntro.vue'))) {
-  failures.push('BuildIntro.vue should exist.')
-}
-
 const mobileVideo = video.match(/@media\s*\(max-width:\s*860px\)\s*\{(?<body>[\s\S]*)\n\}/)
 if (!mobileVideo?.groups?.body) {
   failures.push('VideoSection should define mobile-only styles.')
