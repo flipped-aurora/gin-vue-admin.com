@@ -9,8 +9,6 @@ aside: false
 ---
 <script setup>
 import HomeLanding from '.vitepress/theme/components/home/HomeLanding.vue'
-import Liuliang from '.vitepress/theme/components/liuliang.vue'
 </script>
 
 <HomeLanding />
-<Liuliang />

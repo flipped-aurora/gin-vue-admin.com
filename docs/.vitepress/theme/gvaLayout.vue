@@ -3,9 +3,6 @@
     <template #layout-top>
     <!--  <GiteeBanner /> -->
     </template>
-    <template #aside-outline-after>
-      <AsideAd></AsideAd>
-    </template>
     <template #layout-bottom>
       <!-- 首页自带深色页脚已含法务链接，避免重复 -->
       <LegalFooterLinks v-if="!isHome" />
@@ -17,7 +14,6 @@
 import DefaultTheme from 'vitepress/theme'
 import { useData } from 'vitepress'
 import { computed } from 'vue'
-import AsideAd from './components/asideAd.vue'
 import GiteeBanner from './components/GiteeBanner.vue'
 import LegalFooterLinks from './components/LegalFooterLinks.vue'
 const { Layout }  = DefaultTheme
