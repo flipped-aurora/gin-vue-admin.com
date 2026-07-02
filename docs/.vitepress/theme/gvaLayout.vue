@@ -13,10 +13,25 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
 import { useData } from 'vitepress'
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted } from 'vue'
 import GiteeBanner from './components/GiteeBanner.vue'
 import LegalFooterLinks from './components/LegalFooterLinks.vue'
 const { Layout }  = DefaultTheme
 const { page } = useData()
 const isHome = computed(() => page.value.relativePath === 'index.md')
+
+let scrollHandler
+onMounted(() => {
+    scrollHandler = () => {
+        if (window.scrollY > 10) {
+            document.body.classList.add('gva-nav-scrolled')
+        } else {
+            document.body.classList.remove('gva-nav-scrolled')
+        }
+    }
+    window.addEventListener('scroll', scrollHandler, { passive: true })
+})
+onUnmounted(() => {
+    window.removeEventListener('scroll', scrollHandler)
+})
 </script>

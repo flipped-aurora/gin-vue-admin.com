@@ -71,23 +71,51 @@ a{
 
 /* 顶栏样式调整 */
 .VPNavBar, .VPNav, .VPLocalNav {
-    background-color: white !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background-color: #F9F9F9 !important;
+    border-bottom: 1px solid transparent !important;
+    transition: background-color 0.3s ease, border-color 0.3s ease !important;
+}
+.VPNav{
+    padding: 0 !important;
+
 }
 
 .VPNavBar{
     border:none !important;
+    padding: 0 !important;
 }
 
 .VPNavBar .content, .VPNav .content {
-    background-color: rgba(255, 255, 255, 0.8) !important;
+    background-color: rgba(249, 249, 249, 0.8) !important;
     backdrop-filter: blur(8px);
+    transition: background-color 0.3s ease !important;
+}
+
+
+/* 滚动后顶栏变为纯白并显示底部线条 */
+body.gva-nav-scrolled .VPNavBar,
+body.gva-nav-scrolled .VPNav,
+body.gva-nav-scrolled .VPLocalNav {
+    background-color: white !important;
+    border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+body.gva-nav-scrolled .VPNavBar .content,
+body.gva-nav-scrolled .VPNav .content {
+    background-color: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* 暗夜模式下的顶栏样式 */
 .dark .VPNavBar, .dark .VPNav, .dark .VPLocalNav {
     background-color: #1a1a1a !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-bottom: 1px solid transparent !important;
+}
+
+.dark body.gva-nav-scrolled .VPNavBar,
+body.gva-nav-scrolled .dark .VPNavBar,
+.dark body.gva-nav-scrolled .VPNav,
+body.gva-nav-scrolled .dark .VPNav {
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .dark .VPNavBar .content, .dark .VPNav .content {
