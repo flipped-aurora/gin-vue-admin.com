@@ -241,3 +241,36 @@ body.gva-nav-scrolled .VPNav .content {
     padding-right: 6px !important;
 }
 
+/* 任何屏幕：去掉导航文字旁的下拉箭头 */
+.VPNavBar .vpi-chevron-down,
+.VPNavBar .vpi-more-horizontal {
+    display: none !important;
+}
+
+/* 2K 屏导航字号与图标放大 */
+@media (min-width: 2560px) {
+    .VPNavBarMenuLink,
+    .VPNavBarMenuGroup .button {
+        font-size: 20px !important;
+    }
+
+    .VPNavBar .title .text {
+        font-size: 20px !important;
+    }
+
+    .VPNavBarSocialLinks .VPSocialLinkIcon {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .gva-nav-bilingual {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .gva-nav-bilingual__img {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
+
