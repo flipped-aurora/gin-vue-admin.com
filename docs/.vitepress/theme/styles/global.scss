@@ -251,17 +251,36 @@ body.gva-nav-scrolled .VPNav .content {
 @media (min-width: 2560px) {
     .VPNavBarMenuLink,
     .VPNavBarMenuGroup .button {
-        font-size: 16px !important;
+        font-size: 18px !important;
     }
 
     .VPNavBar .title .text {
-        font-size: 16px !important;
+        font-size: 18px !important;
+    }
+
+    /* 搜索框内部文字（占位符 + 快捷键提示） */
+    .VPNavBarSearch .DocSearch-Button-Placeholder,
+    .VPNavBarSearch .DocSearch-Button .DocSearch-Button-Keys .DocSearch-Button-Key {
+        font-size: 18px !important;
+    }
+
+    /* 右侧导航项：多语言、GitHub 等下拉框按钮文字 */
+    .VPNavBar .VPFlyout .button .text,
+    .VPNavBarTranslations .button .text,
+    .VPNavBarExtra .button .text {
+        font-size: 18px !important;
+    }
+
+    /* 下拉菜单展开后的选项文字 */
+    .VPNavBar .VPMenu .VPMenuLink .link,
+    .VPNavBar .VPMenu .VPMenuGroup .title {
+        font-size: 18px !important;
     }
 
     .VPNavBar .logo,
     .VPNavBarTitle .logo {
-        width: 24px !important;
-        height: 24px !important;
+        width: 40px !important;
+        height: 40px !important;
     }
 
     .VPNavBarSocialLinks .VPSocialLinkIcon {
@@ -279,4 +298,3 @@ body.gva-nav-scrolled .VPNav .content {
         height: 16px !important;
     }
 }
-
