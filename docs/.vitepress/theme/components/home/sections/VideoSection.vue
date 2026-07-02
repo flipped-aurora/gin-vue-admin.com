@@ -1,6 +1,6 @@
 <template>
-  <section class="relative pt-[60px] px-6 pb-20 bg-[var(--gva-bg-base)] max-[860px]:pt-7 max-[860px]:px-4 max-[860px]:pb-0">
-    <div class="max-w-[var(--gva-content)] mx-auto p-4 bg-white rounded-2xl shadow-[shadow:var(--gva-shadow-sm)] dark:bg-[var(--gva-bg-dark-soft)] max-[860px]:rounded-[14px]">
+  <section class="relative -mt-[60px] z-10 pt-[40px] px-6 pb-20 min-[861px]:bg-[linear-gradient(to_bottom,#F9F9F9_67%,transparent_67%)] min-[861px]:dark:bg-[linear-gradient(to_bottom,var(--gva-bg-base)_67%,transparent_67%)] max-[860px]:mt-0 max-[860px]:bg-[var(--gva-bg-base)] max-[860px]:pt-7 max-[860px]:px-4 max-[860px]:pb-0">
+    <div class="max-w-[860px] mx-auto p-4 bg-white rounded-2xl shadow-[shadow:var(--gva-shadow-sm)] dark:bg-[var(--gva-bg-dark-soft)] max-[860px]:rounded-[14px]">
       <!-- 标题行：左对齐，小播放图标 + 文案 -->
       <div class="flex items-center gap-2.5 mb-2.5 max-[860px]:mb-3">
         <span class="inline-flex text-[var(--gva-primary)]" aria-hidden="true">
