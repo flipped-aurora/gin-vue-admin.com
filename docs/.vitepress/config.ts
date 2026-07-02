@@ -100,7 +100,7 @@ export default defineConfig({
             {text: '购买授权', link: 'https://plugin.gin-vue-admin.com/license'},
             {text: '插件市场', link: 'https://plugin.gin-vue-admin.com/#/layout/home'},
             {text: '<span class="gva-nav-gva3">GVA 3.0</span>', link: '#'},
-            {text: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" style="display:inline-block;vertical-align:-3px"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c-3 4-3 14 0 18M12 3c3 4 3 14 0 18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><rect x="1" y="4" width="10" height="8" rx="1.5" style="fill:var(--vp-c-bg,white);stroke:currentColor;stroke-width:1.2"/><text x="6" y="10.5" font-size="6.5" text-anchor="middle" fill="currentColor" font-family="Georgia,serif" font-weight="700">A</text><rect x="13" y="12" width="10" height="8" rx="1.5" style="fill:var(--vp-c-bg,white);stroke:currentColor;stroke-width:1.2"/><text x="18" y="18.5" font-size="5.5" text-anchor="middle" fill="currentColor" font-family="sans-serif">中</text></svg>`, link: '#'},
+            {text: '<span class="gva-nav-bilingual" aria-label="多语言"><img class="gva-nav-bilingual__img gva-nav-bilingual__img--light" src="/web/bilingual.png" alt="" /><img class="gva-nav-bilingual__img gva-nav-bilingual__img--dark" src="/web/bilingual_day.png" alt="" /></span>', link: '#'},
             {
                 text: 'GitHub',
                 items: [
