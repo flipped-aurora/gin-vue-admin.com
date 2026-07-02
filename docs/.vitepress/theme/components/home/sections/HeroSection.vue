@@ -22,10 +22,10 @@
         调用这些 API，统一内部权限校验，无需额外配置。
       </p>
       <div class="flex gap-4 flex-wrap justify-center max-[860px]:w-full max-[860px]:flex-col max-[860px]:gap-3 max-[860px]:items-stretch">
-        <a class="inline-flex items-center justify-center gap-2 h-[43px] px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-transparent transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-[var(--gva-primary)] text-white hover:bg-[var(--gva-primary-hover)] hover:text-white hover:-translate-y-px min-w-40 max-[860px]:h-12 max-[860px]:w-[90%] max-[860px]:flex-none max-[860px]:min-w-0" href="https://demo.gin-vue-admin.com" target="_blank" rel="noopener">
+        <a class="inline-flex items-center justify-center gap-2 h-[43px] px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-transparent transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-[var(--gva-primary)] text-white hover:bg-[var(--gva-primary-hover)] hover:text-white hover:-translate-y-px min-w-40 max-[860px]:h-12 max-[860px]:w-[90%] max-[860px]:mx-auto max-[860px]:flex-none max-[860px]:min-w-0" href="https://demo.gin-vue-admin.com" target="_blank" rel="noopener">
           立即体验
         </a>
-        <a class="inline-flex items-center justify-center gap-2 h-[43px] px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-transparent transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-transparent text-[var(--gva-primary)] border-[var(--gva-primary)] hover:border-[var(--gva-primary)] hover:text-[var(--gva-primary)] min-w-40 max-[860px]:h-12 max-[860px]:w-[90%] max-[860px]:flex-none max-[860px]:min-w-0" target="_blank" href="/guide/introduce/project">查看文档</a>
+        <a class="inline-flex items-center justify-center gap-2 h-[43px] px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border-[#1268ff] border transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-transparent text-[var(--gva-primary)] hover:border-[#1268ff] hover:text-[var(--gva-primary)] min-w-40 max-[860px]:h-12 max-[860px]:w-[90%] max-[860px]:mx-auto max-[860px]:flex-none max-[860px]:min-w-0" target="_blank" href="/guide/introduce/project">查看文档</a>
       </div>
     </div>
   </section>
