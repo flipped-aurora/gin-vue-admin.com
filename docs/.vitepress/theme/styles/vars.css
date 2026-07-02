@@ -8,7 +8,7 @@ $opq-yellow: #FCDB29; */
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-font-family-base: "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --vp-font-family-base: 'MiSans', "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 
   /* Legacy brand aliases (kept for older components) */
   --vp-c-brand: #2264F2;

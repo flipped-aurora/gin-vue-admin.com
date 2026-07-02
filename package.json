@@ -28,6 +28,7 @@
   "dependencies": {
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.5.4",
+    "misans": "^4.1.0",
     "qiankun": "^2.10.16",
     "vite-plugin-sass": "^0.1.0"
   },
