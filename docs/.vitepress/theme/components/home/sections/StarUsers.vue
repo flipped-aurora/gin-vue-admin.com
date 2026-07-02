@@ -6,7 +6,7 @@
         <p class="text-[clamp(14px,1.6vw,19px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mx-auto">从云厂商到内容平台，众多团队把 GVA 用在生产环境。</p>
       </div>
 
-      <!-- ─── 桌面端 + 平板（≥ 521px）：五栏，中间高亮，CSS transition 渐变 ─── -->
+      <!-- ─── 桌面端 + 平板（≥ 521px）：传送带式滑动轮播 ─── -->
       <div
         class="hidden min-[521px]:flex items-center gap-3.5 min-[861px]:gap-5"
         @mouseenter="pause"
@@ -18,22 +18,32 @@
           @click="move(-1)"
         >‹</button>
 
-        <div class="flex-1 grid grid-cols-5 gap-4 min-[861px]:gap-5 items-center carousel-desktop-grid">
+        <!-- 视口：裁切轨道，只露出中间 5 张 -->
+        <div class="flex-1 carousel-viewport">
+          <!-- 轨道：7 张卡（5 可见 + 左右各 1 缓冲），整体 translateX 滑动 -->
           <div
-            v-for="(u, i) in visibleDesktop"
-            :key="i"
-            class="logo-card grid place-items-center h-24 min-[861px]:h-32 p-[18px] min-[861px]:p-7 bg-[var(--gva-bg-base)] border rounded-[var(--gva-radius)]"
-            :class="i === 2
-              ? 'card-center shadow-[shadow:var(--gva-shadow)] border-[var(--gva-primary-ring)]'
-              : 'card-side shadow-[shadow:var(--gva-shadow-sm)] border-[var(--gva-border)]'"
+            ref="trackRef"
+            class="carousel-belt"
+            :class="{ 'snap-frame': noCardTransition }"
+            :style="trackStyle"
+            @transitionend="onTrackTransitionEnd"
           >
-            <img
-              :src="u.img"
-              :alt="u.name"
-              loading="lazy"
-              class="logo-img max-w-full max-h-12 min-[861px]:max-h-16 object-contain"
-              :class="i === 2 ? 'grayscale-0' : 'grayscale'"
-            />
+            <div
+              v-for="u in visibleDesktop"
+              :key="u.off"
+              class="logo-card grid place-items-center p-[18px] min-[861px]:p-7 bg-[var(--gva-bg-base)] border rounded-[var(--gva-radius)]"
+              :class="u.off === centerOffset
+                ? 'card-center shadow-[shadow:var(--gva-shadow)] border-[var(--gva-primary-ring)]'
+                : 'card-side shadow-[shadow:var(--gva-shadow-sm)] border-[var(--gva-border)]'"
+            >
+              <img
+                :src="u.img"
+                :alt="u.name"
+                loading="lazy"
+                class="logo-img max-w-full max-h-12 min-[861px]:max-h-16 object-contain"
+                :class="u.off === centerOffset ? 'grayscale-0' : 'grayscale'"
+              />
+            </div>
           </div>
         </div>
 
@@ -44,7 +54,7 @@
         >›</button>
       </div>
 
-      <!-- ─── 移动端（≤ 520px）：单张全宽滑动 ─── -->
+      <!-- ─── 移动端（≤ 520px）：单张全宽滑动（保持不变）─── -->
       <div
         class="flex min-[521px]:hidden items-center gap-3"
         @touchstart="onTouchStart"
@@ -95,47 +105,150 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 
 const users = [
-  { name: '华数传媒',     img: '/user/huashu-tight.png' },
+  { name: '华数传媒',      img: '/user/huashu-tight.png' },
   { name: 'Alibaba Cloud', img: '/user/ali.svg' },
-  { name: 'ByteDance',    img: '/user/zijie.svg' },
-  { name: 'Tencent',      img: '/user/tengxun.svg' },
-  { name: 'vivo',         img: '/user/vivo-tight.svg' },
-  { name: 'Anker',        img: '/user/anker.svg' },
-  { name: 'China Mobile', img: '/user/mobile-tight.png' },
-  { name: 'Douyu',        img: '/user/douyu.svg' },
-  { name: 'Cadence',      img: '/user/cadence.svg' },
-  { name: 'Transsion',    img: '/user/transsion.svg' },
+  { name: 'ByteDance',     img: '/user/zijie.svg' },
+  { name: 'Tencent',       img: '/user/tengxun.svg' },
+  { name: 'vivo',          img: '/user/vivo-tight.svg' },
+  { name: 'Anker',         img: '/user/anker.svg' },
+  { name: 'China Mobile',  img: '/user/mobile-tight.png' },
+  { name: 'Douyu',         img: '/user/douyu.svg' },
+  { name: 'Cadence',       img: '/user/cadence.svg' },
+  { name: 'Transsion',     img: '/user/transsion.svg' },
 ]
 
-const current = ref(2) // 初始让中间位置有内容
-const slideDirection = ref('slide-left')
+const n = users.length
+const current = ref(2)
+const slideDirection = ref('slide-left') // 仅移动端 TransitionGroup 使用
 
-// 桌面端：五张固定位置，key 绑 i（位置），内容随 current 变化
-const visibleDesktop = computed(() => {
-  const n = users.length
-  return [-2, -1, 0, 1, 2].map((off) => {
-    const idx = (current.value + off + n) % n
-    return { ...users[idx] }
+/* ══════════ 桌面端传送带 ══════════ */
+
+// 7 张卡：偏移 -3 ~ +3，可见的是 -2 ~ +2，±3 是滑动缓冲
+const OFFSETS = [-3, -2, -1, 0, 1, 2, 3]
+const visibleDesktop = computed(() =>
+  OFFSETS.map((off) => {
+    const idx = (current.value + off + n * 2) % n
+    return { ...users[idx], off }
   })
-})
+)
 
-function jumpTo(idx) {
-  const n = users.length
-  const diff = ((idx - current.value) + n) % n
-  slideDirection.value = diff <= n / 2 ? 'slide-left' : 'slide-right'
-  current.value = idx
+const trackRef = ref(null)
+const trackX = ref(0)        // 轨道 translateX 值（px）
+const animating = ref(false)
+const centerOffset = ref(0)  // 高亮卡的偏移位：动画期间指向来向的卡
+const noCardTransition = ref(false) // 归位帧禁用卡片过渡，防止高亮"弹回"
+const duration = ref(500)
+
+let stepPx = 0               // 一格的距离 = 卡宽 + gap
+let pendingSteps = 0         // dot 跳转的剩余步数
+let pendingDir = 1
+let fallbackTimer = null
+
+function measureStep() {
+  const el = trackRef.value
+  if (!el || el.children.length < 2) return 0
+  stepPx = el.children[1].offsetLeft - el.children[0].offsetLeft
+  return stepPx
 }
+
+const trackStyle = computed(() => ({
+  transform: `translateX(${trackX.value}px)`,
+  transition: animating.value
+    ? `transform ${duration.value}ms cubic-bezier(0.22, 1, 0.36, 1)`
+    : 'none',
+}))
+
+function startStep(d) {
+  if (!measureStep()) {
+    // 桌面轨道不可见（移动端），直接改数据，交给移动端动画
+    current.value = (current.value + d + n) % n
+    return
+  }
+  animating.value = true
+  centerOffset.value = d          // 高亮开始滑向来向的卡
+  trackX.value = -d * stepPx      // 整条轨道滑动一格
+  // transitionend 兜底（tab 切走时不会触发）
+  fallbackTimer = setTimeout(finishStep, duration.value + 100)
+}
+
+function finishStep() {
+  clearTimeout(fallbackTimer)
+  if (!animating.value) return
+  const d = centerOffset.value
+
+  /*
+    归位关键帧：
+    1. 先禁用卡片自身的 CSS transition（scale/opacity/border 等）
+    2. 同一帧内：轨道 transform 归零 + 数据前移 + 高亮位归零
+       此时新渲染结果与滑动终点画面逐像素相同 → 肉眼不可见
+    3. 两帧后恢复卡片 transition，供下一次滑动的高亮流动使用
+    若不禁用，off=0 和 off=d 两张卡的高亮状态交换会在归位后
+    跑一遍 0.5s 过渡动画，视觉上就是高亮"弹一下"。
+  */
+  noCardTransition.value = true
+  animating.value = false
+  centerOffset.value = 0
+  current.value = (current.value + d + n) % n
+  trackX.value = 0
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      noCardTransition.value = false
+      // dot 多步跳转：恢复过渡后再滑下一格
+      if (pendingSteps > 0) {
+        pendingSteps--
+        startStep(pendingDir)
+      } else {
+        duration.value = 500
+      }
+    })
+  })
+}
+
+function onTrackTransitionEnd(e) {
+  if (e.target === trackRef.value && e.propertyName === 'transform') {
+    finishStep()
+  }
+}
+
+/* ══════════ 交互入口 ══════════ */
 
 function move(d) {
   slideDirection.value = d > 0 ? 'slide-left' : 'slide-right'
-  const n = users.length
-  current.value = (current.value + d + n) % n
+  if (animating.value) {
+    // 动画中最多排队 1 步，防止连点堆积
+    pendingSteps = Math.min(pendingSteps + 1, 1)
+    pendingDir = d
+    return
+  }
+  startStep(d)
 }
 
-// 自动播放
+function jumpTo(idx) {
+  if (idx === current.value) return
+  const diff = ((idx - current.value) + n) % n
+  const forward = diff <= n / 2
+  const steps = forward ? diff : n - diff
+  const d = forward ? 1 : -1
+  slideDirection.value = forward ? 'slide-left' : 'slide-right'
+
+  if (!measureStep()) {
+    // 移动端：直接跳
+    current.value = idx
+    return
+  }
+  if (animating.value) return
+  pendingSteps = steps - 1
+  pendingDir = d
+  duration.value = steps > 1 ? 280 : 500 // 多步时每步加快
+  startStep(d)
+}
+
+/* ══════════ 自动播放 ══════════ */
+
 let timer = null
 const INTERVAL = 3200
 
@@ -150,10 +263,19 @@ function resume() {
   if (!timer) start()
 }
 
-onMounted(start)
-onUnmounted(pause)
+onMounted(() => {
+  nextTick(measureStep)
+  window.addEventListener('resize', measureStep)
+  start()
+})
+onUnmounted(() => {
+  pause()
+  clearTimeout(fallbackTimer)
+  window.removeEventListener('resize', measureStep)
+})
 
-// 移动端触摸手势
+/* ══════════ 移动端触摸 ══════════ */
+
 let touchStartX = 0
 function onTouchStart(e) {
   touchStartX = e.touches[0].clientX
@@ -169,37 +291,82 @@ function onTouchEnd(e) {
 </script>
 
 <style scoped>
-/* ─── 桌面五栏：overflow visible，给 scale(1.06) 留空间 ─── */
-.carousel-desktop-grid {
-  padding: 8px 4px; /* 上下留给 scale，左右留给阴影 */
+/* ══════════════════════════════════════
+   桌面传送带
+   ══════════════════════════════════════ */
+
+/* 视口：裁掉两侧缓冲卡，上下 padding 给中间卡 scale 留空间 */
+.carousel-viewport {
+  overflow: hidden;
+  padding: 10px 0;
 }
 
-/* 所有 logo 卡：视觉属性全部 transition */
+/*
+  轨道宽度推导（V = 视口宽，g = gap）：
+  单卡宽 w = (V - 4g) / 5
+  7 卡总宽 = 7w + 6g = (7V + 2g) / 5 = 140% + 0.4g
+  基准偏移（让 -2~+2 可见）= w + g = (V + g)/5 = 20% + 0.2g
+  margin-left 的 % 相对父级（视口），所以可以纯 CSS 定位，
+  无需等 JS 测量，首屏不会闪。
+*/
+.carousel-belt {
+  display: flex;
+  gap: 16px;
+  width: calc(140% + 6.4px);        /* g=16 */
+  margin-left: calc(-20% - 3.2px);
+  will-change: transform;
+}
+
+@media (min-width: 861px) {
+  .carousel-belt {
+    gap: 20px;
+    width: calc(140% + 8px);        /* g=20 */
+    margin-left: calc(-20% - 4px);
+  }
+}
+
+/* 卡片：flex 均分，高度固定 */
 .logo-card {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 96px;
+  /* 高亮状态的渐变过渡：滑动时高亮从旧中心"流"到新中心 */
   transition:
-    opacity      0.36s cubic-bezier(0.4, 0, 0.2, 1),
-    transform    0.36s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow   0.36s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.36s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity      0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform    0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow   0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 861px) {
+  .logo-card {
+    height: 128px;
+  }
 }
 
 .logo-img {
-  transition: filter 0.36s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 中间高亮 */
+/* 归位帧：禁用所有卡片过渡，状态交换瞬时完成 */
+.snap-frame .logo-card,
+.snap-frame .logo-img {
+  transition: none !important;
+}
+
 .card-center {
   opacity: 1;
   transform: scale(1.06);
 }
 
-/* 两侧弱化 */
 .card-side {
   opacity: 0.55;
   transform: scale(1);
 }
 
-/* ─── 移动端单张 ─── */
+/* ══════════════════════════════════════
+   移动端单张滑动（保持不变）
+   ══════════════════════════════════════ */
 .carousel-mobile-track {
   position: relative;
   overflow: hidden;
@@ -222,23 +389,18 @@ function onTouchEnd(e) {
   left: 0;
 }
 
-/* 向左（前进） */
 .slide-left-enter-active,
-.slide-left-leave-active {
-  transition: transform 0.48s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity   0.48s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.slide-left-enter-from { transform: translateX(50px); opacity: 0; }
-.slide-left-enter-to   { transform: translateX(0);    opacity: 1; }
-.slide-left-leave-from { transform: translateX(0);    opacity: 1; }
-.slide-left-leave-to   { transform: translateX(-50px); opacity: 0; }
-
-/* 向右（后退） */
+.slide-left-leave-active,
 .slide-right-enter-active,
 .slide-right-leave-active {
   transition: transform 0.48s cubic-bezier(0.4, 0, 0.2, 1),
               opacity   0.48s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.slide-left-enter-from  { transform: translateX(50px);  opacity: 0; }
+.slide-left-enter-to    { transform: translateX(0);     opacity: 1; }
+.slide-left-leave-from  { transform: translateX(0);     opacity: 1; }
+.slide-left-leave-to    { transform: translateX(-50px); opacity: 0; }
+
 .slide-right-enter-from { transform: translateX(-50px); opacity: 0; }
 .slide-right-enter-to   { transform: translateX(0);     opacity: 1; }
 .slide-right-leave-from { transform: translateX(0);     opacity: 1; }
