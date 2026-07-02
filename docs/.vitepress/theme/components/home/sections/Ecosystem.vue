@@ -7,8 +7,9 @@
           <p class="text-[clamp(14px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-[18px] mb-6 max-[860px]:font-light">
             论坛、支付、消息、存储、工作流……数百个官方与社区插件，让你像搭积木一样扩展系统能力。
           </p>
-          <a class="inline-flex items-center justify-center gap-2 h-[43px] max-[860px]:h-12 px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-transparent transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-[var(--gva-primary)] text-white hover:bg-[var(--gva-primary-hover)] hover:text-white hover:-translate-y-px" href="https://plugin.gin-vue-admin.com/#/layout/home" target="_blank" rel="noopener">
-            逛逛插件市场 →
+          <a class="relative inline-flex items-center gap-2.5 pb-[13px] text-[16px] leading-none font-medium text-[#0b72ff] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-[#287cff] max-[860px]:text-[14px]" href="https://plugin.gin-vue-admin.com/#/layout/home" target="_blank" rel="noopener">
+            逛逛插件市场
+            <img class="block w-3.5 h-3.5 object-contain" :src="arrRightIcon" alt="" aria-hidden="true" />
           </a>
         </div>
 
@@ -32,6 +33,8 @@
 </template>
 
 <script setup>
+import arrRightIcon from '@/public/web/arr-right.png'
+
 const PLUGIN = 'https://plugin.gin-vue-admin.com/#/layout/home'
 const tiles = [
   { name: '极光论坛', bg: 'linear-gradient(135deg,#2264F2,#5b8cff)', link: PLUGIN },
