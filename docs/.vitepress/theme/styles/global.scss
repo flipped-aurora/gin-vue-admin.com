@@ -267,6 +267,9 @@ body.gva-nav-scrolled .VPNav .content {
     .VPNavBarSearch .DocSearch-Button .DocSearch-Button-Keys .DocSearch-Button-Key {
         font-size: 16px !important;
     }
+    .DocSearch-Button .DocSearch-Button-Key:first-child:after{
+        font-size: 16px !important;
+    }
 
     /* 右侧导航项：多语言、GitHub 等下拉框按钮文字 */
     .VPNavBar .VPFlyout .button .text,
