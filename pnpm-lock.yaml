@@ -17,9 +17,6 @@ importers:
       '@types/node':
         specifier: ^22.5.4
         version: 22.20.0
-      misans:
-        specifier: ^4.1.0
-        version: 4.1.0
       qiankun:
         specifier: ^2.10.16
         version: 2.10.16
@@ -1018,9 +1015,6 @@ packages:
 
   minisearch@7.2.0:
     resolution: {integrity: sha512-dqT2XBYUOZOiC5t2HRnwADjhNS2cecp9u+TJRiJ1Qp/f5qjkeT5APcGPjHw+bz89Ms8Jp+cG4AlE+QZ/QnDglg==}
-
-  misans@4.1.0:
-    resolution: {integrity: sha512-CcIRrIVhnt+OpGXvw1Q8llGBVAy5P2mdov/kJ0gGa81sJ0RY7mZp2fNAt2ySTCeZos+wo7ZnzDZxl1In//7FdA==}
 
   mitt@3.0.1:
     resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
@@ -2230,8 +2224,6 @@ snapshots:
       picomatch: 2.3.2
 
   minisearch@7.2.0: {}
-
-  misans@4.1.0: {}
 
   mitt@3.0.1: {}
 

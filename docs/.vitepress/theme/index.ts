@@ -1,8 +1,4 @@
 import Theme from 'vitepress/theme'
-import 'misans/lib/Normal/MiSans-Normal.min.css'
-import 'misans/lib/Normal/MiSans-Regular.min.css'
-import 'misans/lib/Normal/MiSans-Medium.min.css'
-import 'misans/lib/Normal/MiSans-Semibold.min.css'
 import './styles/vars.css'
 import './styles/global.scss'
 import './styles/landing.scss'

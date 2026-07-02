@@ -4,6 +4,38 @@ $opq-blue-center-left: #23A3DC;
 $opq-yellow: #FCDB29; */
 
 /**
+ * MiSans 自托管字体（文件在 /fonts/）
+ * -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'MiSans';
+  font-weight: 305;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/MiSans-Normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'MiSans';
+  font-weight: 330;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/MiSans-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'MiSans';
+  font-weight: 380;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/MiSans-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'MiSans';
+  font-weight: 520;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/MiSans-Semibold.woff2') format('woff2');
+}
+
+/**
  * Colors
  * -------------------------------------------------------------------------- */
 
