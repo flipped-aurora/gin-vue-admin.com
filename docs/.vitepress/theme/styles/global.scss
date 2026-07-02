@@ -258,10 +258,14 @@ body.gva-nav-scrolled .VPNav .content {
         font-size: 18px !important;
     }
 
-    /* 搜索框内部文字（占位符 + 快捷键提示） */
-    .VPNavBarSearch .DocSearch-Button-Placeholder,
-    .VPNavBarSearch .DocSearch-Button .DocSearch-Button-Keys .DocSearch-Button-Key {
+    /* 搜索框内部文字（占位符） */
+    .VPNavBarSearch .DocSearch-Button-Placeholder {
         font-size: 18px !important;
+    }
+
+    /* 搜索框快捷键提示（Ctrl K） */
+    .VPNavBarSearch .DocSearch-Button .DocSearch-Button-Keys .DocSearch-Button-Key {
+        font-size: 16px !important;
     }
 
     /* 右侧导航项：多语言、GitHub 等下拉框按钮文字 */
