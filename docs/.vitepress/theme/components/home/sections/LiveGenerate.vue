@@ -28,7 +28,7 @@
 
         <!-- 正文 -->
         <div
-          class="mt-[18px] text-[14px] font-normal leading-[1.82] tracking-[0.005em] text-[#555a63]"
+          class="mt-[18px] text-[14px] font-light leading-[1.82] tracking-[0.005em] text-[#555a63]"
         >
           <p>
             描述你需要什么，AI 在 GVA 里<br />

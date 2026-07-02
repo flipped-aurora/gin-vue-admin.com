@@ -20,7 +20,7 @@
 
         <!-- 移动端正文 -->
         <p
-          class="mt-[10px] text-[14px] leading-[1.7] text-[#747981] min-[860px]:hidden"
+          class="mt-[10px] text-[14px] font-light leading-[1.7] text-[#747981] min-[860px]:hidden"
         >
           无需为 Agent 单独配置权限，<br />现有角色与权限设置直接生效。
         </p>
@@ -184,7 +184,7 @@
             <span class="flex items-center gap-[8px] font-semibold text-[#050505] text-[14.5px]">
               <i class="w-[6px] h-[6px] rounded-full bg-[#347CF3] not-italic shrink-0"></i>{{ f.title }}
             </span>
-            <p class="mt-[5px] text-[13px] leading-[1.6] text-[#747981]">{{ f.descMobile }}</p>
+            <p class="mt-[5px] text-[13px] font-light leading-[1.6] text-[#747981]">{{ f.descMobile }}</p>
           </li>
         </ul>
 

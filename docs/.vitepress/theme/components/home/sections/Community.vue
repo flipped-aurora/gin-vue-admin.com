@@ -3,7 +3,7 @@
     <div class="gva-container">
       <div class="text-center mb-14 max-[860px]:mb-10">
         <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)]" style="margin-top: 16px"><span class="block"><span class="text-[var(--gva-primary)]">3 万+</span> 开发者</span><span class="block">已经在用 GVA</span></h2>
-        <p class="text-[clamp(15px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mx-auto">一个被持续验证、持续生长的开源全栈框架。</p>
+        <p class="text-[clamp(14px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mx-auto max-[860px]:font-light">一个被持续验证、持续生长的开源全栈框架。</p>
       </div>
 
       <div class="grid grid-cols-4 gap-5 mb-[52px] max-[860px]:grid-cols-2">
@@ -30,12 +30,12 @@
             ? 'opacity-100 -translate-y-1.5 max-[860px]:translate-y-0 shadow-[shadow:var(--gva-shadow)] border-[var(--gva-primary-ring)]'
             : 'opacity-[0.66] blur-[2px] shadow-[shadow:var(--gva-shadow-sm)] border-[var(--gva-border)] max-[860px]:hidden'"
         >
-          <p class="text-[14.5px] leading-[1.7] text-[var(--gva-text-body)] m-0 mb-5 line-clamp-3">“{{ t.text }}”</p>
+          <p class="text-[14px] leading-[1.7] text-[var(--gva-text-body)] m-0 mb-5 line-clamp-3 max-[860px]:font-light">“{{ t.text }}”</p>
           <div class="flex items-center gap-3">
             <span class="shrink-0 w-[38px] h-[38px] rounded-full grid place-items-center text-white font-bold" :style="{ background: t.color }">{{ t.name[0] }}</span>
             <span>
               <strong class="block text-[14px] text-[var(--gva-text-strong)]">{{ t.name }}</strong>
-              <em class="not-italic text-[12.5px] text-[var(--gva-text-muted)]">{{ t.role }}</em>
+              <em class="not-italic text-[12.5px] text-[var(--gva-text-muted)] max-[860px]:font-light">{{ t.role }}</em>
             </span>
           </div>
         </div>

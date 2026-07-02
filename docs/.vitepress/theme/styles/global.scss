@@ -4,6 +4,9 @@
 
 body {
     cursor: url('/blue.cur'), auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 #app{

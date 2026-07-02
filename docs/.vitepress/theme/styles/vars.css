@@ -98,6 +98,14 @@ $opq-yellow: #FCDB29; */
   --gva-ghost-num: rgba(15, 23, 42, 0.05);
 }
 
+/* 2K 及以上（≥ 2560px）：版心加宽到 1600px */
+@media (min-width: 2560px) {
+  :root {
+    --gva-content: 1600px;
+    --gva-container: 1700px;
+  }
+}
+
 .dark {
   --gva-primary: #4f86ff;
   --gva-primary-hover: #6b9bf8;

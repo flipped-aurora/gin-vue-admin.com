@@ -377,7 +377,7 @@
               class="
                 mt-[17px]
                 text-[14px]
-                font-normal
+                font-light
                 leading-[1.58]
                 text-[#4f535a]
               "
@@ -392,7 +392,7 @@
               class="
                 mt-[11px]
                 text-[14px]
-                font-normal
+                font-light
                 leading-[1.58]
                 text-[#4f535a]
               "

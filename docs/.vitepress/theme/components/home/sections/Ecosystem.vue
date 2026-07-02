@@ -4,7 +4,7 @@
       <div class="grid grid-cols-1 gap-8 min-[860px]:grid-cols-2 min-[860px]:items-center min-[860px]:gap-14">
         <div>
           <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)]">不只是框架，<br />是一个<span class="text-[var(--gva-primary)]">持续生长</span>的生态</h2>
-          <p class="text-[clamp(15px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-[18px] mb-6">
+          <p class="text-[clamp(14px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-[18px] mb-6 max-[860px]:font-light">
             论坛、支付、消息、存储、工作流……数百个官方与社区插件，让你像搭积木一样扩展系统能力。
           </p>
           <a class="inline-flex items-center justify-center gap-2 h-[43px] max-[860px]:h-12 px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-transparent transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-[var(--gva-primary)] text-white hover:bg-[var(--gva-primary-hover)] hover:text-white hover:-translate-y-px" href="https://plugin.gin-vue-admin.com/#/layout/home" target="_blank" rel="noopener">
@@ -22,7 +22,7 @@
             target="_blank"
             rel="noopener"
           >
-            <span class="text-[15px] font-bold relative z-[1] text-center max-[560px]:text-[13px]">{{ t.name }}</span>
+            <span class="text-[14px] font-bold relative z-[1] text-center max-[560px]:text-[13px]">{{ t.name }}</span>
           </a>
         </div>
       </div>

@@ -5,11 +5,11 @@
         <div>
           <p class="max-w-[432px] m-0 text-[42px] leading-[1.43] font-semibold tracking-[0] text-[#030303] dark:text-[var(--gva-text-strong)] max-[1120px]:max-w-[720px] max-[720px]:text-[34px]">你熟悉的 <span class="text-[#1268ff]">AI 工具</span> <br />
             直接接入 GVA</p>
-          <p class="max-w-[432px] mx-0 mt-[34px] mb-[42px] text-[16px] leading-[1.72] font-normal text-[#60656f] max-[1120px]:max-w-[720px] max-[720px]:text-[17px]">
+          <p class="max-w-[432px] mx-0 mt-[34px] mb-[42px] text-[16px] leading-[1.72] font-normal text-[#60656f] max-[1120px]:max-w-[720px] max-[720px]:text-[14px] max-[720px]:font-light">
             所有支持 MCP 协议的主流 AI Coding Agent，<br />
             无需任何额外适配，直接连接 GVA，<br />开始搭建。
           </p>
-          <a class="relative inline-flex items-center gap-2.5 pb-[13px] text-[16px] leading-none font-medium text-[#0b72ff] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-[#287cff] max-[720px]:text-[17px]" href="/guide/server/mcp" target="_blank">
+          <a class="relative inline-flex items-center gap-2.5 pb-[13px] text-[16px] leading-none font-medium text-[#0b72ff] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-[#287cff] max-[720px]:text-[14px]" href="/guide/server/mcp" target="_blank">
             查看接入文档
             <img class="block w-3.5 h-3.5 object-contain" :src="arrRightIcon" alt="" aria-hidden="true" />
           </a>

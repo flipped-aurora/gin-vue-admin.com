@@ -25,7 +25,7 @@
 
         <!-- 移动端正文 -->
         <p
-          class="!mx-auto !mb-0 mt-[16px] !max-w-[360px] text-[14px] font-normal leading-[1.7] tracking-[0.015em] text-[#747981] min-[860px]:hidden"
+          class="!mx-auto !mb-0 mt-[16px] !max-w-[360px] text-[14px] font-light leading-[1.7] tracking-[0.015em] text-[#747981] min-[860px]:hidden"
         >
           选择 API，填写描述，GVA 自动分析<br />
           调用依赖与入参出参，<br />

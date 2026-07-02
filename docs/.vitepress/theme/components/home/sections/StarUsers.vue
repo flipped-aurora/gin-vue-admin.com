@@ -3,7 +3,7 @@
     <div class="gva-container">
       <div class="text-center mb-14 min-[861px]:mb-16 max-[860px]:mb-10">
         <h2 class="text-[clamp(28px,3.8vw,44px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)]" style="margin-top: 16px">他们都在用 <span class="text-[var(--gva-primary)]">GVA</span></h2>
-        <p class="text-[clamp(15px,1.6vw,19px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mx-auto">从云厂商到内容平台，众多团队把 GVA 用在生产环境。</p>
+        <p class="text-[clamp(14px,1.6vw,19px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mx-auto">从云厂商到内容平台，众多团队把 GVA 用在生产环境。</p>
       </div>
 
       <div class="flex items-center gap-3.5 min-[861px]:gap-5">

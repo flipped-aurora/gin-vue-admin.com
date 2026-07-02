@@ -9,12 +9,12 @@
         <span class="inline max-[860px]:block">AI Agent <span class="text-[var(--gva-primary)]">可直接调用</span>的</span>
         业务能力
       </h1>
-      <p class="text-[clamp(15px,1.5vw,18px)] min-[2560px]:text-[clamp(16px,1.1vw,22px)] leading-[2] text-[#808080] max-w-[760px] mt-2 mx-0 mb-[20px] max-[860px]:hidden">
+      <p class="text-[clamp(15px,1.5vw,18px)] min-[2560px]:text-[clamp(16px,1.1vw,22px)] leading-[2] text-[#808080] max-w-[760px] mt-2 mx-0 mb-[20px] max-[860px]:hidden max-[860px]:font-light">
         GVA 3.0 将 AI 辅助开发、全栈工程能力与智能调用体系融为一体，<br />
         让开发者更高效地构建系统，也让系统中的 API、服务与业务流程能够被 AI 理解和调用。<br />
         让每一个业务系统，天然具备 AI 能力。
       </p>
-      <p class="hidden text-[clamp(15px,1.5vw,18px)] leading-[2] text-[#808080] max-w-[760px] mt-10 mx-0 mb-[30px] max-[860px]:block max-[860px]:text-[13px] max-[860px]:leading-[2.15] max-[860px]:max-w-full max-[860px]:mt-0 max-[860px]:mb-[28px]">
+      <p class="hidden text-[clamp(15px,1.5vw,18px)] leading-[2] text-[#808080] max-w-[760px] mt-10 mx-0 mb-[30px] max-[860px]:block max-[860px]:font-light max-[860px]:text-[13px] max-[860px]:leading-[2.15] max-[860px]:max-w-full max-[860px]:mt-0 max-[860px]:mb-[28px]">
         在 GVA 中选择 API，填写每个 Skill 的名称与描述，<br />
         点击生成，下载包含 API 代码与自动生成的<br />
         Skill 文件的 ZIP 包。<br />

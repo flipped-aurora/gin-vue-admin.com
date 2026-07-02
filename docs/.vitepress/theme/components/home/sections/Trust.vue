@@ -3,7 +3,7 @@
     <div class="gva-container">
       <div class="text-center mb-14 max-[860px]:mb-10">
         <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)]" style="margin-top: 16px">安全、可靠、<span class="text-[var(--gva-primary)]">可控</span></h2>
-        <p class="text-[clamp(15px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mx-auto">
+        <p class="text-[clamp(14px,1.5vw,18px)] leading-[2] text-[var(--gva-text-body)] max-w-[820px] mt-4 mx-auto max-[860px]:font-light">
           你决定暴露哪些 API，Agent 只能调用这些；数据留在你自己的服务器上，边界始终掌握在你手里。
         </p>
       </div>
@@ -11,7 +11,7 @@
       <div class="grid grid-cols-3 gap-[22px] max-[860px]:grid-cols-1">
         <div v-for="c in cards" :key="c.title" class="bg-[var(--gva-bg-base)] border border-[var(--gva-border)] rounded-[var(--gva-radius)] shadow-[shadow:var(--gva-shadow-sm)] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[3px] hover:shadow-[shadow:var(--gva-shadow)] hover:border-[var(--gva-border-strong)] p-[30px]">
           <h3 class="text-[20px] font-bold text-[var(--gva-text-strong)] mb-3">{{ c.title }}</h3>
-          <p class="text-[14px] leading-[1.7] text-[var(--gva-text-body)] mb-5">{{ c.desc }}</p>
+          <p class="text-[14px] leading-[1.7] text-[var(--gva-text-body)] mb-5 max-[860px]:font-light">{{ c.desc }}</p>
           <span class="inline-flex items-center gap-[7px] text-[12.5px] font-semibold text-[var(--gva-primary)]"><i class="w-[7px] h-[7px] rounded-full bg-[var(--gva-primary)]"></i> {{ c.tag }}</span>
         </div>
       </div>
