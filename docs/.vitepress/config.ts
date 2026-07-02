@@ -99,7 +99,6 @@ export default defineConfig({
             {text: '协议', link: '/copyright.pdf', target: '_blank'},
             {text: '购买授权', link: 'https://plugin.gin-vue-admin.com/license'},
             {text: '插件市场', link: 'https://plugin.gin-vue-admin.com/#/layout/home'},
-            {text: '<span class="gva-nav-gva3">GVA 3.0</span>', link: '#'},
             {text: '<span class="gva-nav-bilingual" aria-label="多语言"><img class="gva-nav-bilingual__img gva-nav-bilingual__img--light" src="/web/bilingual.png" alt="" /><img class="gva-nav-bilingual__img gva-nav-bilingual__img--dark" src="/web/bilingual_day.png" alt="" /></span>', link: '#'},
             {
                 text: 'GitHub',
