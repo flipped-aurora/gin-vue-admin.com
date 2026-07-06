@@ -341,7 +341,7 @@
             <span class="block">不只是接入</span>
 
             <span class="block text-[#347cf3]">
-              AI 真正理解
+            让 AI 真正理解
             </span>
 
             <span class="block">你的</span>
@@ -367,7 +367,7 @@
             "
           >
             不只是接入<br />
-            AI
+            让 AI
             <span class="text-[#1268ff]">真正理解</span>你的系统
           </h3>
 
