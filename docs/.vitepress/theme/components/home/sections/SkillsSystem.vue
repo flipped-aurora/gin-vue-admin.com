@@ -43,6 +43,7 @@
               min-[860px]:rounded-xl
               min-[860px]:shadow-[0_30px_70px_-28px_rgba(0,0,0,0.45)]
               min-[860px]:ring-black/5
+              2xl:w-[720px]
             "
           >
             <!-- 终端标题栏 -->
@@ -341,7 +342,7 @@
             <span class="block">不只是接入</span>
 
             <span class="block text-[#347cf3]">
-              AI 真正理解
+             让 AI 真正理解
             </span>
 
             <span class="block">你的</span>
@@ -367,7 +368,7 @@
             "
           >
             不只是接入<br />
-            AI
+            让AI
             <span class="text-[#1268ff]">真正理解</span>你的系统
           </h3>
 
