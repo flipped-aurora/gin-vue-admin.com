@@ -13,6 +13,7 @@
           min-[860px]:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]
           min-[860px]:items-stretch
           min-[860px]:gap-[72px]
+          min-[1920px]:grid-cols-[800px_minmax(0,1fr)]
         "
       >
         <!-- 左侧：终端 -->
@@ -25,6 +26,7 @@
             flex-col
             min-[860px]:order-1
             min-[860px]:mt-0
+            min-[1920px]:w-[800px]
           "
         >
           <div
@@ -341,7 +343,7 @@
             <span class="block">不只是接入</span>
 
             <span class="block text-[#347cf3]">
-            让 AI 真正理解
+             让 AI 真正理解
             </span>
 
             <span class="block">你的</span>
@@ -362,12 +364,13 @@
               tracking-tight
               text-[#030303]
               min-[860px]:block
-              min-[860px]:text-[42px]
+              min-[860px]:text-[40px]
               min-[860px]:leading-[1.32]
+              min-[1920px]:text-[44px]
             "
           >
             不只是接入<br />
-            让 AI
+            让AI
             <span class="text-[#1268ff]">真正理解</span>你的系统
           </h3>
 

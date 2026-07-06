@@ -48,6 +48,8 @@ export default defineConfig({
     themeConfig: {
         logo: '/logo.png',
 
+        returnToTopLabel: '返回顶部',
+
         search: {
             provider: 'local',
             options: {
