@@ -13,6 +13,7 @@
           min-[860px]:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]
           min-[860px]:items-stretch
           min-[860px]:gap-[72px]
+          min-[1920px]:grid-cols-[800px_minmax(0,1fr)]
         "
       >
         <!-- 左侧：终端 -->
@@ -25,6 +26,7 @@
             flex-col
             min-[860px]:order-1
             min-[860px]:mt-0
+            min-[1920px]:w-[800px]
           "
         >
           <div
@@ -43,7 +45,6 @@
               min-[860px]:rounded-xl
               min-[860px]:shadow-[0_30px_70px_-28px_rgba(0,0,0,0.45)]
               min-[860px]:ring-black/5
-              2xl:w-[720px]
             "
           >
             <!-- 终端标题栏 -->
@@ -363,8 +364,9 @@
               tracking-tight
               text-[#030303]
               min-[860px]:block
-              min-[860px]:text-[42px]
+              min-[860px]:text-[40px]
               min-[860px]:leading-[1.32]
+              min-[1920px]:text-[44px]
             "
           >
             不只是接入<br />
