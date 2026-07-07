@@ -13,14 +13,14 @@
         <h2
           class="!m-0 text-[34px] font-bold leading-[1.2] tracking-[-0.04em] text-[#050505] min-[860px]:hidden"
         >
-          已有 API，<span class="text-[#347CF3]">一键生成</span><br />可调用的 Skill
+          已有 API，<span class="text-[#2264F2]">一键生成</span><br />可调用的 Skill
         </h2>
 
         <!-- 桌面端标题：保持原样 -->
         <h2
           class="gva-h2 !m-0 hidden !text-[38px] !font-bold !leading-[1.18] !tracking-[-0.045em] !text-[#050505] min-[860px]:block sm:!text-[34px] lg:!text-[40px] xl:!text-[40px]"
         >
-          已有 API，<span class="gva-hl !text-[#347CF3]">一键生成</span>可调用的 Skill
+          已有 API，<span class="gva-hl !text-[#2264F2]">一键生成</span>可调用的 Skill
         </h2>
 
         <!-- 移动端正文 -->
@@ -52,14 +52,14 @@
           <!-- 序号 + 连接线列 -->
           <div class="relative flex justify-center">
             <span
-              class="select-none bg-[linear-gradient(180deg,rgba(78,128,238,0.30)_0%,rgba(78,128,238,0.18)_46%,rgba(78,128,238,0.09)_78%,rgba(78,128,238,0.025)_100%)] bg-clip-text text-[56px] font-semibold leading-[0.92] tracking-[-0.065em] text-transparent"
+              class="select-none bg-[linear-gradient(180deg,rgba(34,100,242,0.30)_0%,rgba(34,100,242,0.18)_46%,rgba(34,100,242,0.09)_78%,rgba(34,100,242,0.025)_100%)] bg-clip-text text-[56px] font-semibold leading-[0.92] tracking-[-0.065em] text-transparent"
             >
               {{ s.num }}
             </span>
 
             <!-- 纵向连接线：末尾步骤隐藏 -->
             <span
-              class="apicli__mline absolute left-1/2 top-[54px] h-[72px] w-[2px] -translate-x-1/2 bg-[linear-gradient(180deg,rgba(78,128,238,0.32)_0%,rgba(78,128,238,0.06)_100%)]"
+              class="apicli__mline absolute left-1/2 top-[54px] h-[72px] w-[2px] -translate-x-1/2 bg-[linear-gradient(180deg,rgba(34,100,242,0.32)_0%,rgba(34,100,242,0.06)_100%)]"
             ></span>
           </div>
 
@@ -96,7 +96,7 @@
             最底部融入白色背景
           -->
           <span
-            class="gva-ghost-num relative z-0 mx-auto block select-none bg-[linear-gradient(180deg,rgba(78,128,238,0.175)_0%,rgba(78,128,238,0.125)_40%,rgba(78,128,238,0.065)_72%,rgba(78,128,238,0.012)_100%)] bg-clip-text text-[104px] font-semibold leading-[0.92] tracking-[-0.065em] text-transparent sm:text-[116px] lg:text-[132px] xl:text-[148px]"
+            class="gva-ghost-num relative z-0 mx-auto block select-none bg-[linear-gradient(180deg,rgba(34,100,242,0.175)_0%,rgba(34,100,242,0.125)_40%,rgba(34,100,242,0.065)_72%,rgba(34,100,242,0.012)_100%)] bg-clip-text text-[104px] font-semibold leading-[0.92] tracking-[-0.065em] text-transparent sm:text-[116px] lg:text-[132px] xl:text-[148px]"
           >
             {{ s.num }}
           </span>
@@ -107,7 +107,7 @@
             中心放置蓝色菱形节点
           -->
           <span
-            class="apicli__dot absolute left-[78%] top-[134px] z-0 hidden h-px w-[44%] bg-[linear-gradient(90deg,rgba(78,128,238,0.04)_0%,rgba(78,128,238,0.28)_24%,rgba(78,128,238,0.28)_76%,rgba(78,128,238,0.04)_100%)] xl:block after:absolute after:left-1/2 after:top-1/2 after:h-[10px] after:w-[10px] after:-translate-x-1/2 after:-translate-y-1/2 after:rotate-45 after:bg-[#347CF3] after:shadow-[0_0_12px_rgba(52,124,243,0.16)] after:content-['']"
+            class="apicli__dot absolute left-[78%] top-[134px] z-0 hidden h-px w-[44%] bg-[linear-gradient(90deg,rgba(34,100,242,0.04)_0%,rgba(34,100,242,0.28)_24%,rgba(34,100,242,0.28)_76%,rgba(34,100,242,0.04)_100%)] xl:block after:absolute after:left-1/2 after:top-1/2 after:h-[10px] after:w-[10px] after:-translate-x-1/2 after:-translate-y-1/2 after:rotate-45 after:bg-[#2264F2] after:shadow-[0_0_12px_rgba(34,100,242,0.16)] after:content-['']"
           ></span>
 
           <!-- 标题向上压进数字渐隐区域 -->

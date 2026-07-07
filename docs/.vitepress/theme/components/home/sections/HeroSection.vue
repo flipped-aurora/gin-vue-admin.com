@@ -2,7 +2,7 @@
   <section class="gva-section flex justify-center overflow-hidden pt-[240px] px-6 pb-[80px] bg-[#F9F9F9] dark:bg-[var(--gva-bg-base)] max-[860px]:pt-[60px] max-[860px]:pb-[18px] min-[2560px]:pt-[210px] min-[2560px]:pb-[110px]">
     <div class="gva-container text-center flex flex-col items-center max-[860px]:w-[min(100%,300px)]">
       <h1 class="text-[clamp(34px,5vw,56px)] min-[2560px]:text-[clamp(56px,3.2vw,76px)] leading-[1.2] font-semibold tracking-[-0.02em] text-[#1a1a1a] mx-0 mt-0 mb-5 max-[860px]:hidden">
-        用 AI 构建<span class="text-[#1268ff]">系统</span>，让系统为 <span class="text-[#1268ff]">AI</span> 工作
+        用 AI 构建<span class="text-[#2264F2]">系统</span>，让系统为 <span class="text-[#2264F2]">AI</span> 工作
       </h1>
       <h1 class="text-[clamp(34px,5vw,56px)] leading-[1.2] font-semibold tracking-[-0.02em] text-[#1a1a1a] mx-0 mt-0 mb-5 hidden max-[860px]:block max-[860px]:mb-[18px] max-[860px]:text-[28px] max-[860px]:leading-[1.32] max-[860px]:font-bold max-[860px]:tracking-[0]" aria-label="让现有 API 成为 AI Agent 可直接调用的业务能力">
         让现有 API 成为
@@ -25,7 +25,7 @@
         <a class="inline-flex items-center justify-center gap-2 h-[43px] px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border border-transparent transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-[var(--gva-primary)] text-white hover:bg-[var(--gva-primary-hover)] hover:text-white hover:-translate-y-px min-w-40 max-[860px]:h-12 max-[860px]:w-[90%] max-[860px]:mx-auto max-[860px]:flex-none max-[860px]:min-w-0" href="https://demo.gin-vue-admin.com" target="_blank" rel="noopener">
           立即体验
         </a>
-        <a class="inline-flex items-center justify-center gap-2 h-[43px] px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border-[#1268ff] border transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-transparent text-[var(--gva-primary)] hover:border-[#1268ff] hover:text-[var(--gva-primary)] min-w-40 max-[860px]:h-12 max-[860px]:w-[90%] max-[860px]:mx-auto max-[860px]:flex-none max-[860px]:min-w-0" target="_blank" href="/guide/introduce/project">查看文档</a>
+        <a class="inline-flex items-center justify-center gap-2 h-[43px] px-7 rounded-[8px] text-[14px] font-normal cursor-pointer whitespace-nowrap border-[#2264F2] border transition-[transform,box-shadow,background-color,border-color,color] duration-200 bg-transparent text-[var(--gva-primary)] hover:border-[#2264F2] hover:text-[var(--gva-primary)] min-w-40 max-[860px]:h-12 max-[860px]:w-[90%] max-[860px]:mx-auto max-[860px]:flex-none max-[860px]:min-w-0" target="_blank" href="/guide/introduce/project">查看文档</a>
       </div>
     </div>
   </section>

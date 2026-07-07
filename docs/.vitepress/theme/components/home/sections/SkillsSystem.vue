@@ -342,14 +342,14 @@
           >
             <span class="block">不只是接入</span>
 
-            <span class="block text-[#347cf3]">
+            <span class="block text-[#2264F2]">
              让 AI 真正理解
             </span>
 
             <span class="block">你的</span>
 
             <span class="block">
-              <span class="text-[#347cf3]">GVA</span>
+              <span class="text-[#2264F2]">GVA</span>
               <span class="ml-[4px]">系统</span>
             </span>
           </h3>
@@ -371,7 +371,7 @@
           >
             不只是接入<br />
             让AI
-            <span class="text-[#1268ff]">真正理解</span>你的系统
+            <span class="text-[#2264F2]">真正理解</span>你的系统
           </h3>
 
           <!-- 移动端正文 -->
@@ -444,7 +444,7 @@
                 text-[12px]
                 font-medium
                 leading-none
-                text-[#1268ff]
+                text-[#2264F2]
               "
             >
               {{ s }}
@@ -460,12 +460,12 @@
               items-center
               gap-[8px]
               border-b-2
-              border-[#287cff]
+              border-[#2264F2]
               pb-[4px]
               text-[14px]
               font-medium
               leading-none
-              text-[#1268ff]
+              text-[#2264F2]
               transition-opacity
               hover:opacity-80
               min-[860px]:mt-8

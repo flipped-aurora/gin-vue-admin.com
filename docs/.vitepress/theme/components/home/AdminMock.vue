@@ -128,18 +128,18 @@ const rows = [
 .amock__badge.is-on { background: rgba(22,163,74,0.12); color: var(--gva-success); }
 .amock__badge.is-off { background: rgba(239,68,68,0.12); color: var(--gva-danger); }
 .amock__ops { display: flex; gap: 8px; }
-.amock__ops i { width: 16px; height: 16px; border-radius: 5px; background: rgba(36,101,242,0.18); }
+.amock__ops i { width: 16px; height: 16px; border-radius: 5px; background: rgba(34,100,242,0.18); }
 
 .amock__play {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   width: 66px; height: 66px; border-radius: 999px; border: none; cursor: pointer;
   background: var(--gva-primary); color: #fff; display: grid; place-items: center;
-  box-shadow: 0 12px 34px rgba(36,101,242,0.5);
+  box-shadow: 0 12px 34px rgba(34,100,242,0.5);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 .amock__play::before {
   content: ""; position: absolute; inset: -10px; border-radius: 999px;
-  border: 1px solid rgba(36,101,242,0.4); animation: amockPulse 2.4s ease-out infinite;
+  border: 1px solid rgba(34,100,242,0.4); animation: amockPulse 2.4s ease-out infinite;
 }
 .amock__play:hover { transform: translate(-50%, -50%) scale(1.06); }
 .amock__play svg { margin-left: 3px; }

@@ -7,6 +7,7 @@
   color: var(--gva-text-body);
   font-family: var(--vp-font-family-base);
   -webkit-font-smoothing: antialiased;
+  font-size: 16px;
   line-height: 1.6;
 }
 
@@ -64,7 +65,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--gva-primary);
@@ -94,14 +95,14 @@
   color: #1a1a1a;
 }
 .gva-h2 {
-  font-size: clamp(28px, 3.6vw, 40px);
+  font-size: 16px;
   line-height: 1.18;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--gva-text-strong);
 }
 .gva-h3 {
-  font-size: clamp(22px, 2.6vw, 30px);
+  font-size: 16px;
   line-height: 1.25;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -118,7 +119,7 @@
 }
 
 .gva-lead {
-  font-size: clamp(15px, 1.5vw, 18px);
+  font-size: 16px;
   line-height: 2;
   color: var(--gva-text-body);
   max-width: 820px;
@@ -128,7 +129,7 @@
 }
 .gva-muted {
   color: var(--gva-text-muted);
-  font-size: 13px;
+  font-size: 16px;
 }
 
 /* ---- Buttons ----------------------------------------------------------- */
@@ -182,7 +183,7 @@
   gap: 6px;
   color: var(--gva-primary);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
 }
 .gva-link:hover {
   color: var(--gva-primary-hover);
@@ -234,7 +235,7 @@
   position: relative;
   padding-left: 26px;
   color: var(--gva-text-body);
-  font-size: 15px;
+  font-size: 16px;
 }
 .gva-bullets li::before {
   content: "";
@@ -259,7 +260,7 @@
   align-items: center;
   padding: 7px 14px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
   font-family: var(--vp-font-family-mono);
   background: var(--gva-primary-soft);

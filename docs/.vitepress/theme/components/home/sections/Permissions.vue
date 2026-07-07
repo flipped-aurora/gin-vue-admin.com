@@ -8,14 +8,14 @@
         <h2
           class="!m-0 mt-[10px] text-[28px] leading-[1.22] font-bold tracking-[-0.02em] text-[#050505] min-[860px]:hidden"
         >
-          Agent 与人<br />遵守<span class="text-[#347CF3]">同一套规则</span>
+          Agent 与人<br />遵守<span class="text-[#2264F2]">同一套规则</span>
         </h2>
 
         <!-- 桌面端标题 -->
         <h2
           class="!m-0 mt-[10px] hidden text-[30px] leading-[1.18] font-bold tracking-[-0.025em] text-[#050505] min-[860px]:block sm:text-[33px] lg:text-[37px] xl:text-[40px]"
         >
-          Agent 与人，遵守<span class="text-[#347CF3]">同一套规则</span>
+          Agent 与人，遵守<span class="text-[#2264F2]">同一套规则</span>
         </h2>
 
         <!-- 移动端正文 -->
@@ -76,7 +76,7 @@
                 <span class="block font-semibold text-[#080A0E] text-[13.5px] leading-[1.25] truncate">{{ r.name }}</span>
                 <span
                   class="block text-[11.5px] leading-[1.4]"
-                  :class="r.subBlue ? 'text-[#347CF3] font-medium' : 'text-[#9499A3]'"
+                  :class="r.subBlue ? 'text-[#2264F2] font-medium' : 'text-[#9499A3]'"
                 >{{ r.sub }}</span>
               </span>
             </span>
@@ -143,7 +143,7 @@
                 <span class="block font-semibold text-[#080A0E] text-[14px] leading-[1.25]">{{ r.name }}</span>
                 <span
                   class="block text-[12px] leading-[1.4]"
-                  :class="r.subBlue ? 'text-[#347CF3] font-medium' : 'text-[#9499A3]'"
+                  :class="r.subBlue ? 'text-[#2264F2] font-medium' : 'text-[#9499A3]'"
                 >{{ r.sub }}</span>
               </span>
             </span>
@@ -151,7 +151,7 @@
             <span class="flex items-center gap-[8px] flex-wrap">
               <span
                 class="inline-flex items-center px-[11px] py-[3px] rounded-full text-[12.5px] font-semibold"
-                :class="r.badgeBlue ? 'bg-[#E5EBFD] text-[#347CF3]' : 'bg-[#F3F4F6] text-[#71757D]'"
+                :class="r.badgeBlue ? 'bg-[#E5EBFD] text-[#2264F2]' : 'bg-[#F3F4F6] text-[#71757D]'"
               >{{ r.badge }}</span>
               <span v-if="r.badgeNote" class="text-[12px] text-[#9499A3] whitespace-nowrap">{{ r.badgeNote }}</span>
             </span>
@@ -170,7 +170,7 @@
           <div class="flex items-center justify-between px-[24px] py-[12px] text-[13.5px] text-[#9499A3] border-t border-[#E6E7EA]">
             <span>Agent 的权限由 GVA 统一管控，无需额外配置</span>
             <a
-              class="group inline-flex items-center gap-[6px] text-[#347CF3] font-semibold hover:text-[#1268ff]"
+              class="group inline-flex items-center gap-[6px] text-[#2264F2] font-semibold hover:text-[#1B52D4]"
               href="/guide/server/authorization"
             >查看权限文档 <span class="transition-transform group-hover:translate-x-[3px]">→</span></a>
           </div>
@@ -182,7 +182,7 @@
         <ul class="flex flex-col gap-[14px]">
           <li v-for="f in feats" :key="f.title">
             <span class="flex items-center gap-[8px] font-semibold text-[#050505] text-[14.5px]">
-              <i class="w-[6px] h-[6px] rounded-full bg-[#347CF3] not-italic shrink-0"></i>{{ f.title }}
+              <i class="w-[6px] h-[6px] rounded-full bg-[#2264F2] not-italic shrink-0"></i>{{ f.title }}
             </span>
             <p class="mt-[5px] text-[13px] font-light leading-[1.6] text-[#747981]">{{ f.descMobile }}</p>
           </li>
@@ -190,7 +190,7 @@
 
         <div class="text-center mt-[18px]">
           <a
-            class="inline-flex items-center gap-[6px] text-[#347CF3] font-semibold text-[14px] border-b border-[#347CF3] pb-[2px]"
+            class="inline-flex items-center gap-[6px] text-[#2264F2] font-semibold text-[14px] border-b border-[#2264F2] pb-[2px]"
             href="/guide/server/authorization"
           >查看权限文档 →</a>
         </div>
@@ -200,7 +200,7 @@
       <div class="mt-[26px] hidden min-[860px]:grid max-w-[940px] mx-auto grid-cols-3 gap-x-[32px]">
         <div v-for="f in feats" :key="f.title">
           <span class="flex items-center gap-[8px] font-semibold text-[#050505] text-[15px]">
-            <i class="w-[7px] h-[7px] rounded-full bg-[#347CF3] not-italic shrink-0"></i>{{ f.title }}
+            <i class="w-[7px] h-[7px] rounded-full bg-[#2264F2] not-italic shrink-0"></i>{{ f.title }}
           </span>
           <p class="mt-[7px] text-[13.5px] leading-[1.65] text-[#747981]">
             {{ f.desc[0] }}<br />{{ f.desc[1] }}
@@ -219,7 +219,7 @@ const roles = [
     subBlue: false,
     icon: 'user',
     iconBg: '#E5EBFD',
-    iconColor: '#347CF3',
+    iconColor: '#2264F2',
     badge: 'admin',
     badgeBlue: false,
     badgeNote: '',
@@ -250,7 +250,7 @@ const roles = [
     sub: '自动调用',
     subBlue: true,
     icon: 'bolt',
-    iconBg: '#347CF3',
+    iconBg: '#2264F2',
     iconColor: '#FFFFFF',
     badge: 'member',
     badgeBlue: true,

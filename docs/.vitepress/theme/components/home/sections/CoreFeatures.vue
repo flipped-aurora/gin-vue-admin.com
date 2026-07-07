@@ -32,7 +32,7 @@
           v-for="(demo, index) in demos"
           :key="demo.title"
           type="button"
-          class="group relative flex h-full w-full flex-col overflow-hidden rounded-[12px] borderd  bg-white p-7 text-left [font:inherit] transition-[transform,border-color] duration-200 hover:-translate-y-[2px] hover:border-[#B7C2D2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#347CF3]/25 min-[860px]:min-h-[310px] max-[859px]:min-h-0 max-[859px]:rounded-[12px] max-[859px]:p-6"
+          class="group relative flex h-full w-full flex-col overflow-hidden rounded-[12px] borderd  bg-white p-7 text-left [font:inherit] transition-[transform,border-color] duration-200 hover:-translate-y-[2px] hover:border-[#B7C2D2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2264F2]/25 min-[860px]:min-h-[310px] max-[859px]:min-h-0 max-[859px]:rounded-[12px] max-[859px]:p-6"
           @click="openDemo(index)"
         >
           <!-- 淡蓝数字 -->
@@ -58,7 +58,7 @@
 
           <!-- 底部入口 -->
           <span
-            class="relative mt-auto inline-flex w-fit items-center gap-2.5 pb-[13px] pt-[18px] text-[16px] font-medium leading-none text-[#0b72ff] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-[#287cff] after:content-[''] max-[859px]:text-[17px]"
+            class="relative mt-auto inline-flex w-fit items-center gap-2.5 pb-[13px] pt-[18px] text-[16px] font-medium leading-none text-[#2264F2] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-[#2264F2] after:content-[''] max-[859px]:text-[17px]"
           >
             试一下
 
