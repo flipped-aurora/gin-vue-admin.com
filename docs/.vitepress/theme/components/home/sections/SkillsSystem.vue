@@ -153,7 +153,7 @@
               <p class="flex items-center gap-[9px] whitespace-nowrap">
                 <span class="text-[#85888d]">$</span>
                 <span class="font-semibold text-[#e8e8e8]">
-                  gva init
+                  gva user-list --page 1
                 </span>
               </p>
 
@@ -167,7 +167,7 @@
                 "
               >
                 <span class="w-[6px] shrink-0 text-[#6d7075]">›</span>
-                <span>Detecting GVA project...</span>
+                <span>Loading manifest</span>
               </p>
 
               <p
@@ -180,7 +180,7 @@
                 "
               >
                 <span class="w-[6px] shrink-0 text-[#6d7075]">›</span>
-                <span>Collecting project conventions</span>
+                <span>GET /user/getUserList</span>
               </p>
 
               <p
@@ -193,7 +193,7 @@
                 "
               >
                 <span class="w-[6px] shrink-0 text-[#6d7075]">›</span>
-                <span>Installing Skills to AI Agent</span>
+                <span>Auth · x-token</span>
               </p>
 
               <p
@@ -209,16 +209,16 @@
                 <span class="w-[6px] shrink-0">✓</span>
 
                 <span class="font-medium">
-                  GVA Skills installed successfully
+                  code 0 · 128 records
                 </span>
               </p>
 
               <p class="mt-[1px] whitespace-nowrap text-[#a9aaae]">
-                Your Agent now understands this project.
+                Your agent now calls your APIs.
               </p>
             </div>
 
-            <!-- 桌面端终端内容：保持原样 -->
+            <!-- 桌面端终端内容 -->
             <div
               class="
                 hidden
@@ -234,41 +234,41 @@
               "
             >
               <p class="whitespace-pre text-[#8d8d8d]">
-                ~ cd my-gva-project
+                ~ gva login --token eyJhbGci...
               </p>
 
               <p class="whitespace-pre text-[#8d8d8d]">
-                ~ gva init
+                ~ gva --help
               </p>
 
               <p class="h-[1.85em]">&nbsp;</p>
 
               <p class="whitespace-pre text-[#d2d2d2]">
-                Initializing GVA project...
+                Loading embedded manifest...
               </p>
 
               <p class="whitespace-pre text-[#d2d2d2]">
-                Connecting to GVA instance...
+                Registering API commands...
               </p>
 
               <p class="h-[1.85em]">&nbsp;</p>
 
               <p class="whitespace-pre text-[#4eb849]">
-                ✓ Skills installed successfully
+                ✓ Skill loaded: gva-cli
               </p>
 
               <p class="whitespace-pre text-[#4eb849]">
-                ✓ 8 skills loaded: data-modeling, ui-builder,
+                ✓ 12 commands ready: user-list, user-create,
               </p>
 
               <p class="whitespace-pre pl-[4ch] text-[#4eb849]">
-                workflow, permissions, plugin-dev...
+                role-update, menu-list, api-create...
               </p>
 
               <p class="h-[1.85em]">&nbsp;</p>
 
               <p class="whitespace-pre text-[#5b9bf0]">
-                Ready. Your AI Agent now understands GVA.
+                Ready. Your AI agent now calls GVA APIs.
               </p>
 
               <span
@@ -297,10 +297,10 @@
               min-[860px]:hidden
             "
           >
-            一条命令，将项目知识交给 AI
+            一条命令，让 AI 直接调用你的后台
           </p>
 
-          <!-- 桌面端说明：保持原样 -->
+          <!-- 桌面端说明 -->
           <p
             class="
               mt-3
@@ -311,7 +311,7 @@
               min-[860px]:block
             "
           >
-            执行 gva init 后的实际输出
+            gva 调用后台接口的示例输出
           </p>
         </div>
 
@@ -343,7 +343,7 @@
             <span class="block">不只是接入</span>
 
             <span class="block text-[#2264F2]">
-             让 AI 真正理解
+             让 AI 直接调用
             </span>
 
             <span class="block">你的</span>
@@ -354,7 +354,7 @@
             </span>
           </h3>
 
-          <!-- 桌面端标题：保持原样 -->
+          <!-- 桌面端标题 -->
           <h3
             class="
               hidden
@@ -371,7 +371,7 @@
           >
             不只是接入<br />
             让AI
-            <span class="text-[#2264F2]">真正理解</span>你的系统
+            <span class="text-[#2264F2]">直接调用</span>你的系统
           </h3>
 
           <!-- 移动端正文 -->
@@ -385,10 +385,10 @@
                 text-[#4f535a]
               "
             >
-              执行 gva init，GVA 的代码规范、<br />
-              模块结构和命名约定<br />
-              自动打包成 Skills，<br />
-              安装进你的 AI Agent。
+              在后台勾选要开放的接口，<br />
+              GVA 依据 Swagger<br />
+              自动生成命令行 Skill，<br />
+              装进 Claude Code 等 AI 助手。
             </p>
 
             <p
@@ -400,25 +400,25 @@
                 text-[#4f535a]
               "
             >
-              它知道 GVA 怎么组织代码，<br />
-              生成的结果直接符合项目规范，<br />
-              不需要你在每一次生成后<br />
-              反复纠正。
+              一次 login 完成鉴权，<br />
+              AI 就能在终端<br />
+              直接调用你的后台接口，<br />
+              不必再逐个解释接口怎么用。
             </p>
           </div>
 
-          <!-- 桌面端正文：保持原样 -->
+          <!-- 桌面端正文 -->
           <div class="hidden min-[860px]:block">
             <p class="mt-6 text-[16px] leading-[1.72] text-[#60656f]">
-              执行 gva init，GVA 的代码规范、<br />
-              模块结构、命名约定自动打包成 Skills，<br />
-              安装进你的 AI Agent。
+              在后台勾选要开放的接口，<br />
+              GVA 依据 Swagger 自动生成命令行，<br />
+              打包成 Skill 装进 Claude Code 等 AI 助手。
             </p>
 
             <p class="mt-5 text-[16px] leading-[1.72] text-[#60656f]">
-              它知道 GVA 怎么组织代码，<br />
-              生成的结果直接符合项目规范，<br />
-              不需要你反复纠正。
+              一次 login 完成鉴权，<br />
+              AI 就能在终端直接调用你的后台接口，<br />
+              不必再逐个解释接口怎么用。
             </p>
           </div>
 
@@ -475,7 +475,7 @@
             "
             href="/guide/server/mcp"
           >
-            <span>了解 Skills 机制</span>
+            <span>了解 AI CLI</span>
 
             <span
               class="
@@ -494,14 +494,15 @@
 </template>
 
 <script setup>
+// AI CLI 依据后台绑定的接口生成的示例命令
 const skills = [
-  'data-modeling',
-  'ui-builder',
-  'workflow',
-  'permissions',
-  'plugin-dev',
-  'api-config',
-  'deployment',
-  'migration',
+  'user-list',
+  'user-create',
+  'role-update',
+  'menu-list',
+  'api-create',
+  'dept-list',
+  'dict-list',
+  'login',
 ]
 </script>
