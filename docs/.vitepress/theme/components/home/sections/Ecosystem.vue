@@ -68,9 +68,10 @@ const plugins = ref(
   ].map((p) => ({ id: p.id, name: p.name, picture: IMG_BASE + p.picture, link: detailUrl(p.id) }))
 )
 
-// 代理地址：见 docs/vite.config.ts 中 /shopPlugin -> plugin.gin-vue-admin.com/api
-const RECOMMEND_URL = '/shopPlugin/getShopPluginList?page=1&pageSize=9&recommend=true'
-const HOT_URL = '/shopPlugin/getShopPluginList?page=1&pageSize=9'
+// 代理地址：见 docs/vite.config.ts 中 /pluginApi -> plugin.gin-vue-admin.com/api
+// 统一前缀 pluginApi 会在代理转发时去除。
+const RECOMMEND_URL = '/pluginApi/shopPlugin/getShopPluginList?page=1&pageSize=9&recommend=true'
+const HOT_URL = '/pluginApi/shopPlugin/getShopPluginList?page=1&pageSize=9'
 
 async function fetchList(url) {
   const res = await fetch(url)

@@ -10,7 +10,9 @@
           </p>
         </header>
 
-        <div class="cl-timeline">
+        <div v-if="loading" class="cl-state">加载中…</div>
+        <div v-else-if="errorMsg" class="cl-state">{{ errorMsg }}</div>
+        <div v-else class="cl-timeline">
           <article
             v-for="release in releases"
             :id="release.version"
@@ -35,8 +37,8 @@
                 :key="i"
                 class="cl-change"
               >
-                <span class="cl-tag" :class="`cl-tag--${change.type}`">
-                  {{ tagLabel[change.type] }}
+                <span class="cl-tag" :class="`cl-tag--${change.typeKey}`">
+                  {{ change.type }}
                 </span>
                 <span class="cl-text">{{ change.text }}</span>
               </li>
@@ -70,56 +72,66 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-// 变更类型 → 中文标签。新增数据时只需扩展下方 releases 数组即可。
-const tagLabel = {
-  feature: '新增',
-  improve: '优化',
-  fix: '修复',
+// 代理地址：见 docs/vite.config.ts 中 /pluginApi -> plugin.gin-vue-admin.com/api
+// 统一前缀 pluginApi 会在代理转发时去除。
+const CHANGELOG_URL = '/pluginApi/productChangelog/getPublicChangelogList'
+
+// 中文类型 → 英文 key，仅用于拼 CSS class（保留原配色）。
+// 接口下不存在的 key 也会兜底到 'other'。
+const TYPE_KEY = {
+  新增: 'feature',
+  优化: 'improve',
+  修复: 'fix',
+  UI: 'ui',
+  其他: 'other',
 }
 
-// 更新日志数据：按版本从新到旧排列，最新版本设置 latest: true。
-const releases = [
-  {
-    version: 'v3.0.0',
-    date: '2026-06-18',
-    latest: true,
-    changes: [
-      { type: 'feature', text: '全新 3.0 架构：前端升级至 Vue 3 + Vite 6，后端支持 Go 1.23。' },
-      { type: 'feature', text: 'AutoCode 代码生成器支持一键生成 CRUD 接口与配套表单。' },
-      { type: 'improve', text: '重构权限系统，菜单与 API 权限的配置更直观。' },
-      { type: 'improve', text: '文档站全面改版，支持全局搜索与快捷键唤起。' },
-      { type: 'fix', text: '修复暗色模式下部分组件对比度不足的问题。' },
-    ],
-  },
-  {
-    version: 'v2.9.1',
-    date: '2026-04-22',
-    changes: [
-      { type: 'improve', text: '提升大数据量表格的渲染性能。' },
-      { type: 'fix', text: '修复导出 Excel 时中文表头偶发乱码的问题。' },
-      { type: 'fix', text: '修复字典缓存在多实例部署下不同步的问题。' },
-    ],
-  },
-  {
-    version: 'v2.9.0',
-    date: '2026-03-10',
-    changes: [
-      { type: 'feature', text: '新增插件市场，支持一键安装组织管理等官方插件。' },
-      { type: 'improve', text: '优化登录流程，支持多种验证码策略灵活切换。' },
-      { type: 'fix', text: '修复部分场景下 JWT 刷新令牌偶发失效的问题。' },
-    ],
-  },
-  {
-    version: 'v2.8.4',
-    date: '2026-01-20',
-    changes: [
-      { type: 'improve', text: '升级若干依赖库版本，修复关联的安全告警。' },
-      { type: 'fix', text: '修复文件上传在特定对象存储配置下的路径错误。' },
-    ],
-  },
-]
+const releases = ref([])
+const active = ref('')
+const loading = ref(true)
+const errorMsg = ref('')
 
-const active = ref(releases[0].version)
+// 把 ISO 日期格式化成 YYYY-MM-DD（用本地时区，避免 UTC 偏移导致日期错位）。
+const formatDate = (iso) => {
+  if (!iso) return ''
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return iso
+  const y = d.getFullYear()
+  const m = String(d.getMonth() + 1).padStart(2, '0')
+  const day = String(d.getDate()).padStart(2, '0')
+  return `${y}-${m}-${day}`
+}
+
+// 接口数据 → 模板所需结构。
+const normalize = (list) =>
+  list.map((item, idx) => ({
+    version: item.title || `v${item.version}`,
+    date: formatDate(item.releaseDate),
+    latest: idx === 0,
+    changes: (item.items || []).map((c) => ({
+      type: c.type,
+      typeKey: TYPE_KEY[c.type] || 'other',
+      text: c.content,
+    })),
+  }))
+
+const fetchChangelog = async () => {
+  loading.value = true
+  errorMsg.value = ''
+  try {
+    const res = await fetch(CHANGELOG_URL)
+    if (!res.ok) throw new Error(`接口返回 ${res.status}`)
+    const json = await res.json()
+    if (json.code !== 0) throw new Error(json.msg || '获取日志失败')
+    const list = (json.data && json.data.list) || []
+    releases.value = normalize(list)
+    active.value = releases.value[0]?.version || ''
+  } catch (e) {
+    errorMsg.value = `更新日志加载失败：${e.message || e}`
+  } finally {
+    loading.value = false
+  }
+}
 
 // 点击右侧版本：平滑滚动并同步高亮，避免默认锚点跳动被固定导航栏遮挡。
 const goTo = (event, version) => {
@@ -133,8 +145,11 @@ const goTo = (event, version) => {
 
 let observer = null
 
-onMounted(() => {
+onMounted(async () => {
+  await fetchChangelog()
+
   const entries = Array.from(document.querySelectorAll('.cl-entry'))
+  if (!entries.length) return
   observer = new IntersectionObserver(
     (records) => {
       // 已滚动到底部：末尾的短条目无法进入观察带，强制高亮最后一个版本，
@@ -143,7 +158,7 @@ onMounted(() => {
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 2
       if (atBottom) {
-        active.value = releases[releases.length - 1].version
+        active.value = releases.value[releases.value.length - 1].version
         return
       }
       records.forEach((record) => {
@@ -277,6 +292,14 @@ onBeforeUnmount(() => {
   font-size: 13.5px;
   color: var(--gva-text-muted);
   white-space: nowrap;
+}
+
+/* ---- Loading / error state ---- */
+.cl-state {
+  padding: 48px 0;
+  text-align: center;
+  font-size: 15px;
+  color: var(--gva-text-muted);
 }
 
 /* ---- Change rows ---- */
