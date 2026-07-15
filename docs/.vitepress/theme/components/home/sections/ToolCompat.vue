@@ -3,13 +3,13 @@
     <div class="gva-container">
       <div class="grid items-center grid-cols-[378px_minmax(0,1fr)] gap-14 max-[1120px]:grid-cols-[minmax(0,1fr)] max-[1120px]:gap-[42px]">
         <div>
-          <p class="max-w-[432px] m-0 text-[42px] leading-[1.43] font-semibold tracking-[0] text-[#030303] dark:text-[var(--gva-text-strong)] max-[1120px]:max-w-[720px] max-[720px]:text-[34px]">你熟悉的 <span class="text-[#1268ff]">AI 工具</span> <br />
+          <p class="max-w-[432px] m-0 text-[42px] leading-[1.43] font-semibold tracking-[0] text-[#030303] dark:text-[var(--gva-text-strong)] max-[1120px]:max-w-[720px] max-[720px]:text-[34px]">你熟悉的 <span class="text-[#2264F2]">AI 工具</span> <br />
             直接接入 GVA</p>
           <p class="max-w-[432px] mx-0 mt-[34px] mb-[42px] text-[16px] leading-[1.72] font-normal text-[#60656f] max-[1120px]:max-w-[720px] max-[720px]:text-[14px] max-[720px]:font-light">
             所有支持 MCP 协议的主流 AI Coding Agent，<br />
             无需任何额外适配，直接连接 GVA，<br />开始搭建。
           </p>
-          <a class="relative inline-flex items-center gap-2.5 pb-[13px] text-[16px] leading-none font-medium text-[#0b72ff] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-[#287cff] max-[720px]:text-[14px]" href="/guide/server/mcp" target="_blank">
+          <a class="relative inline-flex items-center gap-2.5 pb-[13px] text-[16px] leading-none font-medium text-[#2264F2] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-[#2264F2] max-[720px]:text-[14px]" href="/guide/server/mcp" target="_blank">
             查看接入文档
             <img class="block w-3.5 h-3.5 object-contain" :src="arrRightIcon" alt="" aria-hidden="true" />
           </a>
@@ -17,7 +17,7 @@
 
         <div class="bg-[var(--gva-bg-base)] border border-[#dfe5ee] rounded-[16px] shadow-[0_10px_34px_rgba(18,37,63,0.04)] transition-[transform,box-shadow,border-color] duration-200 min-h-[446px] pt-11 px-[26px] pb-[34px] dark:bg-[var(--gva-bg-dark-soft)] dark:border-[var(--gva-border)] max-[720px]:min-h-[auto] max-[720px]:py-5 max-[720px]:px-3.5">
           <div class="grid grid-cols-3 gap-y-7 gap-x-6 max-[720px]:grid-cols-2 max-[720px]:gap-2.5">
-            <div v-for="t in tools" :key="t.name" class="flex flex-col items-center justify-center justify-self-center gap-3.5 w-[98%] h-[148px] pt-[18px] px-2 pb-4 border border-[#dfe5ee] rounded-[10px] bg-[#fff] shadow-[0_5px_13px_rgba(16,24,40,0.045)] transition-[border-color,transform,box-shadow] duration-200 hover:border-[rgba(36,101,242,0.28)] hover:shadow-[0_8px_18px_rgba(16,24,40,0.065)] dark:bg-[var(--gva-bg-dark-soft)] dark:border-[var(--gva-border)] dark:hover:border-[var(--gva-border)] max-[720px]:flex-row max-[720px]:justify-start max-[720px]:w-full max-[720px]:h-auto max-[720px]:gap-2.5 max-[720px]:px-3 max-[720px]:py-2.5 max-[720px]:rounded-lg">
+            <div v-for="t in tools" :key="t.name" class="flex flex-col items-center justify-center justify-self-center gap-3.5 w-[98%] h-[148px] pt-[18px] px-2 pb-4 border border-[#dfe5ee] rounded-[10px] bg-[#fff] shadow-[0_5px_13px_rgba(16,24,40,0.045)] transition-[border-color,transform,box-shadow] duration-200 hover:border-[rgba(34,100,242,0.28)] hover:shadow-[0_8px_18px_rgba(16,24,40,0.065)] dark:bg-[var(--gva-bg-dark-soft)] dark:border-[var(--gva-border)] dark:hover:border-[var(--gva-border)] max-[720px]:flex-row max-[720px]:justify-start max-[720px]:w-full max-[720px]:h-auto max-[720px]:gap-2.5 max-[720px]:px-3 max-[720px]:py-2.5 max-[720px]:rounded-lg">
               <span class="w-[66px] h-[66px] shrink-0 grid place-items-center overflow-hidden rounded-full max-[720px]:w-10 max-[720px]:h-10" :class="t.iconClass">
                 <img v-if="t.icon" :src="t.icon" :alt="t.name" loading="lazy" class="block w-full h-full object-contain" />
                 <span v-else>{{ t.glyph }}</span>

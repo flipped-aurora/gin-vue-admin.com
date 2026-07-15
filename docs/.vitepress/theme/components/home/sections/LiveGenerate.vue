@@ -16,14 +16,14 @@
         >
           <span class="block">
             从
-            <span class="ml-[5px] text-[#1268ff]">一句话需求</span>
+            <span class="ml-[5px] text-[#2264F2]">一句话需求</span>
           </span>
 
           <span class="block">到完整的</span>
 
-          <span class="block text-[#1268ff]">业务</span>
+          <span class="block text-[#2264F2]">业务</span>
 
-          <span class="block text-[#1268ff]">模块</span>
+          <span class="block text-[#2264F2]">模块</span>
         </h3>
 
         <!-- 正文 -->
@@ -47,7 +47,7 @@
         <!-- 链接 -->
         <a
           href="/guide/generator/server"
-          class="mt-[18px] inline-flex w-fit items-center gap-[8px] border-b-2 border-[#287cff] pb-[4px] text-[14px] font-medium leading-none text-[#1268ff] transition-opacity hover:opacity-80"
+          class="mt-[18px] inline-flex w-fit items-center gap-[8px] border-b-2 border-[#2264F2] pb-[4px] text-[14px] font-medium leading-none text-[#2264F2] transition-opacity hover:opacity-80"
         >
           <span>查看演示视频</span>
           <span class="text-[14px] leading-none">→</span>
@@ -89,7 +89,7 @@
 
               <!-- 发送按钮 -->
               <svg
-                class="absolute bottom-[9px] right-[10px] h-[18px] w-[18px] text-[#1268ff]"
+                class="absolute bottom-[9px] right-[10px] h-[18px] w-[18px] text-[#2264F2]"
                 viewBox="0 0 24 24"
                 fill="none"
                 aria-hidden="true"
@@ -115,7 +115,7 @@
             ></span>
 
             <svg
-              class="h-[26px] w-[26px] shrink-0 text-[#1268ff]"
+              class="h-[26px] w-[26px] shrink-0 text-[#2264F2]"
               viewBox="0 0 24 24"
               fill="none"
               aria-hidden="true"
@@ -147,7 +147,7 @@
               </span>
 
               <span
-                class="h-[8px] w-[8px] rounded-full bg-[#1268ff] shadow-[0_0_7px_rgba(18,104,255,0.34)]"
+                class="h-[8px] w-[8px] rounded-full bg-[#2264F2] shadow-[0_0_7px_rgba(34,100,242,0.34)]"
               ></span>
             </div>
 
@@ -162,7 +162,7 @@
                   class="relative flex h-[35px] items-center gap-[8px] px-[11px]"
                   :class="
                     i === 3
-                      ? 'bg-[#eef4ff] before:absolute before:inset-y-0 before:left-0 before:w-[3px] before:bg-[#1268ff]'
+                      ? 'bg-[#eef4ff] before:absolute before:inset-y-0 before:left-0 before:w-[3px] before:bg-[#2264F2]'
                       : ''
                   "
                 >
@@ -192,7 +192,7 @@
                   </h4>
 
                   <button
-                    class="rounded-[4px] bg-[#1268ff] px-[8px] py-[5px] text-[9px] font-medium leading-none text-white"
+                    class="rounded-[4px] bg-[#2264F2] px-[8px] py-[5px] text-[9px] font-medium leading-none text-white"
                   >
                     新增用户
                   </button>
@@ -227,7 +227,7 @@
                     <span class="h-[5px] w-[20px] bg-[#bfc3ca]"></span>
 
                     <span
-                      class="w-fit rounded-full bg-[#edf4ff] px-[5px] py-[3px] text-[8px] font-medium leading-none text-[#1268ff]"
+                      class="w-fit rounded-full bg-[#edf4ff] px-[5px] py-[3px] text-[8px] font-medium leading-none text-[#2264F2]"
                     >
                       启用
                     </span>
@@ -237,7 +237,7 @@
                 </div>
 
                 <div
-                  class="mt-[8px] flex items-center justify-end gap-[3px] text-[9px] font-medium leading-none text-[#1268ff]"
+                  class="mt-[8px] flex items-center justify-end gap-[3px] text-[9px] font-medium leading-none text-[#2264F2]"
                 >
                   <span>✓</span>
                   <span>Module generated</span>
@@ -267,7 +267,7 @@
             class="text-[34px] font-extrabold leading-[1.22] tracking-tight text-[#1c1c1c] min-[860px]:text-[36px]"
           >
             从
-            <span class="text-[#1268ff]">一句话需求</span><br />
+            <span class="text-[#2264F2]">一句话需求</span><br />
             到完整的业务模块
           </h3>
 
@@ -296,7 +296,7 @@
           </ul>
 
           <a
-            class="mt-9 inline-flex w-fit items-center gap-2.5 border-b-2 border-[#287cff] pb-[3px] text-[16px] font-medium leading-none text-[#1268ff] transition-opacity hover:opacity-80"
+            class="mt-9 inline-flex w-fit items-center gap-2.5 border-b-2 border-[#2264F2] pb-[3px] text-[16px] font-medium leading-none text-[#2264F2] transition-opacity hover:opacity-80"
             href="/guide/generator/server"
           >
             查看演示视频
@@ -344,7 +344,7 @@
                   v-for="s in steps"
                   :key="s.t"
                   class="flex items-center gap-2.5 text-[14px]"
-                  :class="s.done ? 'text-[#b9bac1]' : 'text-[#3b82f6]'"
+                  :class="s.done ? 'text-[#b9bac1]' : 'text-[#2264F2]'"
                 >
                   <span
                     v-if="s.done"
@@ -355,7 +355,7 @@
 
                   <span
                     v-else
-                    class="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-[#3b82f6] border-t-transparent"
+                    class="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-[#2264F2] border-t-transparent"
                   ></span>
 
                   <span :class="{ 'font-medium': !s.done }">
@@ -373,7 +373,7 @@
                 </h4>
 
                 <button
-                  class="rounded-lg bg-[#1268ff] px-3.5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#0f5ae0]"
+                  class="rounded-lg bg-[#2264F2] px-3.5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#1B52D4]"
                 >
                   + 新增用户
                 </button>
@@ -440,7 +440,7 @@
                   :class="
                     r.muted
                       ? 'text-[#bcbfc7]'
-                      : 'text-[#1268ff] hover:opacity-80'
+                      : 'text-[#2264F2] hover:opacity-80'
                   "
                 >
                   编辑
@@ -452,7 +452,7 @@
             <div
               class="absolute left-[43%] top-1/2 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#eceef2] bg-white shadow-[0_8px_24px_-6px_rgba(20,30,60,0.25)] min-[860px]:grid"
             >
-              <span class="text-[20px] font-semibold text-[#1268ff]">
+              <span class="text-[20px] font-semibold text-[#2264F2]">
                 →
               </span>
             </div>
