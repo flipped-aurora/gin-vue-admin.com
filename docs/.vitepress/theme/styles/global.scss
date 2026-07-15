@@ -144,6 +144,31 @@ body.gva-nav-scrolled .VPNav .content {
     max-width: var(--gva-content) !important;
 }
 
+/* 文档页(有侧栏)顶栏与官网首页版心完全对齐：
+   VitePress 的 .has-sidebar 分栏顶栏会把 logo 绝对定位钉在侧栏正上方，
+   并给右侧内容加“侧栏宽度”的偏移（VPNavBar.vue ≥960/≥1440），导致文档页顶栏
+   比首页的 1100px 居中版心更宽、且左右不对齐。此处在 .gva-doc 作用域、桌面端
+   (≥960px)把这些 has-sidebar 专属规则中和掉，使 logo/菜单回到与首页一致的
+   1100px 居中容器内（≥2560px 随 --gva-content 自动变 1600px）。
+   移动端(<960px) VitePress 默认导航 + 侧栏抽屉逻辑保持不动。 */
+@media (min-width: 960px) {
+    /* 恢复与首页一致的两侧留白（has-sidebar 默认被清成 0） */
+    .gva-doc .VPNavBar.has-sidebar .wrapper {
+        padding: 0 32px !important;
+    }
+    /* logo/标题回到容器内正常流，不再绝对定位钉在侧栏上方 */
+    .gva-doc .VPNavBar.has-sidebar .title {
+        position: static !important;
+        width: auto !important;
+        padding: 0 !important;
+    }
+    /* 右侧菜单/搜索/社交去掉侧栏偏移，跟随 1100px 容器右对齐 */
+    .gva-doc .VPNavBar.has-sidebar .content {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
 /* 内容区域背景色调整 */
 .content {
     background-color: white;
@@ -249,6 +274,15 @@ body.gva-nav-scrolled .VPNav .content {
 /* 任何屏幕：去掉导航文字旁的下拉箭头 */
 .VPNavBar .vpi-chevron-down,
 .VPNavBar .vpi-more-horizontal {
+    display: none !important;
+}
+
+/* 移除 VitePress 外链 ↗ 箭头 —— 顶栏(header) 与 正文(.vp-doc) 全部去掉。
+   VitePress 默认给外链 / target="_blank" 的链接自动加 .vp-external-link-icon（顶栏），
+   并在 vp-doc.css 用 ::after 给正文外链追加 ↗ 图标；此处一并覆盖删除。 */
+.vp-external-link-icon::after,
+.vp-doc a[href*='://']::after,
+.vp-doc a[target='_blank']::after {
     display: none !important;
 }
 
