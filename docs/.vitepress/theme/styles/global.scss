@@ -144,28 +144,23 @@ body.gva-nav-scrolled .VPNav .content {
     max-width: var(--gva-content) !important;
 }
 
-/* 文档页(有侧栏)顶栏与官网首页版心完全对齐：
-   VitePress 的 .has-sidebar 分栏顶栏会把 logo 绝对定位钉在侧栏正上方，
-   并给右侧内容加“侧栏宽度”的偏移（VPNavBar.vue ≥960/≥1440），导致文档页顶栏
-   比首页的 1100px 居中版心更宽、且左右不对齐。此处在 .gva-doc 作用域、桌面端
-   (≥960px)把这些 has-sidebar 专属规则中和掉，使 logo/菜单回到与首页一致的
-   1100px 居中容器内（≥2560px 随 --gva-content 自动变 1600px）。
+/* 文档页(有侧栏)顶栏：右侧菜单版心对齐官网首页，左侧 logo 始终居左对齐侧栏。
+   - 右侧：VitePress 的 .has-sidebar 会按 1440 布局 + 侧栏宽度给 .content 加偏移，
+     使右侧菜单比首页更靠外；此处清掉该偏移，让菜单跟随 1100px 居中容器右对齐
+     （.VPNavBar .container 已统一 max-width: --gva-content；≥2560px 自动 1600px）。
+   - 左侧：保留 VitePress 原生“把 logo 绝对定位钉在侧栏正上方”的行为（不再中和 .title），
+     其左缘与侧栏用同一套定位算法，故任何宽度/大屏 logo 都居左且与侧栏左缘对齐，
+     不会内缩到版心中间。
    移动端(<960px) VitePress 默认导航 + 侧栏抽屉逻辑保持不动。 */
 @media (min-width: 960px) {
-    /* 恢复与首页一致的两侧留白（has-sidebar 默认被清成 0） */
-    .gva-doc .VPNavBar.has-sidebar .wrapper {
-        padding: 0 32px !important;
-    }
-    /* logo/标题回到容器内正常流，不再绝对定位钉在侧栏上方 */
-    .gva-doc .VPNavBar.has-sidebar .title {
-        position: static !important;
-        width: auto !important;
-        padding: 0 !important;
-    }
-    /* 右侧菜单/搜索/社交去掉侧栏偏移，跟随 1100px 容器右对齐 */
     .gva-doc .VPNavBar.has-sidebar .content {
         padding-left: 0 !important;
         padding-right: 0 !important;
+    }
+    /* 去掉 logo 下方 VitePress 默认分隔线
+       （覆盖 VPNavBarTitle.vue 的 .VPNavBarTitle.has-sidebar .title{border-bottom-color:var(--vp-c-divider)}）*/
+    .gva-doc .VPNavBarTitle.has-sidebar .title {
+        border-bottom-color: transparent !important;
     }
 }
 
