@@ -2,19 +2,23 @@
 
 本指南将详细介绍如何初始化和启动 Gin-Vue-Admin 项目，包括后端服务、前端应用和数据库的配置。
 
-::: tip 📺 视频教程
-如果您更喜欢视频学习，可以观看我们的[视频教程](https://www.bilibili.com/video/BV1kv4y1g7nT?p=3)。
-:::
+<div class="gva-video-tip">
 
-## 📋 前置条件
+**视频教程**
+
+如果您更喜欢视频学习，可以观看我们的<a class="gva-video-ref" style="margin-left: 10px" href="https://www.bilibili.com/video/BV1kv4y1g7nT?p=3" target="_blank" rel="noopener"><span class="gva-video-ref__play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="gva-video-ref__label">视频教程</span><span class="gva-video-ref__ext"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+
+</div>
+
+## 前置条件
 
 在开始之前，请确保您已经完成：
 
-- ✅ [环境准备](/guide/start-quickly/env) - 安装 Node.js、Go、MySQL 等必要环境
-- ✅ 克隆项目代码到本地
-- ✅ 数据库服务正常运行
+- [环境准备](/guide/start-quickly/env) - 安装 Node.js、Go、MySQL 等必要环境
+- 克隆项目代码到本地
+- 数据库服务正常运行
 
-## 🚀 快速启动
+## 快速启动
 
 ### 1. 克隆项目
 
@@ -41,9 +45,9 @@ gin-vue-admin/
 └── README.md        # 项目说明
 ```
 
-## 📚 详细教程视频
+## 详细教程视频
 
-::: tip 💡 学习建议
+::: tip 学习建议
 强烈建议观看以下分集视频教程，虽然新版UI样式有些许差别，但基础操作无变化。
 :::
 
@@ -73,7 +77,7 @@ gin-vue-admin/
 - [14. 新增客户角色和其相关配置教学](https://www.bilibili.com/video/BV1Ki421a7X2)
 - [15. 发布项目上线](https://www.bilibili.com/video/BV1Lx4y1s77D)
 
-## 🔧 后端服务启动
+## 后端服务启动
 
 ### 1. 打开后端项目
 
@@ -99,7 +103,7 @@ code .
 go mod tidy
 ```
 
-::: details 🔍 命令说明
+::: details 命令说明
 - `go mod tidy`: 添加缺失的模块依赖，移除未使用的依赖
 - 该命令会根据 `go.mod` 文件下载所需的第三方包
 :::
@@ -134,7 +138,7 @@ go run main.go
 
 访问 `http://localhost:8888/health` 检查服务状态。
 
-## 🎨 前端应用启动
+## 前端应用启动
 
 ### 1. 打开前端项目
 
@@ -150,7 +154,7 @@ code .
 
 ### 2. 安装依赖
 
-::: warning ⚠️ Node.js 版本要求
+::: warning Node.js 版本要求
 确保您的 Node.js 版本 >= 20.19 或 >= 22.12
 :::
 
@@ -186,7 +190,7 @@ pnpm serve
   - Network: http://192.168.1.100:8080/
 ```
 
-## 🗄️ 数据库初始化
+## 数据库初始化
 
 ### 1. 访问初始化页面
 
@@ -215,9 +219,9 @@ pnpm serve
 
 初始化成功后，系统会：
 
-- ✅ 创建所有必要的数据表
-- ✅ 插入基础数据（管理员账号、菜单、权限等）
-- ✅ 自动跳转到登录页面
+- 创建所有必要的数据表
+- 插入基础数据（管理员账号、菜单、权限等）
+- 自动跳转到登录页面
 
 **默认管理员账号**：
 - 用户名：`admin`

@@ -2,7 +2,7 @@
 
 本文档收集了 Gin-Vue-Admin 项目开发和部署过程中的常见问题及解决方案。
 
-## 🚀 安装和启动问题
+## 安装和启动问题
 
 ### 1. 后端启动问题
 
@@ -232,7 +232,7 @@ export default defineConfig({
 })
 ```
 
-## 🔧 开发问题
+## 开发问题
 
 ### 1. API 请求问题
 
@@ -442,7 +442,7 @@ func GormConfig() *gorm.Config {
 }
 ```
 
-## 🎨 前端问题
+## 前端问题
 
 ### 1. 路由问题
 
@@ -555,7 +555,7 @@ this.$set(this.list, 0, newItem)
 this.list.splice(0, 1, newItem)
 ```
 
-## 🚀 部署问题
+## 部署问题
 
 ### 1. Docker 部署问题
 
@@ -669,7 +669,7 @@ server {
 }
 ```
 
-## 🔍 调试技巧
+## 调试技巧
 
 ### 1. 后端调试
 
@@ -738,7 +738,7 @@ service.interceptors.response.use(
 )
 ```
 
-## 📊 性能问题
+## 性能问题
 
 ### 1. 后端性能优化
 
@@ -861,7 +861,7 @@ export default {
 </script>
 ```
 
-## 📞 获取帮助
+## 获取帮助
 
 ### 社区支持
 
@@ -921,7 +921,7 @@ docker logs container_name
 docker exec -it container_name /bin/sh
 ```
 
-## 📚 相关文档
+## 相关文档
 
 - [快速开始](/guide/start-quickly/initialization)
 - [项目配置](/guide/server/config)

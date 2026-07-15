@@ -4,7 +4,7 @@
 
 ## [botoy](https://github.com/opq-osc/botoy) (Python)
 
-OPQ/IOTQQ/IOTBot 的一个 Python 开发助手 🐌
+OPQ/IOTQQ/IOTBot 的一个 Python 开发助手
 
 ## [OPQBot](https://github.com/opq-osc/OPQBot) (Go)
 

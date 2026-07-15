@@ -7,15 +7,15 @@ title: VS Code 开发配置
 
 VS Code 是一个轻量级但功能强大的代码编辑器，非常适合 Gin-Vue-Admin 项目的开发。本指南将详细介绍如何配置 VS Code 以获得最佳的开发体验。
 
-## 📋 前置要求
+## 前置要求
 
 在开始配置之前，请确保您已经：
 
-- ✅ 安装了 [VS Code](https://code.visualstudio.com/)
-- ✅ 完成了 [环境准备](/guide/start-quickly/env)
-- ✅ 克隆了项目代码到本地
+- 安装了 [VS Code](https://code.visualstudio.com/)
+- 完成了 [环境准备](/guide/start-quickly/env)
+- 克隆了项目代码到本地
 
-## 🚀 快速开始
+## 快速开始
 
 ### 1. 打开工作区
 
@@ -75,7 +75,7 @@ code .
 }
 ```
 
-## 🔌 必备插件安装
+## 必备插件安装
 
 ### Go 开发插件
 
@@ -126,7 +126,7 @@ code --install-extension formulahendry.auto-rename-tag
 code --install-extension christian-kohler.path-intellisense
 ```
 
-## 🏃‍♂️ 运行和调试配置
+## 运行和调试配置
 
 ### 1. 创建调试配置
 
@@ -238,9 +238,9 @@ code --install-extension christian-kohler.path-intellisense
 
 1. 按 `Ctrl+Shift+D` (Windows/Linux) 或 `Cmd+Shift+D` (macOS) 打开调试面板
 2. 选择要运行的配置：
-   - **🔧 Launch Server (Go)**: 仅启动后端服务
-   - **🎨 Launch Web (Node)**: 仅启动前端应用
-   - **🚀 Launch Both (Server + Web)**: 同时启动前后端
+   - **Launch Server (Go)**: 仅启动后端服务
+   - **Launch Web (Node)**: 仅启动前端应用
+   - **Launch Both (Server + Web)**: 同时启动前后端
 
 ![VS Code 后端调试](https://qmplusimg.henrongyi.top/gva/vscode-backend.png)
 
@@ -266,7 +266,7 @@ npm run serve
 2. 输入 "Tasks: Run Task"
 3. 选择要执行的任务
 
-## ⚙️ Go 环境配置
+## Go 环境配置
 
 ### 1. 配置 Go 模块代理
 
@@ -313,7 +313,7 @@ go env -w GOSUMDB=sum.golang.google.cn
 
 在 VS Code 中按 `Ctrl+Shift+P`，输入 "Go: Install/Update Tools"，选择所有工具进行安装。
 
-## 🎨 前端开发配置
+## 前端开发配置
 
 ### 1. Prettier 配置
 
@@ -351,7 +351,7 @@ go env -w GOSUMDB=sum.golang.google.cn
 }
 ```
 
-## 🔧 实用技巧
+## 实用技巧
 
 ### 1. 代码片段
 
@@ -413,7 +413,7 @@ go env -w GOSUMDB=sum.golang.google.cn
 }
 ```
 
-## 🐛 调试技巧
+## 调试技巧
 
 ### 1. Go 调试
 
@@ -433,7 +433,7 @@ go env -w GOSUMDB=sum.golang.google.cn
 - 使用集成终端查看应用日志
 - 配置输出面板显示不同类型的日志
 
-## 🚀 性能优化
+## 性能优化
 
 ### 1. 排除文件
 

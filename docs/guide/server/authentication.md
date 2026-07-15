@@ -1,8 +1,8 @@
-# 🔐 认证系统
+# 认证系统
 
 Gin-Vue-Admin 采用 JWT (JSON Web Token) 作为主要的身份认证机制，提供无状态、安全、高效的用户认证解决方案。
 
-## 🎯 认证机制概述
+## 认证机制概述
 
 ### JWT 认证流程
 
@@ -25,7 +25,7 @@ sequenceDiagram
     S-->>C: 8. 返回数据或拒绝访问
 ```
 
-## 🔧 JWT 配置
+## JWT 配置
 
 ### 配置文件设置
 
@@ -48,7 +48,7 @@ jwt:
 | `buffer-time` | duration | Token 缓冲时间，在此时间内可以刷新 Token | 86400s (1天) |
 | `issuer` | string | Token 签发者标识 | qmPlus |
 
-## 🛠️ 核心组件
+## 核心组件
 
 ### JWT 中间件
 
@@ -143,7 +143,7 @@ func (j *JWT) ParseToken(tokenString string) (*CustomClaims, error) {
 }
 ```
 
-## 🔑 登录实现
+## 登录实现
 
 ### 登录 API
 
@@ -240,7 +240,7 @@ func (b *BaseApi) tokenNext(c *gin.Context, user system.SysUser) {
 }
 ```
 
-## 🔄 Token 刷新机制
+## Token 刷新机制
 
 ### 自动刷新
 
@@ -270,7 +270,7 @@ func (j *JWT) RefreshToken(tokenString string) (string, error) {
 }
 ```
 
-## 🚫 Token 黑名单
+## Token 黑名单
 
 ### 黑名单机制
 
@@ -300,7 +300,7 @@ func (jwtService *JwtService) IsBlacklist(jwt string) bool {
 }
 ```
 
-## 🔒 安全最佳实践
+## 安全最佳实践
 
 ### 1. 密钥管理
 - 使用强随机密钥作为签名密钥
@@ -323,7 +323,7 @@ system:
   use-multipoint: true  # 启用单点登录限制
 ```
 
-## 🐛 常见问题
+## 常见问题
 
 ### Q: Token 过期如何处理？
 A: 系统会返回特定的错误码，前端应该引导用户重新登录或自动刷新 Token。
@@ -337,7 +337,7 @@ A: 通过配置 `use-multipoint: true` 启用单点登录，或者实现设备�
 ### Q: JWT 密钥泄露怎么办？
 A: 立即更换密钥，使所有现有 Token 失效，要求用户重新登录。
 
-## 📚 相关文档
+## 相关文档
 
 - [权限系统](./authorization.md)
 - [配置管理](./config.md)

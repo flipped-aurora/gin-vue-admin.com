@@ -1,3 +1,116 @@
+<style>
+/* ===== 表格样式 · 摘自 gva-docs-elements 原型 =====
+   选择器带 .vp-doc 前缀提权,并逐条重置主题默认表格样式
+   (斑马纹 / 单元格全边框 / display:block / 灰色表头字) ===== */
+:root{
+  --gva-primary:#2264F2;
+  --gva-text-strong:#0B0B0F;--gva-text-body:#5A5F6B;
+  --gva-bg-alt:#f7f7f7;
+  --gva-border:rgba(15,23,42,.1);--gva-border-soft:rgba(15,23,42,.06);
+  --gva-radius:14px;
+  --gva-shadow-sm:0 1px 2px rgba(15,23,42,.04),0 4px 12px rgba(15,23,42,.05);
+  --gva-mono:"SF Mono","JetBrains Mono","Fira Code",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+.vp-doc .table-wrap,
+.table-wrap{
+  border:1px solid var(--gva-border) !important;
+  border-radius:var(--gva-radius);
+  overflow:hidden;
+  box-shadow:var(--gva-shadow-sm);
+  margin:16px 0 22px;
+}
+
+/* 还原为标准表格布局,清掉主题的 display:block / 外边距 / 外框 */
+.vp-doc .table-wrap table.doc-table,
+.table-wrap table.doc-table{
+  display:table !important;
+  width:100% !important;
+  border-collapse:collapse !important;
+  border:0 !important;
+  margin:0 !important;
+  overflow:visible !important;
+  font-size:13.5px;
+  line-height:1.6;
+}
+
+/* 行:清掉斑马纹与行边框 */
+.vp-doc .table-wrap .doc-table tr,
+.vp-doc .table-wrap .doc-table tr:nth-child(2n),
+.table-wrap .doc-table tr,
+.table-wrap .doc-table tr:nth-child(2n){
+  background:transparent !important;
+  border:0 !important;
+}
+
+/* 表头:灰底 + 深色字,只留底边线 */
+.vp-doc .table-wrap .doc-table th,
+.table-wrap .doc-table th{
+  background:var(--gva-bg-alt) !important;
+  color:var(--gva-text-strong) !important;
+  font-weight:600 !important;
+  font-size:13.5px !important;
+  text-align:left !important;
+  padding:12px 14px !important;
+  border:0 !important;
+  border-bottom:1px solid var(--gva-border) !important;
+  vertical-align:top;
+}
+
+/* 单元格:去网格线,只留软色底边线 */
+.vp-doc .table-wrap .doc-table td,
+.table-wrap .doc-table td{
+  background:transparent !important;
+  color:var(--gva-text-body) !important;
+  font-size:13.5px !important;
+  padding:11px 14px !important;
+  border:0 !important;
+  border-bottom:1px solid var(--gva-border-soft) !important;
+  vertical-align:top;
+  transition:background .15s ease;
+}
+.vp-doc .table-wrap .doc-table tbody tr:last-child td,
+.table-wrap .doc-table tbody tr:last-child td{
+  border-bottom:0 !important;
+}
+.vp-doc .table-wrap .doc-table tbody tr:hover td,
+.table-wrap .doc-table tbody tr:hover td{
+  background:rgba(34,100,242,.03) !important;
+}
+
+/* 首列名称:深色加重 */
+.vp-doc .table-wrap .doc-table td.c-name,
+.table-wrap .doc-table td.c-name{
+  color:var(--gva-text-strong) !important;
+  font-weight:500 !important;
+}
+
+/* 字段名:蓝色等宽,无底色 */
+.vp-doc .table-wrap .doc-table .field,
+.table-wrap .doc-table .field{
+  font-family:var(--gva-mono) !important;
+  font-size:12.5px !important;
+  color:var(--gva-primary) !important;
+  background:none !important;
+  padding:0 !important;
+  border:0 !important;
+  word-break:break-word;
+}
+
+/* 行内 code:压过主题的 :not(pre)>code 规则 */
+.vp-doc .table-wrap .doc-table code.icode,
+.table-wrap .doc-table code.icode{
+  font-family:var(--gva-mono) !important;
+  font-size:.88em !important;
+  background:rgba(15,23,42,.06) !important;
+  color:var(--gva-text-strong) !important;
+  padding:1px 6px !important;
+  border:0 !important;
+  border-radius:6px !important;
+  word-break:break-word;
+}
+</style>
+
 # 代码生成器使用指南
 
 ## 2.5.3以后需先创造package
@@ -9,44 +122,58 @@
 
 ![image-20201026165650624](/generator/image-20201026165650624.png)
 
-| 界面名称         | 对应生成结构体结构体名称          | 中文说明               | 备注                                                                             |
-|--------------|-----------------------|--------------------|--------------------------------------------------------------------------------|
-| `Struct名称`   | `StructName`          | 结构体名称              | `server/model` 文件夹下的结构体文件中，结构体的名称，首字母必须**大写**。                                 |
-| `TableName`  | `TableName`           | 指定表名(非必填)          | 数据库中生成的与结构体对应的数据表名。                                                            |
-| `Struct简称`   | `Abbreviation`        | 简称会作为入参对象名和路由group | 用于结构体作为参数时的名称，以及路由 group 名称。这里一般与**Stuct名称**对应，但是首字母小写。                        |
-| `Struct中文名称` | `Description`         | 中文描述作为自动api描述      | 作为自动api描述，也是左侧菜单显示时的默认菜单名。                                                     |
-| `文件名称`       | `PackageName`         | 生成文件的默认名称          | 使用 小驼峰 形式命名。生成后端代码时，model下的文件名会用这里的命名。                                         |
-| `Package（包）` | `Package`             | 生成的目标包             | 必选，自动化代码会生成到所选的包下，自动填充enter.go等文件                                              |
-| `业务库`        | `BusinessDB`          | 选择业务库              | 可选，如果选中本条目，则自动生成的global.GVA_DB会被替换为global.MustGetGlobalDBByDBName(BusinessDb)。 |
-| `使用GVA结构`    | `GvaModel`            | 使用GVA结构            | 建议选中，如果不选则不会自动创建api表，需要自己去api管理里面手动增加对应路由。                                     |
-| `创建资源标识`           | `AutoCreateResource`  | 创建资源标识             | 可选，此功能需要配合插件市场的组织管理插件使用。                                                       |
-| `自动创建api`    | `AutoCreateApiToSql`  | 自动创建api            | 建议选中，把自动生成的API注册进数据库。                                                          |
-| `自动创建菜单`           | `AutoCreateMenuToSql` | 自动创建菜单             | 建议选中，把自动生成的菜单注册进数据库。                                                           |
-| `自动移动文件`     | `AutoMoveFile`        | 自动移动文件             | 建议选中，自动迁移生成的文件到yaml配置的对应位置。                                                    |
+<div class="table-wrap">
+  <table class="doc-table">
+    <thead>
+      <tr><th style="width:14%">界面名称</th><th style="width:15%">对应生成结构体结构体名称</th><th style="width:20%">中文说明</th><th style="width:51%">备注</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="c-name">Struct名称</td><td><span class="field">StructName</span></td><td>结构体名称</td><td><code class="icode">server/model</code> 文件夹下的结构体文件中，结构体的名称，首字母必须<strong>大写</strong>。</td></tr>
+      <tr><td class="c-name">TableName</td><td><span class="field">TableName</span></td><td>指定表名(非必填)</td><td>数据库中生成的与结构体对应的数据表名。</td></tr>
+      <tr><td class="c-name">Struct简称</td><td><span class="field">Abbreviation</span></td><td>简称会作为入参对象名和路由group</td><td>用于结构体作为参数时的名称，以及路由 group 名称。这里一般与<strong>Stuct名称</strong>对应，但是首字母小写。</td></tr>
+      <tr><td class="c-name">Struct中文名称</td><td><span class="field">Description</span></td><td>中文描述作为自动api描述</td><td>作为自动api描述，也是左侧菜单显示时的默认菜单名。</td></tr>
+      <tr><td class="c-name">文件名称</td><td><span class="field">PackageName</span></td><td>生成文件的默认名称</td><td>使用 小驼峰 形式命名。生成后端代码时，model下的文件名会用这里的命名。</td></tr>
+      <tr><td class="c-name">Package（包）</td><td><span class="field">Package</span></td><td>生成的目标包</td><td>必选，自动化代码会生成到所选的包下，自动填充enter.go等文件</td></tr>
+      <tr><td class="c-name">业务库</td><td><span class="field">BusinessDB</span></td><td>选择业务库</td><td>可选，如果选中本条目，则自动生成的global.GVA_DB会被替换为global.MustGetGlobalDBByDBName(BusinessDb)。</td></tr>
+      <tr><td class="c-name">使用GVA结构</td><td><span class="field">GvaModel</span></td><td>使用GVA结构</td><td>建议选中，如果不选则不会自动创建api表，需要自己去api管理里面手动增加对应路由。</td></tr>
+      <tr><td class="c-name">创建资源标识</td><td><span class="field">AutoCreateResource</span></td><td>创建资源标识</td><td>可选，此功能需要配合插件市场的组织管理插件使用。</td></tr>
+      <tr><td class="c-name">自动创建api</td><td><span class="field">AutoCreateApiToSql</span></td><td>自动创建api</td><td>建议选中，把自动生成的API注册进数据库。</td></tr>
+      <tr><td class="c-name">自动创建菜单</td><td><span class="field">AutoCreateMenuToSql</span></td><td>自动创建菜单</td><td>建议选中，把自动生成的菜单注册进数据库。</td></tr>
+      <tr><td class="c-name">自动移动文件</td><td><span class="field">AutoMoveFile</span></td><td>自动移动文件</td><td>建议选中，自动迁移生成的文件到yaml配置的对应位置。</td></tr>
+    </tbody>
+  </table>
+</div>
 
 ## 字段界面说明
 
 ![image-20201026165813881](/generator/image-20201026165813881.png)
 
-| 组件内容名称      | 对应生成结构体结构体名称                | 中文说明                     | 备注                                                                                                             |
-|-------------|-----------------------------|--------------------------|----------------------------------------------------------------------------------------------------------------|
-| `Field名称`   | `FieldName`                 | 结构体名称                    | struct结构体中的字段名称，首字母**大写**                                                                                      |
-| `Field中文名`  | `FieldDesc`                 | 结构体中文名称                  | 对应struct结构体tag中的comment字段值，也是数据列表展示表格的表头名称。                                                                    |
-| `FieldJSON` | `FieldJson`                 | golang struct tag `json` | 对应struct结构体tag中的json字段值。在使用struct对象调用某个字段时，使用“对象.json字段值”                                                      |
-| `数据库字段名`    | `ColumnName`                | 数据库字段名                   | 对应数据库中的字段名称                                                                                                    |
-| `Field数据类型` | `FieldType`                 | 字段对应golang数据类型           | 对应struct结构体中的字段类型                                                                                              |
-| `数据库字段长度`   | `DataTypeLong`              | 字段数据类型长度                 | 对应生成的数据表中的字段长度                                                                                                 |
-| `数据库字段描述`   | `Comment`                   | 数据库字段描述                  | 数据库字段描述,会根据此属性生成前端表格的表头名称和表单的label名称                                                                           |
-| `默认值`       | `DefaultValue`              | 数据库字段默认值                 | 当数据为空时，数据库录入时会自动以DefaultValue值进行填充                                                                             |
-| `是否必填`      | `Require`                   | 是否必填                     | 自动创建前后端必填校验                                                                                                    |
-| `校验失败文案`    | `ErrorText`                 | 必填校验失败的文案                | 必填校验失败的文案                                                                                                      |
-| `是否排序`      | `Sort`                      | 是否排序                     | 自动创建前后端排序代码                                                                                                    |
-| `前端可见`      | `Front`                     | 前端可见                     | 前端是否创建本字端（常用于仅后端使用，前端不需要展示给用户的字段）                                                                              |
-| `主键`        | `PrimaryKey`                | 数据库主键                    | 数据库主键，在不适用gva默认结构下，本字段会自动成为查询主要字段                                                                              |
-| `是否可清空`     | `Clearable`                 | clearable                    | 前端输入框右侧是否出现X允许用户点击清空本字段已经输入过的内容                                                                                |
-| `Field查询条件` | `FieldSearchType`           | 搜索类型                     | 用于实现该对象数据列表的条件查询                                                                                               |
-| `关联字典`      | `DictType`                  | 关联字典标记                   | 从字典功能中关联一个可用的字典进行数据操作，展示位下拉选择。                                                                                 |
-| `数据源配置`     | `dataSource:{table,label,value}` | 数据源配置                   | 本功能用于产生一个关联字段，字段在前端展示位下拉选择（单选），字段来源取决于配置内容，数据源表为内容索取的表，展示用字段配置，则会从表取本字段用于前端下拉框的展示内容，存储用字段，则会从表取本字段用于选中后真实的赋值内容 |
+<div class="table-wrap">
+  <table class="doc-table">
+    <thead>
+      <tr><th style="width:14%">组件内容名称</th><th style="width:18%">对应生成结构体结构体名称</th><th style="width:19%">中文说明</th><th style="width:49%">备注</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="c-name">Field名称</td><td><span class="field">FieldName</span></td><td>结构体名称</td><td>struct结构体中的字段名称，首字母<strong>大写</strong></td></tr>
+      <tr><td class="c-name">Field中文名</td><td><span class="field">FieldDesc</span></td><td>结构体中文名称</td><td>对应struct结构体tag中的comment字段值，也是数据列表展示表格的表头名称。</td></tr>
+      <tr><td class="c-name">FieldJSON</td><td><span class="field">FieldJson</span></td><td>golang struct tag <code class="icode">json</code></td><td>对应struct结构体tag中的json字段值。在使用struct对象调用某个字段时，使用“对象.json字段值”</td></tr>
+      <tr><td class="c-name">数据库字段名</td><td><span class="field">ColumnName</span></td><td>数据库字段名</td><td>对应数据库中的字段名称</td></tr>
+      <tr><td class="c-name">Field数据类型</td><td><span class="field">FieldType</span></td><td>字段对应golang数据类型</td><td>对应struct结构体中的字段类型</td></tr>
+      <tr><td class="c-name">数据库字段长度</td><td><span class="field">DataTypeLong</span></td><td>字段数据类型长度</td><td>对应生成的数据表中的字段长度</td></tr>
+      <tr><td class="c-name">数据库字段描述</td><td><span class="field">Comment</span></td><td>数据库字段描述</td><td>数据库字段描述,会根据此属性生成前端表格的表头名称和表单的label名称</td></tr>
+      <tr><td class="c-name">默认值</td><td><span class="field">DefaultValue</span></td><td>数据库字段默认值</td><td>当数据为空时，数据库录入时会自动以DefaultValue值进行填充</td></tr>
+      <tr><td class="c-name">是否必填</td><td><span class="field">Require</span></td><td>是否必填</td><td>自动创建前后端必填校验</td></tr>
+      <tr><td class="c-name">校验失败文案</td><td><span class="field">ErrorText</span></td><td>必填校验失败的文案</td><td>必填校验失败的文案</td></tr>
+      <tr><td class="c-name">是否排序</td><td><span class="field">Sort</span></td><td>是否排序</td><td>自动创建前后端排序代码</td></tr>
+      <tr><td class="c-name">前端可见</td><td><span class="field">Front</span></td><td>前端可见</td><td>前端是否创建本字端（常用于仅后端使用，前端不需要展示给用户的字段）</td></tr>
+      <tr><td class="c-name">主键</td><td><span class="field">PrimaryKey</span></td><td>数据库主键</td><td>数据库主键，在不适用gva默认结构下，本字段会自动成为查询主要字段</td></tr>
+      <tr><td class="c-name">是否可清空</td><td><span class="field">Clearable</span></td><td>clearable</td><td>前端输入框右侧是否出现X允许用户点击清空本字段已经输入过的内容</td></tr>
+      <tr><td class="c-name">Field查询条件</td><td><span class="field">FieldSearchType</span></td><td>搜索类型</td><td>用于实现该对象数据列表的条件查询</td></tr>
+      <tr><td class="c-name">关联字典</td><td><span class="field">DictType</span></td><td>关联字典标记</td><td>从字典功能中关联一个可用的字典进行数据操作，展示位下拉选择。</td></tr>
+      <tr><td class="c-name">数据源配置</td><td><span class="field">dataSource:{table,label,value}</span></td><td>数据源配置</td><td>本功能用于产生一个关联字段，字段在前端展示位下拉选择（单选），字段来源取决于配置内容，数据源表为内容索取的表，展示用字段配置，则会从表取本字段用于前端下拉框的展示内容，存储用字段，则会从表取本字段用于选中后真实的赋值内容</td></tr>
+    </tbody>
+  </table>
+</div>
 
 
 ## 1. 生成一步到位代码包
@@ -515,20 +642,3 @@ func AutoCreateApi(a *model.AutoCodeStruct) (err error) {
 ## Finish
 
 至此，一个单表基本业务结构体的数据列表显示，单表数据增加、删除、查找、更新功能全部搞定。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

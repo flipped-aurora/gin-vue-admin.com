@@ -90,6 +90,12 @@ a{
     transition: background-color 0.3s ease !important;
 }
 
+/* 修复：文档页(has-sidebar)时 VitePress 给 .content-body 设了白底(--vp-nav-bg-color)，
+   造成导航中间白块、两边底色。置透明让中间跟随整体底色（初始 #F9F9F9、滚动后白），与官网一致 */
+.VPNavBar .content-body, .VPNav .content-body {
+    background-color: transparent !important;
+}
+
 
 /* 滚动后顶栏变为纯白并显示底部线条 */
 body.gva-nav-scrolled .VPNavBar,
@@ -303,4 +309,346 @@ body.gva-nav-scrolled .VPNav .content {
         width: 16px !important;
         height: 16px !important;
     }
+}
+
+/* ============================================================
+   文档站侧边栏（抽屉式 GvaDocSidebar）
+   所有规则以 .gva-doc（挂在文档页 .Layout 上）为作用域，
+   .gva-doc 仅在有侧栏的文档页出现 —— 绝不影响官网首页/其它页面。
+   ============================================================ */
+
+/* 隐藏 VitePress 默认分组渲染，保留容器/sticky/移动端抽屉能力 */
+.gva-doc #VPSidebarNav > .group {
+    display: none !important;
+}
+
+/* 侧栏容器：白底 + 设计稿右缘 + 内边距严格对齐 HTML（.side{padding:26px 20px 60px}）
+   VitePress 的 .VPSidebar 为 scoped 样式，靠 .gva-doc 提升优先级 + !important 覆盖 */
+.gva-doc .VPSidebar {
+    background-color: var(--gva-bg-base) !important;
+    border-right: 1px solid var(--gva-border-soft);
+    padding: 26px 20px 60px !important;
+}
+
+@media (min-width: 960px) {
+    /* 桌面端让侧栏从固定顶栏下方开始（top = 导航高度），
+       这样 padding-top 就是设计稿的纯 26px，既不被顶栏遮挡、也无多余空隙 */
+    .gva-doc .VPSidebar {
+        top: var(--vp-nav-height) !important;
+    }
+    /* 侧栏已在顶栏下方，不再需要“滚动隐入顶栏”的遮布 */
+    .gva-doc .VPSidebar .curtain {
+        display: none !important;
+    }
+    /* 搜索“移入”侧栏：桌面端隐藏顶栏搜索按钮
+       （VPNavBarSearch 组件仍挂载，Cmd/Ctrl+K 有效；弹窗 VPLocalSearchBox 已 Teleport 到 body） */
+    .gva-doc .VPNavBarSearch {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    /* 超宽屏：VitePress 会加宽侧栏并用居中 padding-left 让内容与正文对齐。
+       普通屏用设计稿 20px，超宽屏回归居中对齐，避免导航项被拉得过宽 */
+    .gva-doc .VPSidebar {
+        padding-left: max(20px, calc((100% - (var(--vp-layout-max-width, 1440px) - 64px)) / 2)) !important;
+    }
+}
+
+/* ============================================================
+   右侧目录 On this page（VPDocAsideOutline）— 按设计稿 §7.10
+   作用域 .gva-doc；选中项文字用主题色，隐藏默认移动 marker 改用左边框
+   ============================================================ */
+
+/* 删除 VitePress 默认整条灰色 rail（.content 左边框）+ 去掉其 16px 左内边距，
+   让每项自己的 border-left 贴到最左，形成设计稿的 rail */
+.gva-doc .VPDocAsideOutline .content {
+    border-left: none;
+    padding-left: 0;
+}
+
+/* 标题 “On this page”：12px 大写 muted */
+.gva-doc .VPDocAsideOutline .outline-title {
+    padding-left: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gva-text-muted);
+}
+
+/* 隐藏 VitePress 默认那根随滚动移动的 marker，改用每项 border-left 表示激活 */
+.gva-doc .VPDocAsideOutline .outline-marker {
+    display: none !important;
+}
+
+/* 目录项：13.5px muted，左侧 2px 透明 rail */
+.gva-doc .VPDocAsideOutline .outline-link {
+    display: block;
+    padding: 6px 0 6px 14px;
+    border-left: 2px solid transparent;
+    color: var(--gva-text-muted);
+    font-size: 13.5px;
+    font-weight: 400;
+    line-height: 1.4;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+.gva-doc .VPDocAsideOutline .outline-link:hover {
+    color: var(--gva-text-body);
+}
+/* 选中项：文字主题色 + 左边框主题色 + 加粗 */
+.gva-doc .VPDocAsideOutline .outline-link.active {
+    color: var(--gva-primary);
+    border-left-color: var(--gva-primary);
+    font-weight: 600;
+}
+
+/* 子项（若开启 h3）：左侧 rail 对齐，文字多缩进到 28px */
+.gva-doc .VPDocAsideOutline .VPDocOutlineItem.nested {
+    padding-left: 0;
+}
+.gva-doc .VPDocAsideOutline .VPDocOutlineItem.nested .outline-link {
+    padding-left: 28px;
+    font-size: 13px;
+}
+
+/* ============================================================
+   正文内容区内边距 — 对齐原型 .main{padding:56px 56px 120px}
+   VitePress 默认把内边距拆在 .VPDoc(48/32/0) + .content(0/32/128)＝左右 64px；
+   顶栏清空间距由 .VPContent 处理，故 .VPDoc padding 可归零、全部交给 .content，
+   使 .content 的 padding 正好等于原型（devtools 里就是 56px 56px 120px）。
+   ============================================================ */
+@media (min-width: 960px) {
+    .gva-doc .VPDoc.has-sidebar.has-aside {
+        padding: 0 !important;
+    }
+    .gva-doc .VPDoc.has-sidebar.has-aside .content {
+        padding: 36px 36px 20px !important;
+    }
+}
+
+/* ============================================================
+   去掉文档正文的宽度上限，让内容铺满（含 <p>）
+   VitePress 唯一的正文宽度限制是 .VPDoc.has-aside .content-container{max-width:688px}；
+   一并显式解除 <p> 的 max-width。图片/表格的 max-width:100%（防溢出）保留不动。
+   ============================================================ */
+.gva-doc .VPDoc .content-container,
+.gva-doc .VPDoc .content,
+.gva-doc .VPDoc .vp-doc p {
+    max-width: none !important;
+}
+
+/* ============================================================
+   文档正文无序列表圆点 → 设计系统蓝点 + 柔光晕（.gva-doc 作用域）
+   文档正文字号恒 16px（含 2K），bullet 尺寸用给定 px、竖直用 .62em，2K 屏同样成立；
+   有序列表(ol)保留数字，任务清单(.task-list-item, checkbox)不加圆点；
+   颜色走 token，dark 模式自动适配。
+   ============================================================ */
+.gva-doc .vp-doc ul {
+    list-style: none;
+    padding-left: 0;
+}
+.gva-doc .vp-doc ul > li:not(.task-list-item) {
+    position: relative;
+    padding-left: 26px;
+}
+.gva-doc .vp-doc ul > li:not(.task-list-item)::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--gva-primary);
+    box-shadow: 0 0 0 4px var(--gva-primary-soft);
+}
+
+/* 视频教程外框：把「标题 + 说明(内联按钮)」整体框起来，边框用分割线灰 */
+.gva-doc .vp-doc .gva-video-tip {
+    margin: 22px 0;
+    padding: 16px 20px 18px;
+    border: 1px solid var(--gva-border);
+    border-radius: var(--gva-radius);
+    background: whitesmoke;
+}
+.gva-doc .vp-doc .gva-video-tip > p {
+    margin: 0;
+    line-height: 1.9;
+}
+.gva-doc .vp-doc .gva-video-tip > p:first-child {
+    margin-bottom: 4px;
+    line-height: 1.4;
+    color: var(--gva-text-strong);
+}
+.gva-doc .vp-doc .gva-video-tip > p:first-child strong {
+    color: var(--gva-text-strong);
+    font-weight: 600;
+}
+
+/* ============================================================
+   视频参考卡片 .gva-video-ref（设计稿 §7.4）
+   按需求：白底(--gva-bg-base) + 分割线灰边框(--gva-border)
+   ============================================================ */
+.gva-doc .vp-doc a.gva-video-ref {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    vertical-align: middle;
+    padding: 6px;
+    border: 1px solid var(--gva-border);
+    border-radius: var(--gva-radius-sm);
+    background: var(--gva-bg-base);
+    color: var(--gva-text-body);
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none !important;
+    transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.gva-doc .vp-doc a.gva-video-ref:hover {
+    border-color: var(--gva-border-strong);
+    color: var(--gva-text-strong);
+    box-shadow: var(--gva-shadow-sm);
+}
+.gva-doc .gva-video-ref__play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--gva-primary-soft);
+    color: var(--gva-primary);
+}
+.gva-doc .gva-video-ref__label {
+    color: inherit;
+}
+.gva-doc .gva-video-ref__ext {
+    display: flex;
+    flex: 0 0 auto;
+    color: var(--gva-text-muted);
+    transition: color 0.15s ease, transform 0.15s ease;
+}
+.gva-doc .vp-doc a.gva-video-ref:hover .gva-video-ref__ext {
+    color: var(--gva-primary);
+    transform: translate(2px, -2px);
+}
+
+/* ============================================================
+   提示 callout（::: tip）→ 设计稿 §7.7 绿色提示样式（.gva-doc 全站统一）
+   绿色圆角左边框 + 浅绿软底 + 绿色「灯泡图标 + 标题」
+   ============================================================ */
+.gva-doc .vp-doc .custom-block.tip {
+    padding: 15px 18px;
+    border: 1px solid var(--gva-border);
+    border-left: 3px solid var(--gva-success);
+    border-radius: 12px;
+    background: rgba(22, 163, 74, 0.08);
+    color: var(--gva-text-body);
+}
+.gva-doc .vp-doc .custom-block.tip .custom-block-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 8px;
+    color: var(--gva-success);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+.gva-doc .vp-doc .custom-block.tip .custom-block-title::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    background: var(--gva-success);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5'/%3E%3Cpath d='M9 18h6'/%3E%3Cpath d='M10 22h4'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+/* ============================================================
+   文档表格 → 设计稿 §7.6 圆角表格（.gva-doc 全站 markdown 表格统一）
+   参考 /generator/server 页；覆盖 VitePress 默认斑马纹 / 全网格线 / display:block
+   ============================================================ */
+.gva-doc .vp-doc table {
+    display: table;
+    width: 100%;
+    margin: 16px 0 22px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--gva-border);
+    border-radius: var(--gva-radius);
+    overflow: hidden;
+    box-shadow: var(--gva-shadow-sm);
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+/* 去斑马纹 + 行边框 */
+.gva-doc .vp-doc table tr,
+.gva-doc .vp-doc table tr:nth-child(2n) {
+    background: transparent;
+    border: 0;
+}
+/* 表头：灰底深字，只留底边线 */
+.gva-doc .vp-doc table th {
+    padding: 12px 14px;
+    border: 0;
+    border-bottom: 1px solid var(--gva-border);
+    background: var(--gva-bg-alt);
+    color: var(--gva-text-strong);
+    font-weight: 600;
+    font-size: 13.5px;
+    text-align: left;
+    vertical-align: top;
+}
+/* 单元格：去网格线，只留软色底边 */
+.gva-doc .vp-doc table td {
+    padding: 11px 14px;
+    border: 0;
+    border-bottom: 1px solid var(--gva-border-soft);
+    background: transparent;
+    color: var(--gva-text-body);
+    font-size: 13.5px;
+    vertical-align: top;
+    transition: background 0.15s ease;
+}
+.gva-doc .vp-doc table tbody tr:last-child td {
+    border-bottom: 0;
+}
+.gva-doc .vp-doc table tbody tr:hover td {
+    background: rgba(34, 100, 242, 0.03);
+}
+
+/* ============================================================
+   警告 callout（::: warning）→ 设计稿 §7.7 琥珀警告样式（.gva-doc 全站统一）
+   琥珀圆角左边框 + 浅琥珀软底 + 深琥珀「⚠图标 + 标题」
+   ============================================================ */
+.gva-doc .vp-doc .custom-block.warning {
+    padding: 15px 18px;
+    border: 1px solid var(--gva-border);
+    border-left: 3px solid var(--gva-amber);
+    border-radius: 12px;
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--gva-text-body);
+}
+.gva-doc .vp-doc .custom-block.warning .custom-block-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 8px;
+    color: #b45309;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+.gva-doc .vp-doc .custom-block.warning .custom-block-title::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    background: #b45309;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z'/%3E%3Cpath d='M12 9v4'/%3E%3Cpath d='M12 17h.01'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z'/%3E%3Cpath d='M12 9v4'/%3E%3Cpath d='M12 17h.01'/%3E%3C/svg%3E") no-repeat center / contain;
 }

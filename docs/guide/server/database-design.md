@@ -2,7 +2,7 @@
 
 本文档详细介绍了 Gin-Vue-Admin 项目的数据库设计，包括表结构、关系设计、索引优化等内容。
 
-## 📊 数据库架构概览
+## 数据库架构概览
 
 ### 1. 数据库选择
 
@@ -36,7 +36,7 @@ Gin-Vue-Admin 支持多种数据库：
     └── 文件分片 (exa_file_chunks)
 ```
 
-## 🗃️ 核心表结构
+## 核心表结构
 
 ### 1. 用户管理表
 
@@ -345,7 +345,7 @@ CREATE TABLE `sys_auto_code_histories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='代码生成历史表';
 ```
 
-## 🔗 表关系设计
+## 表关系设计
 
 ### 1. 用户权限关系图
 
@@ -439,7 +439,7 @@ type SysBaseMenu struct {
 }
 ```
 
-## 📈 索引优化策略
+## 索引优化策略
 
 ### 1. 主要索引设计
 
@@ -546,7 +546,7 @@ AND v2 = 'POST';
 UNIQUE KEY `idx_casbin_rule` (`ptype`,`v0`,`v1`,`v2`,`v3`,`v4`,`v5`)
 ```
 
-## 🗄️ 数据库配置
+## 数据库配置
 
 ### 1. GORM 配置
 
@@ -633,7 +633,7 @@ func RegisterTables() {
 }
 ```
 
-## 🔧 数据库维护
+## 数据库维护
 
 ### 1. 备份策略
 
@@ -789,7 +789,7 @@ CHECK TABLE sys_users;
 CHECK TABLE casbin_rule;
 ```
 
-## 📊 数据字典
+## 数据字典
 
 ### 1. 状态码定义
 
@@ -820,7 +820,7 @@ INSERT INTO `sys_users` VALUES
 (1,'2023-01-01 00:00:00.000','2023-01-01 00:00:00.000',NULL,'a303176530-3dda-4a33-b261-61809d378a34','admin','$2a$10$2XLuViXqLcn18zyGHU.9COFYqI16yGHjs6pXU5klUkdOKWjjceYUC','超级管理员','dark','https://qmplusimg.henrongyi.top/gva_header.jpg','#fff','#1890ff',888,'17611111111','333333333@qq.com',1);
 ```
 
-## 📚 相关文档
+## 相关文档
 
 - [GORM官方文档](https://gorm.io/zh_CN/docs/)
 - [MySQL性能优化](https://dev.mysql.com/doc/refman/8.0/en/optimization.html)

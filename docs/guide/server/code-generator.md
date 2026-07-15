@@ -1,8 +1,8 @@
-# 🚀 代码生成器
+# 代码生成器
 
 Gin-Vue-Admin 提供强大的代码生成器，支持根据数据库表结构自动生成完整的 CRUD 代码，包括后端 API、前端页面、路由配置等，大幅提升开发效率。
 
-## 🎯 功能概述
+## 功能概述
 
 ### 生成内容
 
@@ -13,14 +13,14 @@ Gin-Vue-Admin 提供强大的代码生成器，支持根据数据库表结构自
 
 ### 支持特性
 
-- 🔄 **增删改查**：完整的 CRUD 操作
-- 🔍 **条件查询**：支持多字段条件筛选
-- 📄 **分页查询**：自动分页处理
-- 📁 **文件上传**：支持文件字段处理
-- 🔗 **关联查询**：支持表关联操作
-- 🎨 **自定义模板**：可自定义代码模板
+- **增删改查**：完整的 CRUD 操作
+- **条件查询**：支持多字段条件筛选
+- **分页查询**：自动分页处理
+- **文件上传**：支持文件字段处理
+- **关联查询**：支持表关联操作
+- **自定义模板**：可自定义代码模板
 
-## 🛠️ 使用方式
+## 使用方式
 
 ### 1. Web 界面生成
 
@@ -87,7 +87,7 @@ curl -X POST "http://localhost:8888/autoCode/createTemp" \
   }'
 ```
 
-## 📋 配置详解
+## 配置详解
 
 ### 基础配置结构
 
@@ -153,7 +153,7 @@ type Field struct {
 }
 ```
 
-## 🎨 模板系统
+## 模板系统
 
 ### 模板目录结构
 
@@ -279,7 +279,7 @@ func ({{.StructName}}) TableName() string {
 </template>
 ```
 
-## 🔧 生成器核心代码
+## 生成器核心代码
 
 ### 代码生成服务
 
@@ -440,7 +440,7 @@ func (autoCodeService *AutoCodeService) AutoCreateMenu(autoCode *system.AutoCode
 }
 ```
 
-## 🎯 高级功能
+## 高级功能
 
 ### 1. 关联表生成
 
@@ -558,7 +558,7 @@ const before%sUpload = (file) => {
 }
 ```
 
-## 📊 生成统计
+## 生成统计
 
 ### 代码生成记录
 
@@ -590,7 +590,7 @@ func (autoCodeService *AutoCodeService) CreateAutoCodeHistory(meta, path, inject
 }
 ```
 
-## 🔄 代码回滚
+## 代码回滚
 
 ```go
 // RollBack 回滚自动生成的代码
@@ -645,7 +645,7 @@ func (autoCodeService *AutoCodeService) RollBack(id uint) error {
 }
 ```
 
-## 🎨 前端集成
+## 前端集成
 
 ### 代码生成器页面
 
@@ -735,7 +735,7 @@ const generateCode = async () => {
 </script>
 ```
 
-## 🐛 常见问题
+## 常见问题
 
 ### Q: 生成的代码编译失败？
 A: 检查字段类型配置是否正确，确保 Go 类型和数据库类型匹配。
@@ -749,7 +749,7 @@ A: 修改 `server/resource/template/` 目录下的模板文件，重启服务即
 ### Q: 生成后如何添加自定义逻辑？
 A: 在生成的代码基础上添加自定义方法，避免直接修改生成的核心 CRUD 方法。
 
-## 📚 相关文档
+## 相关文档
 
 - [数据库设计](./database-design.md)
 - [服务端配置](./config.md)
