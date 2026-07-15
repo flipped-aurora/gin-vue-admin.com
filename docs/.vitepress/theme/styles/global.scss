@@ -304,3 +304,47 @@ body.gva-nav-scrolled .VPNav .content {
         height: 16px !important;
     }
 }
+
+/* ============================================================
+   文档站侧边栏（抽屉式 GvaDocSidebar）
+   所有规则以 .gva-doc（挂在文档页 .Layout 上）为作用域，
+   .gva-doc 仅在有侧栏的文档页出现 —— 绝不影响官网首页/其它页面。
+   ============================================================ */
+
+/* 隐藏 VitePress 默认分组渲染，保留容器/sticky/移动端抽屉能力 */
+.gva-doc #VPSidebarNav > .group {
+    display: none !important;
+}
+
+/* 侧栏容器：白底 + 设计稿右缘 + 内边距严格对齐 HTML（.side{padding:26px 20px 60px}）
+   VitePress 的 .VPSidebar 为 scoped 样式，靠 .gva-doc 提升优先级 + !important 覆盖 */
+.gva-doc .VPSidebar {
+    background-color: var(--gva-bg-base) !important;
+    border-right: 1px solid var(--gva-border-soft);
+    padding: 26px 20px 60px !important;
+}
+
+@media (min-width: 960px) {
+    /* 桌面端让侧栏从固定顶栏下方开始（top = 导航高度），
+       这样 padding-top 就是设计稿的纯 26px，既不被顶栏遮挡、也无多余空隙 */
+    .gva-doc .VPSidebar {
+        top: var(--vp-nav-height) !important;
+    }
+    /* 侧栏已在顶栏下方，不再需要“滚动隐入顶栏”的遮布 */
+    .gva-doc .VPSidebar .curtain {
+        display: none !important;
+    }
+    /* 搜索“移入”侧栏：桌面端隐藏顶栏搜索按钮
+       （VPNavBarSearch 组件仍挂载，Cmd/Ctrl+K 有效；弹窗 VPLocalSearchBox 已 Teleport 到 body） */
+    .gva-doc .VPNavBarSearch {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    /* 超宽屏：VitePress 会加宽侧栏并用居中 padding-left 让内容与正文对齐。
+       普通屏用设计稿 20px，超宽屏回归居中对齐，避免导航项被拉得过宽 */
+    .gva-doc .VPSidebar {
+        padding-left: max(20px, calc((100% - (var(--vp-layout-max-width, 1440px) - 64px)) / 2)) !important;
+    }
+}
