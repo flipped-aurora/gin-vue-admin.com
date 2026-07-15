@@ -32,6 +32,27 @@
   display: none;
 }
 
+/* ---- Changelog page: let the component own the full content width ------ */
+.VPContent.gva-changelog-page,
+.gva-changelog-page.VPContent {
+  padding: 0 !important;
+}
+.gva-changelog-page .VPPage {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.gva-changelog-page .VPPage > .vp-doc,
+.gva-changelog-page .vp-doc {
+  max-width: none !important;
+  padding: 0 !important;
+}
+/* the markdown wrapper sometimes adds a stray empty <p>; collapse it.
+   layout:page renders <Content/> with no .vp-doc wrapper, so target the
+   component root's sibling directly (mirrors the gva-home-page rule). */
+.gva-changelog-page .cl-page + p:empty {
+  display: none;
+}
+
 /* ---- Section shells ---------------------------------------------------- */
 .gva-section {
   position: relative;

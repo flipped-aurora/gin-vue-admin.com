@@ -98,6 +98,7 @@ export default defineConfig({
 
         nav: [
             {text: '文档', link: '/guide/start-quickly/initialization', target: '_blank'},
+            {text: '更新日志', link: '/changelog'},
             {text: '协议', link: '/copyright.pdf', target: '_blank'},
             {text: '购买授权', link: 'https://plugin.gin-vue-admin.com/license'},
             {text: '插件市场', link: 'https://plugin.gin-vue-admin.com/#/layout/home'},
