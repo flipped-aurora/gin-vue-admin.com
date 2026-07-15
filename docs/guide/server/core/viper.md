@@ -10,7 +10,7 @@
 
 4. 最后会按照 Gin 框架自带的环境变量 `GIN_MODE` 进行匹配 `server/core/internal/constant.go` 文件中的定义。
 
-   :::danger 注意
+   :::warning 注意
 
    GIN_MODE 只能有三个值，debug、release、test， 其他值会panic的
    :::
