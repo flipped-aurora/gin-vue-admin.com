@@ -3,11 +3,11 @@
 
 本指南将帮助您从零开始搭建 Gin-Vue-Admin 项目的开发环境。如果您已经具备相关环境，可以跳过对应部分。
 
-## 🚀 快速检查清单
+## 快速检查清单
 
 在开始之前，请确保您的系统满足以下要求：
 
-::: warning 📋 环境要求
+::: warning 环境要求
 - **Git**: 用于代码版本管理
 - **Node.js**: >= 20.19 或 >= 22.12 (推荐使用 LTS 版本)
 - **Go**: >= 1.22 (推荐使用最新稳定版)
@@ -15,7 +15,7 @@
 - **Redis**: >= 6.0 (可选，用于缓存)
 :::
 
-## 📦 Node.js 环境安装
+## Node.js 环境安装
 
 ### 1. 下载安装 Node.js
 
@@ -54,7 +54,7 @@ npm config get registry
 - **VS Code**: [下载地址](https://code.visualstudio.com/)
 - **WebStorm**: [下载地址](https://www.jetbrains.com/webstorm/)
 
-## 🔧 Go 环境安装
+## Go 环境安装
 
 ### 1. 下载安装 Go
 
@@ -96,7 +96,7 @@ go env -w GOPRIVATE=*.corp.example.com
 - **GoLand**: [下载地址](https://www.jetbrains.com/go/) (推荐)
 - **VS Code + Go 插件**: 免费替代方案
 
-## 🗄️ 数据库环境
+## 数据库环境
 
 ### MySQL 安装
 
@@ -140,7 +140,7 @@ sudo systemctl start redis-server
 sudo systemctl enable redis-server
 ```
 
-## 🛠️ 开发工具配置
+## 开发工具配置
 
 ### VS Code 推荐插件
 
@@ -164,16 +164,16 @@ sudo systemctl enable redis-server
 2. **代码格式化**: 配置 `gofmt` 和 `goimports`
 3. **代码检查**: 启用 `golint` 和 `go vet`
 
-## 📚 版本分支说明
+## 版本分支说明
 
 | 分支 | 状态 | 说明 | 推荐使用 |
 |------|------|------|----------|
-| [main](https://github.com/flipped-aurora/gin-vue-admin/tree/main) | 🟢 活跃维护 | 主分支，生产环境推荐 | ✅ 推荐 |
-| [i18n-dev-new](https://github.com/flipped-aurora/gin-vue-admin/tree/i18n-dev-new) | 🟡 更新中 | 组合式API多语言版本 | 🔄 开发中 |
-| [v2.4.x](https://github.com/flipped-aurora/gin-vue-admin/tree/v2.4.x) | 🔴 停止维护 | 声明式API版本 | ❌ 不推荐 |
-| [i18n-dev](https://github.com/flipped-aurora/gin-vue-admin/tree/i18n-dev) | 🔴 停止维护 | 声明式API多语言版本 | ❌ 不推荐 |
+| [main](https://github.com/flipped-aurora/gin-vue-admin/tree/main) | 活跃维护 | 主分支，生产环境推荐 | 推荐 |
+| [i18n-dev-new](https://github.com/flipped-aurora/gin-vue-admin/tree/i18n-dev-new) | 更新中 | 组合式API多语言版本 | 开发中 |
+| [v2.4.x](https://github.com/flipped-aurora/gin-vue-admin/tree/v2.4.x) | 停止维护 | 声明式API版本 | 不推荐 |
+| [i18n-dev](https://github.com/flipped-aurora/gin-vue-admin/tree/i18n-dev) | 停止维护 | 声明式API多语言版本 | 不推荐 |
 
-## ✅ 环境验证
+## 环境验证
 
 完成环境安装后，请运行以下命令验证环境是否正确配置：
 

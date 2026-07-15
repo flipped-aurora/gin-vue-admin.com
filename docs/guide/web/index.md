@@ -1,8 +1,8 @@
-# 🎨 前端知识库
+# 前端知识库
 
 Gin-Vue-Admin 前端基于 Vue 3 + Vite 4 + Element Plus  构建，采用现代化的前端开发技术栈，提供高效的开发体验和优秀的用户界面。
 
-## 🚀 技术栈
+## 技术栈
 
 ### 核心框架
 - **Vue 3** - 渐进式 JavaScript 框架
@@ -25,7 +25,7 @@ Gin-Vue-Admin 前端基于 Vue 3 + Vite 4 + Element Plus  构建，采用现代�
 - **Code Splitting** - 代码分割优化
 - **Hot Module Replacement** - 热模块替换
 
-## 📁 前端目录结构
+## 前端目录结构
 ```
 web
  ├── babel.config.js
@@ -97,7 +97,7 @@ web
  └── yarn.lock
 ```
 
-## 🛠️ 开发环境配置
+## 开发环境配置
 
 ### 环境要求
 - **Node.js** >= 20.19 或 >= 22.12
@@ -141,7 +141,7 @@ npm run format
 yarn format
 ```
 
-## 🎯 核心配置文件
+## 核心配置文件
 
 ### Vite 配置 (vite.config.js)
 
@@ -220,7 +220,7 @@ export const config = {
 }
 ```
 
-## 🏗️ 核心架构
+## 核心架构
 
 ### 1. 路由系统
 
@@ -549,7 +549,7 @@ service.interceptors.response.use(
 export default service
 ```
 
-## 🎨 组件开发
+## 组件开发
 
 ### 全局组件注册
 
@@ -831,7 +831,7 @@ defineExpose({
 </style>
 ```
 
-## 🔐 权限控制
+## 权限控制
 
 ### 权限指令
 
@@ -898,7 +898,7 @@ export function useBtnAuth() {
 }
 ```
 
-## 🎨 主题定制
+## 主题定制
 
 ### Element Plus 主题定制
 
@@ -991,7 +991,7 @@ export function useBtnAuth() {
 }
 ```
 
-## 📱 响应式设计
+## 响应式设计
 
 ### 移动端适配
 
@@ -1071,7 +1071,7 @@ export function useBtnAuth() {
 }
 ```
 
-## 🚀 性能优化
+## 性能优化
 
 ### 路由懒加载
 
@@ -1196,7 +1196,7 @@ const handleImageError = () => {
 </style>
 ```
 
-## 🧪 测试
+## 测试
 
 ### 单元测试配置
 
@@ -1274,7 +1274,7 @@ describe('GvaTable', () => {
 })
 ```
 
-## 📚 最佳实践
+## 最佳实践
 
 ### 1. 代码规范
 - 使用 ESLint + Prettier 保证代码质量
@@ -1300,7 +1300,7 @@ describe('GvaTable', () => {
 - 响应式设计适配移动端
 - 无障碍访问支持
 
-## 🐛 常见问题
+## 常见问题
 
 ### Q: 如何解决路由懒加载失败？
 A: 检查路径是否正确，确保组件文件存在，可以添加错误处理。
@@ -1314,7 +1314,7 @@ A: 检查是否正确持久化状态，页面刷新时重新初始化状态。
 ### Q: 打包后静态资源路径错误？
 A: 检查 Vite 配置中的 base 路径和 publicPath 设置。
 
-## 📚 相关文档
+## 相关文档
 
 - [Vue 3 官方文档](https://vuejs.org/)
 - [Vite 官方文档](https://vitejs.dev/)

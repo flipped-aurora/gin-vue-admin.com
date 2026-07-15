@@ -2,7 +2,7 @@
 
 本文档定义了 Gin-Vue-Admin 项目的开发规范，包括代码规范、Git 工作流、团队协作等方面的最佳实践。
 
-## 📝 代码规范
+## 代码规范
 
 ### 1. Go 代码规范
 
@@ -395,7 +395,7 @@ export default {
 }
 ```
 
-## 🔄 Git 工作流
+## Git 工作流
 
 ### 1. 分支管理
 
@@ -545,7 +545,7 @@ git tag -a v1.1.1 -m "修复登录验证问题"
 git push origin v1.1.1
 ```
 
-## 👥 团队协作
+## 团队协作
 
 ### 1. 代码审查
 
@@ -852,7 +852,7 @@ Authorization: Bearer <token>
 | 1003   | 参数错误 |
 ```
 
-## 🔧 开发工具配置
+## 开发工具配置
 
 ### 1. VS Code 配置
 
@@ -1033,7 +1033,7 @@ module.exports = {
 }
 ```
 
-## 📊 质量保证
+## 质量保证
 
 ### 1. 测试规范
 
@@ -1174,7 +1174,7 @@ func BenchmarkUserService_GetUserList(b *testing.B) {
 }
 ```
 
-## 📚 相关文档
+## 相关文档
 
 - [项目介绍](/guide/introduce/project)
 - [快速开始](/guide/start-quickly/initialization)

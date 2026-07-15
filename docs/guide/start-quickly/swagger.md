@@ -2,16 +2,16 @@
 
 Swagger 是一个强大的 API 文档生成工具，Gin-Vue-Admin 集成了 Swagger 来自动生成和维护 API 文档。本指南将介绍如何安装、配置和使用 Swagger。
 
-## 📋 什么是 Swagger
+## 什么是 Swagger
 
 Swagger 是一个用于设计、构建、记录和使用 RESTful Web 服务的开源软件框架。它提供了：
 
-- 🔍 **API 文档自动生成**: 从代码注释自动生成文档
-- 🧪 **在线测试**: 直接在浏览器中测试 API
-- 📊 **可视化界面**: 清晰的 API 结构展示
-- 🔄 **实时更新**: 代码变更时文档自动同步
+- **API 文档自动生成**: 从代码注释自动生成文档
+- **在线测试**: 直接在浏览器中测试 API
+- **可视化界面**: 清晰的 API 结构展示
+- **实时更新**: 代码变更时文档自动同步
 
-## 🛠️ 安装 Swagger
+## 安装 Swagger
 
 ### 方式一：直接安装（推荐）
 
@@ -51,7 +51,7 @@ swag --version
 swag --help
 ```
 
-## 📝 配置 Swagger 注释
+## 配置 Swagger 注释
 
 ### 1. 主程序注释
 
@@ -119,7 +119,7 @@ type User struct {
 }
 ```
 
-## 🔄 生成 API 文档
+## 生成 API 文档
 
 ### 1. 生成文档
 
@@ -159,7 +159,7 @@ package main
 go generate
 ```
 
-## 🌐 访问 Swagger 文档
+## 访问 Swagger 文档
 
 ### 1. 启动服务
 
@@ -179,12 +179,12 @@ go run main.go
 
 Swagger UI 提供以下功能：
 
-- 📖 **API 列表**: 查看所有可用的 API 接口
-- 🔍 **接口详情**: 查看每个接口的参数、响应等详细信息
-- 🧪 **在线测试**: 直接在页面中测试 API 接口
-- 📥 **下载文档**: 下载 JSON 或 YAML 格式的 API 文档
+- **API 列表**: 查看所有可用的 API 接口
+- **接口详情**: 查看每个接口的参数、响应等详细信息
+- **在线测试**: 直接在页面中测试 API 接口
+- **下载文档**: 下载 JSON 或 YAML 格式的 API 文档
 
-## 🎯 使用技巧
+## 使用技巧
 
 ### 1. 接口分组
 
@@ -229,7 +229,7 @@ type CreateUserReq struct {
 // @Failure 500 {object} response.Response "内部服务器错误"
 ```
 
-## 🔧 高级配置
+## 高级配置
 
 ### 1. 自定义配置
 
@@ -260,7 +260,7 @@ swag init --exclude ./vendor
 swag init --output ./api-docs
 ```
 
-## 🔗 相关资源
+## 相关资源
 
 ### 官方文档
 
@@ -278,7 +278,7 @@ swag init --output ./api-docs
 - [Gin Swagger 示例](https://github.com/swaggo/gin-swagger)
 - [Gin-Vue-Admin API 文档](https://demo.gin-vue-admin.com/swagger/index.html)
 
-## 🚀 最佳实践
+## 最佳实践
 
 1. **及时更新文档**: 每次修改 API 后都要重新生成文档
 2. **详细注释**: 为每个接口提供清晰的描述和示例

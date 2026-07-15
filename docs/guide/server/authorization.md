@@ -1,8 +1,8 @@
-# 🛡️ 权限系统
+# 权限系统
 
 Gin-Vue-Admin 采用 Casbin 实现基于角色的访问控制 (RBAC)，提供灵活、强大的权限管理机制，支持多层级权限控制。
 
-## 🎯 权限模型概述
+## 权限模型概述
 
 ### RBAC 权限模型
 
@@ -32,7 +32,7 @@ graph TD
     H --> L[API: /base/*]
 ```
 
-## 🔧 Casbin 配置
+## Casbin 配置
 
 ### 模型配置文件
 
@@ -65,7 +65,7 @@ m = g(r.sub, p.sub) && r.obj == p.obj && r.act == p.act
 | `policy_effect` | 策略效果：允许访问的条件 |
 | `matchers` | 匹配器：权限验证逻辑 |
 
-## 🛠️ 核心组件
+## 核心组件
 
 ### Casbin 中间件
 
@@ -145,7 +145,7 @@ func (casbinService *CasbinService) Casbin() *casbin.Enforcer {
 }
 ```
 
-## 🏗️ 权限数据结构
+## 权限数据结构
 
 ### 角色表 (sys_authorities)
 
@@ -192,7 +192,7 @@ type SysApi struct {
 }
 ```
 
-## 🎛️ 权限管理功能
+## 权限管理功能
 
 ### 1. 角色管理
 
@@ -334,7 +334,7 @@ app.directive('auth', {
 </script>
 ```
 
-## 🔄 权限同步机制
+## 权限同步机制
 
 ### 权限缓存更新
 
@@ -375,7 +375,7 @@ func (casbinService *CasbinService) CheckPermission(userId, resource, action str
 }
 ```
 
-## 🎨 前端权限集成
+## 前端权限集成
 
 ### 路由权限控制
 
@@ -450,7 +450,7 @@ axios.interceptors.response.use(
 )
 ```
 
-## 🔒 安全最佳实践
+## 安全最佳实践
 
 ### 1. 最小权限原则
 - 用户只获得完成工作所需的最小权限
@@ -492,7 +492,7 @@ func LogPermissionCheck(userID, action, resource string, result bool, c *gin.Con
 }
 ```
 
-## 🐛 常见问题
+## 常见问题
 
 ### Q: 权限修改后不生效？
 A: 需要调用 `e.LoadPolicy()` 重新加载权限策略，或重启应用。
@@ -506,7 +506,7 @@ A: 使用 Redis 缓存权限结果，设置合理的缓存过期时间。
 ### Q: 如何实现临时权限？
 A: 可以在权限规则中添加时间字段，或使用定时任务清理过期权限。
 
-## 📚 相关文档
+## 相关文档
 
 - [认证系统](./authentication.md)
 - [常见问题](../manual/qa.md)

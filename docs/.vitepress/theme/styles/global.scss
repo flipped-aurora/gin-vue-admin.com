@@ -348,3 +348,76 @@ body.gva-nav-scrolled .VPNav .content {
         padding-left: max(20px, calc((100% - (var(--vp-layout-max-width, 1440px) - 64px)) / 2)) !important;
     }
 }
+
+/* ============================================================
+   右侧目录 On this page（VPDocAsideOutline）— 按设计稿 §7.10
+   作用域 .gva-doc；选中项文字用主题色，隐藏默认移动 marker 改用左边框
+   ============================================================ */
+
+/* 删除 VitePress 默认整条灰色 rail（.content 左边框）+ 去掉其 16px 左内边距，
+   让每项自己的 border-left 贴到最左，形成设计稿的 rail */
+.gva-doc .VPDocAsideOutline .content {
+    border-left: none;
+    padding-left: 0;
+}
+
+/* 标题 “On this page”：12px 大写 muted */
+.gva-doc .VPDocAsideOutline .outline-title {
+    padding-left: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gva-text-muted);
+}
+
+/* 隐藏 VitePress 默认那根随滚动移动的 marker，改用每项 border-left 表示激活 */
+.gva-doc .VPDocAsideOutline .outline-marker {
+    display: none !important;
+}
+
+/* 目录项：13.5px muted，左侧 2px 透明 rail */
+.gva-doc .VPDocAsideOutline .outline-link {
+    display: block;
+    padding: 6px 0 6px 14px;
+    border-left: 2px solid transparent;
+    color: var(--gva-text-muted);
+    font-size: 13.5px;
+    font-weight: 400;
+    line-height: 1.4;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+.gva-doc .VPDocAsideOutline .outline-link:hover {
+    color: var(--gva-text-body);
+}
+/* 选中项：文字主题色 + 左边框主题色 + 加粗 */
+.gva-doc .VPDocAsideOutline .outline-link.active {
+    color: var(--gva-primary);
+    border-left-color: var(--gva-primary);
+    font-weight: 600;
+}
+
+/* 子项（若开启 h3）：左侧 rail 对齐，文字多缩进到 28px */
+.gva-doc .VPDocAsideOutline .VPDocOutlineItem.nested {
+    padding-left: 0;
+}
+.gva-doc .VPDocAsideOutline .VPDocOutlineItem.nested .outline-link {
+    padding-left: 28px;
+    font-size: 13px;
+}
+
+/* ============================================================
+   正文内容区内边距 — 对齐原型 .main{padding:56px 56px 120px}
+   VitePress 默认把内边距拆在 .VPDoc(48/32/0) + .content(0/32/128)＝左右 64px；
+   顶栏清空间距由 .VPContent 处理，故 .VPDoc padding 可归零、全部交给 .content，
+   使 .content 的 padding 正好等于原型（devtools 里就是 56px 56px 120px）。
+   ============================================================ */
+@media (min-width: 960px) {
+    .gva-doc .VPDoc.has-sidebar.has-aside {
+        padding: 0 !important;
+    }
+    .gva-doc .VPDoc.has-sidebar.has-aside .content {
+        padding: 56px 56px 120px !important;
+    }
+}
