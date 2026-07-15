@@ -305,8 +305,8 @@ h1 {
 
 h2 {
   margin: 44px 0 22px;
-  padding: 0;
-  border: 0;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--gva-border);
   color: var(--gva-text-strong);
   font-size: clamp(22px, 2.4vw, 27px);
   font-weight: 700;
@@ -397,6 +397,11 @@ code {
     transform 0.2s ease,
     border-color 0.15s ease,
     box-shadow 0.2s ease;
+}
+
+/* 清除全局 .gva-doc 列表圆点（.vp-doc ul>li::before）在这四个卡片上的残留——卡片不需要圆点 */
+#快速链接 + ul > li::before {
+  display: none;
 }
 
 #快速链接 + ul > li:hover {

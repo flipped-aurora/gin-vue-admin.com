@@ -2,9 +2,13 @@
 
 本指南将详细介绍如何初始化和启动 Gin-Vue-Admin 项目，包括后端服务、前端应用和数据库的配置。
 
-::: tip 视频教程
-如果您更喜欢视频学习，可以观看我们的[视频教程](https://www.bilibili.com/video/BV1kv4y1g7nT?p=3)。
-:::
+<div class="gva-video-tip">
+
+**视频教程**
+
+如果您更喜欢视频学习，可以观看我们的<a class="gva-video-ref" style="margin-left: 10px" href="https://www.bilibili.com/video/BV1kv4y1g7nT?p=3" target="_blank" rel="noopener"><span class="gva-video-ref__play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="gva-video-ref__label">视频教程</span><span class="gva-video-ref__ext"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span></a>
+
+</div>
 
 ## 前置条件
 
