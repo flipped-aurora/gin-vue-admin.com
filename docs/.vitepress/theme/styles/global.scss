@@ -68,11 +68,14 @@ a{
     text-decoration: none !important;
 }
 
-/* 顶栏样式调整 */
+/* 顶栏样式调整:默认白底;浅灰底只属于首页首屏(未滚动),其余页面(文档/更新日志/授权查询等)保持白色 */
 .VPNavBar, .VPNav, .VPLocalNav {
-    background-color: #F9F9F9 !important;
+    background-color: #fff !important;
     border-bottom: 1px solid transparent !important;
     transition: background-color 0.3s ease, border-color 0.3s ease !important;
+}
+.gva-home .VPNavBar, .gva-home .VPNav, .gva-home .VPLocalNav {
+    background-color: #F9F9F9 !important;
 }
 .VPNav{
     padding: 0 !important;
@@ -85,9 +88,12 @@ a{
 }
 
 .VPNavBar .content, .VPNav .content {
-    background-color: rgba(249, 249, 249, 0.8) !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
     backdrop-filter: blur(8px);
     transition: background-color 0.3s ease !important;
+}
+.gva-home .VPNavBar .content, .gva-home .VPNav .content {
+    background-color: rgba(249, 249, 249, 0.8) !important;
 }
 
 /* 修复：文档页(has-sidebar)时 VitePress 给 .content-body 设了白底(--vp-nav-bg-color)，
@@ -116,10 +122,16 @@ body.gva-nav-scrolled .VPNav .content {
     border-bottom: 1px solid transparent !important;
 }
 
+/* 暗色滚动态需显式盖回深色:白底滚动规则(body.gva-nav-scrolled ...)比 .dark 规则优先级高 */
 .dark body.gva-nav-scrolled .VPNavBar,
 .dark body.gva-nav-scrolled .VPNav,
 .dark body.gva-nav-scrolled .VPLocalNav {
+    background-color: #1a1a1a !important;
     border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+.dark body.gva-nav-scrolled .VPNavBar .content,
+.dark body.gva-nav-scrolled .VPNav .content {
+    background-color: rgba(26, 26, 26, 0.8) !important;
 }
 
 .dark .VPNavBar .content, .dark .VPNav .content {
