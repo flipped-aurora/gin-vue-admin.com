@@ -144,18 +144,24 @@ body.gva-nav-scrolled .VPNav .content {
     max-width: var(--gva-content) !important;
 }
 
-/* 文档页(有侧栏)顶栏：右侧菜单版心对齐官网首页，左侧 logo 始终居左对齐侧栏。
-   - 右侧：VitePress 的 .has-sidebar 会按 1440 布局 + 侧栏宽度给 .content 加偏移，
-     使右侧菜单比首页更靠外；此处清掉该偏移，让菜单跟随 1100px 居中容器右对齐
+/* 文档页(有侧栏)顶栏：整栏对齐官网首页版心（正文三栏满屏，但顶栏保持版心不变）。
+   - 右侧菜单：清掉 VitePress 的 has-sidebar 偏移，让菜单跟随 --gva-content 居中容器右对齐
      （.VPNavBar .container 已统一 max-width: --gva-content；≥2560px 自动 1600px）。
-   - 左侧：保留 VitePress 原生“把 logo 绝对定位钉在侧栏正上方”的行为（不再中和 .title），
-     其左缘与侧栏用同一套定位算法，故任何宽度/大屏 logo 都居左且与侧栏左缘对齐，
-     不会内缩到版心中间。
+   - 左侧 logo：解除 VitePress 原生“把 .title 绝对定位钉在侧栏正上方”的行为，
+     让 logo 回落为居中容器的 flex 子项 → 落在版心左缘，与官网首页完全一致
+     （满屏后侧栏更靠外，logo 不再跟随侧栏）。
    移动端(<960px) VitePress 默认导航 + 侧栏抽屉逻辑保持不动。 */
 @media (min-width: 960px) {
     .gva-doc .VPNavBar.has-sidebar .content {
         padding-left: 0 !important;
         padding-right: 0 !important;
+    }
+    /* logo 解钉：回落为居中容器的 flex 子项，落到版心左缘（同官网首页）。
+       只针对容器直接子级 .title，避免误伤 VPNavBarTitle 内层同名 .title。 */
+    .gva-doc .VPNavBar.has-sidebar .container > .title {
+        position: static !important;
+        width: auto !important;
+        padding: 0 !important;
     }
     /* 去掉 logo 下方 VitePress 默认分隔线
        （覆盖 VPNavBarTitle.vue 的 .VPNavBarTitle.has-sidebar .title{border-bottom-color:var(--vp-c-divider)}）*/
@@ -383,10 +389,30 @@ body.gva-nav-scrolled .VPNav .content {
 }
 
 @media (min-width: 1440px) {
-    /* 超宽屏：VitePress 会加宽侧栏并用居中 padding-left 让内容与正文对齐。
-       普通屏用设计稿 20px，超宽屏回归居中对齐，避免导航项被拉得过宽 */
+    /* 满屏三栏：取消 VitePress 的居中偏移。侧栏靠左，只留 --gva-doc-gutter 边距；
+       宽度用 --gva-doc-sidebar（2K 同比加宽）。 */
     .gva-doc .VPSidebar {
-        padding-left: max(20px, calc((100% - (var(--vp-layout-max-width, 1440px) - 64px)) / 2)) !important;
+        left: var(--gva-doc-gutter) !important;
+        width: var(--gva-doc-sidebar) !important;
+        padding-left: 20px !important;
+    }
+    /* 正文区左偏移 = 留白 + 侧栏宽（让开靠左侧栏）；右侧同样只留 --gva-doc-gutter，
+       消掉 VitePress 的 (100vw-1440)/2 居中大边距 → content 铺满、目录靠右，左右留白一致。 */
+    .gva-doc .VPContent.has-sidebar {
+        padding-left: calc(var(--gva-doc-gutter) + var(--gva-doc-sidebar)) !important;
+        padding-right: var(--gva-doc-gutter) !important;
+    }
+}
+
+/* 2K：右侧目录同比加宽（与侧栏一起放大 ≈1.45×，保持三栏比例与官网一致）。
+   aside-container 宽 = 目录宽 − 32px（VitePress aside 的 padding-left:32 内缩）。 */
+@media (min-width: 2560px) {
+    .gva-doc .VPDoc .aside {
+        max-width: var(--gva-doc-aside) !important;
+    }
+    .gva-doc .VPDoc .aside-container,
+    .gva-doc .VPDoc .aside-curtain {
+        width: calc(var(--gva-doc-aside) - 32px) !important;
     }
 }
 
@@ -449,17 +475,16 @@ body.gva-nav-scrolled .VPNav .content {
 }
 
 /* ============================================================
-   正文内容区内边距 — 对齐原型 .main{padding:56px 56px 120px}
-   VitePress 默认把内边距拆在 .VPDoc(48/32/0) + .content(0/32/128)＝左右 64px；
-   顶栏清空间距由 .VPContent 处理，故 .VPDoc padding 可归零、全部交给 .content，
-   使 .content 的 padding 正好等于原型（devtools 里就是 56px 56px 120px）。
+   正文内容区内边距 — 满屏三栏：上下 48 / 左右 64（与最外侧留白 --gva-doc-gutter 呼应）。
+   VitePress 默认把内边距拆在 .VPDoc(48/32/0) + .content(0/32/128)；这里把 .VPDoc 归零、
+   全部交给 .content，使实际内边距正好 = 48px 64px（content 保持 max-width:none 铺满）。
    ============================================================ */
 @media (min-width: 960px) {
     .gva-doc .VPDoc.has-sidebar.has-aside {
         padding: 0 !important;
     }
     .gva-doc .VPDoc.has-sidebar.has-aside .content {
-        padding: 36px 36px 20px !important;
+        padding: 48px 64px !important;
     }
 }
 

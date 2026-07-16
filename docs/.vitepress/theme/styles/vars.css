@@ -107,6 +107,12 @@ $opq-yellow: #FCDB29; */
   --gva-container: 1200px;
   /* 统一版心：首屏文字 = 次屏视频卡片，共用此标准宽度 */
   --gva-content: 1100px;
+
+  /* 文档三栏满屏布局（≥1440px 生效；2K 时下方 @media 同比放大 ≈1.45×） */
+  --gva-doc-gutter: 64px;   /* 最外侧留白：视口↔侧栏 / 目录↔视口，左右一致 */
+  --gva-doc-sidebar: 272px; /* 侧栏宽 */
+  --gva-doc-aside: 256px;   /* 右侧目录宽 */
+
   --gva-ghost-num: rgba(15, 23, 42, 0.05);
 }
 
@@ -115,6 +121,11 @@ $opq-yellow: #FCDB29; */
   :root {
     --gva-content: 1600px;
     --gva-container: 1700px;
+
+    /* 文档三栏同比放大（≈1.45×，与版心 1100→1600 一致） */
+    --gva-doc-gutter: 96px;
+    --gva-doc-sidebar: 396px;
+    --gva-doc-aside: 372px;
   }
 }
 
