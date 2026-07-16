@@ -61,14 +61,6 @@ function toggle(i) {
   openSet.value = s
 }
 
-// 点击侧栏搜索框：派发官方同款合成事件，打开 VitePress 本地搜索
-function openSearch() {
-  const e = new Event('keydown')
-  e.key = 'k'
-  e.metaKey = true
-  window.dispatchEvent(e)
-}
-
 /* ============================================================
    旧代码（钻入式 master→detail，保留备份，已停用）
    —— 需恢复时：取消本段注释，并还原下方“旧模板 / 旧样式”对应块，
@@ -127,13 +119,6 @@ function showGlobal(flashIdx) {
 
 <template>
   <div v-if="hasSidebar" class="gva-side">
-    <!-- 搜索框（从顶栏移入侧栏，点击打开本地搜索） -->
-    <button class="gva-search" type="button" aria-label="搜索文档" @click="openSearch">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m21 21-4.3-4.3" /></svg>
-      <span class="ph">搜索文档</span>
-      <span class="kbd">⌘K</span>
-    </button>
-
     <!-- 手风琴 / 下拉展开：一级分组就地展开子项（多组可同时展开） -->
     <nav class="gva-acc">
       <template v-for="(g, i) in sidebar" :key="g.text">
@@ -249,49 +234,6 @@ function showGlobal(flashIdx) {
 .gva-side {
   display: flex;
   flex-direction: column;
-}
-
-/* 搜索框 */
-.gva-search {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 9px 12px;
-  margin-bottom: 20px;
-  border: 1px solid var(--gva-border);
-  border-radius: var(--gva-radius-sm);
-  background: var(--gva-bg-base);
-  color: var(--gva-text-muted);
-  font-family: inherit;
-  font-size: 14px;
-  text-align: left;
-  cursor: text;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-.gva-search:hover {
-  border-color: var(--gva-border-strong);
-}
-.gva-search:focus-visible {
-  outline: none;
-  border-color: var(--gva-primary);
-  box-shadow: 0 0 0 3px var(--gva-primary-ring);
-}
-.gva-search svg {
-  flex: 0 0 auto;
-  color: var(--gva-text-muted);
-}
-.gva-search .ph {
-  flex: 1;
-}
-.gva-search .kbd {
-  font-family: var(--gva-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
-  font-size: 11px;
-  line-height: 1;
-  border: 1px solid var(--gva-border);
-  border-radius: 6px;
-  padding: 3px 6px;
-  color: var(--gva-text-muted);
 }
 
 /* 手风琴容器 + 分组 */

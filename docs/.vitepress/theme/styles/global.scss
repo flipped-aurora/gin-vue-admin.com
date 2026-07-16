@@ -381,11 +381,7 @@ body.gva-nav-scrolled .VPNav .content {
     .gva-doc .VPSidebar .curtain {
         display: none !important;
     }
-    /* 搜索“移入”侧栏：桌面端隐藏顶栏搜索按钮
-       （VPNavBarSearch 组件仍挂载，Cmd/Ctrl+K 有效；弹窗 VPLocalSearchBox 已 Teleport 到 body） */
-    .gva-doc .VPNavBarSearch {
-        display: none !important;
-    }
+    /* 搜索框保留在顶栏（VPNavBarSearch），与官网首页一致——不再移入侧栏。 */
 }
 
 /* 满屏三栏：正文区取消 VitePress 的居中偏移 → 侧栏贴左、目录贴右、正文填充。
