@@ -53,6 +53,15 @@
 .gva-changelog-page .cl-page + p:empty {
   display: none;
 }
+/* 恢复右侧版本导航的 position:sticky。
+   全局 #app{overflow-x:hidden}（见 global.scss）会让 #app 成为滚动容器：
+   sticky 于是相对 #app（而非视口）定位，而 #app 本身从不滚动（滚动发生在根/视口），
+   结果 sticky 永不吸顶、随页面一起滚出屏幕。
+   改用 overflow-x:clip —— 同样裁掉横向溢出、不产生横向滚动条，但 clip 不建立滚动容器，
+   sticky 便回到视口来定位、正常吸顶。仅限本页（此页正文已居中限宽、无横向溢出）。 */
+#app:has(.gva-changelog-page) {
+  overflow-x: clip;
+}
 
 /* ---- Section shells ---------------------------------------------------- */
 .gva-section {

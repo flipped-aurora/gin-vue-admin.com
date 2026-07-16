@@ -340,6 +340,11 @@ onBeforeUnmount(() => {
 .cl-aside-inner {
   position: sticky;
   top: 96px;
+  display: flex;
+  flex-direction: column;
+  /* 版本很多时导航自身可能比视口更高：限制在视口内、内部滚动，
+     保证整条版本导航始终留在视野中（真正充当页面导航，版本再多也够得着）。 */
+  max-height: calc(100vh - 96px - 24px);
 }
 .cl-aside-title {
   font-size: 13px;
@@ -352,6 +357,21 @@ onBeforeUnmount(() => {
 .cl-aside-nav {
   display: flex;
   flex-direction: column;
+  min-height: 0; /* 允许在 flex 容器内收缩，超高时才触发内部滚动 */
+  overflow-y: auto;
+  overscroll-behavior: contain; /* 内部滚到头不带动整页 */
+  scrollbar-width: thin;
+  scrollbar-color: var(--gva-border-strong) transparent;
+}
+.cl-aside-nav::-webkit-scrollbar {
+  width: 6px;
+}
+.cl-aside-nav::-webkit-scrollbar-thumb {
+  background: var(--gva-border-strong);
+  border-radius: 999px;
+}
+.cl-aside-nav::-webkit-scrollbar-track {
+  background: transparent;
 }
 .cl-aside-link {
   display: block;
