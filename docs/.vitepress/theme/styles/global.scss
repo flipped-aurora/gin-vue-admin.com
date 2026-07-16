@@ -381,30 +381,31 @@ body.gva-nav-scrolled .VPNav .content {
     .gva-doc .VPSidebar .curtain {
         display: none !important;
     }
-    /* 搜索“移入”侧栏：桌面端隐藏顶栏搜索按钮
-       （VPNavBarSearch 组件仍挂载，Cmd/Ctrl+K 有效；弹窗 VPLocalSearchBox 已 Teleport 到 body） */
-    .gva-doc .VPNavBarSearch {
-        display: none !important;
+    /* 搜索框保留在顶栏（VPNavBarSearch），与官网首页一致——不再移入侧栏。 */
+}
+
+/* 满屏三栏：正文区取消 VitePress 的居中偏移 → 侧栏贴左、目录贴右、正文填充。
+   兼容性：从 ≥1280px（右侧目录出现）起生效；不用 100vw（避免滚动条溢出）。 */
+@media (min-width: 1280px) {
+    .gva-doc .VPContent.has-sidebar {
+        /* 左偏移 = 侧栏宽（正好让开贴左的侧栏）；右侧仅留 20px 呼吸位，与侧栏
+           padding-left 一致 → 目录贴右边、左右文字内缩对称。 */
+        padding-left: var(--gva-doc-sidebar) !important;
+        padding-right: 20px !important;
     }
 }
 
 @media (min-width: 1440px) {
-    /* 满屏三栏：取消 VitePress 的居中偏移。侧栏靠左，只留 --gva-doc-gutter 边距；
-       宽度用 --gva-doc-sidebar（2K 同比加宽）。 */
+    /* 侧栏贴左边：left:0；宽度锁回 --gva-doc-sidebar，消掉 VitePress ≥1440 的
+       加宽 + 居中 padding（否则侧栏会被推向版心、右缘还会盖住正文起点）。 */
     .gva-doc .VPSidebar {
-        left: var(--gva-doc-gutter) !important;
+        left: 0 !important;
         width: var(--gva-doc-sidebar) !important;
         padding-left: 20px !important;
     }
-    /* 正文区左偏移 = 留白 + 侧栏宽（让开靠左侧栏）；右侧同样只留 --gva-doc-gutter，
-       消掉 VitePress 的 (100vw-1440)/2 居中大边距 → content 铺满、目录靠右，左右留白一致。 */
-    .gva-doc .VPContent.has-sidebar {
-        padding-left: calc(var(--gva-doc-gutter) + var(--gva-doc-sidebar)) !important;
-        padding-right: var(--gva-doc-gutter) !important;
-    }
 }
 
-/* 2K：右侧目录同比加宽（与侧栏一起放大 ≈1.45×，保持三栏比例与官网一致）。
+/* 2K：侧栏 / 目录同比加宽（贴边不变，仅列宽放大 ≈1.45×，与官网 2K 比例一致）。
    aside-container 宽 = 目录宽 − 32px（VitePress aside 的 padding-left:32 内缩）。 */
 @media (min-width: 2560px) {
     .gva-doc .VPDoc .aside {
@@ -475,7 +476,7 @@ body.gva-nav-scrolled .VPNav .content {
 }
 
 /* ============================================================
-   正文内容区内边距 — 满屏三栏：上下 48 / 左右 64（与最外侧留白 --gva-doc-gutter 呼应）。
+   正文内容区内边距 — 满屏三栏：上下 48 / 左右 64（侧栏贴左、目录贴右后，正文左右各留 64）。
    VitePress 默认把内边距拆在 .VPDoc(48/32/0) + .content(0/32/128)；这里把 .VPDoc 归零、
    全部交给 .content，使实际内边距正好 = 48px 64px（content 保持 max-width:none 铺满）。
    ============================================================ */

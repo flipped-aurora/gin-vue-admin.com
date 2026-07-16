@@ -101,7 +101,7 @@ export default defineConfig({
 
 
         nav: [
-            {text: '文档', link: '/guide/start-quickly/initialization', target: '_blank'},
+            {text: '文档', link: '/guide/start-quickly/initialization'},
             {text: '更新日志', link: '/changelog'},
             {text: '协议', link: '/copyright.pdf', target: '_blank'},
             {text: '购买授权', link: 'https://plugin.gin-vue-admin.com/license'},
@@ -274,10 +274,6 @@ export default defineConfig({
                         {
                             text: '定时任务',
                             link: '/guide/server/timer'
-                        },
-                        {
-                            text: 'MCP AI助手集成',
-                            link: '/guide/server/mcp'
                         },
                         {
                             text: '数据库设计',
