@@ -107,15 +107,8 @@ export default defineConfig({
             {text: '著 作 权', link: '/copyright.pdf', target: '_blank'},
             {text: '购买授权', link: 'https://plugin.gin-vue-admin.com/license'},
             {text: '插件市场', link: 'https://plugin.gin-vue-admin.com/#/layout/home'},
-            {text: '<span class="gva-nav-bilingual" aria-label="多语言"><img class="gva-nav-bilingual__img gva-nav-bilingual__img--light" src="/web/bilingual.png" alt="" /><img class="gva-nav-bilingual__img gva-nav-bilingual__img--dark" src="/web/bilingual_day.png" alt="" /></span>', link: '#'},
-            {
-                text: 'GitHub',
-                items: [
-                    {text: 'GitHub', link: 'https://github.com/flipped-aurora/gin-vue-admin'},
-                    {text: 'Gitee', link: 'https://gitee.com/pixelmax/gin-vue-admin'},
-                    {text: 'GitCode', link: 'https://gitcode.com/flipped-aurora/gin-vue-admin'},
-                ]
-            }
+            // 多语言 + GitHub 徽标（含 gitee/gitcode 镜像下拉）已改为自定义组件
+            // theme/components/GithubNav.vue（顶栏 nav-bar-content-after 插槽）渲染。
         ],
 
         sidebar: {
@@ -145,6 +138,10 @@ export default defineConfig({
                         {
                             text: 'AI助手配置',
                             link: '/guide/server/mcp'
+                        },
+                        {
+                            text: 'AI CLI 构建',
+                            link: '/guide/server/ai-cli'
                         },
                         {
                             text: 'swagger',

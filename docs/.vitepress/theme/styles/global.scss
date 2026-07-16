@@ -239,37 +239,24 @@ body.gva-nav-scrolled .VPNav .content {
     font-weight: 600;
 }
 
-/* 多语言 icon 导航项紧凑化 + 明暗主题图标切换 */
-.gva-nav-bilingual {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 14px;
-    height: 14px;
-}
+/* 多语言 + GitHub 徽标：已迁移到 theme/components/GithubNav.vue（顶栏右侧自定义项），
+   图标 / 药丸 / 镜像下拉样式随组件 scoped，此处不再保留全局规则。 */
 
-.gva-nav-bilingual__img {
-    display: block;
-    width: 14px;
-    height: 14px;
-    object-fit: contain;
+/* 顶栏右侧自定义项（GitHub 徽标 + 多语言）定位：组件插在 nav-bar-content-after 插槽里
+   （DOM 顺序在 appearance 之后），用 flex order 把它移到主题切换按钮之前 →
+   视觉顺序 = …菜单 · GitHub · 多语言 · 主题切换。全站（首页 + 文档页）一致。 */
+.VPNavBar .content-body > .gva-nav-extra {
+    order: 2;
 }
-
-.gva-nav-bilingual__img--dark {
-    display: none;
+.VPNavBar .content-body > .appearance,
+.VPNavBar .content-body > .social-links,
+.VPNavBar .content-body > .extra,
+.VPNavBar .content-body > .hamburger {
+    order: 3;
 }
-
-.dark .gva-nav-bilingual__img--light {
-    display: none;
-}
-
-.dark .gva-nav-bilingual__img--dark {
-    display: block;
-}
-
-.VPNavBarMenuLink:has(.gva-nav-bilingual) {
-    padding-left: 6px !important;
-    padding-right: 6px !important;
+/* 主题切换按钮与「多语言」保持与菜单项一致的 24px 间距（多语言侧无右边距，全靠这里补） */
+.VPNavBar .content-body > .appearance {
+    margin-left: 24px;
 }
 
 /* 任何屏幕：去掉导航文字旁的下拉箭头 */
@@ -331,16 +318,6 @@ body.gva-nav-scrolled .VPNav .content {
     }
 
     .VPNavBarSocialLinks .VPSocialLinkIcon {
-        width: 16px !important;
-        height: 16px !important;
-    }
-
-    .gva-nav-bilingual {
-        width: 16px !important;
-        height: 16px !important;
-    }
-
-    .gva-nav-bilingual__img {
         width: 16px !important;
         height: 16px !important;
     }

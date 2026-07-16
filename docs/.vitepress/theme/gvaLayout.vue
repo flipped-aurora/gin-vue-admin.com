@@ -3,6 +3,10 @@
     <template #layout-top>
     <!--  <GiteeBanner /> -->
     </template>
+    <!-- 顶栏右侧自定义项：GitHub 徽标（点击跳仓库 / 悬停展开 gitee·gitcode）+ 多语言 -->
+    <template #nav-bar-content-after>
+      <GithubNav />
+    </template>
     <template #sidebar-nav-before>
       <GvaDocSidebar />
     </template>
@@ -21,6 +25,7 @@ import { computed, onMounted, onUnmounted } from 'vue'
 import GiteeBanner from './components/GiteeBanner.vue'
 import LegalFooterLinks from './components/LegalFooterLinks.vue'
 import GvaDocSidebar from './components/GvaDocSidebar.vue'
+import GithubNav from './components/GithubNav.vue'
 const { Layout }  = DefaultTheme
 const { page } = useData()
 // 文档站标记：有侧栏的页面（/guide、/experience、/study）挂 .gva-doc，样式只作用于此
