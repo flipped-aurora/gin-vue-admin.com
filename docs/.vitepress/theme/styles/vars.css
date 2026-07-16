@@ -39,6 +39,14 @@ $opq-yellow: #FCDB29; */
  * Colors
  * -------------------------------------------------------------------------- */
 
+/* VitePress 默认主题为中文站点(:root:where(:lang(zh)))指定了一套不含 MiSans 的字体栈。
+   由于 :where() 优先级为 0，仅靠下方 :root 覆盖只是“靠加载顺序险胜”，一旦样式加载顺序
+   变化(或 VitePress 改用 @layer)就会回退。这里用更高优先级的 :root:lang(zh) 显式覆盖，
+   确保文档阅读页与官网首页始终统一使用 MiSans。 */
+:root:lang(zh) {
+  --vp-font-family-base: 'MiSans', "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
 :root {
   --vp-font-family-base: 'MiSans', "PingFang SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 
