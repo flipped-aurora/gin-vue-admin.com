@@ -1,7 +1,9 @@
 import Theme from 'vitepress/theme'
+import { inBrowser } from 'vitepress'
 import './styles/vars.css'
 import './styles/global.scss'
 import './styles/landing.scss'
+import { setupSiteVisit } from './siteVisit'
 
 // @ts-ignore
 import PluginInfo from '../components/PluginInfo.vue'
@@ -58,10 +60,13 @@ export default {
   ...Theme,
   Layout : GvaLayout,
   // @ts-ignore
-  enhanceApp({ app}) {
+  enhanceApp({ app, router }) {
     Object.keys(components).forEach(c => {
       // @ts-ignore
       app.component(c, components[c])
     })
+    if (inBrowser) {
+      setupSiteVisit(router)
+    }
   }
 }

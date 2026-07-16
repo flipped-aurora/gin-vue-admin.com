@@ -103,7 +103,8 @@ export default defineConfig({
         nav: [
             {text: '文档', link: '/guide/start-quickly/initialization'},
             {text: '更新日志', link: '/changelog'},
-            {text: '协议', link: '/copyright.pdf', target: '_blank'},
+            {text: '授权查询', link: '/empower/check'},
+            {text: '著 作 权', link: '/copyright.pdf', target: '_blank'},
             {text: '购买授权', link: 'https://plugin.gin-vue-admin.com/license'},
             {text: '插件市场', link: 'https://plugin.gin-vue-admin.com/#/layout/home'},
             {text: '<span class="gva-nav-bilingual" aria-label="多语言"><img class="gva-nav-bilingual__img gva-nav-bilingual__img--light" src="/web/bilingual.png" alt="" /><img class="gva-nav-bilingual__img gva-nav-bilingual__img--dark" src="/web/bilingual_day.png" alt="" /></span>', link: '#'},
