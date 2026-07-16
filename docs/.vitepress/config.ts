@@ -50,6 +50,10 @@ export default defineConfig({
 
         returnToTopLabel: '返回顶部',
 
+        outline: {
+            label: '目录',
+        },
+
         search: {
             provider: 'local',
             options: {

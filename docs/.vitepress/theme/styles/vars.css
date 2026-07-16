@@ -5,31 +5,34 @@ $opq-yellow: #FCDB29; */
 
 /**
  * MiSans 自托管字体（文件在 /fonts/）
+ * 字重按标准值声明：Normal=300 / Regular=400 / Medium=500 / Semibold=600。
+ * （曾用 305/330/380/520，导致正文 font-weight:400 就近匹配到 Medium 而偏粗；
+ *   改回标准值后 400 精确命中 Regular，600/700 标题仍命中 Semibold，粗细不变。）
  * -------------------------------------------------------------------------- */
 @font-face {
   font-family: 'MiSans';
-  font-weight: 305;
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
   src: url('/fonts/MiSans-Normal.woff2') format('woff2');
 }
 @font-face {
   font-family: 'MiSans';
-  font-weight: 330;
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
   src: url('/fonts/MiSans-Regular.woff2') format('woff2');
 }
 @font-face {
   font-family: 'MiSans';
-  font-weight: 380;
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
   src: url('/fonts/MiSans-Medium.woff2') format('woff2');
 }
 @font-face {
   font-family: 'MiSans';
-  font-weight: 520;
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
   src: url('/fonts/MiSans-Semibold.woff2') format('woff2');
@@ -77,7 +80,7 @@ $opq-yellow: #FCDB29; */
 
   --gva-text-strong: #0B0B0F;
   --gva-text-body: #5A5F6B;
-  --gva-text-muted: #8A8F99;
+  --gva-text-muted: #3c3c3ca8;
 
   --gva-bg-base: #ffffff;
   --gva-bg-alt: #f7f7f7;
