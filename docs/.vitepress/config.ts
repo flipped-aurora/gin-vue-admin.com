@@ -276,10 +276,6 @@ export default defineConfig({
                             link: '/guide/server/timer'
                         },
                         {
-                            text: 'MCP AI助手集成',
-                            link: '/guide/server/mcp'
-                        },
-                        {
                             text: '数据库设计',
                             link: '/guide/server/database-design'
                         },
