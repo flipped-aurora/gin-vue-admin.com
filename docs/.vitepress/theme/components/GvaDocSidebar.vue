@@ -311,15 +311,15 @@ function showGlobal(flashIdx) {
   align-items: center;
   gap: 8px;
   width: 100%;
-  padding: 9px 12px;
+  padding: 11px 12px;
   border: 0;
   border-radius: 8px;
   background: none;
   color: var(--gva-text-body);
   font-family: inherit;
-  font-size: 14.5px;
-  font-weight: 500;
-  line-height: 1.3;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.4;
   text-align: left;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
@@ -367,25 +367,37 @@ function showGlobal(flashIdx) {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  /* 缩进 + 细左轨，体现层级 */
-  margin: 2px 0 6px 18px;
-  padding-left: 10px;
-  border-left: 1px solid var(--gva-border-soft);
+  /* 不做容器级缩进：子项底块需与一级分组左缘对齐，
+     缩进由 .gva-item 的 padding-left 承担 */
+  margin: 2px 0 8px 0;
+  padding-left: 0;
 }
 
 /* 子项 */
 .gva-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
+  padding: 10px 12px 10px 34px;
   border-radius: 8px;
   color: var(--gva-text-body);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.35;
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.4;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
+}
+/* 分段细轨：固定在文字缩进线位置（参照截图），选中时由指示条替代 */
+.gva-item::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 3px;
+  bottom: 3px;
+  width: 1px;
+  border-radius: 1px;
+  background: var(--gva-border-soft);
 }
 .gva-item:hover {
   background: rgba(15, 23, 42, 0.045);
@@ -395,6 +407,20 @@ function showGlobal(flashIdx) {
   background: var(--gva-primary-soft);
   color: var(--gva-primary);
   font-weight: 600;
+}
+.gva-item.active::before {
+  background: transparent;
+}
+/* 选中项：主题色指示条落在细轨同一位置，将其覆盖 */
+.gva-item.active::after {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 9px;
+  bottom: 9px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--gva-primary);
 }
 .gva-item--label {
   cursor: default;
@@ -414,6 +440,48 @@ function showGlobal(flashIdx) {
 .dark .gva-grp:hover,
 .dark .gva-item:hover {
   background: rgba(255, 255, 255, 0.06);
+}
+
+/* ============================================================
+   滚动条：细圆角、轨道透明、默认弱化、悬停加深
+   侧栏实际滚动容器是 VitePress 的 .VPSidebar（在本组件之外），
+   故用 :global 覆盖；.gva-side 也一并处理以防自身滚动。
+   ============================================================ */
+:global(.VPSidebar) {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--gva-border-strong) transparent;
+}
+:global(.VPSidebar::-webkit-scrollbar) {
+  width: 5px;
+  height: 5px;
+}
+:global(.VPSidebar::-webkit-scrollbar-track) {
+  background: transparent;
+}
+:global(.VPSidebar::-webkit-scrollbar-thumb) {
+  background: var(--gva-border);
+  border-radius: 999px;
+}
+:global(.VPSidebar:hover::-webkit-scrollbar-thumb) {
+  background: var(--gva-border-strong);
+}
+.gva-side {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gva-border-strong) transparent;
+}
+.gva-side::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.gva-side::-webkit-scrollbar-track {
+  background: transparent;
+}
+.gva-side::-webkit-scrollbar-thumb {
+  background: var(--gva-border);
+  border-radius: 999px;
+}
+.gva-side:hover::-webkit-scrollbar-thumb {
+  background: var(--gva-border-strong);
 }
 
 /* ============================================================
