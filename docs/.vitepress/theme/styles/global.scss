@@ -346,6 +346,12 @@ body.gva-nav-scrolled .VPNav .content {
    .gva-doc 仅在有侧栏的文档页出现 —— 绝不影响官网首页/其它页面。
    ============================================================ */
 
+/* 文档正文字重：默认 400(Regular) 偏粗，压到 300 用更细的 MiSans Normal，
+   观感更精致。标题(.vp-doc h1~h6)与加粗(.vp-doc strong=600)均为显式字重，不受影响。 */
+.gva-doc .vp-doc {
+    font-weight: 300;
+}
+
 /* 隐藏 VitePress 默认分组渲染，保留容器/sticky/移动端抽屉能力 */
 .gva-doc #VPSidebarNav > .group {
     display: none !important;

@@ -79,7 +79,7 @@ Dark mode swaps sm/base/lg for `rgba(0,0,0,…)` equivalents.
 
 ## Typography — base + responsive heading scale
 
-**Base:** `.gva-landing { font-size: 16px; line-height: 1.6; }`, family = MiSans stack (`--vp-font-family-base`). Self-hosted MiSans weights: **305 / 330 / 380 / 520** (Normal / Regular / Medium / Semibold).
+**Base:** `.gva-landing { font-size: 16px; line-height: 1.6; }`, family = MiSans stack (`--vp-font-family-base`). Self-hosted MiSans weights: **300 / 400 / 500 / 600** (Normal / Regular / Medium / Semibold) — standard values so body `font-weight:400` maps to Regular, not Medium (the old 305/330/380/520 made 400 snap to the Medium face and look too thick).
 
 **Headings are inline Tailwind, and responsive is mandatory** — the user's rule is "非一级标题以及明确写的都走默认字号 (16px)", so anything that is NOT a display heading and has no deliberate size = 16px. Display headings follow this actual scale (verified in `components/home`):
 
