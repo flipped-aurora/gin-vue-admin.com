@@ -113,7 +113,7 @@
 
             <!-- 截图 + 热点提示 -->
             <div
-              class="relative mt-1 grid aspect-[35/19] w-full place-items-center overflow-hidden rounded-[10px] border border-[var(--gva-border)] bg-[#15171c]"
+              class="relative mt-1 grid aspect-[35/19] w-full place-items-center overflow-hidden rounded-[10px] border border-[var(--gva-border)] bg-[var(--gva-bg-alt)]"
             >
               <!-- 截图按自身比例居中。热点与气泡都挂在这一层，hotspot 的百分比才与截图严格对齐；
                    若挂在外层，比例不同的截图（如 demo10）会因留白导致小球指偏。 -->
