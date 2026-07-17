@@ -14,11 +14,17 @@
            动画复刻 Community.vue 的单张全宽滑动：translateX(56px) + 透明度，
            cubic-bezier(0.4,0,0.2,1) 0.52s，自动播放 3.5s、hover 暂停、触摸、圆点。 -->
       <div
-        class="relative w-full aspect-[35/19] rounded-[4px] overflow-hidden bg-[#eef1f6] dark:bg-[#161c2b] max-[860px]:rounded-lg"
+        class="relative w-full aspect-[35/19] rounded-[4px] overflow-hidden bg-[#eef1f6] dark:bg-[#161c2b] cursor-zoom-in max-[860px]:rounded-lg"
+        role="button"
+        tabindex="0"
+        aria-label="点击放大查看"
         @mouseenter="pause"
         @mouseleave="resume"
         @touchstart="onTouchStart"
         @touchend="onTouchEnd"
+        @click="openLightbox"
+        @keydown.enter.prevent="openLightbox"
+        @keydown.space.prevent="openLightbox"
       >
         <TransitionGroup :name="slideDirection" tag="div" class="absolute inset-0">
           <img
@@ -56,6 +62,9 @@
       ═══ 原 video 区 end ═══ -->
     </div>
 
+    <!-- 点击放大：遮罩 + 右上角关闭，可左右切换，index 与轮播双向同步 -->
+    <ImageLightbox v-model:open="lightboxOpen" v-model:index="current" :slides="slides" />
+
     <!-- ═══ 原播放弹层（暂时注释，保留以便恢复）═══
     <Teleport to="body">
       <Transition name="vsec-modal">
@@ -83,8 +92,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 import playerIcon from '@/public/web/player.png'
+import ImageLightbox from '../ImageLightbox.vue'
 
 /* ═══════════════════════════════════════════════════════════════
    轮播图（暂时替换 video）
@@ -93,11 +103,12 @@ import playerIcon from '@/public/web/player.png'
    cubic-bezier(0.4,0,0.2,1) 0.52s，自动播放 3.5s、hover 暂停、圆点、触摸。
    ═══════════════════════════════════════════════════════════════ */
 const slides = [
+  '/web/lbt3.png', // 仪表盘 —— 首屏第一张
   '/web/lbt1.png',
   '/web/lbt2.png',
-  '/web/lbt3.png',
   '/web/lbt4.png',
   '/web/lbt5.png',
+  '/web/lbt7.png',
 ]
 const n = slides.length
 const current = ref(0)
@@ -117,22 +128,41 @@ function jumpTo(i) {
   current.value = i
 }
 
+/* 点击放大：打开即停自动播放，关闭后恢复 */
+const lightboxOpen = ref(false)
+function openLightbox() {
+  /* 滑动结束后浏览器会补发一次 click，只吞掉这一次，不影响后续真实点击 */
+  if (swiped) {
+    swiped = false
+    return
+  }
+  lightboxOpen.value = true
+  pause()
+}
+watch(lightboxOpen, (v) => { if (!v) resume() })
+
 /* 自动播放（间隔与 Community.vue 一致：3500ms） */
 let timer = null
 const INTERVAL = 3500
 function start() { timer = setInterval(() => move(1), INTERVAL) }
 function pause() { clearInterval(timer); timer = null }
-function resume() { if (!timer) start() }
+/* 放大层展开时遮罩会触发轮播的 mouseleave，此时不能恢复自动播放，否则图会在眼皮底下自己翻页 */
+function resume() { if (!timer && !lightboxOpen.value) start() }
 
 /* 移动端触摸 */
 let touchStartX = 0
+let swiped = false
 function onTouchStart(e) {
   touchStartX = e.touches[0].clientX
+  swiped = false
   pause()
 }
 function onTouchEnd(e) {
   const dx = e.changedTouches[0].clientX - touchStartX
-  if (Math.abs(dx) > 40) move(dx < 0 ? 1 : -1)
+  if (Math.abs(dx) > 40) {
+    swiped = true
+    move(dx < 0 ? 1 : -1)
+  }
   resume()
 }
 
