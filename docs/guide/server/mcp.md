@@ -1,171 +1,141 @@
-# MCP AI助手集成
+# MCP AI助手配置
 
-**革命性的AI开发体验！** 通过MCP（Model Context Protocol）让AI编辑工具深度理解GVA项目结构，实现智能化的代码生成和项目管理。
+接入分三步——**启动 MCP 独立服务、获取鉴权 Token、配置 AI 编辑器**。三步完成后，AI 即可连上 GVA 提供的全部工具。
 
-:::warning 版本要求
-使用MCP功能需要GVA版本 **≥ 2.8.4**，请确保您的项目版本满足要求。
-:::
+### 第一步：启动 MCP 独立服务
 
-尽量使用 claude > gemini > gpt = kimi 模型 已达到更好效果
+先确认 GVA 后端已启动（默认端口 `8888`），再在 `server/` 目录下启动 MCP 服务：
 
-## 核心特性
-
-- **智能代码生成**：AI自动创建完整的CRUD模板
-- **智能文件搜索**：自动定位相关文件并提供精准修改建议
-- **自动化流程**：一键生成API接口和菜单配置
-- **上下文理解**：AI深度理解项目架构，提供更准确的代码联动
-
-## AI编辑工具配置
-
-### 支持的AI编辑工具
-- Trae （尽量使用 trae.ai 国外版）
-- Cursor
-- Claude Code
-- Windsurf
-- Codebubby
-- 其他支持MCP协议的AI编辑器
-
-### 配置步骤
-
-:::warning 不同版本处理
-如果您的GVA版本<=2.9.0
-:::
-
-#### 第一步：启动GVA项目
-确保你的GVA项目正在运行，MCP服务会自动在 `http://127.0.0.1:8888/sse` 启动
-
-#### 第二步：配置AI编辑器
-在你的AI编辑工具的配置文件中添加以下MCP配置：
-
-```json
-{
-  "mcpServers": {
-    "GVA Helper": {
-      "type": "sse",
-      "url": "http://127.0.0.1:8888/sse"
-    }
-  }
-}
-```
-
-<img src="/mcp/ai-config-demo.svg" alt="AI编辑器MCP配置示例" style="width: 100%; max-width: 800px; margin: 20px 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
-
-#### 第三步：重启编辑器
-保存配置后重启你的AI编辑工具，等待MCP连接建立，MCP状态显示绿色即表示连接成功
-
-
-:::warning 不同版本处理
-如果您的GVA版本 >2.9.0
-:::
-
-
-#### 第一步：启动GVA项目
-确保你的GVA项目正在运行，MCP服务会自动在 `http://127.0.0.1:8889/mcp` 启动
-
-### 第二步：启动mcp
-
-```
+```bash
+cd server
 go run ./cmd/mcp -config ./cmd/mcp/config.yaml
 ```
 
-#### 第三步：配置AI编辑器
-在你的AI编辑工具的配置文件中添加以下MCP配置：
+后端启动时的横幅中也会打印这条命令。启动后，可用健康检查确认服务是否就绪：
 
-```json
+```bash
+curl http://127.0.0.1:8889/health   # 返回 ok 即为正常
+```
+
+:::warning `-config` 不能省略
+配置文件的查找顺序为「命令行 `-config` → 环境变量 `GVA_MCP_CONFIG` → 当前目录 `config.yaml` → `cmd/mcp/config.yaml` → …」。在 `server/` 下直接执行 `go run ./cmd/mcp`，会**先命中主项目的 `server/config.yaml`**——虽然靠默认值也能起来，但加载的并不是你以为的那份配置。请始终显式带上 `-config`。
+:::
+
+除命令行外，**AI 工坊 → Mcp Tools管理** 页面也提供了启动 / 停止按钮，效果等同于上述命令（后台会先 `go build` 再拉起独立进程，因此运行 GVA 后端的机器上需装有 Go）。若 MCP 是你自己在终端启动的，页面会显示为「外部启动」状态，此时无法从页面停止。
+
+<!-- 📷 截图位（待补）：AI 工坊 → Mcp Tools管理 页面——需露出顶部的 MCP 服务状态（running/external）、「启动 / 停止」按钮，以及下方的 MCP 地址 http://127.0.0.1:8889/mcp。图片放 docs/public/ai-generate/mcp-manage.png -->
+
+### 第二步：获取 x-token
+
+MCP 自身不做鉴权，它把请求原样转发给 GVA 后端，由后端的 JWT 与 Casbin 校验权限。因此 AI 编辑器必须携带一个有效的 JWT。
+
+推荐到 **权限管理 → API Token** 创建一个长期 Token：它与登录态 JWT 共用同一把签名密钥，唯一区别是有效期可自定义（有效期填 `-1` 表示 100 年长期有效）。
+
+也可以在 **AI 工坊 → Mcp Tools管理** 页面直接复制当前浏览器的登录 JWT，该页面会把 Token 自动填进各编辑器的配置示例，复制即用。但这只适合临时试用：
+
+:::warning 不要用浏览器 JWT 长期挂在编辑器里
+登录态 JWT 会过期。GVA 后端通过响应头 `new-token` 下发续期令牌，而 MCP 服务并不读取这个头，于是编辑器会一直发送已过期的旧 Token，最终报「登录已过期，请重新登录」。**任何需要长期使用的编辑器配置，都请改用 API Token 页面签发的长期 Token。**
+:::
+
+<!-- 📷 截图位（待补）：权限管理 → API Token 页面的新增弹窗——需露出「有效期」字段（填 -1 长期有效）和「所属角色」，以及列表里生成后的 Token 行。图片放 docs/public/ai-generate/api-token.png -->
+
+### 第三步：配置 AI 编辑器
+
+各编辑器的配置格式差异较大，以下模板把 `YOUR_GVA_TOKEN` 换成上一步拿到的 Token 即可使用。**Mcp Tools管理 页面已内置这些模板，并会自动填好地址与 Token**，优先从那里复制可避免手抄出错。
+
+::: code-group
+
+```json [Claude Code]
+// 项目级 .mcp.json，或用户级 ~/.claude.json
 {
   "mcpServers": {
-    "GVA_MCP": {
-      "headers": {
-        "x-token": "你当前的jwt，可以在gva项目的http://localhost:8080/#/layout/systemTools/mcpTest直接粘贴获取"
-      },
-      "url": "http://127.0.0.1:8889/mcp"
+    "gva": {
+      "type": "http",
+      "url": "http://127.0.0.1:8889/mcp",
+      "headers": { "x-token": "YOUR_GVA_TOKEN" }
     }
   }
 }
 ```
 
-<img src="/mcp/mcp-page.png" alt="AI编辑器MCP配置示例" style="width: 100%; max-width: 800px; margin: 20px 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"/>
-
-#### 第四步：重启编辑器
-保存配置后重启你的AI编辑工具，等待MCP连接建立，MCP状态显示绿色即表示连接成功
-
-### AI助手新能力
-
-配置完成后，AI助手将获得以下超能力：
-
-- **深度理解项目**：自动识别GVA项目结构和代码模式
-- **智能代码生成**：根据需求自动生成完整的功能模块
-- **精准文件定位**：快速找到相关文件并提供修改建议
-- **全栈开发**：同时处理前端、后端、数据库的代码生成
-- **UI自动化**：自动配置路由、菜单和权限系统
-
-### 使用示例
-
-只需要告诉AI："我想创建一个用户管理模块"，AI就会：
-- 自动生成用户表结构
-- 创建完整的CRUD API
-- 生成前端管理页面
-- 配置菜单和路由
-- 设置权限控制
-
-## 开发者培训资源
-
-## 授权用户内部培训文档【公开】
-
-[MCP内部培训文档](https://flipped-aurora.feishu.cn/docx/DWvvdLVfvoZajJxwDR1cDThhnAh?from=from_copylink)
-
-## 视频教程
-
-[点击观看](https://www.bilibili.com/video/BV1cNJgzbEHT)
-
-## 配置文件说明
-
-```yaml
-# <=2.9.0 在主项目的config.yaml更加重要
-mcp:
-    name: GVA_MCP  # MCP服务名称
-    version: v1.0.0 # 版本号
-    sse_path: /sse # SSE路径
-    message_path: /message # 消息路径
-    url_prefix: '' # URL前缀
-    ## v2.8.6后可用
-    addr: 8889 # 监听地址 在separate为true时有效 （暂时未实现独立运行功能，敬请期待）
-    separate: false # 是否隔离 开启以后mcp将不会跟随gva本体启动 建议在生产环境开启
-
-# >2.9.0 在cmd/mcp下的config.yaml更加重要
-
-mcp:
-  name: GVA_MCP # MCP服务名称
-  version: v1.0.0 # 版本号
-  path: /mcp # mcp路径
-  addr: 8889 # 监听地址
-  base_url: http://127.0.0.1:8889/mcp # 配置地址
-  upstream_base_url: http://127.0.0.1:8888 # upstream_base_url地址
-  auth_header: x-token #鉴权key
-  request_timeout: 15 #超时时间
-
-autocode: 
-  root: ../../.. # 主项目地址
-  server: server # 后端路径
-  web: web/src # 前端路径
-
+```json [Cursor]
+// 项目级 .cursor/mcp.json，或全局 ~/.cursor/mcp.json
+// 有 url 即视为远程 HTTP 服务，无需 type 字段
+{
+  "mcpServers": {
+    "gva": {
+      "url": "http://127.0.0.1:8889/mcp",
+      "headers": { "x-token": "YOUR_GVA_TOKEN" }
+    }
+  }
+}
 ```
 
+```json [VS Code]
+// 工作区 .vscode/mcp.json（Copilot 智能体模式，需 VS Code 1.102+）
+// 注意顶层键是 servers，不是 mcpServers
+{
+  "servers": {
+    "gva": {
+      "type": "http",
+      "url": "http://127.0.0.1:8889/mcp",
+      "headers": { "x-token": "YOUR_GVA_TOKEN" }
+    }
+  }
+}
+```
 
-## 自动填写页面参数示例
+```toml [Codex CLI]
+# ~/.codex/config.toml
+# 启用 Codex 原生 Streamable-HTTP（rmcp）客户端；此行须位于 [mcp_servers.*] 之上
+experimental_use_rmcp_client = true
 
-<img src="/mcp/image.png"/>
+[mcp_servers.gva]
+url = "http://127.0.0.1:8889/mcp"
+# 自定义静态请求头（非 Authorization），只能通过 http_headers 传递
+http_headers = { "x-token" = "YOUR_GVA_TOKEN" }
+```
 
-点击生成后后端会获得MCP模板
+```json [Cline]
+// Cline 侧栏 → MCP Servers → Configure MCP Servers
+// type 必须为 streamableHttp（驼峰），省略会退回旧版 SSE 传输而连不上
+{
+  "mcpServers": {
+    "gva": {
+      "type": "streamableHttp",
+      "url": "http://127.0.0.1:8889/mcp",
+      "headers": { "x-token": "YOUR_GVA_TOKEN" },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
 
-在模板的handle函数中书写业务逻辑即可实现一个简单的mcp工具
+```json [Trae]
+// Trae 设置 → MCP → 手动配置，需 Trae v1.3.0+
+{
+  "mcpServers": {
+    "gva": {
+      "url": "http://127.0.0.1:8889/mcp",
+      "headers": { "x-token": "YOUR_GVA_TOKEN" }
+    }
+  }
+}
+```
 
-<img src="/mcp/image2.png"/>
+:::
 
-## 调试工具展示
+Claude Code 也可以用命令行一步配好：
 
-<img src="/mcp/image3.png"/>
+```bash
+claude mcp add --transport http gva http://127.0.0.1:8889/mcp --header "x-token: YOUR_GVA_TOKEN"
+```
 
-<img src="/mcp/image4.png"/>
+Claude Desktop 稍有不同：它的配置文件只支持 stdio 传输，接入远程 HTTP 服务需借助 `npx mcp-remote` 桥接（要求本机装有 Node），配置模板同样可在 Mcp Tools管理 页面获取。
 
-<img src="/mcp/image5.png"/>
+配置保存后重启编辑器，连接成功即可看到 GVA 提供的工具列表。
+
+<!-- 📷 截图位（待补）：AI 编辑器中 MCP 连接成功的状态——以 Claude Code 的 /mcp 输出或 Cursor 的 Settings → MCP 为例，需露出 gva 服务为已连接（绿色）状态、以及展开后的工具列表（能看到 requirement_analyzer、gva_analyze、gva_execute 等）。图片放 docs/public/ai-generate/mcp-connected.png -->
+
+关于模型选择：不同模型对工具调用的稳定性差异明显，实测效果排序为 claude > gemini > gpt = kimi。模型能力不足时，容易出现跳过 `gva_analyze` 直接生成、或字段设计发散的情况。
