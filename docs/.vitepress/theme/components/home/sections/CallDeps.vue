@@ -9,7 +9,7 @@
         <h2
           class="text-[clamp(28px,3.6vw,40px)] font-bold leading-[1.18] tracking-[-0.02em] text-[var(--gva-text-strong)] max-[859px]:text-[34px] max-[859px]:leading-[1.22]"
         >
-          依赖关系<span class="text-[var(--gva-primary)]">自动识别</span>
+          调用顺序<span class="text-[var(--gva-primary)]">自动编排</span>
         </h2>
 
         <p
@@ -135,7 +135,7 @@ Step 1 → getUserList()
               </p>
 
               <p class="whitespace-pre text-[#39B54A]">
-  ✓ userId: 'U001'   ← 已自动获取
+  ✓ userId: 'U001'   ← 上游步骤产出
               </p>
 
               <div class="h-[0.75em]"></div>
@@ -149,7 +149,7 @@ Step 2 → createOrder({
               </p>
 
               <p class="whitespace-pre text-[#39B54A]">
-  userId: 'U001'   ← 自动传入
+  userId: 'U001'   ← 按编排引用 getUserList.userId
               </p>
 
               <p class="whitespace-pre text-[#D6D6D6]">})</p>
@@ -161,7 +161,7 @@ Step 2 → createOrder({
               </p>
 
               <p class="whitespace-pre text-[#39B54A]">
-# 依赖由 GVA 自动识别，无需手动配置
+# 步骤顺序由编排图自动推导
               </p>
             </div>
 
@@ -179,7 +179,7 @@ Step 2 → createOrder({
       <div class="mt-[36px] text-center max-[859px]:mt-[22px]">
         <a
           class="group inline-flex items-center gap-[9px] border-b-2 border-[var(--gva-primary)] pb-[5px] text-[15px] font-semibold leading-none text-[var(--gva-primary)] transition-opacity hover:opacity-80 max-[859px]:text-[14px]"
-          href="/guide/server/mcp"
+          href="/guide/server/ai-scenario.html"
         >
           <span>了解 Skill 生成机制</span>
 

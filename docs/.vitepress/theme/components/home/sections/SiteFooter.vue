@@ -106,15 +106,13 @@ const columns = [
     links: [
       { text: '开发文档', href: '/guide/introduce/project' },
       { text: '视频教程', href: '/guide/video/golang' },
-      { text: '常见问题', href: '/guide/manual/qa' },
       { text: '关于我们', href: '/about/join' },
     ],
   },
   {
     title: '授权与支持',
     links: [
-      { text: 'License 说明', href: '/guide/introduce/license' },
-      { text: '企业版', href: '/about/commercial' },
+      { text: '企业版', href: 'https://plugin.gin-vue-admin.com/license', ext: true },
       { text: '服务协议', href: '/terms' },
       { text: '常见问题', href: '/guide/manual/qa' },
     ],

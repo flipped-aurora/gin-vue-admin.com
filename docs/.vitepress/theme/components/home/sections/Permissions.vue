@@ -169,10 +169,7 @@
 
           <div class="flex items-center justify-between px-[24px] py-[12px] text-[13.5px] text-[#9499A3] border-t border-[#E6E7EA]">
             <span>Agent 的权限由 GVA 统一管控，无需额外配置</span>
-            <a
-              class="group inline-flex items-center gap-[6px] text-[#2264F2] font-semibold hover:text-[#1B52D4]"
-              href="/guide/server/authorization"
-            >查看权限文档 <span class="transition-transform group-hover:translate-x-[3px]">→</span></a>
+          
           </div>
         </div>
       </div>
@@ -188,12 +185,6 @@
           </li>
         </ul>
 
-        <div class="text-center mt-[18px]">
-          <a
-            class="inline-flex items-center gap-[6px] text-[#2264F2] font-semibold text-[14px] border-b border-[#2264F2] pb-[2px]"
-            href="/guide/server/authorization"
-          >查看权限文档 →</a>
-        </div>
       </div>
 
       <!-- ============ 桌面端：特性列表 ============ -->

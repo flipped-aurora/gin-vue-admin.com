@@ -148,6 +148,10 @@ export default defineConfig({
                             link: '/guide/server/ai-cli'
                         },
                         {
+                            text: '调用场景编排',
+                            link: '/guide/server/ai-scenario'
+                        },
+                        {
                             text: 'swagger',
                             link: '/guide/start-quickly/swagger'
                         },
