@@ -63,6 +63,25 @@
   overflow-x: clip;
 }
 
+/* ---- License check page: let the component own the full content width -- */
+.VPContent.gva-license-page,
+.gva-license-page.VPContent {
+  padding: 0 !important;
+}
+.gva-license-page .VPPage {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.gva-license-page .VPPage > .vp-doc,
+.gva-license-page .vp-doc {
+  max-width: none !important;
+  padding: 0 !important;
+}
+/* layout:page 下 <Content/> 无 .vp-doc 包裹,收起组件根节点旁的空 <p>(同 changelog) */
+.gva-license-page .lc-page + p:empty {
+  display: none;
+}
+
 /* ---- Section shells ---------------------------------------------------- */
 .gva-section {
   position: relative;
@@ -187,6 +206,17 @@
   background: var(--gva-primary-hover);
   color: #fff;
   transform: translateY(-1px);
+}
+/* 禁用态:去掉手型与悬浮上浮,避免"查询中"等待时看起来仍可点击 */
+.gva-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.gva-btn:disabled:hover {
+  transform: none;
+}
+.gva-btn--primary:disabled:hover {
+  background: var(--gva-primary);
 }
 .gva-btn--ghost {
   background: transparent;

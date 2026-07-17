@@ -1,5 +1,5 @@
 <template>
-  <Layout :class="{ 'gva-doc': hasSidebar }">
+  <Layout :class="{ 'gva-doc': hasSidebar, 'gva-home': isHome }">
     <template #layout-top>
     <!--  <GiteeBanner /> -->
     </template>
@@ -29,6 +29,7 @@ import GithubNav from './components/GithubNav.vue'
 const { Layout }  = DefaultTheme
 const { page } = useData()
 // 文档站标记：有侧栏的页面（/guide、/experience、/study）挂 .gva-doc，样式只作用于此
+// 首页标记：挂 .gva-home，顶栏未滚动时的浅灰底只在首页出现（见 global.scss 顶栏样式）
 const { hasSidebar } = useSidebar()
 const isHome = computed(() => page.value.relativePath === 'index.md')
 

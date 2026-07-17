@@ -103,7 +103,8 @@ export default defineConfig({
         nav: [
             {text: '文档', link: '/guide/start-quickly/initialization'},
             {text: '更新日志', link: '/changelog'},
-            {text: '协议', link: '/copyright.pdf', target: '_blank'},
+            {text: '授权查询', link: '/empower/check'},
+            {text: '著 作 权', link: '/copyright.pdf', target: '_blank'},
             {text: '购买授权', link: 'https://plugin.gin-vue-admin.com/license'},
             {text: '插件市场', link: 'https://plugin.gin-vue-admin.com/#/layout/home'},
             // 多语言 + GitHub 徽标（含 gitee/gitcode 镜像下拉）已改为自定义组件
@@ -367,11 +368,11 @@ export default defineConfig({
                             link: '/guide/video/web'
                         },
                     ]
-                },
-                {
-                    text: '🔥特惠服务器',
-                    link: 'https://flipped-aurora.feishu.cn/wiki/HNnPwI9TbifCvwk51A2cLqOjnac?from=from_copylink'
                 }
+                // {
+                //     text: '🔥特惠服务器',
+                //     link: 'https://flipped-aurora.feishu.cn/wiki/HNnPwI9TbifCvwk51A2cLqOjnac?from=from_copylink'
+                // }
             ],
             '/experience/': [
                 {
