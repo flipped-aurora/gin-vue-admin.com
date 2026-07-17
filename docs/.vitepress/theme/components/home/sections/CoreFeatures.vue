@@ -81,8 +81,10 @@
           class="fixed inset-0 z-[9999] grid place-items-center bg-[rgba(6,8,15,0.6)] p-6 backdrop-blur-[6px]"
           @click.self="close"
         >
+          <!-- PC 端宽度按视口等比放大：1080P 约 1090px，2K 约 1450px，超出 1600px 封顶；
+               高度随内部 aspect 比例自适应，因此整体宽高同步缩放。移动端保持原 820px 上限。 -->
           <div
-            class="w-full max-w-[820px] rounded-[var(--gva-radius)] border border-[var(--gva-border)] bg-[var(--gva-bg-base)] p-6 shadow-[var(--gva-shadow-sm)] max-[859px]:rounded-[14px] max-[859px]:p-4"
+            class="w-full max-w-[820px] rounded-[var(--gva-radius)] border border-[var(--gva-border)] bg-[var(--gva-bg-base)] p-6 shadow-[var(--gva-shadow-sm)] max-[859px]:rounded-[14px] max-[859px]:p-4 min-[860px]:max-w-[clamp(880px,56vw,1600px)] min-[860px]:p-[clamp(24px,2vw,40px)]"
           >
             <div class="flex justify-end">
               <button
