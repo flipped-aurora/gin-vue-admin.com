@@ -473,7 +473,7 @@
               min-[860px]:pb-[3px]
               min-[860px]:text-[16px]
             "
-            href="/guide/server/mcp"
+            href="/guide/server/ai-cli.html"
           >
             <span>了解 AI CLI</span>
 

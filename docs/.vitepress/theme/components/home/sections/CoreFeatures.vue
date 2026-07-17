@@ -111,79 +111,94 @@
 
             <!-- 截图 + 热点提示 -->
             <div
-              class="relative mt-1 aspect-[16/10] w-full overflow-hidden rounded-[10px] border border-[var(--gva-border)] bg-[#15171c]"
+              class="relative mt-1 grid aspect-[35/19] w-full place-items-center overflow-hidden rounded-[10px] border border-[var(--gva-border)] bg-[#15171c]"
             >
-              <!-- 占位截图：实际素材就位后替换此区块 -->
-              <div class="absolute inset-0 flex flex-col">
-                <div
-                  class="flex h-[34px] shrink-0 items-center gap-[6px] border-b border-white/10 px-3"
-                >
-                  <span class="h-[9px] w-[9px] rounded-full bg-white/15"></span>
-                  <span class="h-[9px] w-[9px] rounded-full bg-white/15"></span>
-                  <span class="h-[9px] w-[9px] rounded-full bg-white/15"></span>
-                </div>
+              <!-- 截图按自身比例居中。热点与气泡都挂在这一层，hotspot 的百分比才与截图严格对齐；
+                   若挂在外层，比例不同的截图（如 demo10）会因留白导致小球指偏。 -->
+              <div
+                class="relative max-h-full w-full"
+                :style="{ aspectRatio: currentStep.ratio || '35 / 19' }"
+              >
+                <img
+                  v-if="currentStep.img"
+                  class="absolute inset-0 h-full w-full object-contain"
+                  :src="currentStep.img"
+                  :alt="currentStep.t"
+                  draggable="false"
+                />
 
-                <div class="flex min-h-0 flex-1">
+                <!-- 占位截图：demo 02 / 03 素材就位后同样替换为 img -->
+                <div v-else class="absolute inset-0 flex flex-col">
                   <div
-                    class="hidden w-[64px] shrink-0 border-r border-white/10 bg-white/[0.03] sm:block"
-                  ></div>
-
-                  <div
-                    class="flex flex-1 flex-col items-center justify-center gap-[10px] bg-[#1b1e25] text-white/65"
+                    class="flex h-[34px] shrink-0 items-center gap-[6px] border-b border-white/10 px-3"
                   >
-                    <span class="text-[36px] leading-none">
-                      {{ currentStep.icon }}
-                    </span>
+                    <span class="h-[9px] w-[9px] rounded-full bg-white/15"></span>
+                    <span class="h-[9px] w-[9px] rounded-full bg-white/15"></span>
+                    <span class="h-[9px] w-[9px] rounded-full bg-white/15"></span>
+                  </div>
 
-                    <span class="text-[13px] font-medium">
-                      {{ currentStep.t }}
-                    </span>
+                  <div class="flex min-h-0 flex-1">
+                    <div
+                      class="hidden w-[64px] shrink-0 border-r border-white/10 bg-white/[0.03] sm:block"
+                    ></div>
+
+                    <div
+                      class="flex flex-1 flex-col items-center justify-center gap-[10px] bg-[#1b1e25] text-white/65"
+                    >
+                      <span class="text-[36px] leading-none">
+                        {{ currentStep.icon }}
+                      </span>
+
+                      <span class="text-[13px] font-medium">
+                        {{ currentStep.t }}
+                      </span>
+                    </div>
                   </div>
                 </div>
+
+                <!-- 热点：靶心圆 + 放大脉冲环 -->
+                <button
+                  type="button"
+                  class="absolute z-10 grid h-[26px] w-[26px] -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center border-0 bg-transparent p-0"
+                  :style="{
+                    left: currentStep.hotspot.x + '%',
+                    top: currentStep.hotspot.y + '%',
+                  }"
+                  :aria-label="
+                    step < demos[active].steps.length - 1 ? '下一步' : '完成'
+                  "
+                  @mouseenter="showTip = true"
+                  @click="advance"
+                >
+                  <span
+                    class="cf-pulse-ring pointer-events-none absolute h-[26px] w-[26px] rounded-full border border-[var(--gva-primary)]"
+                  ></span>
+
+                  <span
+                    class="relative grid h-[26px] w-[26px] place-items-center rounded-full bg-[var(--gva-primary)] shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+                  >
+                    <span
+                      class="h-[11px] w-[11px] rounded-full border-2 border-[#0b0e16]"
+                    ></span>
+                  </span>
+                </button>
+
+                <!-- 轻提示气泡：web hover 唤出，移动端 2s 后自动唤出 -->
+                <Transition name="cf-tip">
+                  <div
+                    v-if="showTip"
+                    class="absolute z-10 w-[190px] rounded-[10px] bg-[var(--gva-primary)] px-[14px] py-[12px] text-[13px] font-medium leading-[1.5] text-white shadow-[0_10px_24px_-8px_rgba(0,0,0,0.45)]"
+                    :style="tipStyle"
+                  >
+                    {{ currentStep.d }}
+
+                    <span
+                      class="absolute h-[9px] w-[9px] rotate-45 bg-[var(--gva-primary)]"
+                      :style="tailStyle"
+                    ></span>
+                  </div>
+                </Transition>
               </div>
-
-              <!-- 热点：靶心圆 + 放大脉冲环 -->
-              <button
-                type="button"
-                class="absolute z-10 grid h-[26px] w-[26px] -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center border-0 bg-transparent p-0"
-                :style="{
-                  left: currentStep.hotspot.x + '%',
-                  top: currentStep.hotspot.y + '%',
-                }"
-                :aria-label="
-                  step < demos[active].steps.length - 1 ? '下一步' : '完成'
-                "
-                @mouseenter="showTip = true"
-                @click="advance"
-              >
-                <span
-                  class="cf-pulse-ring pointer-events-none absolute h-[26px] w-[26px] rounded-full border border-[var(--gva-primary)]"
-                ></span>
-
-                <span
-                  class="relative grid h-[26px] w-[26px] place-items-center rounded-full bg-[var(--gva-primary)] shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
-                >
-                  <span
-                    class="h-[11px] w-[11px] rounded-full border-2 border-[#0b0e16]"
-                  ></span>
-                </span>
-              </button>
-
-              <!-- 轻提示气泡：web hover 唤出，移动端 2s 后自动唤出 -->
-              <Transition name="cf-tip">
-                <div
-                  v-if="showTip"
-                  class="absolute z-10 w-[190px] rounded-[10px] bg-[var(--gva-primary)] px-[14px] py-[12px] text-[13px] font-medium leading-[1.5] text-white shadow-[0_10px_24px_-8px_rgba(0,0,0,0.45)]"
-                  :style="tipStyle"
-                >
-                  {{ currentStep.d }}
-
-                  <span
-                    class="absolute h-[9px] w-[9px] rotate-45 bg-[var(--gva-primary)]"
-                    :style="tailStyle"
-                  ></span>
-                </div>
-              </Transition>
             </div>
           </div>
         </div>
@@ -200,62 +215,89 @@ const demos = [
   {
     num: '01',
     title: 'AI 驱动开发',
-    desc: '用 Claude Code、Cursor、Codex 等主流 AI Coding Agent 快速搭建完整系统。执行 gva init，Skills 自动安装就位，无需手动配置任何规范文件。',
+    desc: '用 Claude Code、Cursor、Codex 等主流 AI Coding Agent 快速搭建完整系统。配置 MCP 即可开工，Skills 一键下载安装，AI 协作规范随仓库预置，无需手动配置任何规范文件。',
+    // 截图在 /public/doc，按 demo1x 顺序排列（无 demo13）。
+    // ratio 必须与图片实际像素一致，否则热点百分比会指偏：demo10 是 2926×1408，其余为 1.842 宽比。
     steps: [
       {
-        icon: '💬',
-        t: '描述需求',
-        d: '用自然语言告诉 AI 你想要的业务模块。',
-        hotspot: { x: 50, y: 70, side: 'right' },
-      },
-      {
-        icon: '🧩',
-        t: '生成数据模型',
-        d: 'AI 按 GVA 规范创建模型与迁移文件。',
-        hotspot: { x: 38, y: 42, side: 'right' },
+        icon: '🧰',
+        t: '定义工具',
+        d: '填写名称与参数，即可生成工具骨架代码。',
+        img: '/doc/demo10.png',
+        ratio: '2926 / 1408',
+        hotspot: { x: 30, y: 21, side: 'right' },
       },
       {
         icon: '🔌',
-        t: '生成 API 与路由',
-        d: '接口、路由、权限规则一并产出。',
-        hotspot: { x: 62, y: 55, side: 'left' },
+        t: '接入客户端',
+        d: '服务启动后，配置可直接复制到 7 种 AI 客户端。',
+        img: '/doc/demo11.png',
+        ratio: '1702 / 924',
+        hotspot: { x: 23, y: 44, side: 'right' },
       },
       {
-        icon: '🖥️',
-        t: '生成前端页面',
-        d: '列表、表单、校验对齐现有 UI 风格。',
-        hotspot: { x: 55, y: 35, side: 'left' },
+        icon: '🧩',
+        t: '工具开箱可用',
+        d: '内置 17 个工具，均可在线测试调用。',
+        img: '/doc/demo12.png',
+        ratio: '2940 / 1596',
+        hotspot: { x: 42, y: 19, side: 'right' },
+      },
+      {
+        icon: '🏗️',
+        t: '构建业务 MCP',
+        d: '把系统已有的业务 API 组装成自定义 MCP。',
+        img: '/doc/demo14.png',
+        ratio: '2940 / 1596',
+        hotspot: { x: 23, y: 28, side: 'right' },
+      },
+      {
+        icon: '✅',
+        t: '绑定 API',
+        d: '勾选需要开放的接口，保存后即时生效。',
+        img: '/doc/demo15.png',
+        ratio: '2940 / 1596',
+        hotspot: { x: 61, y: 50, side: 'left' },
       },
     ],
   },
   {
     num: '02',
     title: 'API 一键 CLI 化',
-    desc: '在 GVA 中选择已有 API，填写 Skill 名称，系统自动分析入参、出参与调用依赖关系，生成完整 Skill 文件，任何 AI Agent 开箱即用。',
+    desc: '在 GVA 中选择已有 API，填写 Skill 名称，系统自动解析入参与出参，调用链路可视化编排，一键打包成完整 Skill，任何 AI Agent 导入即用。',
+    // 截图在 /public/doc，按 demo2x 顺序排列。四张同为 2940×1596。
     steps: [
+      {
+        icon: '🖥️',
+        t: '新建 CLI',
+        d: '新建 CLI，定义名称、主命令与版本。',
+        img: '/doc/demo20.png',
+        ratio: '2940 / 1596',
+        hotspot: { x: 22.5, y: 28, side: 'right' },
+      },
       {
         icon: '✅',
         t: '选择 API',
-        d: '从项目里勾选要开放的接口。',
-        hotspot: { x: 35, y: 50, side: 'right' },
+        d: '从项目里勾选要开放给 AI 的接口。',
+        img: '/doc/demo21.png',
+        ratio: '2940 / 1596',
+        hotspot: { x: 61, y: 50, side: 'left' },
       },
       {
         icon: '📝',
-        t: '填写描述',
-        d: '说明用途与参数，让 AI 看得懂。',
-        hotspot: { x: 58, y: 65, side: 'left' },
+        t: '命令定义',
+        d: '参数与返回自动解析，说明可自行调整。',
+        img: '/doc/demo22.png',
+        ratio: '2940 / 1596',
+        hotspot: { x: 91.5, y: 24, side: 'left' },
       },
       {
-        icon: '📦',
-        t: '生成 ZIP',
-        d: '一键打包为标准 Skill 资源。',
-        hotspot: { x: 50, y: 40, side: 'right' },
-      },
-      {
-        icon: '🤖',
-        t: 'Agent 调用',
-        d: '导入 AI 工具后即可直接调用。',
-        hotspot: { x: 65, y: 50, side: 'left' },
+        icon: '🔀',
+        t: '场景编排',
+        d: '拖拽节点连线，编排多命令的调用链路。',
+        img: '/doc/demo23.png',
+        ratio: '2940 / 1596',
+        hotspot: { x: 53.5, y: 61, side: 'left' },
       },
     ],
   },
@@ -267,7 +309,7 @@ const demos = [
       {
         icon: '👥',
         t: '定义角色',
-        d: '管理员、成员、AI Agent 各有边界。',
+        d: '为 AI Agent 单独建立角色，权限边界独立。',
         hotspot: { x: 40, y: 45, side: 'right' },
       },
       {
@@ -277,15 +319,15 @@ const demos = [
         hotspot: { x: 60, y: 60, side: 'left' },
       },
       {
-        icon: '🔍',
-        t: '字段级控制',
-        d: '权限可精确到单个字段是否可见。',
+        icon: '🏢',
+        t: '数据权限',
+        d: '按部门划定数据可见范围，共 5 档。',
         hotspot: { x: 45, y: 35, side: 'right' },
       },
       {
         icon: '🛡️',
         t: '全程审计',
-        d: '每一次调用都有记录，可追溯。',
+        d: '每一次变更都有记录，可追溯。',
         hotspot: { x: 58, y: 55, side: 'left' },
       },
     ],

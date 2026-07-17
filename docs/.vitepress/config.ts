@@ -140,6 +140,10 @@ export default defineConfig({
                             link: '/guide/server/mcp'
                         },
                         {
+                            text: 'AI 生成业务模块',
+                            link: '/guide/server/ai-generate'
+                        },
+                        {
                             text: 'AI CLI 构建',
                             link: '/guide/server/ai-cli'
                         },
