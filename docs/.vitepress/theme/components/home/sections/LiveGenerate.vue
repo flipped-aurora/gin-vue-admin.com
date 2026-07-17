@@ -46,10 +46,10 @@
 
         <!-- 链接 -->
         <a
-          href="/guide/generator/server"
+          href="/guide/server/ai-generate.html"
           class="mt-[18px] inline-flex w-fit items-center gap-[8px] border-b-2 border-[#2264F2] pb-[4px] text-[14px] font-medium leading-none text-[#2264F2] transition-opacity hover:opacity-80"
         >
-          <span>查看演示视频</span>
+          <span>查看演示文档</span>
           <span class="text-[14px] leading-none">→</span>
         </a>
 
@@ -297,9 +297,9 @@
 
           <a
             class="mt-9 inline-flex w-fit items-center gap-2.5 border-b-2 border-[#2264F2] pb-[3px] text-[16px] font-medium leading-none text-[#2264F2] transition-opacity hover:opacity-80"
-            href="/guide/generator/server"
+            href="/guide/server/ai-generate.html"
           >
-            查看演示视频
+            查看演示文档
             <span class="text-[18px]">→</span>
           </a>
         </div>
