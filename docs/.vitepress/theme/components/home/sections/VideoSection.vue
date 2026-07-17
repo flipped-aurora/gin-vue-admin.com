@@ -10,11 +10,11 @@
       </div>
 
       <!-- ═══ 轮播图（暂时替换 video）═══
-           宽高与原 video 盒子完全一致（aspect-[16/9] / 移动端 aspect-[306/236]）；
+           盒子比例与轮播图一致（aspect-[35/19] = 2940×1596），object-cover 铺满无黑边；
            动画复刻 Community.vue 的单张全宽滑动：translateX(56px) + 透明度，
            cubic-bezier(0.4,0,0.2,1) 0.52s，自动播放 3.5s、hover 暂停、触摸、圆点。 -->
       <div
-        class="relative w-full aspect-[2/1] rounded-[4px] overflow-hidden bg-[#eef1f6] dark:bg-[#161c2b] max-[860px]:rounded-lg"
+        class="relative w-full aspect-[35/19] rounded-[4px] overflow-hidden bg-[#eef1f6] dark:bg-[#161c2b] max-[860px]:rounded-lg"
         @mouseenter="pause"
         @mouseleave="resume"
         @touchstart="onTouchStart"
@@ -25,7 +25,7 @@
             :key="slides[current] + current"
             :src="slides[current]"
             :alt="`GVA 演示 ${current + 1}`"
-            class="carousel-slide absolute inset-0 w-full h-full object-contain select-none"
+            class="carousel-slide absolute inset-0 w-full h-full object-cover select-none"
             draggable="false"
           />
         </TransitionGroup>
@@ -93,9 +93,9 @@ import playerIcon from '@/public/web/player.png'
    cubic-bezier(0.4,0,0.2,1) 0.52s，自动播放 3.5s、hover 暂停、圆点、触摸。
    ═══════════════════════════════════════════════════════════════ */
 const slides = [
-  '/web/lbt1.jpeg',
-  '/web/lbt2.jpeg',
-  '/web/lbt3.jpeg',
+  '/web/lbt1.png',
+  '/web/lbt2.png',
+  '/web/lbt3.png',
   '/web/lbt4.png',
   '/web/lbt5.png',
 ]
