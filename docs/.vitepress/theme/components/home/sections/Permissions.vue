@@ -1,33 +1,33 @@
 <template>
-  <section class="gva-section !bg-[#F7F7F7] !py-[40px] sm:!py-[48px] lg:!py-[56px] xl:!py-[64px]">
+  <section class="gva-section !bg-[#F7F7F7] dark:!bg-[var(--gva-bg-alt)] !py-[40px] sm:!py-[48px] lg:!py-[56px] xl:!py-[64px]">
     <div class="gva-container">
       <!-- ============ 标题区 ============ -->
       <div class="text-center max-w-[640px] mx-auto max-[859px]:max-w-[404px]">
 
         <!-- 移动端标题 -->
         <h2
-          class="!m-0 mt-[10px] text-[28px] leading-[1.22] font-bold tracking-[-0.02em] text-[#050505] min-[860px]:hidden"
+          class="!m-0 mt-[10px] text-[28px] leading-[1.22] font-bold tracking-[-0.02em] text-[#050505] dark:text-[var(--gva-text-strong)] min-[860px]:hidden"
         >
-          Agent 与人<br />遵守<span class="text-[#2264F2]">同一套规则</span>
+          Agent 与人<br />遵守<span class="text-[#2264F2] dark:text-[var(--gva-primary)]">同一套规则</span>
         </h2>
 
         <!-- 桌面端标题 -->
         <h2
-          class="!m-0 mt-[10px] hidden text-[30px] leading-[1.18] font-bold tracking-[-0.025em] text-[#050505] min-[860px]:block sm:text-[33px] lg:text-[37px] xl:text-[40px]"
+          class="!m-0 mt-[10px] hidden text-[30px] leading-[1.18] font-bold tracking-[-0.025em] text-[#050505] dark:text-[var(--gva-text-strong)] min-[860px]:block sm:text-[33px] lg:text-[37px] xl:text-[40px]"
         >
-          Agent 与人，遵守<span class="text-[#2264F2]">同一套规则</span>
+          Agent 与人，遵守<span class="text-[#2264F2] dark:text-[var(--gva-primary)]">同一套规则</span>
         </h2>
 
         <!-- 移动端正文 -->
         <p
-          class="mt-[10px] text-[14px] font-light leading-[1.7] text-[#747981] min-[860px]:hidden"
+          class="mt-[10px] text-[14px] font-light leading-[1.7] text-[#747981] dark:text-[var(--gva-text-body)] min-[860px]:hidden"
         >
           无需为 Agent 单独配置权限，<br />现有角色与权限设置直接生效。
         </p>
 
         <!-- 桌面端正文 -->
         <p
-          class="mt-[10px] hidden text-[14.5px] leading-[1.7] text-[#747981] min-[860px]:block sm:text-[15px]"
+          class="mt-[10px] hidden text-[14.5px] leading-[1.7] text-[#747981] dark:text-[var(--gva-text-body)] min-[860px]:block sm:text-[15px]"
         >
           无需为 Agent 单独配置权限，<br />现有角色与权限设置直接生效。
         </p>
@@ -35,9 +35,9 @@
 
       <!-- ============ 移动端：权限表 ============ -->
       <div class="mt-[22px] mx-auto max-w-[442px] min-[860px]:hidden">
-        <div class="rounded-[16px] border border-[#E6E7EA] bg-white overflow-hidden">
-          <div class="flex items-center justify-between px-[16px] py-[11px] border-b border-[#E6E7EA]">
-            <span class="font-bold text-[#080A0E] text-[14px]">GVA 权限配置</span>
+        <div class="rounded-[16px] border border-[#E6E7EA] dark:border-[var(--gva-border)] bg-white dark:bg-[var(--gva-bg-dark-soft)] overflow-hidden">
+          <div class="flex items-center justify-between px-[16px] py-[11px] border-b border-[#E6E7EA] dark:border-[var(--gva-border)]">
+            <span class="font-bold text-[#080A0E] dark:text-[var(--gva-text-strong)] text-[14px]">GVA 权限配置</span>
             <span
               class="inline-flex items-center gap-[6px] text-[11.5px] font-semibold text-[#16A34A] bg-[rgba(22,163,74,0.1)] px-[10px] py-[4px] rounded-full"
             >
@@ -46,7 +46,7 @@
           </div>
 
           <div
-            class="grid grid-cols-[1.7fr_1fr_1fr] items-center px-[16px] py-[8px] border-b border-[#E6E7EA] bg-[#FAFAFB] text-[12px] text-[#9499A3] font-semibold"
+            class="grid grid-cols-[1.7fr_1fr_1fr] items-center px-[16px] py-[8px] border-b border-[#E6E7EA] dark:border-[var(--gva-border)] bg-[#FAFAFB] dark:bg-[rgba(255,255,255,0.03)] text-[12px] text-[#9499A3] dark:text-[var(--gva-text-muted)] font-semibold"
           >
             <span>身份</span>
             <span class="text-center">读取</span>
@@ -56,8 +56,8 @@
           <div
             v-for="r in roles"
             :key="r.name"
-            class="grid grid-cols-[1.7fr_1fr_1fr] items-center px-[16px] py-[9px] border-b border-[#E6E7EA] last:border-b-0"
-            :style="r.highlight ? { background: '#F2F6FE' } : {}"
+            class="grid grid-cols-[1.7fr_1fr_1fr] items-center px-[16px] py-[9px] border-b border-[#E6E7EA] dark:border-[var(--gva-border)] last:border-b-0"
+            :class="r.highlight ? 'bg-[#F2F6FE] dark:bg-[rgba(79,134,255,0.10)]' : ''"
           >
             <span class="flex items-center gap-[9px] min-w-0">
               <span
@@ -73,10 +73,10 @@
                 </svg>
               </span>
               <span class="min-w-0">
-                <span class="block font-semibold text-[#080A0E] text-[13.5px] leading-[1.25] truncate">{{ r.name }}</span>
+                <span class="block font-semibold text-[#080A0E] dark:text-[var(--gva-text-strong)] text-[13.5px] leading-[1.25] truncate">{{ r.name }}</span>
                 <span
                   class="block text-[11.5px] leading-[1.4]"
-                  :class="r.subBlue ? 'text-[#2264F2] font-medium' : 'text-[#9499A3]'"
+                  :class="r.subBlue ? 'text-[#2264F2] dark:text-[var(--gva-primary)] font-medium' : 'text-[#9499A3] dark:text-[var(--gva-text-muted)]'"
                 >{{ r.sub }}</span>
               </span>
             </span>
@@ -88,11 +88,11 @@
               <svg v-else viewBox="0 0 20 20" class="inline-block w-[15px] h-[15px] text-[#DC2626]">
                 <path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
               </svg>
-              <span v-if="r.permNoteMobile" class="block text-[10px] text-[#9499A3] mt-[1px]">{{ r.permNoteMobile }}</span>
+              <span v-if="r.permNoteMobile" class="block text-[10px] text-[#9499A3] dark:text-[var(--gva-text-muted)] mt-[1px]">{{ r.permNoteMobile }}</span>
             </span>
           </div>
 
-          <div class="px-[16px] py-[10px] text-center text-[12px] text-[#9499A3] border-t border-[#E6E7EA]">
+          <div class="px-[16px] py-[10px] text-center text-[12px] text-[#9499A3] dark:text-[var(--gva-text-muted)] border-t border-[#E6E7EA] dark:border-[var(--gva-border)]">
             Agent 权限由 GVA 统一管控，无需额外配置
           </div>
         </div>
@@ -100,9 +100,9 @@
 
       <!-- ============ 桌面端：权限表 ============ -->
       <div class="mt-[26px] hidden min-[860px]:block">
-        <div class="max-w-[940px] mx-auto rounded-[18px] border border-[#E6E7EA] bg-white overflow-hidden">
-          <div class="flex items-center justify-between px-[24px] py-[13px] border-b border-[#E6E7EA]">
-            <span class="font-bold text-[#080A0E] text-[15px]">GVA 权限配置</span>
+        <div class="max-w-[940px] mx-auto rounded-[18px] border border-[#E6E7EA] dark:border-[var(--gva-border)] bg-white dark:bg-[var(--gva-bg-dark-soft)] overflow-hidden">
+          <div class="flex items-center justify-between px-[24px] py-[13px] border-b border-[#E6E7EA] dark:border-[var(--gva-border)]">
+            <span class="font-bold text-[#080A0E] dark:text-[var(--gva-text-strong)] text-[15px]">GVA 权限配置</span>
             <span
               class="inline-flex items-center gap-[7px] text-[12.5px] font-semibold text-[#16A34A] bg-[rgba(22,163,74,0.1)] px-[12px] py-[5px] rounded-full"
             >
@@ -111,7 +111,7 @@
           </div>
 
           <div
-            class="grid grid-cols-[1.6fr_0.85fr_1fr_1fr_1fr] items-center px-[24px] py-[9px] border-b border-[#E6E7EA] bg-[#FAFAFB] text-[12.5px] text-[#9499A3] font-semibold"
+            class="grid grid-cols-[1.6fr_0.85fr_1fr_1fr_1fr] items-center px-[24px] py-[9px] border-b border-[#E6E7EA] dark:border-[var(--gva-border)] bg-[#FAFAFB] dark:bg-[rgba(255,255,255,0.03)] text-[12.5px] text-[#9499A3] dark:text-[var(--gva-text-muted)] font-semibold"
           >
             <span>身份</span>
             <span>角色</span>
@@ -123,8 +123,8 @@
           <div
             v-for="r in roles"
             :key="r.name"
-            class="grid grid-cols-[1.6fr_0.85fr_1fr_1fr_1fr] items-center px-[24px] py-[11px] border-b border-[#E6E7EA] last:border-b-0"
-            :style="r.highlight ? { background: '#F2F6FE' } : {}"
+            class="grid grid-cols-[1.6fr_0.85fr_1fr_1fr_1fr] items-center px-[24px] py-[11px] border-b border-[#E6E7EA] dark:border-[var(--gva-border)] last:border-b-0"
+            :class="r.highlight ? 'bg-[#F2F6FE] dark:bg-[rgba(79,134,255,0.10)]' : ''"
           >
             <span class="flex items-center gap-[11px] min-w-0">
               <span
@@ -140,10 +140,10 @@
                 </svg>
               </span>
               <span class="min-w-0">
-                <span class="block font-semibold text-[#080A0E] text-[14px] leading-[1.25]">{{ r.name }}</span>
+                <span class="block font-semibold text-[#080A0E] dark:text-[var(--gva-text-strong)] text-[14px] leading-[1.25]">{{ r.name }}</span>
                 <span
                   class="block text-[12px] leading-[1.4]"
-                  :class="r.subBlue ? 'text-[#2264F2] font-medium' : 'text-[#9499A3]'"
+                  :class="r.subBlue ? 'text-[#2264F2] dark:text-[var(--gva-primary)] font-medium' : 'text-[#9499A3] dark:text-[var(--gva-text-muted)]'"
                 >{{ r.sub }}</span>
               </span>
             </span>
@@ -151,9 +151,9 @@
             <span class="flex items-center gap-[8px] flex-wrap">
               <span
                 class="inline-flex items-center px-[11px] py-[3px] rounded-full text-[12.5px] font-semibold"
-                :class="r.badgeBlue ? 'bg-[#E5EBFD] text-[#2264F2]' : 'bg-[#F3F4F6] text-[#71757D]'"
+                :class="r.badgeBlue ? 'bg-[#E5EBFD] dark:bg-[var(--gva-primary-soft)] text-[#2264F2] dark:text-[var(--gva-primary)]' : 'bg-[#F3F4F6] dark:bg-[rgba(255,255,255,0.06)] text-[#71757D] dark:text-[var(--gva-text-muted)]'"
               >{{ r.badge }}</span>
-              <span v-if="r.badgeNote" class="text-[12px] text-[#9499A3] whitespace-nowrap">{{ r.badgeNote }}</span>
+              <span v-if="r.badgeNote" class="text-[12px] text-[#9499A3] dark:text-[var(--gva-text-muted)] whitespace-nowrap">{{ r.badgeNote }}</span>
             </span>
 
             <span v-for="(v, i) in r.perms" :key="i" class="text-center">
@@ -163,11 +163,11 @@
               <svg v-else viewBox="0 0 20 20" class="inline-block w-[17px] h-[17px] text-[#DC2626]">
                 <path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
               </svg>
-              <span v-if="r.permNote" class="block text-[11.5px] text-[#9499A3] mt-[2px]">{{ r.permNote }}</span>
+              <span v-if="r.permNote" class="block text-[11.5px] text-[#9499A3] dark:text-[var(--gva-text-muted)] mt-[2px]">{{ r.permNote }}</span>
             </span>
           </div>
 
-          <div class="flex items-center justify-between px-[24px] py-[12px] text-[13.5px] text-[#9499A3] border-t border-[#E6E7EA]">
+          <div class="flex items-center justify-between px-[24px] py-[12px] text-[13.5px] text-[#9499A3] dark:text-[var(--gva-text-muted)] border-t border-[#E6E7EA] dark:border-[var(--gva-border)]">
             <span>Agent 的权限由 GVA 统一管控，无需额外配置</span>
           
           </div>
@@ -178,10 +178,10 @@
       <div class="mt-[22px] mx-auto max-w-[442px] min-[860px]:hidden">
         <ul class="flex flex-col gap-[14px]">
           <li v-for="f in feats" :key="f.title">
-            <span class="flex items-center gap-[8px] font-semibold text-[#050505] text-[14.5px]">
-              <i class="w-[6px] h-[6px] rounded-full bg-[#2264F2] not-italic shrink-0"></i>{{ f.title }}
+            <span class="flex items-center gap-[8px] font-semibold text-[#050505] dark:text-[var(--gva-text-strong)] text-[14.5px]">
+              <i class="w-[6px] h-[6px] rounded-full bg-[#2264F2] dark:bg-[var(--gva-primary)] not-italic shrink-0"></i>{{ f.title }}
             </span>
-            <p class="mt-[5px] text-[13px] font-light leading-[1.6] text-[#747981]">{{ f.descMobile }}</p>
+            <p class="mt-[5px] text-[13px] font-light leading-[1.6] text-[#747981] dark:text-[var(--gva-text-body)]">{{ f.descMobile }}</p>
           </li>
         </ul>
 
@@ -190,10 +190,10 @@
       <!-- ============ 桌面端：特性列表 ============ -->
       <div class="mt-[26px] hidden min-[860px]:grid max-w-[940px] mx-auto grid-cols-3 gap-x-[32px]">
         <div v-for="f in feats" :key="f.title">
-          <span class="flex items-center gap-[8px] font-semibold text-[#050505] text-[15px]">
-            <i class="w-[7px] h-[7px] rounded-full bg-[#2264F2] not-italic shrink-0"></i>{{ f.title }}
+          <span class="flex items-center gap-[8px] font-semibold text-[#050505] dark:text-[var(--gva-text-strong)] text-[15px]">
+            <i class="w-[7px] h-[7px] rounded-full bg-[#2264F2] dark:bg-[var(--gva-primary)] not-italic shrink-0"></i>{{ f.title }}
           </span>
-          <p class="mt-[7px] text-[13.5px] leading-[1.65] text-[#747981]">
+          <p class="mt-[7px] text-[13.5px] leading-[1.65] text-[#747981] dark:text-[var(--gva-text-body)]">
             {{ f.desc[0] }}<br />{{ f.desc[1] }}
           </p>
         </div>

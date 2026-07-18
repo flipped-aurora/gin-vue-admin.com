@@ -1,5 +1,5 @@
 <template>
-  <section class="gva-section min-h-screen bg-[#F5F5F5] flex items-center">
+  <section class="gva-section min-h-screen bg-[#F5F5F5] dark:bg-[var(--gva-bg-alt)] flex items-center">
     <div class="gva-container">
       <div class="text-center mb-14 max-[860px]:mb-10">
         <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)]" style="margin-top: 16px">安全、可靠、<span class="text-[var(--gva-primary)]">可控</span></h2>
