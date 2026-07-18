@@ -521,7 +521,7 @@ body.gva-nav-scrolled .VPNav .content {
     padding: 16px 20px 18px;
     border: 1px solid var(--gva-border);
     border-radius: var(--gva-radius);
-    background: whitesmoke;
+    background: var(--gva-bg-alt);
 }
 .gva-doc .vp-doc .gva-video-tip > p {
     margin: 0;
@@ -692,6 +692,13 @@ body.gva-nav-scrolled .VPNav .content {
     font-size: 14px;
     font-weight: 600;
     line-height: 1.4;
+}
+/* 暗夜：琥珀标题/图标改用亮琥珀，避免深琥珀(#b45309)压在深底上读不清 */
+.dark .gva-doc .vp-doc .custom-block.warning .custom-block-title {
+    color: #fbbf24;
+}
+.dark .gva-doc .vp-doc .custom-block.warning .custom-block-title::before {
+    background: #fbbf24;
 }
 .gva-doc .vp-doc .custom-block.warning .custom-block-title::before {
     content: "";
