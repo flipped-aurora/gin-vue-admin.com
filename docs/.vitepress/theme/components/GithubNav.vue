@@ -3,7 +3,7 @@
    - GitHub star 徽标：点击图标跳 GitHub 仓库；鼠标悬停展开 gitee / gitcode 镜像（仅图标）。
    - 多语言：由 config nav 迁来，排在 GitHub 之后 —— 完成「多语言 / GitHub 换位」。
    放在 VitePress 顶栏 nav-bar-content-after 插槽；靠 global.scss 的 flex order 移到主题切换按钮之前。
-   星标数按需求写死 25k。图标在 public/web。 */
+   星标数按需求写死 25k。图标托管在 https://qmplusimg.henrongyi.top/website/。 */
 const REPOS = {
   github: 'https://github.com/flipped-aurora/gin-vue-admin',
   gitee: 'https://gitee.com/pixelmax/gin-vue-admin',
@@ -16,16 +16,16 @@ const REPOS = {
     <!-- GitHub 徽标：图标(跳仓库) + 25k 药丸；悬停展开镜像下拉 -->
     <div class="gva-gh">
       <a class="gva-gh__btn" :href="REPOS.github" target="_blank" rel="noopener" aria-label="GitHub">
-        <img class="gva-gh__logo" src="/web/github.png" alt="GitHub" width="24" height="24" />
+        <img class="gva-gh__logo" src="https://qmplusimg.henrongyi.top/website/github.png" alt="GitHub" width="24" height="24" />
         <span class="gva-gh__count">25k</span>
       </a>
       <div class="gva-gh__menu">
         <div class="gva-gh__menu-inner">
           <a :href="REPOS.gitee" target="_blank" rel="noopener" aria-label="Gitee">
-            <img src="/web/gitee.png" alt="Gitee" width="24" height="24" />
+            <img src="https://qmplusimg.henrongyi.top/website/gitee.png" alt="Gitee" width="24" height="24" />
           </a>
           <a :href="REPOS.gitcode" target="_blank" rel="noopener" aria-label="GitCode">
-            <img src="/web/gitcode.png" alt="GitCode" width="24" height="24" />
+            <img src="https://qmplusimg.henrongyi.top/website/gitcode.png" alt="GitCode" width="24" height="24" />
           </a>
         </div>
       </div>
@@ -33,8 +33,8 @@ const REPOS = {
 
     <!-- 多语言（从 config 迁来，排在 GitHub 之后） -->
     <a class="gva-nav-bilingual" href="#" aria-label="多语言">
-      <img class="gva-nav-bilingual__img gva-nav-bilingual__img--light" src="/web/bilingual.png" alt="" />
-      <img class="gva-nav-bilingual__img gva-nav-bilingual__img--dark" src="/web/bilingual_day.png" alt="" />
+      <img class="gva-nav-bilingual__img gva-nav-bilingual__img--light" src="https://qmplusimg.henrongyi.top/website/bilingual.png" alt="" />
+      <img class="gva-nav-bilingual__img gva-nav-bilingual__img--dark" src="https://qmplusimg.henrongyi.top/website/bilingual_day.png" alt="" />
     </a>
   </div>
 </template>

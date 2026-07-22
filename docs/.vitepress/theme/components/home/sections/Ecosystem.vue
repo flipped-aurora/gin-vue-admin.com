@@ -47,7 +47,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import arrRightIcon from '@/public/web/arr-right.png'
+const arrRightIcon = 'https://qmplusimg.henrongyi.top/website/arr-right.png'
 
 const IMG_BASE = 'https://qmplusimg.henrongyi.top/'
 const detailUrl = (id) => `https://plugin.gin-vue-admin.com/details/${id}`

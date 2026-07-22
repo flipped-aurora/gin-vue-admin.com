@@ -33,12 +33,12 @@
 </template>
 
 <script setup>
-import claudeIcon from '@/public/web/claude.png'
-import codexIcon from '@/public/web/icon-chatgpt.png'
-import hermesIcon from '@/public/web/hermes.png'
-import openClawIcon from '@/public/web/openclaw.png'
-import traeIcon from '@/public/web/trae.png'
-import arrRightIcon from '@/public/web/arr-right.png'
+const claudeIcon = 'https://qmplusimg.henrongyi.top/website/claude.png'
+const codexIcon = 'https://qmplusimg.henrongyi.top/website/icon-chatgpt.png'
+const hermesIcon = 'https://qmplusimg.henrongyi.top/website/hermes.png'
+const openClawIcon = 'https://qmplusimg.henrongyi.top/website/openclaw.png'
+const traeIcon = 'https://qmplusimg.henrongyi.top/website/trae.png'
+const arrRightIcon = 'https://qmplusimg.henrongyi.top/website/arr-right.png'
 
 const tools = [
   { name: 'Claude Code', icon: claudeIcon },

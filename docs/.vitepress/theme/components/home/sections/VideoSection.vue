@@ -93,7 +93,7 @@
 
 <script setup>
 import { ref, watch, onMounted, onUnmounted } from 'vue'
-import playerIcon from '@/public/web/player.png'
+const playerIcon = 'https://qmplusimg.henrongyi.top/website/player.png'
 import ImageLightbox from '../ImageLightbox.vue'
 
 /* ═══════════════════════════════════════════════════════════════
@@ -103,12 +103,12 @@ import ImageLightbox from '../ImageLightbox.vue'
    cubic-bezier(0.4,0,0.2,1) 0.52s，自动播放 3.5s、hover 暂停、圆点、触摸。
    ═══════════════════════════════════════════════════════════════ */
 const slides = [
-  '/web/lbt3.png', // 仪表盘 —— 首屏第一张
-  '/web/lbt1.png',
-  '/web/lbt2.png',
-  '/web/lbt4.png',
-  '/web/lbt5.png',
-  '/web/lbt7.png',
+  'https://qmplusimg.henrongyi.top/website/lbt3.png', // 仪表盘 —— 首屏第一张
+  'https://qmplusimg.henrongyi.top/website/lbt1.png',
+  'https://qmplusimg.henrongyi.top/website/lbt2.png',
+  'https://qmplusimg.henrongyi.top/website/lbt4.png',
+  'https://qmplusimg.henrongyi.top/website/lbt5.png',
+  'https://qmplusimg.henrongyi.top/website/lbt7.png',
 ]
 const n = slides.length
 const current = ref(0)

@@ -1,6 +1,6 @@
 # 导出模板
 <br/>
-<img src="/web/export-excel.png"/>
+<img src="https://qmplusimg.henrongyi.top/website/export-excel.png"/>
 
 ## 名词解释
 

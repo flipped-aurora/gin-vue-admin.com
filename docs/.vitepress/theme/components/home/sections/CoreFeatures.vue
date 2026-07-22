@@ -211,21 +211,21 @@
 
 <script setup>
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
-import arrRightIcon from '@/public/web/arr-right.png'
+const arrRightIcon = 'https://qmplusimg.henrongyi.top/website/arr-right.png'
 
 const demos = [
   {
     num: '01',
     title: 'AI 驱动开发',
     desc: '用 Claude Code、Cursor、Codex 等主流 AI Coding Agent 快速搭建完整系统。配置 MCP 即可开工，Skills 一键下载安装，AI 协作规范随仓库预置，无需手动配置任何规范文件。',
-    // 截图在 /public/doc，按 demo1x 顺序排列（无 demo13）。
+    // 截图托管在 https://qmplusimg.henrongyi.top/website/，按 demo1x 顺序排列（无 demo13）。
     // ratio 必须与图片实际像素一致，否则热点百分比会指偏：demo10 是 2926×1408，其余为 1.842 宽比。
     steps: [
       {
         icon: '🧰',
         t: '定义工具',
         d: '填写名称与参数，即可生成工具骨架代码。',
-        img: '/doc/demo10.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo10.png',
         ratio: '2926 / 1408',
         hotspot: { x: 30, y: 21, side: 'right' },
       },
@@ -233,7 +233,7 @@ const demos = [
         icon: '🔌',
         t: '接入客户端',
         d: '服务启动后，配置可直接复制到 7 种 AI 客户端。',
-        img: '/doc/demo11.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo11.png',
         ratio: '1702 / 924',
         hotspot: { x: 23, y: 44, side: 'right' },
       },
@@ -241,7 +241,7 @@ const demos = [
         icon: '🧩',
         t: '工具开箱可用',
         d: '内置 17 个工具，均可在线测试调用。',
-        img: '/doc/demo12.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo12.png',
         ratio: '2940 / 1596',
         hotspot: { x: 42, y: 19, side: 'right' },
       },
@@ -249,7 +249,7 @@ const demos = [
         icon: '🏗️',
         t: '构建业务 MCP',
         d: '把系统已有的业务 API 组装成自定义 MCP。',
-        img: '/doc/demo14.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo14.png',
         ratio: '2940 / 1596',
         hotspot: { x: 23, y: 28, side: 'right' },
       },
@@ -257,7 +257,7 @@ const demos = [
         icon: '✅',
         t: '绑定 API',
         d: '勾选需要开放的接口，保存后即时生效。',
-        img: '/doc/demo15.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo15.png',
         ratio: '2940 / 1596',
         hotspot: { x: 61, y: 50, side: 'left' },
       },
@@ -267,13 +267,13 @@ const demos = [
     num: '02',
     title: 'API 一键 CLI 化',
     desc: '在 GVA 中选择已有 API，填写 Skill 名称，系统自动解析入参与出参，调用链路可视化编排，一键打包成完整 Skill，任何 AI Agent 导入即用。',
-    // 截图在 /public/doc，按 demo2x 顺序排列。四张同为 2940×1596。
+    // 截图托管在 https://qmplusimg.henrongyi.top/website/，按 demo2x 顺序排列。四张同为 2940×1596。
     steps: [
       {
         icon: '🖥️',
         t: '新建 CLI',
         d: '新建 CLI，定义名称、主命令与版本。',
-        img: '/doc/demo20.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo20.png',
         ratio: '2940 / 1596',
         hotspot: { x: 22.5, y: 28, side: 'right' },
       },
@@ -281,7 +281,7 @@ const demos = [
         icon: '✅',
         t: '选择 API',
         d: '从项目里勾选要开放给 AI 的接口。',
-        img: '/doc/demo21.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo21.png',
         ratio: '2940 / 1596',
         hotspot: { x: 61, y: 50, side: 'left' },
       },
@@ -289,7 +289,7 @@ const demos = [
         icon: '📝',
         t: '命令定义',
         d: '参数与返回自动解析，说明可自行调整。',
-        img: '/doc/demo22.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo22.png',
         ratio: '2940 / 1596',
         hotspot: { x: 91.5, y: 24, side: 'left' },
       },
@@ -297,7 +297,7 @@ const demos = [
         icon: '🔀',
         t: '场景编排',
         d: '拖拽节点连线，编排多命令的调用链路。',
-        img: '/doc/demo23.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo23.png',
         ratio: '2940 / 1596',
         hotspot: { x: 53.5, y: 61, side: 'left' },
       },
@@ -307,13 +307,13 @@ const demos = [
     num: '03',
     title: '权限统一管控',
     desc: 'Agent 调用仍经过 GVA 内部权限校验，现有角色与权限配置直接生效。无需重新设置，现有系统低成本接入 AI。',
-    // 截图在 /public/doc，按 demo3x 顺序排列。五张同为 2940×1596。
+    // 截图托管在 https://qmplusimg.henrongyi.top/website/，按 demo3x 顺序排列。五张同为 2940×1596。
     steps: [
       {
         icon: '👥',
         t: '定义角色',
         d: '为 AI Agent 单独建立角色，权限边界独立。',
-        img: '/doc/demo30.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo30.png',
         ratio: '2940 / 1596',
         hotspot: { x: 22.75, y: 24.4, side: 'right' },
       },
@@ -321,7 +321,7 @@ const demos = [
         icon: '🎚️',
         t: '配置能力',
         d: '查看、导入、批量、删除逐项授权。',
-        img: '/doc/demo31.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo31.png',
         ratio: '2940 / 1596',
         hotspot: { x: 50, y: 23.3, side: 'right' },
       },
@@ -329,7 +329,7 @@ const demos = [
         icon: '🗂️',
         t: '菜单授权',
         d: '菜单按角色分配，控制页面可见范围。',
-        img: '/doc/demo32.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo32.png',
         ratio: '2940 / 1596',
         hotspot: { x: 86.85, y: 36.1, side: 'left' },
       },
@@ -337,7 +337,7 @@ const demos = [
         icon: '🙋',
         t: '分配用户',
         d: '用户可同时归属多个角色，随时调整。',
-        img: '/doc/demo33.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo33.png',
         ratio: '2940 / 1596',
         hotspot: { x: 76.35, y: 58.4, side: 'left' },
       },
@@ -345,7 +345,7 @@ const demos = [
         icon: '🏢',
         t: '部门与数据',
         d: '维护部门与成员归属，数据权限据此划分。',
-        img: '/doc/demo34.png',
+        img: 'https://qmplusimg.henrongyi.top/website/demo34.png',
         ratio: '2940 / 1596',
         hotspot: { x: 24.3, y: 32.8, side: 'right' },
       },
