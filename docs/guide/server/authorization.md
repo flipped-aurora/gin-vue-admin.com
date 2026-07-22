@@ -190,17 +190,85 @@ type SysApi struct {
 
 v3.0 在 RBAC（接口级权限）之上新增**行级数据权限**：同一接口，不同角色的用户看到的数据行范围不同，由角色上的 `DataScope` 字段与组织架构（部门/岗位）共同决定。
 
+引擎实现于 `server/utils/datascope/datascope.go`，核心设计是**"漏写 = 默认安全"**：只有带 `dept_id` / `created_by` 归属列的业务表才会被约束，没有归属列的表完全不受影响，`sys_` 前缀的系统表自动跳过。
+
+### 快速上手：让你的业务表拥有数据权限
+
+只需要三步，**不需要写任何过滤代码**。
+
+#### 第一步：给模型加归属列
+
+数据权限按**数据库列名**识别归属列，Go 结构体字段名可以自定义，但列名必须是以下四个之一：
+
+| 列名 | 类型 | 作用 | 何时自动填值 |
+| ---- | ---- | ---- | ------------ |
+| `dept_id` | uint | 归属部门列。档位 2/3/5（部门类）按它过滤数据行 | 创建时自动盖当前用户的**主部门**（主部门为 0 则不盖） |
+| `created_by` | uint | 创建人列。档位 4（仅本人）按它过滤 | 创建时自动盖当前用户 ID |
+| `updated_by` | uint | 更新人列（纯审计，不参与过滤） | 更新时自动盖当前用户 ID |
+| `deleted_by` | uint | 删除人列（纯审计，不参与过滤） | 软删除时并入同一条 UPDATE（表需含软删除字段） |
+
+按需求选加：
+
+- 只想"按部门隔离数据"：加 `dept_id` 一列即可；
+- 想要"仅本人"：加 `created_by`（建议与 `dept_id` 一起加，没有 `created_by` 时"仅本人"档会降级为"本部门"）；
+- `updated_by` / `deleted_by` 为可选的审计盖章列，加不加不影响过滤。
+
+模型写法（项目内置的客户示例 `server/model/example/exa_customer.go` 就是数据权限的示范）：
+
+```go
+type ExaCustomer struct {
+	global.GVA_MODEL
+	CustomerName string `json:"customerName" form:"customerName" gorm:"comment:客户名"`
+	// 数据权限归属列：列名必须是 dept_id / created_by
+	DeptId    uint `json:"deptId" form:"deptId" gorm:"column:dept_id;comment:归属部门ID(数据权限)"`
+	CreatedBy uint `json:"createdBy" form:"createdBy" gorm:"column:created_by;comment:创建人(数据权限)"`
+}
+```
+
+`global.GVA_MODEL` 内含 `ID/CreatedAt/UpdatedAt/DeletedAt`，其中的 `DeletedAt` 是软删除字段，`deleted_by` 盖章依赖它。
+
+#### 第二步：Service 层查询带 `WithContext(ctx)`
+
+数据权限身份由中间件注入 `c.Request.Context()`，GORM 回调从 `db.Statement.Context` 读取，因此 Service 层必须用 `WithContext` 透传上下文：
+
+```go
+func (s *ExaCustomerService) GetExaCustomerList(ctx context.Context, info request.ExaCustomerListSearch) (list []example.ExaCustomer, total int64, err error) {
+	db := global.GVA_DB.WithContext(ctx).Model(&example.ExaCustomer{})
+	// ... 拼接业务查询条件，数据范围条件由引擎自动追加
+	err = db.Count(&total).Error
+	err = db.Limit(limit).Offset(offset).Find(&list).Error
+	return
+}
+```
+
+**AutoCode 生成的代码已经全部带 `WithContext(ctx)`**，无需手动处理。手写业务代码时注意两点：
+
+- 更新操作建议 `Omit("dept_id", "created_by")`，防止前端提交篡改归属（客户示例的做法：`global.GVA_DB.WithContext(ctx).Omit("dept_id", "created_by").Save(e)`）；
+- 不带 `WithContext` 的查询引擎拿不到身份：当前版本**放行**但记录 `no_identity` 审计日志并输出警告，属于"待补 ctx"的信号。
+
+#### 第三步：后台配置角色与部门
+
+1. **部门管理**（超级管理员 → 部门管理）：维护部门树；
+2. **用户管理**：给用户设置主部门（`sys_users.dept_id`）和/或所属多部门；
+3. **角色管理 → 数据范围**：为角色选择档位；选择"自定义部门集"时还需勾选具体部门集合。
+
+完成以上三步后，该角色用户对受控表的查询、更新、删除会被自动行级过滤。
+
 ### 数据范围五档
 
-常量定义在 `server/utils/datascope/datascope.go`：
+常量定义在 `server/utils/datascope/datascope.go`。查询、更新、删除使用同一套过滤规则：
 
-| 档位 | 常量 | 说明 |
-| ---- | ---- | ---- |
-| 1 | `ScopeAll` | 全部数据 |
-| 2 | `ScopeDeptAndChild` | 本部门及以下（含子部门） |
-| 3 | `ScopeDept` | 本部门（不含子级） |
-| 4 | `ScopeSelf` | 仅本人 |
-| 5 | `ScopeCustom` | 自定义部门集 |
+| 档位 | 常量 | 说明 | 自动追加的过滤条件 |
+| ---- | ---- | ---- | ------------------ |
+| 1 | `ScopeAll` | 全部数据 | 不加任何条件 |
+| 2 | `ScopeDeptAndChild` | 本部门及以下（含子部门） | `dept_id IN (所有归属部门的子树并集)` |
+| 3 | `ScopeDept` | 本部门（不含子级） | `dept_id IN (主部门 + 所属多部门)` |
+| 4 | `ScopeSelf` | 仅本人 | `created_by = 当前用户ID`；表没有 `created_by` 列时降级为"本部门" |
+| 5 | `ScopeCustom` | 自定义部门集 | `dept_id IN (角色配置的部门集)`，直接集合，不展开子树 |
+
+::: warning 安全默认
+对应集合为空时（如用户没有部门、角色未配置部门集），过滤条件按 `IN (0)` 处理——**一行数据都看不到**，而不是放行全部。同理，`dept_id` 为 0 或 NULL 的历史数据不在任何部门集合内，只有"全部"档的角色能看到，需要回填归属部门后才能被部门档用户看到。
+:::
 
 ### 新增模型
 
@@ -233,10 +301,17 @@ v3.0 在 RBAC（接口级权限）之上新增**行级数据权限**：同一接
    构建过程中的内部查询统一带 `data_scope:skip` 标记旁路过滤，避免回调递归。
 
 2. **行级过滤与盖章**（`server/utils/datascope` 的 GORM 回调，由 `server/initialize/data_scope.go` 注册，覆盖主库 `GVA_DB` 与多库 `GVA_DBList`）：
-   - 查询时按身份自动追加行级过滤条件；
-   - 写入时自动盖章 `created_by`/`updated_by`/`deleted_by`；
+   - 查询/更新/删除前按身份自动追加数据范围 WHERE；
+   - 创建时自动盖 `created_by` / `dept_id`，更新时自动盖 `updated_by`，软删除时把 `deleted_by` 并入同一条 UPDATE；
    - 审计事件异步写入 `sys_data_access_logs`；
    - `sys_` 前缀的系统表自动跳过，防止递归。
+
+### 护栏与旁路
+
+- **显式旁路**：单次查询跳过数据权限，使用 `db.Set("data_scope:skip", true)`；
+- **系统上下文**：定时任务、初始化、CLI 等无请求身份但确属系统行为的场景，用 `datascope.WithSystem(ctx)` 标记后放行（否则按"无身份"放行并记 `no_identity` 审计）；
+- **缺失条件的写操作**：`update` / `delete` 没有自带任何 WHERE 条件时，引擎**不注入**范围条件，保留 GORM 的 `ErrMissingWhereClause` 护栏；使用 `Session(&gorm.Session{AllowGlobalUpdate: true})` 显式声明全量写时，引擎会注入范围条件，把全量写收敛到数据范围内；
+- **疑似越权审计**：写操作被数据范围过滤后影响 0 行，记录 `blocked_write` 审计事件（启发式信号：目标行本就不存在也会命中，用于排查而非定罪）。审计记录见 **超级管理员 → 数据访问日志**。
 
 ### 管理接口与页面
 
@@ -463,13 +538,19 @@ axios.interceptors.response.use(
 A: 需要调用 `e.LoadPolicy()` 重新加载权限策略，或重启应用。
 
 ### Q: 如何实现数据权限控制？
-A: v3.0 已内置：在角色管理中为角色设置数据范围（全部/本部门及子级/本部门/仅本人/自定义部门集），配合部门管理与用户部门归属即可实现行级数据过滤，详见上文[数据权限](#数据权限-v3-0-新增)。
+A: v3.0 已内置，给业务模型加 `dept_id` / `created_by` 归属列、Service 层查询带 `WithContext(ctx)`、再在角色管理中设置数据范围档位即可，无需写过滤代码。完整步骤见上文[快速上手](#快速上手-让你的业务表拥有数据权限)。
 
 ### Q: 权限验证性能如何优化？
 A: `utils.GetCasbin()` 返回带缓存的 `SyncedCachedEnforcer`，决策结果有缓存（过期时间 3600 秒），一般无需额外缓存。
 
 ### Q: 数据权限为什么对某些表不生效？
-A: `sys_` 前缀的系统表会被数据权限回调自动跳过（防递归）；业务表需要 Service 层用 `WithContext(ctx)` 透传请求上下文，身份才能生效。
+A: 常见原因有四个：表是 `sys_` 前缀的系统表（自动跳过）；模型没有 `dept_id` / `created_by` 归属列（引擎不碰无归属列的表）；Service 层查询没带 `WithContext(ctx)`（此时会放行并记录 `no_identity` 审计，可在 **数据访问日志** 页面核实）；或者该角色的数据范围档位本来就是"全部"。
+
+### Q: 为什么有些数据谁都看不到？
+A: 这些行的 `dept_id` 为 0 或 NULL，不在任何用户的部门集合内，只有"全部"档的角色能看到。历史数据需要先回填归属部门；新建数据会在创建时自动盖当前用户的主部门。
+
+### Q: 某张表不想被数据权限管怎么办？
+A: 两种做法：不给模型加 `dept_id` / `created_by` 归属列（引擎天然不碰）；或单次查询显式旁路 `db.Set("data_scope:skip", true)`。系统级任务（定时任务、初始化脚本）使用 `datascope.WithSystem(ctx)` 标记上下文。
 
 ## 相关文档
 
