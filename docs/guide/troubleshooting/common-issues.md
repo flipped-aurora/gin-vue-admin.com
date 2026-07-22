@@ -571,7 +571,7 @@ failed to solve with frontend dockerfile.v0: failed to read dockerfile
 1. 检查 Dockerfile 语法
 ```dockerfile
 # 确保 Dockerfile 格式正确
-FROM golang:1.19-alpine AS builder
+FROM golang:1.24-alpine AS builder
 
 WORKDIR /app
 COPY . .
@@ -924,5 +924,5 @@ docker exec -it container_name /bin/sh
 ## 相关文档
 
 - [快速开始](/guide/start-quickly/initialization)
-- [项目配置](/guide/server/config)
+- [项目配置](/guide/server/config/)
 - [部署指南](/guide/deployment/)

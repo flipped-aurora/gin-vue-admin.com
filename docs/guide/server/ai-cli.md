@@ -20,7 +20,7 @@
 
 ## 在后台构建 CLI
 
-入口：**系统工具 → AI CLI 构建**。
+入口：**AI 工坊 → AI CLI管理**（AI 模块以插件形式安装时，该菜单名为「AI CLI构建」）。
 
 <!-- 📷 截图位（待补）：AI CLI构建 列表页——露出「新增CLI」+ 行内「管理API / 管理场景 / 预览命令」。图片放 docs/public/cli/cli-list.png -->
 
@@ -90,13 +90,21 @@ opsctl-cli/
 opsctl login --token <你的JWT>
 ```
 
-JWT 在登录 GVA 后获得，也可以在系统工具的 API Token 页面复制（`http://localhost:8080/#/layout/systemTools/mcpTest`）。登录信息会写入 `~/.gva/config.json`。
+JWT 在登录 GVA 后获得；长期使用建议到 **权限管理 → API Token** 创建长期 Token，临时试用也可以在 **AI 工坊 → Mcp Tools管理** 页面的客户端配置示例中复制当前登录 Token。登录信息会写入 `~/.gva/config.json`。
 
 手动编译版需要带上清单：
 
 ```bash
 gva --manifest opsctl.manifest.json login --token <JWT>
 ```
+
+后台地址有变化时不必重新生成产物，用 `set-base-url` 更新本地配置即可：
+
+```bash
+opsctl set-base-url http://127.0.0.1:8888
+```
+
+CLI 的内置命令只有 `login`、`set-base-url`、`version` 三个，其余子命令全部由 manifest 动态挂载。
 
 ### 2. 查看可用命令
 
@@ -120,7 +128,7 @@ opsctl user-list --page 1 --pageSize 10
 manifest（命令清单）决定了 CLI 能调用哪些接口，它的加载方式有两种：
 
 - **内嵌模式**：使用后台「编译下载」版或 Skill 包时，manifest 已经编进二进制，`login` 之后直接使用命令即可，不需要 `--manifest`。
-- **文件模式**：使用手动编译的 `gva`（`cd server && go build -o gva ./cmd/gva`）时，运行时用 `--manifest opsctl.manifest.json` 加载清单。首次带 `--manifest` 执行 `login` 后，路径会写入配置文件，之后可以省略。
+- **文件模式**：使用手动编译的 `gva`（`cd server && go build -o gva ./cmd/gva`）时，运行时用 `--manifest opsctl.manifest.json` 加载清单。首次带 `--manifest` 执行 `login` 后，路径会写入配置文件，之后可以省略。没有 Go 环境时，也可以直接使用仓库附带的预编译二进制（`server/cmd/gvaai/dist`，含 Windows amd64 / arm64），效果等同手动编译版。
 
 ## 配置文件说明
 
@@ -149,7 +157,7 @@ manifest（命令清单）决定了 CLI 能调用哪些接口，它的加载方�
 - **判断节点**：不执行命令，通过出边条件实现分支。
 - **连线**：拖动锚点连线，填写分支条件（用自然语言描述，可引用 `别名.字段`）。
 
-编排结果会写入 Skill 说明，指导 AI 按流程分步调用，减少反复试错。
+编排结果会写入 Skill 说明，指导 AI 按流程分步调用，减少反复试错。编排的原理、字段与产物细节见 [调用场景编排](./ai-scenario)。
 
 <!-- 📷 截图位（待补）：「管理场景」调用场景编排画布（命令节点 + 判断节点 + 连线）。图片放 docs/public/cli/cli-scenario.png -->
 

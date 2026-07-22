@@ -125,7 +125,7 @@ ENTRYPOINT ./server -c config.docker.yaml
 
 ## docker-compose.yaml详解
 
-`docker-compose.yaml` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的 [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml)
+`docker-compose.yaml` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的 [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/deploy/docker-compose/docker-compose.yaml)
 
 ```yaml
 version: "3"

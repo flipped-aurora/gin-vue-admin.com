@@ -37,19 +37,17 @@
 4. 根据上诉操作得到配置文件
 ```yaml
 # aliyun oss configuration
-AliyunOss:
-  # Path 文件存储文件夹
-  Path: 'gva'
-  # Prefix 自定义文件名前缀, 可以不写为空了
-  Prefix: 'oss_'
-  # Bucket 存储桶名称
-  Bucket: 'sliver-horn'
-  # Domain 访问域名
-  Domain: 'https://sliver-horn.oss-cn-shenzhen.aliyuncs.com'
+aliyun-oss:
   # Endpoint 地域节点
-  Endpoint: 'oss-cn-shenzhen.aliyuncs.com'
+  endpoint: 'oss-cn-shenzhen.aliyuncs.com'
   # AccessKeyId 访问密钥 Id
-  AccessKeyId: 'LTAI5t7dSHRh2MHhaAo3gSGR'
+  access-key-id: 'your-access-key-id'
   # AccessKeySecret 访问密钥 Secret
-  AccessKeySecret: 'V4dc2lXiaJhGi40e7FcdiaLDDGtQ35'
+  access-key-secret: 'your-access-key-secret'
+  # BucketName 存储桶名称
+  bucket-name: 'sliver-horn'
+  # BucketUrl 访问域名
+  bucket-url: 'https://sliver-horn.oss-cn-shenzhen.aliyuncs.com'
+  # BasePath 文件存储文件夹
+  base-path: 'gva'
 ```

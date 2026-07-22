@@ -10,7 +10,7 @@
 ::: warning 环境要求
 - **Git**: 用于代码版本管理
 - **Node.js**: >= 20.19 或 >= 22.12 (推荐使用 LTS 版本)
-- **Go**: >= 1.22 (推荐使用最新稳定版)
+- **Go**: >= 1.24 (推荐使用最新稳定版)
 - **MySQL**: >= 8.0，存储引擎必须为 <span class="bg-red-600 text-white rounded font-medium dark:bg-red-500 px-1">InnoDB</span>
 - **Redis**: >= 6.0 (可选，用于缓存)
 :::
@@ -63,14 +63,14 @@ npm config get registry
 - **国际用户**: [https://golang.org/dl/](https://golang.org/dl/)
 - **国内用户**: [https://golang.google.cn/dl/](https://golang.google.cn/dl/)
 
-**推荐版本**: Go 1.22 或更高版本
+**推荐版本**: Go 1.24 或更高版本
 
 ### 2. 验证安装
 
 ```bash
 # 检查 Go 版本
 go version
-# 输出示例: go version go1.22.0 darwin/amd64
+# 输出示例: go version go1.24.0 darwin/amd64
 
 # 查看 Go 环境信息
 go env
@@ -149,7 +149,7 @@ sudo systemctl enable redis-server
   "recommendations": [
     "golang.go",
     "vue.volar",
-    "bradlc.vscode-tailwindcss",
+    "antfu.unocss",
     "esbenp.prettier-vscode",
     "ms-vscode.vscode-typescript-next",
     "formulahendry.auto-rename-tag",
@@ -168,7 +168,7 @@ sudo systemctl enable redis-server
 
 | 分支 | 状态 | 说明 | 推荐使用 |
 |------|------|------|----------|
-| [main](https://github.com/flipped-aurora/gin-vue-admin/tree/main) | 活跃维护 | 主分支，生产环境推荐 | 推荐 |
+| [main](https://github.com/flipped-aurora/gin-vue-admin/tree/main) | 活跃维护 | v3.x 当前版本，生产环境推荐 | 推荐 |
 | [i18n-dev-new](https://github.com/flipped-aurora/gin-vue-admin/tree/i18n-dev-new) | 更新中 | 组合式API多语言版本 | 开发中 |
 | [v2.4.x](https://github.com/flipped-aurora/gin-vue-admin/tree/v2.4.x) | 停止维护 | 声明式API版本 | 不推荐 |
 | [i18n-dev](https://github.com/flipped-aurora/gin-vue-admin/tree/i18n-dev) | 停止维护 | 声明式API多语言版本 | 不推荐 |

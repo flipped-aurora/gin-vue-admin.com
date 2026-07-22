@@ -56,7 +56,7 @@ docker system prune
 ### 使用 docker-compose 体验时需注意的问题
 
 1. 在初始化数据页面中
-- ip 请填写 [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml#L56) 的第 56 行的 ip，或直接使用  `mysql`，如下图
+- ip 请填写 [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/deploy/docker-compose/docker-compose.yaml#L73) 的第 73 行的 ip，或直接使用  `mysql`，如下图
 
 - 数据库为  `qmPlus`
 
@@ -64,12 +64,12 @@ docker system prune
 
 - 用户名为 `gva`
 
-- 密码为 [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml#L53) 的 52行定义的数据库密码
+- 密码为 [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/deploy/docker-compose/docker-compose.yaml#L63) 的 63 行定义的数据库密码
 
 ![docker-playground](/experience/image-docker-compose.jpg)
 
 2. 如果 server 的 177.7.0.12 这个容器内部ip被占用了, 需要修改地方为
-- [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml#L42) 的第 42 行的 177.7.0.12 更换为你想要的 ip
+- [docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/deploy/docker-compose/docker-compose.yaml#L50) 的第 50 行的 177.7.0.12 更换为你想要的 ip
 - [web/.docker-compose/nginx/conf.d/my.conf](https://github.com/flipped-aurora/gin-vue-admin/blob/master/web/.docker-compose/nginx/conf.d/my.conf#L20) 的第 20 行的 177.7.0.12 更换为你想要的 ip
 
 
@@ -95,5 +95,5 @@ docker system prune
 2. [server/Dockerfile](https://github.com/flipped-aurora/gin-vue-admin/blob/master/server/Dockerfile) 使用了多阶段构建，这是 docker 17.05 后引入的，因此安装的docker版本需要高于 17.05
 3. mysql 数据库请使用装在服务器磁盘的本地数据库
     - 避免使用 docker 容器内的 mysql, 可能会出现写入的问题, io 比宿主机低  docker 的持久化机制问题.
-4. 使用本项目的 docker-compose 进行部署时, 请修改[docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/docker-compose.yaml) 对应的 [nginx配置](https://github.com/flipped-aurora/gin-vue-admin/blob/master/web/.docker-compose/nginx/conf.d/my.conf), mysql 配置, networks 配置,redis配置,按需自行更改.
+4. 使用本项目的 docker-compose 进行部署时, 请修改[docker-compose.yaml](https://github.com/flipped-aurora/gin-vue-admin/blob/master/deploy/docker-compose/docker-compose.yaml) 对应的 [nginx配置](https://github.com/flipped-aurora/gin-vue-admin/blob/master/web/.docker-compose/nginx/conf.d/my.conf), mysql 配置, networks 配置,redis配置,按需自行更改.
 

@@ -332,6 +332,10 @@ export default {
 </style>
 ```
 
+::: tip 样式方案
+v3.0 前端样式方案为 UnoCSS（presetWind3）+ sass，项目已不再依赖 tailwindcss。业务页面优先使用原子类完成布局与间距；颜色请使用主题引擎提供的语义化 token 类名（如 `bg-primary`、`text-base-text`、`bg-container`），以保证换肤与暗黑模式下表现一致。
+:::
+
 #### API 调用规范
 
 ```javascript
@@ -712,7 +716,7 @@ Related to #456
 ## 技术栈
 
 ### 后端
-- Go 1.19+
+- Go 1.24+
 - Gin
 - GORM
 - Redis
@@ -728,7 +732,7 @@ Related to #456
 
 ### 环境要求
 
-- Go 1.19+
+- Go 1.24+
 - Node.js 20.19+ 或 22.12+
 - MySQL 8.0+
 - Redis 6.0+
@@ -887,7 +891,7 @@ Authorization: Bearer <token>
     "vue.volar",
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
-    "bradlc.vscode-tailwindcss",
+    "unocss.unocss",
     "ms-vscode.vscode-json",
     "redhat.vscode-yaml"
   ]

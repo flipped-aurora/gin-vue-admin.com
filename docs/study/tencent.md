@@ -37,17 +37,17 @@
 3. 根据上诉操作得到配置文件
 ```yaml
 # tencent cos configuration
-TencentCos:
-  # Path 文件存储文件夹
-  Path: 'gva'
-  # Prefix 自定义文件名前缀, 可以不写为空了
-  Prefix: 'oss_'
+tencent-cos:
   # Bucket 存储桶名称
-  Bucket: 'gva-1304136212'
-  # Domain 访问域名
-  Domain: 'https://gva-1304136212.cos.ap-guangzhou.myqcloud.com'
+  bucket: 'gva-1304136212'
+  # Region 存储桶所属地域
+  region: 'ap-guangzhou'
   # SecretId 访问密钥 Id
-  SecretId: 'AKIDCG6g3B2ez3qMbZGiz0kDQM1QZR5SaGiv'
+  secret-id: 'your-secret-id'
   # SecretKey 访问密钥 Secret
-  SecretKey: '0kDPLnLhphKiqvqWTDj5FBuNZU8pJZbP'
+  secret-key: 'your-secret-key'
+  # BaseUrl 访问域名
+  base-url: 'https://gva-1304136212.cos.ap-guangzhou.myqcloud.com'
+  # PathPrefix 文件存储文件夹
+  path-prefix: 'gva'
 ```

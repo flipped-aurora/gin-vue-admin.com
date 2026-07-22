@@ -4,7 +4,7 @@
 
 - 使用 `nginx` 镜像
 
-`my.conf` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的[my.conf](https://github.com/flipped-aurora/gin-vue-admin/blob/master/.docker-compose/nginx/conf.d/my.conf)
+`my.conf` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的[my.conf](https://github.com/flipped-aurora/gin-vue-admin/blob/master/web/.docker-compose/nginx/conf.d/my.conf)
 
  ```shell
 server {
@@ -35,7 +35,7 @@ server {
  }
  ```
 
-`Dockerfile` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的[dockerfile_web](https://github.com/flipped-aurora/gin-vue-admin/blob/master/dockerfile_web)
+`Dockerfile` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的[Dockerfile](https://github.com/flipped-aurora/gin-vue-admin/blob/master/web/Dockerfile)
 
 ```
 # 声明镜像来源为node:22.12
@@ -81,7 +81,7 @@ RUN ls -al /usr/share/nginx/html
 
 ## server项目单独打包
 
-`Dockerfile` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的 [Dockerfile](https://github.com/flipped-aurora/gin-vue-admin/blob/gva_gormv2_dev/server/Dockerfile)
+`Dockerfile` 来源于 [gin-vue-admin](https://github.com/flipped-aurora/gin-vue-admin) 的 [Dockerfile](https://github.com/flipped-aurora/gin-vue-admin/blob/master/server/Dockerfile)
 
 ```
 # 声明镜像来源为golang:alpine

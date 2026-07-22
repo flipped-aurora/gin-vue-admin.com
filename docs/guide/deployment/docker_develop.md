@@ -1,5 +1,9 @@
 # Docker 快速开发
 
+:::warning 注意
+v3.0 已移除 `deploy/docker-compose/docker-compose-dev.yaml` 开发模式配置，本页内容仅适用于 v2 版本。
+:::
+
 ## Docker   &   Docker-compose 环境
 
 1. 前往 [Docker Desktop for Windows by Docker | Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/)下载最新版本 Docker

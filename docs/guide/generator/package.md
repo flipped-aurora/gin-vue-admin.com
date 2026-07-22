@@ -10,8 +10,11 @@
 创建完成后，会在web和server下创建对应的package文件夹，如下所示
 web/src/api/showGva
 web/src/view/showGva
-server/api/showGva 内含文件 `enter.go`
+server/api/v1/showGva 内含文件 `enter.go`
 server/router/showGva 内含文件 `enter.go`
 server/service/showGva 内含文件 `enter.go`
+server/model/showGva 内含模型文件与 `request` 入参结构体文件夹
+
+创建时会自动向 `server/api/v1/enter.go`、`server/router/enter.go`、`server/service/enter.go` 注入对应的分组注册代码，无需手动修改。
 
 后续使用自动化代码创建的内容会自动填充进入这些文件夹下

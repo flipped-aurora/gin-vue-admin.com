@@ -1,101 +1,111 @@
 # 前端知识库
 
-Gin-Vue-Admin 前端基于 Vue 3 + Vite 4 + Element Plus  构建，采用现代化的前端开发技术栈，提供高效的开发体验和优秀的用户界面。
+Gin-Vue-Admin 前端基于 Vue 3 + Vite 8 + Element Plus 构建，采用现代化的前端开发技术栈，提供高效的开发体验和优秀的用户界面。
 
 ## 技术栈
 
 ### 核心框架
-- **Vue 3** - 渐进式 JavaScript 框架
-- **Vite 4** - 下一代前端构建工具
-- **Element Plus ** - 基于 Vue 3 的组件库
+- **Vue 3**（^3.5.31）- 渐进式 JavaScript 框架
+- **Vite 8** - 下一代前端构建工具（@vitejs/plugin-vue ^6）
+- **Element Plus**（^2.13.6）- 基于 Vue 3 的组件库
 
 ### 状态管理
-- **Pinia** - Vue 3 官方推荐的状态管理库
-- **Vue Router 4** - Vue.js 官方路由管理器
+- **Pinia**（^2.2.2）- Vue 3 官方推荐的状态管理库
+- **Vue Router 4**（^4.4.3）- Vue.js 官方路由管理器
+
+### 样式与图标
+- **UnoCSS**（^66）- 原子化 CSS 引擎（presetWind3 + transformer-directives，项目未使用 tailwindcss，仅引入 tailwind-merge / clsx / class-variance-authority 作为类名工具库）
+- **Sass/SCSS** - CSS 预处理器（modern-compiler API）
+- **reka-ui**（^2.10.0）- 无样式组件库，作为自研基础组件库（core/componentLibrary）的底座
+- **@iconify/vue**（^5）+ **@element-plus/icons-vue** - 在线图标与 Element Plus 图标
+
+### 业务依赖
+- **axios**（1.8.2）- HTTP 请求库
+- **echarts**（5.5.1）- 图表
+- **@logicflow/core** - 流程/场景编排
+- **@form-create/designer**（3.x）- 表单设计器
+- **@wangeditor/editor**（5.x）- 富文本编辑器
+- **mitt / nprogress / universal-cookie / spark-md5** - 事件总线、进度条、Cookie、分片 hash 等工具库
 
 ### 开发工具
-- **TypeScript** - JavaScript 的超集（可选）
+- **TypeScript** - JavaScript 的超集（可选，按组件开启）
 - **ESLint** - 代码质量检查工具
-- **Prettier** - 代码格式化工具
-- **Sass/SCSS** - CSS 预处理器
-
-### 构建优化
-- **Vite Plugin** - 丰富的插件生态
-- **Tree Shaking** - 自动移除未使用代码
-- **Code Splitting** - 代码分割优化
-- **Hot Module Replacement** - 热模块替换
+- **vite-plugin-vue-devtools** - 开发调试与代码定位（VITE_POSITION=open 时启用）
 
 ## 前端目录结构
 ```
 web
- ├── babel.config.js
+ ├── babel.config.cjs
  ├── Dockerfile
- ├── favicon.ico
- ├── index.html                  -- 主页面
+ ├── eslint.config.mjs
+ ├── index.html                  -- 主页面（内联首屏暗色判定脚本，防止主题闪烁）
+ ├── jsconfig.json
  ├── limit.js                    -- 助手代码
+ ├── openDocument.js
  ├── package.json                -- 包管理器代码
+ ├── uno.config.js               -- UnoCSS 配置文件
+ ├── vite.config.js              -- vite 配置文件
  ├── src                         -- 源代码
- │   ├── api                    -- api 组
- │   ├── App.vue                -- 主页面
- │   ├── assets                 -- 静态资源
- │   ├── components             -- 全局组件
- │   ├── core                   -- gva 组件包
- │   │   ├── config.js         -- gva网站配置文件
- │   │   ├── gin-vue-admin.js  -- 注册欢迎文件
- │   │   └── global.js         -- 统一导入文件
- │   ├── directive              -- v-auth 注册文件
- │   ├── main.js                -- 主文件
- │   ├── permission.js          -- 路由中间件
- │   ├── pinia                  -- pinia 状态管理器，取代vuex
- │   │   ├── index.js          -- 入口文件
- │   │   └── modules           -- modules
- │   │       ├── dictionary.js
- │   │       ├── router.js
- │   │       └── user.js
- │   ├── router                 -- 路由声明文件
+ │   ├── api                     -- 接口模块
+ │   ├── App.vue                 -- 主页面
+ │   ├── assets                  -- 静态资源（icons 目录下的 svg 自动注册为图标）
+ │   ├── components              -- 业务组件（svgIcon、iconButton、commandMenu、logo、bottomInfo 等，按需 import，不做全局注册）
+ │   ├── core                    -- gva 核心包
+ │   │   ├── componentLibrary    -- 基础组件库（reka-ui 底座，按 g- 前缀全局注册）
+ │   │   ├── config.js           -- gva 网站配置文件
+ │   │   ├── error-handel.js     -- 全局错误捕获与上报
+ │   │   ├── gin-vue-admin.js    -- gva 插件入口（install）
+ │   │   └── global.js           -- 统一注册文件（图标/组件/全局属性）
+ │   ├── directive               -- 自定义指令（auth.js 提供 v-auth、clickOutSide.js）
+ │   ├── hooks                   -- 组合式函数（responsive.js 响应式断点、useLayoutMode.js 等）
+ │   ├── main.js                 -- 主文件
+ │   ├── permission.js           -- 路由中间件
+ │   ├── pinia                   -- pinia 状态管理器
+ │   │   ├── index.js            -- 入口文件
+ │   │   └── modules             -- app、user、router、dictionary、params、theme
+ │   ├── plugin                  -- 业务插件（ai、auto、email、announcement）
+ │   ├── router                  -- 路由声明文件
  │   │   └── index.js
- │   ├── style                  -- 全局样式
- │   │   ├── base.scss
- │   │   ├── basics.scss
+ │   ├── style                   -- 全局样式
  │   │   ├── element_visiable.scss  -- 此处可以全局覆盖 element-plus 样式
- │   │   ├── iconfont.css           -- 顶部几个icon的样式文件
+ │   │   ├── iconfont.css           -- iconfont 样式文件
  │   │   ├── main.scss
- │   │   ├── mobile.scss
- │   │   └── newLogin.scss
- │   ├── utils                  -- 方法包库
- │   │   ├── asyncRouter.js    -- 动态路由相关
- │   │   ├── btnAuth.js        -- 动态权限按钮相关
- │   │   ├── bus.js            -- 全局mitt声明文件
- │   │   ├── date.js           -- 日期相关
- │   │   ├── dictionary.js     -- 获取字典方法 
- │   │   ├── downloadImg.js    -- 下载图片方法
- │   │   ├── format.js         -- 格式整理相关
- │   │   ├── image.js          -- 图片相关方法
- │   │   ├── page.js           -- 设置页面标题
- │   │   ├── request.js        -- 统一请求文件
- │   │   └── stringFun.js      -- 字符串文件
- |   ├── view                   -- 主要view代码
- |   |   ├── about              -- 关于我们
- |   |   ├── dashboard          -- 面板
- |   |   ├── error              -- 错误
- |   |   ├── example            -- 上传案例
- |   |   ├── iconList           -- icon列表
- |   |   ├── init               -- 初始化数据  
- |   |   ├── layout             -- layout约束页面 
- |   |   |   ├── aside          -- 侧边栏
- |   |   |   ├── bottomInfo     -- bottomInfo
- |   |   |   ├── screenfull     -- 全屏设置
- |   |   |   ├── setting        -- 系统设置
- |   |   |   └── index.vue      -- base 约束
- |   |   ├── login              --登录 
- |   |   ├── person             --个人中心 
- |   |   ├── superAdmin         -- 超级管理员操作
- |   |   ├── system             -- 系统检测页面
- |   |   ├── systemTools        -- 系统配置相关页面
- |   |   └── routerHolder.vue   -- page 入口页面 
- ├── vite.config.js             -- vite 配置文件
- └── yarn.lock
+ │   │   ├── reset.scss
+ │   │   ├── theme.scss             -- 主题扩展样式（菜单风格/卡片模式/圆角）
+ │   │   └── transition.scss        -- 页面切换动画
+ │   ├── theme                   -- 主题引擎
+ │   │   ├── adapters            -- 运行时适配器（runtime/element-plus/chrome/structure/uno）
+ │   │   ├── preset              -- 内置主题预设（*.json）
+ │   │   ├── settings.js         -- 主题配置项与默认值
+ │   │   ├── token.js            -- 由配置派生主题 token
+ │   │   └── vars.js / color.js / shared.js / version.js / index.js
+ │   ├── utils                   -- 方法包库
+ │   │   ├── asyncRouter.js      -- 动态路由相关
+ │   │   ├── btnAuth.js          -- 动态权限按钮相关
+ │   │   ├── bus.js              -- 全局 mitt 声明文件
+ │   │   ├── dictionary.js       -- 获取字典方法
+ │   │   ├── image.js            -- 图片相关方法
+ │   │   ├── request.js          -- 统一请求文件
+ │   │   └── ...
+ │   └── view                    -- 主要 view 代码
+ │       ├── about               -- 关于我们
+ │       ├── dashboard           -- 面板
+ │       ├── error               -- 错误页
+ │       ├── example             -- 示例
+ │       ├── init                -- 初始化数据
+ │       ├── layout              -- layout 约束页面
+ │       ├── login               -- 登录
+ │       ├── media               -- 媒体相关（扫码上传等）
+ │       ├── person              -- 个人中心
+ │       ├── superAdmin          -- 超级管理员操作
+ │       ├── system              -- 系统检测页面
+ │       ├── systemTools         -- 系统配置相关页面
+ │       └── routerHolder.vue    -- page 入口页面
 ```
+
+::: tip
+静态路由只有 `/init`、`/login`、`/scanUpload`、`/forceChangePassword` 和 404 兜底（catchAll），其余页面全部由后端下发的动态菜单驱动生成路由。
+:::
 
 ## 开发环境配置
 
@@ -120,105 +130,100 @@ yarn install
 ### 开发命令
 
 ```bash
-# 启动开发服务器
-npm run serve
+# 启动开发服务器（dev 与 serve 等价）
+npm run dev
 # 或
-yarn serve
+npm run serve
 
 # 构建生产版本
 npm run build
-# 或
-yarn build
 
 # 代码检查
 npm run lint
-# 或
-yarn lint
 
-# 代码格式化
-npm run format
-# 或
-yarn format
+# 代码检查并自动修复
+npm run lint:fix
 ```
 
 ## 核心配置文件
 
 ### Vite 配置 (vite.config.js)
 
-```javascript
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+3.0 的 Vite 配置要点：路径别名 `@` 指向 `src`；scss 使用 `modern-compiler` API；开发服务器端口与代理目标全部来自环境变量；除业务接口代理外，还内置了指向插件市场的 `/plugin` 固定代理；本地 svg 图标由 `vite-auto-import-svg` 构建为 sprite。
 
-export default defineConfig({
-  plugins: [
-    vue(),
-    createSvgIconsPlugin({
-      iconDirs: [resolve(process.cwd(), 'src/assets/icons')],
-      symbolId: 'icon-[dir]-[name]'
-    })
-  ],
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src')
-    }
-  },
-  server: {
-    port: 8080,
-    proxy: {
-      '/api': {
-        target: 'http://127.0.0.1:8888',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+```javascript
+import { svgBuilder } from 'vite-auto-import-svg'
+import UnoCSS from '@unocss/vite'
+import vueDevTools from 'vite-plugin-vue-devtools'
+
+export default ({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
+
+  const config = {
+    resolve: {
+      alias: {
+        '@': path.resolve(import.meta.dirname, './src'),
+        vue$: 'vue/dist/vue.runtime.esm-bundler.js'
       }
-    }
-  },
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    rollupOptions: {
-      output: {
-        chunkFileNames: 'js/[name]-[hash].js',
-        entryFileNames: 'js/[name]-[hash].js',
-        assetFileNames: '[ext]/[name]-[hash].[ext]'
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler'
+        }
       }
-    }
+    },
+    server: {
+      open: true,
+      port: Number(env.VITE_CLI_PORT),
+      proxy: {
+        // 业务接口代理，例如 '/api' -> 'http://127.0.0.1:8888/'
+        [env.VITE_BASE_API]: {
+          target: `${env.VITE_BASE_PATH}:${env.VITE_SERVER_PORT}/`,
+          changeOrigin: true,
+          rewrite: (path) =>
+            path.replace(new RegExp('^' + env.VITE_BASE_API), '')
+        },
+        // 固定代理：插件市场
+        '/plugin': {
+          target: `https://plugin.gin-vue-admin.com/api/`,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(new RegExp('^/plugin'), '')
+        }
+      }
+    },
+    plugins: [
+      env.VITE_POSITION === 'open' &&
+        vueDevTools({ launchEditor: env.VITE_EDITOR }),
+      vuePlugin(),
+      // 扫描 src/assets/icons 与 src/plugin 下的 svg，构建本地图标 sprite
+      svgBuilder(['./src/plugin/', './src/assets/icons/'], base, outDir, 'assets', mode),
+      UnoCSS()
+      // ...
+    ]
   }
-})
+  return config
+}
 ```
 
 ### 项目配置 (src/core/config.js)
 
+`core/config.js` 导出全局配置对象 `config`，以及开发启动时在终端打印横幅的 `viteLogo(env)`：
+
 ```javascript
-// 系统全局配置
 export const config = {
-  appName: 'Gin-Vue-Admin',
-  appLogo: 'logoIco.png',
-  showProgressBar: true,
-  progressBarColor: '#409EFF',
-  showInfoTip: true,
-  
-  // 布局配置
-  layout: {
-    showTagsView: true,
-    showSidebarLogo: true,
-    fixedHeader: true,
-    sidebarTextTheme: true,
-    showGreyMode: false,
-    showColorWeakness: false
-  },
-  
-  // 主题配置
-  theme: {
-    primaryColor: '#409EFF',
-    successColor: '#67C23A',
-    warningColor: '#E6A23C',
-    dangerColor: '#F56C6C',
-    infoColor: '#909399'
-  }
+  appName: 'Gin-Vue-Admin',   // 系统名称
+  showViteLogo: true,         // 启动时是否在终端打印欢迎横幅
+  keepAliveTabs: false,       // 标签页是否全部 keep-alive
+  logs: []                    // 本地图标清单（注册时自动收集）
 }
 ```
+
+### 核心包 (src/core)
+
+- `core/gin-vue-admin.js`：导出 `{ install }` 插件，`main.js` 中通过 `app.use()` 触发 `global.js` 的 `register(app)`。
+- `core/global.js`：统一注册入口——注册全部 element-plus 图标与 `SvgIcon` 组件；通过 `import.meta.glob` 扫描 `src/assets/icons` 与 `src/plugin/**/assets/icons` 下的 svg 并注册为全局组件（插件图标带 `插件名-` 前缀）；把 `core/componentLibrary` 的基础组件按 kebab-case 注册为 `g-` 前缀全局组件；挂载全局属性 `$GIN_VUE_ADMIN = config`。
+- `core/error-handel.js`：全局错误捕获（如 `unhandledrejection`），并经 `/sysError` 接口上报到后端。
 
 ## 核心架构
 
@@ -226,38 +231,48 @@ export const config = {
 
 #### 静态路由配置
 
+3.0 使用 hash 模式（`createWebHashHistory`），静态路由只保留初始化、登录等基础页面：
+
 ```javascript
 // src/router/index.js
-import { createRouter, createWebHistory } from 'vue-router'
-import { asyncRouterHandle } from '@/utils/asyncRouter'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
-// 静态路由
 const routes = [
+  {
+    path: '/',
+    redirect: '/login'
+  },
+  {
+    path: '/init',
+    name: 'Init',
+    component: () => import('@/view/init/index.vue')
+  },
   {
     path: '/login',
     name: 'Login',
     component: () => import('@/view/login/index.vue')
   },
   {
-    path: '/',
-    redirect: '/dashboard'
+    path: '/scanUpload',
+    name: 'ScanUpload',
+    meta: { title: '扫码上传', client: true },
+    component: () => import('@/view/media/scanUpload.vue')
   },
   {
-    path: '/layout',
-    name: 'Layout',
-    component: () => import('@/view/layout/index.vue'),
-    children: [
-      {
-        path: '/dashboard',
-        name: 'Dashboard',
-        component: () => import('@/view/dashboard/index.vue')
-      }
-    ]
+    path: '/forceChangePassword',
+    name: 'ForceChangePassword',
+    component: () => import('@/view/system/security/forceChangePassword.vue'),
+    meta: { title: '修改密码' }
+  },
+  {
+    path: '/:catchAll(.*)',
+    meta: { closeTab: true },
+    component: () => import('@/view/error/index.vue')
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 
@@ -266,282 +281,171 @@ export default router
 
 #### 动态路由处理
 
+业务页面路由由后端菜单接口下发，`asyncRouterHandle` 把菜单中的组件路径字符串映射为 `import.meta.glob` 收集到的真实组件；找不到组件时返回占位组件，避免路由白屏：
+
 ```javascript
 // src/utils/asyncRouter.js
-import { asyncRoutes } from '@/router/asyncRouter'
+const viewModules = import.meta.glob('../view/**/*.vue')
+const pluginModules = import.meta.glob('../plugin/**/*.vue')
 
-// 动态路由处理
-export function asyncRouterHandle(asyncRouter) {
-  asyncRouter.forEach(item => {
-    if (item.component) {
-      if (item.component === 'view/routerHolder.vue') {
-        item.component = () => import('@/view/routerHolder.vue')
-      } else {
-        const component = item.component
-        item.component = () => import(`@/view/${component}`)
+export const asyncRouterHandle = (asyncRouter) => {
+  asyncRouter.forEach((item) => {
+    if (item.component && typeof item.component === 'string') {
+      item.meta.path = '/src/' + item.component
+      if (item.component.split('/')[0] === 'view') {
+        item.component = dynamicImport(viewModules, item.component)
+      } else if (item.component.split('/')[0] === 'plugin') {
+        item.component = dynamicImport(pluginModules, item.component)
       }
     }
     if (item.children) {
       asyncRouterHandle(item.children)
     }
   })
-  return asyncRouter
 }
 
-// 格式化路由
-export function formatRouter(routes, routeMap) {
-  const newRoutes = []
-  routes.forEach(item => {
-    if (item.path === 'dashboard') {
-      item.component = () => import('@/view/dashboard/index.vue')
-    } else if (item.component) {
-      item.component = routeMap[item.component] || (() => import(`@/view/error/404.vue`))
-    }
-    if (item.children && item.children.length > 0) {
-      item.children = formatRouter(item.children, routeMap)
-    }
-    newRoutes.push(item)
-  })
-  return newRoutes
+function dynamicImport(dynamicViewsModules, component) {
+  const keys = Object.keys(dynamicViewsModules)
+  const matchKeys = keys.filter((key) => key.replace('../', '') === component)
+  const matched = dynamicViewsModules[matchKeys[0]]
+  if (!matched) {
+    console.warn(`[asyncRouter] 未找到组件: ${component}，已使用占位组件代替`)
+    return { name: 'MissingComponentPlaceholder', render: () => null }
+  }
+  return matched
 }
 ```
 
 ### 2. 状态管理 (Pinia)
 
+3.0 的 store 位于 `src/pinia/modules`，包含 `app`（应用/设备与布局状态）、`user`（用户与 token）、`router`（动态路由与 keep-alive）、`dictionary`（字典缓存）、`params`（通用参数）、`theme`（主题设置）六个模块，全部采用 setup 语法编写。
+
 #### 用户状态管理
 
 ```javascript
-// src/pinia/modules/user.js
-import { defineStore } from 'pinia'
-import { login, getUserInfo, logout } from '@/api/user'
-import { jsonInBlacklist } from '@/api/jwt'
-import router from '@/router/index'
+// src/pinia/modules/user.js（节选）
+export const useUserStore = defineStore('user', () => {
+  const userInfo = ref({
+    uuid: '',
+    nickName: '',
+    headerImg: '',
+    authority: {}
+  })
+  // token 持久化到 localStorage，并兼容 x-token cookie
+  const token = useStorage('token', '')
+  const xToken = useCookies()
+  const currentToken = computed(() => token.value || xToken.get('x-token') || '')
 
-export const useUserStore = defineStore('user', {
-  state: () => ({
-    userInfo: {
-      uuid: '',
-      nickName: '',
-      headerImg: '',
-      authority: {},
-      sideMode: 'dark',
-      activeColor: '#1890ff',
-      baseColor: '#fff'
-    },
-    token: '',
-    mode: 'light'
-  }),
-  
-  getters: {
-    // 获取用户信息
-    getUserInfo: (state) => state.userInfo,
-    // 获取token
-    getToken: (state) => state.token,
-    // 获取模式
-    getMode: (state) => state.mode
-  },
-  
-  actions: {
-    // 登录
-    async LoginIn(loginInfo) {
-      try {
-        const res = await login(loginInfo)
-        if (res.code === 0) {
-          this.setUserInfo(res.data.user)
-          this.setToken(res.data.token)
-          await this.GetUserInfo()
-          return true
-        }
-      } catch (error) {
-        console.error('登录失败:', error)
-        return false
-      }
-    },
-    
-    // 获取用户信息
-    async GetUserInfo() {
-      try {
-        const res = await getUserInfo()
-        if (res.code === 0) {
-          this.setUserInfo(res.data.userInfo)
-        }
-        return res
-      } catch (error) {
-        console.error('获取用户信息失败:', error)
-      }
-    },
-    
-    // 登出
-    async LoginOut() {
-      try {
-        const res = await logout()
-        if (res.code === 0) {
-          this.userInfo = {}
-          this.token = ''
-          localStorage.clear()
-          router.push({ name: 'Login' })
-        }
-      } catch (error) {
-        console.error('登出失败:', error)
-      }
-    },
-    
-    // 设置用户信息
-    setUserInfo(userInfo) {
-      this.userInfo = { ...this.userInfo, ...userInfo }
-    },
-    
-    // 设置token
-    setToken(token) {
-      this.token = token
-      localStorage.setItem('token', token)
-    },
-    
-    // 设置模式
-    setMode(mode) {
-      this.mode = mode
-      localStorage.setItem('mode', mode)
+  const setUserInfo = (val) => {
+    userInfo.value = val
+    if (val.originSetting) {
+      // 后端返回的用户主题设置，交给 themeStore 解析并落地
+      themeStore.applyRemoteSettings(val.originSetting)
     }
   }
+
+  /* 登录*/
+  const LoginIn = async (loginInfo) => {
+    const res = await login(loginInfo)
+    if (res.code !== 0) {
+      return false
+    }
+    setUserInfo(res.data.user)
+    setToken(res.data.token)
+    // 密码过期时强制跳转改密页
+    if (res.data.needChangePassword) {
+      await router.push({ name: 'ForceChangePassword' })
+      return true
+    }
+    // ...
+  }
+  // ...
 })
 ```
 
 #### 路由状态管理
 
-```javascript
-// src/pinia/modules/router.js
-import { defineStore } from 'pinia'
-import { asyncRouterHandle } from '@/utils/asyncRouter'
-import { getMenu } from '@/api/menu'
+`router` store 负责拉取后端菜单并生成动态路由，同时维护 keep-alive 清单：
 
-export const useRouterStore = defineStore('router', {
-  state: () => ({
-    asyncRouters: [],
-    keepAliveRouters: [],
-    routerList: [],
-    addRouters: [],
-    routerMap: {}
-  }),
-  
-  actions: {
-    // 设置动态路由
-    async SetAsyncRouter() {
-      try {
-        const res = await getMenu()
-        if (res.code === 0) {
-          const asyncRouter = res.data.menus || []
-          this.asyncRouters = asyncRouterHandle(asyncRouter)
-          this.routerList = res.data.menus || []
-          return this.asyncRouters
-        }
-      } catch (error) {
-        console.error('获取菜单失败:', error)
-      }
-    },
-    
-    // 设置keep-alive路由
-    setKeepAliveRouters(history) {
-      this.keepAliveRouters = history
-    }
-  }
+```javascript
+// src/pinia/modules/router.js（节选）
+import { asyncRouterHandle } from '@/utils/asyncRouter'
+import { asyncMenu } from '@/api/menu'
+
+export const useRouterStore = defineStore('router', () => {
+  const keepAliveRouters = ref([])
+  const asyncRouterFlag = ref(0)
+  // 拉取动态菜单 -> asyncRouterHandle 转换 -> addRoute 注册
+  // 并根据菜单 meta.keepAlive 维护 keep-alive 列表
+  // ...
 })
 ```
 
 ### 3. HTTP 请求封装
 
+`src/utils/request.js` 基于 axios 封装统一请求实例，3.0 的主要特性：
+
+- `baseURL` 默认取 `VITE_BASE_API`，单请求超时时间 10 分钟。
+- 全局 Loading：请求发出 400ms 后仍未返回才展示（`activeAxios` 计数），30 秒强制关闭兜底；可通过 `donNotShowLoading`、`loadingOption` 按请求控制。
+- 请求头自动注入 `x-token`、`x-user-id`。
+- 响应头携带 `new-token` 时自动续签 token。
+- 401 清理登录态并跳转登录页；403 且 `needChangePassword`（或业务码 `code=7`）时跳转 `/forceChangePassword` 强制改密页。
+- 错误消息去重：相同内容不重复弹出，同时最多展示 3 条。
+
 ```javascript
-// src/utils/request.js
+// src/utils/request.js（节选）
 import axios from 'axios'
-import { ElMessage, ElMessageBox } from 'element-plus'
 import { useUserStore } from '@/pinia/modules/user'
+import { ElLoading, ElMessage } from 'element-plus'
 import router from '@/router/index'
 
-// 创建axios实例
-const service = axios.create({
-  baseURL: import.meta.env.VITE_BASE_API,
-  timeout: 99999
+const DEFAULT_REQUEST_TIMEOUT = 1000 * 60 * 10 // 10 分钟
+const service = axios.create()
+
+service.interceptors.request.use((config) => {
+  if (typeof config.timeout === 'undefined') {
+    config.timeout = DEFAULT_REQUEST_TIMEOUT
+  }
+  if (!config.donNotShowLoading) {
+    showLoading(config.loadingOption) // 400ms 延迟展示，30s 强制关闭
+  }
+  config.baseURL = config.baseURL || import.meta.env.VITE_BASE_API
+  const userStore = useUserStore()
+  config.headers = {
+    'Content-Type': 'application/json',
+    'x-token': userStore.token,
+    'x-user-id': userStore.userInfo.ID,
+    ...config.headers
+  }
+  return config
 })
 
-// 请求拦截器
-service.interceptors.request.use(
-  config => {
-    const userStore = useUserStore()
-    
-    // 添加token
-    if (userStore.token) {
-      config.headers['x-token'] = userStore.token
-    }
-    
-    // 添加请求时间戳
-    config.headers['x-timestamp'] = Date.now()
-    
-    return config
-  },
-  error => {
-    console.error('请求错误:', error)
-    return Promise.reject(error)
-  }
-)
-
-// 响应拦截器
 service.interceptors.response.use(
-  response => {
-    const res = response.data
-    
-    // 处理文件下载
-    if (response.headers['content-type'] === 'application/octet-stream') {
-      return response
+  (response) => {
+    // new-token 自动续签
+    if (response.headers['new-token']) {
+      const userStore = useUserStore()
+      userStore.setToken(response.headers['new-token'])
     }
-    
-    // 业务错误处理
-    if (res.code !== 0) {
-      ElMessage({
-        message: res.msg || '请求失败',
-        type: 'error',
-        duration: 5 * 1000
-      })
-      
-      // token过期处理
-      if (res.code === 1004 || res.code === 1005) {
-        const userStore = useUserStore()
-        userStore.LoginOut()
-        return Promise.reject(new Error(res.msg || '登录过期'))
-      }
-      
-      return Promise.reject(new Error(res.msg || '请求失败'))
+    if (response.data.code === 0 || response.headers.success === 'true') {
+      return response.data
     }
-    
-    return res
+    showErrorMessage(response.data.msg) // 去重后弹出
+    return response.data.msg ? response.data : response
   },
-  error => {
-    console.error('响应错误:', error)
-    
-    let message = '网络错误'
-    if (error.response) {
-      switch (error.response.status) {
-        case 401:
-          message = '未授权，请重新登录'
-          break
-        case 403:
-          message = '权限不足'
-          break
-        case 404:
-          message = '请求的资源不存在'
-          break
-        case 500:
-          message = '服务器内部错误'
-          break
-        default:
-          message = `连接错误${error.response.status}`
-      }
+  (error) => {
+    if (error.response?.status === 401) {
+      // 清理登录态并跳转登录页
+      router.push({ name: 'Login', replace: true })
     }
-    
-    ElMessage({
-      message,
-      type: 'error',
-      duration: 5 * 1000
-    })
-    
+    if (
+      error.response?.status === 403 &&
+      (error.response?.data?.data?.needChangePassword ||
+        error.response?.data?.code === 7)
+    ) {
+      // 强制修改密码
+      router.push({ name: 'ForceChangePassword', replace: true })
+    }
     return Promise.reject(error)
   }
 )
@@ -553,576 +457,134 @@ export default service
 
 ### 全局组件注册
 
+3.0 在 `src/core/global.js` 中统一注册全局组件，业务组件（`src/components` 下的 svgIcon、iconButton、commandMenu、logo、bottomInfo 等）不做全局注册，按需 `import` 使用：
+
 ```javascript
-// src/core/global.js
-import GvaIcon from '@/components/gva-icon/index.vue'
-import GvaTable from '@/components/gva-table/index.vue'
-import GvaForm from '@/components/gva-form/index.vue'
-import GvaUpload from '@/components/gva-upload/index.vue'
+// src/core/global.js（节选）
+import * as ElIconModules from '@element-plus/icons-vue'
+import svgIcon from '@/components/svgIcon/svgIcon.vue'
+import * as ComponentLibrary from '@/core/componentLibrary'
 
-// 全局组件列表
-const components = {
-  GvaIcon,
-  GvaTable,
-  GvaForm,
-  GvaUpload
-}
-
-// 注册全局组件
-export function setupGlobalComponents(app) {
-  Object.keys(components).forEach(key => {
-    app.component(key, components[key])
-  })
+export const register = (app) => {
+  // 1. 统一注册全部 element-plus 图标
+  for (const iconName in ElIconModules) {
+    app.component(iconName, ElIconModules[iconName])
+  }
+  // 2. 注册 SvgIcon（本地 sprite + iconify 双通道）
+  app.component('SvgIcon', svgIcon)
+  // 3. 扫描 src/assets/icons 与 src/plugin/**/assets/icons 的 svg，
+  //    按文件名注册为全局组件（插件图标带 插件名- 前缀）
+  registerIcons(app)
+  // 4. 基础组件库按 kebab-case 注册为 g- 前缀全局组件（Button -> g-button）
+  registerComponentLibrary(app)
+  // 5. 挂载全局配置
+  app.config.globalProperties.$GIN_VUE_ADMIN = config
 }
 ```
 
-### 自定义组件示例
+### 组件使用示例
+
+全局基础组件可直接以 `g-` 前缀标签使用，图标通过 `SvgIcon` 双通道使用：
 
 ```vue
-<!-- src/components/gva-table/index.vue -->
 <template>
-  <div class="gva-table">
-    <el-table
-      ref="tableRef"
-      v-loading="loading"
-      :data="tableData"
-      :height="height"
-      :max-height="maxHeight"
-      :stripe="stripe"
-      :border="border"
-      :size="size"
-      :fit="fit"
-      :show-header="showHeader"
-      :highlight-current-row="highlightCurrentRow"
-      :current-row-key="currentRowKey"
-      :row-class-name="rowClassName"
-      :row-style="rowStyle"
-      :cell-class-name="cellClassName"
-      :cell-style="cellStyle"
-      :header-row-class-name="headerRowClassName"
-      :header-row-style="headerRowStyle"
-      :header-cell-class-name="headerCellClassName"
-      :header-cell-style="headerCellStyle"
-      :row-key="rowKey"
-      :empty-text="emptyText"
-      :default-expand-all="defaultExpandAll"
-      :expand-row-keys="expandRowKeys"
-      :default-sort="defaultSort"
-      :tooltip-effect="tooltipEffect"
-      :show-summary="showSummary"
-      :sum-text="sumText"
-      :summary-method="summaryMethod"
-      :span-method="spanMethod"
-      :select-on-indeterminate="selectOnIndeterminate"
-      :indent="indent"
-      :lazy="lazy"
-      :load="load"
-      :tree-props="treeProps"
-      @select="handleSelect"
-      @select-all="handleSelectAll"
-      @selection-change="handleSelectionChange"
-      @cell-mouse-enter="handleCellMouseEnter"
-      @cell-mouse-leave="handleCellMouseLeave"
-      @cell-click="handleCellClick"
-      @cell-dblclick="handleCellDblclick"
-      @row-click="handleRowClick"
-      @row-contextmenu="handleRowContextmenu"
-      @row-dblclick="handleRowDblclick"
-      @header-click="handleHeaderClick"
-      @header-contextmenu="handleHeaderContextmenu"
-      @sort-change="handleSortChange"
-      @filter-change="handleFilterChange"
-      @current-change="handleCurrentChange"
-      @header-dragend="handleHeaderDragend"
-      @expand-change="handleExpandChange"
-    >
-      <slot />
-    </el-table>
-    
-    <!-- 分页组件 -->
-    <div v-if="showPagination" class="gva-pagination">
-      <el-pagination
-        v-model:current-page="currentPage"
-        v-model:page-size="pageSize"
-        :page-sizes="pageSizes"
-        :small="small"
-        :disabled="disabled"
-        :background="background"
-        :layout="layout"
-        :total="total"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-      />
-    </div>
-  </div>
+  <!-- 基础组件库（core/componentLibrary）全局组件 -->
+  <g-button type="primary">保存</g-button>
+
+  <!-- 本地 svg 图标（src/assets/icons 下的文件按文件名自动注册） -->
+  <SvgIcon localIcon="lock" class="text-red-500 text-3xl" />
+
+  <!-- Iconify 在线图标 -->
+  <SvgIcon icon="lucide:search" />
 </template>
-
-<script setup>
-import { ref, computed } from 'vue'
-
-// Props定义
-const props = defineProps({
-  // 表格数据
-  tableData: {
-    type: Array,
-    default: () => []
-  },
-  // 加载状态
-  loading: {
-    type: Boolean,
-    default: false
-  },
-  // 是否显示分页
-  showPagination: {
-    type: Boolean,
-    default: true
-  },
-  // 分页配置
-  total: {
-    type: Number,
-    default: 0
-  },
-  currentPage: {
-    type: Number,
-    default: 1
-  },
-  pageSize: {
-    type: Number,
-    default: 10
-  },
-  pageSizes: {
-    type: Array,
-    default: () => [10, 20, 50, 100]
-  },
-  layout: {
-    type: String,
-    default: 'total, sizes, prev, pager, next, jumper'
-  },
-  // 表格配置
-  height: [String, Number],
-  maxHeight: [String, Number],
-  stripe: Boolean,
-  border: Boolean,
-  size: String,
-  fit: {
-    type: Boolean,
-    default: true
-  },
-  showHeader: {
-    type: Boolean,
-    default: true
-  },
-  highlightCurrentRow: Boolean,
-  currentRowKey: [String, Number],
-  rowClassName: [String, Function],
-  rowStyle: [Object, Function],
-  cellClassName: [String, Function],
-  cellStyle: [Object, Function],
-  headerRowClassName: [String, Function],
-  headerRowStyle: [Object, Function],
-  headerCellClassName: [String, Function],
-  headerCellStyle: [Object, Function],
-  rowKey: [String, Function],
-  emptyText: String,
-  defaultExpandAll: Boolean,
-  expandRowKeys: Array,
-  defaultSort: Object,
-  tooltipEffect: String,
-  showSummary: Boolean,
-  sumText: String,
-  summaryMethod: Function,
-  spanMethod: Function,
-  selectOnIndeterminate: {
-    type: Boolean,
-    default: true
-  },
-  indent: {
-    type: Number,
-    default: 16
-  },
-  lazy: Boolean,
-  load: Function,
-  treeProps: {
-    type: Object,
-    default: () => ({
-      hasChildren: 'hasChildren',
-      children: 'children'
-    })
-  },
-  small: Boolean,
-  disabled: Boolean,
-  background: {
-    type: Boolean,
-    default: true
-  }
-})
-
-// Emits定义
-const emit = defineEmits([
-  'select',
-  'select-all',
-  'selection-change',
-  'cell-mouse-enter',
-  'cell-mouse-leave',
-  'cell-click',
-  'cell-dblclick',
-  'row-click',
-  'row-contextmenu',
-  'row-dblclick',
-  'header-click',
-  'header-contextmenu',
-  'sort-change',
-  'filter-change',
-  'current-change',
-  'header-dragend',
-  'expand-change',
-  'size-change',
-  'page-change'
-])
-
-// 表格引用
-const tableRef = ref()
-
-// 事件处理
-const handleSelect = (selection, row) => emit('select', selection, row)
-const handleSelectAll = (selection) => emit('select-all', selection)
-const handleSelectionChange = (selection) => emit('selection-change', selection)
-const handleCellMouseEnter = (row, column, cell, event) => emit('cell-mouse-enter', row, column, cell, event)
-const handleCellMouseLeave = (row, column, cell, event) => emit('cell-mouse-leave', row, column, cell, event)
-const handleCellClick = (row, column, cell, event) => emit('cell-click', row, column, cell, event)
-const handleCellDblclick = (row, column, cell, event) => emit('cell-dblclick', row, column, cell, event)
-const handleRowClick = (row, column, event) => emit('row-click', row, column, event)
-const handleRowContextmenu = (row, column, event) => emit('row-contextmenu', row, column, event)
-const handleRowDblclick = (row, column, event) => emit('row-dblclick', row, column, event)
-const handleHeaderClick = (column, event) => emit('header-click', column, event)
-const handleHeaderContextmenu = (column, event) => emit('header-contextmenu', column, event)
-const handleSortChange = (data) => emit('sort-change', data)
-const handleFilterChange = (filters) => emit('filter-change', filters)
-const handleCurrentChange = (currentRow, oldCurrentRow) => emit('current-change', currentRow, oldCurrentRow)
-const handleHeaderDragend = (newWidth, oldWidth, column, event) => emit('header-dragend', newWidth, oldWidth, column, event)
-const handleExpandChange = (row, expandedRows) => emit('expand-change', row, expandedRows)
-
-// 分页事件处理
-const handleSizeChange = (size) => emit('size-change', size)
-const handlePageChange = (page) => emit('page-change', page)
-
-// 暴露表格方法
-defineExpose({
-  tableRef,
-  clearSelection: () => tableRef.value?.clearSelection(),
-  toggleRowSelection: (row, selected) => tableRef.value?.toggleRowSelection(row, selected),
-  toggleAllSelection: () => tableRef.value?.toggleAllSelection(),
-  toggleRowExpansion: (row, expanded) => tableRef.value?.toggleRowExpansion(row, expanded),
-  setCurrentRow: (row) => tableRef.value?.setCurrentRow(row),
-  clearSort: () => tableRef.value?.clearSort(),
-  clearFilter: (columnKeys) => tableRef.value?.clearFilter(columnKeys),
-  doLayout: () => tableRef.value?.doLayout(),
-  sort: (prop, order) => tableRef.value?.sort(prop, order)
-})
-</script>
-
-<style lang="scss" scoped>
-.gva-table {
-  .gva-pagination {
-    margin-top: 20px;
-    text-align: right;
-  }
-}
-</style>
 ```
 
 ## 权限控制
 
 ### 权限指令
 
+`v-auth` 指令按角色 ID（authorityId）控制元素是否渲染，支持数组、字符串、数字传参以及 `.not` 修饰符取反：
+
 ```javascript
 // src/directive/auth.js
 import { useUserStore } from '@/pinia/modules/user'
-
-// 权限检查函数
-function checkPermission(el, binding) {
-  const { value } = binding
-  const userStore = useUserStore()
-  const roles = userStore.userInfo.authority?.defaultRouter || []
-  
-  if (value && value instanceof Array && value.length > 0) {
-    const permissionRoles = value
-    const hasPermission = roles.some(role => {
-      return permissionRoles.includes(role)
-    })
-    
-    if (!hasPermission) {
-      el.parentNode && el.parentNode.removeChild(el)
-    }
-  } else {
-    throw new Error('权限指令需要传入数组参数')
-  }
-}
-
-// 权限指令
 export default {
-  mounted(el, binding) {
-    checkPermission(el, binding)
-  },
-  updated(el, binding) {
-    checkPermission(el, binding)
+  install: (app) => {
+    const userStore = useUserStore()
+    app.directive('auth', {
+      mounted: function (el, binding) {
+        const userInfo = userStore.userInfo
+        if (!binding.value) {
+          el.parentNode.removeChild(el)
+          return
+        }
+        const waitUse = binding.value.toString().split(',')
+        let flag = waitUse.some((item) => Number(item) === userInfo.authorityId)
+        if (binding.modifiers.not) {
+          flag = !flag
+        }
+        if (!flag) {
+          el.parentNode.removeChild(el)
+        }
+      }
+    })
   }
 }
 ```
 
 ### 按钮权限控制
 
+`useBtnAuth` 返回当前路由 `meta.btns`（由后端菜单下发），配合 `v-auth` 控制按钮级权限：
+
 ```javascript
 // src/utils/btnAuth.js
-import { useUserStore } from '@/pinia/modules/user'
-
-// 检查按钮权限
-export function checkBtnPermission(btnName) {
-  const userStore = useUserStore()
-  const btnAuth = userStore.userInfo.authority?.btns || []
-  return btnAuth.includes(btnName)
-}
-
-// 权限按钮组件
-export function useBtnAuth() {
-  const userStore = useUserStore()
-  
-  const hasAuth = (btnName) => {
-    const btnAuth = userStore.userInfo.authority?.btns || []
-    return btnAuth.includes(btnName)
-  }
-  
-  return {
-    hasAuth
-  }
+import { useRoute } from 'vue-router'
+import { reactive } from 'vue'
+export const useBtnAuth = () => {
+  const route = useRoute()
+  return route.meta.btns || reactive({})
 }
 ```
+
+按钮的创建、分配与页面中使用方式详见 [按钮权限](./button-auth.md)。
 
 ## 主题定制
 
-### Element Plus 主题定制
+3.0 内置完整的主题引擎（`src/theme`），支持主题色、暗色模式、布局模式、菜单风格、标签栏风格等可视化配置，并提供主题预设的导入导出，详见 [自定义全局皮肤](./menu-theme.md)。
 
-```scss
-// src/style/element_variables.scss
-@forward 'element-plus/theme-chalk/src/common/var.scss' with (
-  $colors: (
-    'primary': (
-      'base': #409eff,
-    ),
-    'success': (
-      'base': #67c23a,
-    ),
-    'warning': (
-      'base': #e6a23c,
-    ),
-    'danger': (
-      'base': #f56c6c,
-    ),
-    'error': (
-      'base': #f56c6c,
-    ),
-    'info': (
-      'base': #909399,
-    ),
-  )
-);
-
-// 自定义组件样式
-.el-button {
-  border-radius: 4px;
-  
-  &.is-round {
-    border-radius: 20px;
-  }
-}
-
-.el-card {
-  border-radius: 8px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-}
-
-.el-table {
-  .el-table__header {
-    th {
-      background-color: #fafafa;
-      color: #606266;
-      font-weight: 500;
-    }
-  }
-}
-```
-
-### 暗色主题支持
-
-```scss
-// src/style/dark.scss
-[data-theme='dark'] {
-  --el-bg-color: #141414;
-  --el-bg-color-page: #0a0a0a;
-  --el-bg-color-overlay: #1d1e1f;
-  --el-text-color-primary: #e5eaf3;
-  --el-text-color-regular: #cfd3dc;
-  --el-text-color-secondary: #a3a6ad;
-  --el-text-color-placeholder: #8d9095;
-  --el-text-color-disabled: #6c6e72;
-  --el-border-color: #4c4d4f;
-  --el-border-color-light: #414243;
-  --el-border-color-lighter: #363637;
-  --el-border-color-extra-light: #2b2b2c;
-  --el-border-color-dark: #58585b;
-  --el-border-color-darker: #636466;
-  --el-fill-color: #303133;
-  --el-fill-color-light: #262727;
-  --el-fill-color-lighter: #1d1d1d;
-  --el-fill-color-extra-light: #191919;
-  --el-fill-color-dark: #39393a;
-  --el-fill-color-darker: #424243;
-  --el-fill-color-blank: transparent;
-  
-  // 自定义组件暗色样式
-  .layout-container {
-    background-color: var(--el-bg-color-page);
-  }
-  
-  .gva-card {
-    background-color: var(--el-bg-color);
-    border-color: var(--el-border-color);
-  }
-}
-```
+与 Element Plus 的关系：主题引擎通过 `el-config-provider` 下发尺寸等行为配置，颜色则直接写入 `--el-color-primary` 等 CSS 变量，无需编译期定制；如需全局覆盖 Element Plus 样式，仍可在 `src/style/element_visiable.scss` 中编写。暗色模式通过 `html.dark` class 切换（Element Plus 暗色变量由 `element-plus/theme-chalk/dark/css-vars.css` 提供）。
 
 ## 响应式设计
 
-### 移动端适配
+3.0 使用 `src/hooks/responsive.js` 按三档断点自适应（参考 arco-pro 实现）：
 
-```scss
-// src/style/mobile.scss
-@media screen and (max-width: 768px) {
-  .layout-container {
-    .aside {
-      position: fixed;
-      top: 0;
-      left: -210px;
-      z-index: 1001;
-      transition: left 0.3s;
-      
-      &.mobile-show {
-        left: 0;
-      }
-    }
-    
-    .main-container {
-      margin-left: 0;
-      
-      .navbar {
-        .hamburger-container {
-          display: block;
-        }
-      }
-    }
-  }
-  
-  .gva-table {
-    .el-table {
-      font-size: 12px;
-    }
-    
-    .gva-pagination {
-      .el-pagination {
-        justify-content: center;
-        
-        .el-pagination__sizes,
-        .el-pagination__jump {
-          display: none;
-        }
-      }
-    }
-  }
-  
-  .gva-form {
-    .el-form-item {
-      margin-bottom: 15px;
-      
-      .el-form-item__label {
-        line-height: 20px;
-        margin-bottom: 5px;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .gva-search-box {
-    .el-form {
-      .el-form-item {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-      }
-    }
-  }
-  
-  .gva-btn-list {
-    .el-button {
-      margin-bottom: 10px;
-      width: 100%;
-    }
-  }
-}
-```
+- **< 640px（mobile）**：收起所有内联菜单，侧边栏切换为左侧 Drawer 抽屉菜单。
+- **640 ~ 1024px（pad）**：强制使用「通栏侧边」布局并自动收缩侧边栏（不修改用户所选布局）。
+- **>= 1024px（desktop）**：使用用户在主题设置中选择的布局。
 
 ## 性能优化
 
 ### 路由懒加载
 
+静态路由与动态路由均通过 `() => import(...)` 懒加载（动态路由由 `import.meta.glob` 按需加载），构建时自动按路由分包：
+
 ```javascript
-// 路由懒加载配置
-const routes = [
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: () => import(/* webpackChunkName: "dashboard" */ '@/view/dashboard/index.vue')
-  },
-  {
-    path: '/system',
-    name: 'System',
-    component: () => import(/* webpackChunkName: "system" */ '@/view/system/index.vue'),
-    children: [
-      {
-        path: 'user',
-        name: 'User',
-        component: () => import(/* webpackChunkName: "system-user" */ '@/view/system/user/index.vue')
-      }
-    ]
-  }
-]
+{
+  path: '/login',
+  name: 'Login',
+  component: () => import('@/view/login/index.vue')
+}
 ```
 
 ### 组件懒加载
 
 ```vue
-<template>
-  <div>
-    <!-- 使用 Suspense 包装异步组件 -->
-    <Suspense>
-      <template #default>
-        <AsyncComponent />
-      </template>
-      <template #fallback>
-        <div class="loading">加载中...</div>
-      </template>
-    </Suspense>
-  </div>
-</template>
-
 <script setup>
 import { defineAsyncComponent } from 'vue'
 
-// 异步组件
+// 重型组件按需加载
 const AsyncComponent = defineAsyncComponent({
-  loader: () => import('@/components/heavy-component.vue'),
-  loadingComponent: () => import('@/components/loading.vue'),
-  errorComponent: () => import('@/components/error.vue'),
+  loader: () => import('./HeavyComponent.vue'),
   delay: 200,
   timeout: 3000
 })
@@ -1131,153 +593,16 @@ const AsyncComponent = defineAsyncComponent({
 
 ### 图片懒加载
 
-```vue
-<template>
-  <div class="image-container">
-    <img
-      v-lazy="imageSrc"
-      :alt="imageAlt"
-      class="lazy-image"
-      @load="handleImageLoad"
-      @error="handleImageError"
-    >
-  </div>
-</template>
+列表中的图片优先使用浏览器原生 `loading="lazy"` 属性，无需额外指令：
 
-<script setup>
-import { ref } from 'vue'
-
-const props = defineProps({
-  imageSrc: {
-    type: String,
-    required: true
-  },
-  imageAlt: {
-    type: String,
-    default: ''
-  }
-})
-
-const imageLoaded = ref(false)
-const imageError = ref(false)
-
-const handleImageLoad = () => {
-  imageLoaded.value = true
-}
-
-const handleImageError = () => {
-  imageError.value = true
-}
-</script>
-
-<style scoped>
-.image-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.lazy-image {
-  width: 100%;
-  height: auto;
-  transition: opacity 0.3s;
-}
-
-.lazy-image[lazy=loading] {
-  opacity: 0.3;
-}
-
-.lazy-image[lazy=loaded] {
-  opacity: 1;
-}
-
-.lazy-image[lazy=error] {
-  opacity: 0.3;
-}
-</style>
-```
-
-## 测试
-
-### 单元测试配置
-
-```javascript
-// vitest.config.js
-import { defineConfig } from 'vitest/config'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
-
-export default defineConfig({
-  plugins: [vue()],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./tests/setup.js']
-  },
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src')
-    }
-  }
-})
-```
-
-### 组件测试示例
-
-```javascript
-// tests/components/GvaTable.test.js
-import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
-import GvaTable from '@/components/gva-table/index.vue'
-import { ElTable, ElPagination } from 'element-plus'
-
-describe('GvaTable', () => {
-  it('renders table with data', () => {
-    const tableData = [
-      { id: 1, name: '张三', age: 25 },
-      { id: 2, name: '李四', age: 30 }
-    ]
-    
-    const wrapper = mount(GvaTable, {
-      props: {
-        tableData,
-        total: 2,
-        currentPage: 1,
-        pageSize: 10
-      },
-      global: {
-        components: {
-          ElTable,
-          ElPagination
-        }
-      }
-    })
-    
-    expect(wrapper.find('.gva-table').exists()).toBe(true)
-    expect(wrapper.find('.gva-pagination').exists()).toBe(true)
-  })
-  
-  it('emits page-change event when page changes', async () => {
-    const wrapper = mount(GvaTable, {
-      props: {
-        tableData: [],
-        total: 100,
-        currentPage: 1,
-        pageSize: 10
-      }
-    })
-    
-    await wrapper.vm.handlePageChange(2)
-    
-    expect(wrapper.emitted('page-change')).toBeTruthy()
-    expect(wrapper.emitted('page-change')[0]).toEqual([2])
-  })
-})
+```html
+<img src="..." loading="lazy" alt="...">
 ```
 
 ## 最佳实践
 
 ### 1. 代码规范
-- 使用 ESLint + Prettier 保证代码质量
+- 使用 ESLint 保证代码质量（`npm run lint` / `npm run lint:fix`）
 - 遵循 Vue 3 Composition API 最佳实践
 - 组件命名使用 PascalCase
 - 文件命名使用 kebab-case
@@ -1303,16 +628,16 @@ describe('GvaTable', () => {
 ## 常见问题
 
 ### Q: 如何解决路由懒加载失败？
-A: 检查路径是否正确，确保组件文件存在，可以添加错误处理。
+A: 检查路径是否正确，确保组件文件存在。3.0 中动态路由找不到组件时会降级为占位组件并在控制台输出 `[asyncRouter]` 警告。
 
 ### Q: Element Plus 样式不生效？
-A: 确保正确导入样式文件，检查 CSS 优先级和作用域。
+A: 确保正确导入样式文件，检查 CSS 优先级和作用域；全局覆盖样式写在 `src/style/element_visiable.scss`。
 
 ### Q: Pinia 状态丢失？
 A: 检查是否正确持久化状态，页面刷新时重新初始化状态。
 
 ### Q: 打包后静态资源路径错误？
-A: 检查 Vite 配置中的 base 路径和 publicPath 设置。
+A: 检查 Vite 配置中的 base 路径设置。
 
 ## 相关文档
 
@@ -1321,3 +646,4 @@ A: 检查 Vite 配置中的 base 路径和 publicPath 设置。
 - [Element Plus 文档](https://element-plus.org/)
 - [Pinia 文档](https://pinia.vuejs.org/)
 - [Vue Router 文档](https://router.vuejs.org/)
+- [UnoCSS 文档](https://unocss.dev/)

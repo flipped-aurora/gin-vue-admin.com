@@ -20,21 +20,19 @@
 3. 得到配置文件
 ```yaml
 # qiniu configuration (请自行七牛申请对应的 公钥 私钥 bucket 和 域名地址)
-QiniuKodo:
-  # Path 文件存储文件夹
-  Path: 'gva'
-  # Prefix 自定义文件名前缀, 可以不写为空了
-  Prefix: 'oss_'
+qiniu:
+  # Zone 存储区域
+  zone: ZoneHuaDong
   # Bucket 存储桶名称
-  Bucket: 'gva-1'
-  # Domain 访问域名
-  Domain: 'rf5bfe2uo.hn-bkt.clouddn.com'
+  bucket: 'gva-1'
+  # ImgPath 访问域名
+  img-path: 'rf5bfe2uo.hn-bkt.clouddn.com'
   # AccessKey 访问密钥 AccessKey
-  AccessKey: 'eAM1JaXHRJL_-Ue52tYLYw5gijt6r9ORgcG4dmLt'
+  access-key: 'your-access-key'
   # SecretKey 访问密钥 SecretKey
-  SecretKey: 'GQtW43BUPBoj9HS99fTU7-xsPhQHLI70FvCAMHJ2'
+  secret-key: 'your-secret-key'
   # UseHttps 是否使用https
-  UseHttps: false
+  use-https: false
   # UseCdnDomains 是否使用cdn域名
-  UseCdnDomains: false
+  use-cdn-domains: false
 ```

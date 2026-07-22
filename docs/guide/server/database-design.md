@@ -25,15 +25,21 @@ Gin-Vue-Admin 支持多种数据库：
 │   └── 权限规则 (casbin_rule)
 ├── 基础功能模块
 │   ├── 字典管理 (sys_dictionaries)
-│   ├── 文件上传 (exa_file_upload_and_downloads)
 │   ├── 操作历史 (sys_operation_records)
 │   └── JWT黑名单 (jwt_blacklists)
+├── 媒体库模块
+│   ├── 文件上传 (media_file_upload_and_downloads)
+│   ├── 附件分类 (media_attachment_category)
+│   ├── 上传会话 (media_uploads)
+│   └── 分片记录 (media_upload_chunks)
+├── 定时任务模块
+│   ├── 定时任务 (sys_timed_tasks)
+│   └── 执行日志 (sys_timed_task_logs)
 ├── 代码生成模块
-│   ├── 自动代码 (sys_auto_codes)
+│   ├── 模板包 (sys_auto_code_packages)
 │   └── 代码历史 (sys_auto_code_histories)
 └── 示例模块
-    ├── 客户管理 (exa_customers)
-    └── 文件分片 (exa_file_chunks)
+    └── 客户管理 (exa_customers)
 ```
 
 ## 核心表结构
@@ -262,61 +268,110 @@ CREATE TABLE `sys_operation_records` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='操作记录表';
 ```
 
-### 5. 文件管理表
+### 5. 媒体库表
 
-#### exa_file_upload_and_downloads (文件上传下载表)
+#### media_file_upload_and_downloads (文件上传下载表)
+
+v3.0 起由 example 组的 `exa_file_upload_and_downloads` 迁入 media 组并更名，新增 `size`、`mime`、`md5`、`user_id` 字段。
 
 ```sql
-CREATE TABLE `exa_file_upload_and_downloads` (
+CREATE TABLE `media_file_upload_and_downloads` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '文件ID',
   `created_at` datetime(3) DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime(3) DEFAULT NULL COMMENT '更新时间',
   `deleted_at` datetime(3) DEFAULT NULL COMMENT '删除时间',
   `name` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件名',
+  `class_id` bigint DEFAULT '0' COMMENT '分类id',
   `url` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件地址',
   `tag` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件标签',
-  `key` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件唯一标识',
+  `key` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '编号',
+  `size` bigint DEFAULT '0' COMMENT '文件大小(字节)',
+  `mime` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'MIME类型',
+  `md5` varchar(64) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件MD5',
+  `user_id` bigint unsigned DEFAULT NULL COMMENT '上传者ID',
   PRIMARY KEY (`id`),
-  KEY `idx_exa_file_upload_and_downloads_deleted_at` (`deleted_at`),
-  KEY `idx_exa_file_upload_and_downloads_tag` (`tag`),
-  KEY `idx_exa_file_upload_and_downloads_key` (`key`)
+  KEY `idx_media_file_upload_and_downloads_deleted_at` (`deleted_at`),
+  KEY `idx_media_file_upload_and_downloads_md5` (`md5`),
+  KEY `idx_media_file_upload_and_downloads_user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='文件上传下载表';
 ```
 
-#### exa_file_chunks (文件分片表)
+#### media_attachment_category (附件分类表)
 
 ```sql
-CREATE TABLE `exa_file_chunks` (
+CREATE TABLE `media_attachment_category` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '分类ID',
+  `created_at` datetime(3) DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime(3) DEFAULT NULL COMMENT '更新时间',
+  `deleted_at` datetime(3) DEFAULT NULL COMMENT '删除时间',
+  `name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '分类名称',
+  `pid` bigint DEFAULT '0' COMMENT '父节点ID',
+  PRIMARY KEY (`id`),
+  KEY `idx_media_attachment_category_deleted_at` (`deleted_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='附件分类表';
+```
+
+#### media_uploads (大文件上传会话表)
+
+```sql
+CREATE TABLE `media_uploads` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '会话ID',
+  `created_at` datetime(3) DEFAULT NULL COMMENT '创建时间',
+  `updated_at` datetime(3) DEFAULT NULL COMMENT '更新时间',
+  `deleted_at` datetime(3) DEFAULT NULL COMMENT '删除时间',
+  `user_id` bigint unsigned DEFAULT NULL COMMENT '上传者',
+  `file_name` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件名',
+  `file_hash` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '整文件MD5',
+  `file_size` bigint DEFAULT NULL COMMENT '总字节',
+  `chunk_size` bigint DEFAULT NULL COMMENT '分片字节',
+  `chunk_total` bigint DEFAULT NULL COMMENT '分片总数',
+  `status` varchar(191) COLLATE utf8mb4_general_ci DEFAULT 'uploading' COMMENT '状态 uploading/merging/completed/failed',
+  `storage_key` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '最终对象key',
+  `media_id` bigint unsigned DEFAULT NULL COMMENT '媒体库记录ID',
+  PRIMARY KEY (`id`),
+  KEY `idx_media_uploads_deleted_at` (`deleted_at`),
+  KEY `idx_media_uploads_user_id` (`user_id`),
+  KEY `idx_media_uploads_file_hash` (`file_hash`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='大文件上传会话表';
+```
+
+#### media_upload_chunks (分片收讫记录表)
+
+```sql
+CREATE TABLE `media_upload_chunks` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '分片ID',
   `created_at` datetime(3) DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime(3) DEFAULT NULL COMMENT '更新时间',
   `deleted_at` datetime(3) DEFAULT NULL COMMENT '删除时间',
-  `exa_file_id` bigint unsigned DEFAULT NULL COMMENT '文件ID',
-  `file_chunk_number` bigint DEFAULT NULL COMMENT '分片编号',
-  `file_chunk_path` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '分片路径',
+  `upload_id` bigint unsigned DEFAULT NULL COMMENT '上传会话ID',
+  `chunk_index` bigint DEFAULT NULL COMMENT '分片索引',
+  `chunk_hash` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '分片MD5',
+  `size` bigint DEFAULT NULL COMMENT '分片字节',
   PRIMARY KEY (`id`),
-  KEY `idx_exa_file_chunks_deleted_at` (`deleted_at`),
-  KEY `idx_exa_file_chunks_exa_file_id` (`exa_file_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='文件分片表';
+  UNIQUE KEY `idx_upload_chunk` (`upload_id`,`chunk_index`),
+  KEY `idx_media_upload_chunks_deleted_at` (`deleted_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='分片收讫记录表';
 ```
 
 ### 6. 代码生成表
 
-#### sys_auto_codes (自动代码表)
+#### sys_auto_code_packages (代码模板包表)
+
+v3.0 起原 `sys_auto_codes` 表调整为模板包表 `sys_auto_code_packages`。
 
 ```sql
-CREATE TABLE `sys_auto_codes` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '代码ID',
+CREATE TABLE `sys_auto_code_packages` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '模板包ID',
   `created_at` datetime(3) DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime(3) DEFAULT NULL COMMENT '更新时间',
   `deleted_at` datetime(3) DEFAULT NULL COMMENT '删除时间',
-  `package_name` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '包名',
-  `label` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '展示名',
   `desc` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '描述',
+  `label` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '展示名',
+  `template` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '模版',
+  `package_name` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '包名',
   PRIMARY KEY (`id`),
-  KEY `idx_sys_auto_codes_deleted_at` (`deleted_at`),
-  KEY `idx_sys_auto_codes_package_name` (`package_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='自动代码表';
+  KEY `idx_sys_auto_code_packages_deleted_at` (`deleted_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='代码模板包表';
 ```
 
 #### sys_auto_code_histories (代码生成历史表)
@@ -327,21 +382,22 @@ CREATE TABLE `sys_auto_code_histories` (
   `created_at` datetime(3) DEFAULT NULL COMMENT '创建时间',
   `updated_at` datetime(3) DEFAULT NULL COMMENT '更新时间',
   `deleted_at` datetime(3) DEFAULT NULL COMMENT '删除时间',
-  `package` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '包名',
-  `business_db` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '业务数据库',
   `table_name` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '表名',
-  `menu_id` bigint unsigned DEFAULT NULL COMMENT '菜单ID',
-  `request_meta` text COLLATE utf8mb4_general_ci COMMENT '请求元数据',
-  `auto_code_path` text COLLATE utf8mb4_general_ci COMMENT '自动生成代码路径',
-  `injection_meta` text COLLATE utf8mb4_general_ci COMMENT '注入元数据',
+  `package` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '模块名/插件名',
+  `request` text COLLATE utf8mb4_general_ci COMMENT '前端传入的结构化信息',
   `struct_name` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '结构体名称',
-  `struct_cn_name` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '结构体中文名称',
-  `api_ids` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'API IDs',
-  `flag` bigint DEFAULT NULL COMMENT '标记',
+  `abbreviation` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '结构体名称缩写',
+  `business_db` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '业务库',
+  `description` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Struct中文名称',
+  `templates` text COLLATE utf8mb4_general_ci COMMENT '模板信息',
+  `injections` text COLLATE utf8mb4_general_ci COMMENT '注入路径',
+  `flag` bigint DEFAULT NULL COMMENT '标记 0:创建 1:回滚',
+  `api_ids` varchar(191) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'api表注册内容',
+  `menu_id` bigint unsigned DEFAULT NULL COMMENT '菜单ID',
+  `export_template_id` bigint unsigned DEFAULT NULL COMMENT '导出模板ID',
+  `package_id` bigint unsigned DEFAULT NULL COMMENT '包ID',
   PRIMARY KEY (`id`),
-  KEY `idx_sys_auto_code_histories_deleted_at` (`deleted_at`),
-  KEY `idx_sys_auto_code_histories_package` (`package`),
-  KEY `idx_sys_auto_code_histories_table_name` (`table_name`)
+  KEY `idx_sys_auto_code_histories_deleted_at` (`deleted_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='代码生成历史表';
 ```
 
@@ -604,32 +660,55 @@ func GormMysql() *gorm.DB {
 ```go
 // initialize/gorm.go
 func RegisterTables() {
-    db := global.GVA_DB
-    err := db.AutoMigrate(
-        // 系统模块
-        system.SysUser{},
-        system.SysAuthority{},
-        system.SysApi{},
-        system.SysBaseMenu{},
-        system.SysBaseMenuBtn{},
-        system.SysBaseMenuParameter{},
-        system.SysAutoCode{},
-        system.SysAutoCodeHistory{},
-        system.SysDictionary{},
-        system.SysDictionaryDetail{},
-        system.SysOperationRecord{},
-        
-        // 示例模块
-        example.ExaFile{},
-        example.ExaFileChunk{},
-        example.ExaFileUploadAndDownload{},
-        example.ExaCustomer{},
-    )
-    if err != nil {
-        global.GVA_LOG.Error("register table failed", zap.Error(err))
-        os.Exit(0)
-    }
-    global.GVA_LOG.Info("register table success")
+	if global.GVA_CONFIG.System.DisableAutoMigrate {
+		logger.Bg().Mod("system").Info("auto-migrate is disabled, skipping table registration")
+		return
+	}
+
+	db := global.GVA_DB
+	err := db.AutoMigrate(
+
+		system.SysApi{},
+		system.SysIgnoreApi{},
+		system.SysUser{},
+		system.SysBaseMenu{},
+		system.JwtBlacklist{},
+		system.SysAuthority{},
+		system.SysDepartment{},
+		system.SysPosition{},
+		system.SysDataAccessLog{},
+		system.SysAuthorityDepartment{},
+		system.SysDictionary{},
+		system.SysOperationRecord{},
+		system.SysAutoCodeHistory{},
+		system.SysDictionaryDetail{},
+		system.SysBaseMenuParameter{},
+		system.SysBaseMenuBtn{},
+		system.SysAuthorityBtn{},
+		system.SysAutoCodePackage{},
+		system.SysExportTemplate{},
+		system.Condition{},
+		system.JoinTemplate{},
+		system.SysParams{},
+		system.SysSecurityConfig{},
+		system.SysVersion{},
+		system.SysError{},
+		system.SysApiToken{},
+		system.SysLoginLog{},
+		system.SysTimedTask{},
+		system.SysTimedTaskLog{},
+
+		example.ExaCustomer{},
+		media.MediaUpload{},
+		media.MediaUploadChunk{},
+		media.FileUploadAndDownload{},
+		media.AttachmentCategory{},
+	)
+	if err != nil {
+		logger.Bg().Mod("system").Err(err).Error("register table failed")
+		os.Exit(1)
+	}
+	// ...
 }
 ```
 

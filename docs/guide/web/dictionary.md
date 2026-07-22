@@ -15,7 +15,7 @@ import { getDict } from '@/utils/dictionary'
 
 const sexDict = await getDict("sex")
 // res即返回的字典数组 
-// [{value:0,lable:"男"},{value:1,lable:"女"}]
+// [{value:0,label:"男"},{value:1,label:"女"}]
 
 import { showDictLabel } from '@/utils/dictionary'
 // showDictLabel 方法 可以根据在字典录入的字典和传入的value值匹配出对应的字典label
@@ -28,3 +28,30 @@ const label = showDictLabel(sexDict,0)
 // 或者在html部分直接使用 {{showDictLabel(sexDict,0)}} 获得文字 男
 
 ```
+
+## 树形字典（v3.0）
+
+v3.0 字典支持树形结构，`getDict` 增加了可选的第二个参数：
+
+```js
+// getDict(type, { depth, value })
+// depth：指定获取深度，默认 0 表示返回完整树形结构（带 children）；大于 0 时按深度扁平化返回
+// value：指定节点的 value，返回该节点的 children，默认 null
+
+// 获取完整的字典树形结构
+const dictTree = await getDict('user_status')
+
+// 获取指定深度的扁平化字典数据
+const dictFlat = await getDict('user_status', { depth: 2 })
+
+// 获取指定节点的 children
+const children = await getDict('user_status', { value: 'active' })
+```
+
+`showDictLabel` 完整签名为 `showDictLabel(dict, code, keyCode = 'value', valueCode = 'label')`，后两个参数可在字段名不是 value/label 时自定义映射。
+
+::: tip
+字典数据带缓存：pinia 的 dictionary store 优先调用树形接口 `getDictionaryTreeListByType` 获取数据，失败时自动回退到平铺接口 `findSysDictionary`，并按 type/depth/value 生成缓存 key 复用结果。
+:::
+
+字典详情相关接口还包括 `getDictionaryDetailsByParent`（按父节点获取字典详情）和 `getDictionaryPath`（获取节点路径），可在需要级联场景时直接使用。

@@ -9,6 +9,7 @@
 - [AI助手配置](./mcp)：介绍 MCP 服务本体，以及后台的工具模板页与调试页。本文只聚焦「用 MCP 生成业务模块」这一条工作流，所需的连接配置下文均已备齐，可直接照做。
 - [AI CLI 构建](./ai-cli)：把你挑选的业务接口打包成命令行与 Skill，让 AI 在终端调用**已有**接口；本文解决的则是**从无到有生成新模块**。两者定位不同，可同时使用。
 - [代码生成器使用指南](../generator/server)：同一套生成器的手工用法。AI 工作流本质上就是让 AI 替你填写代码生成器的表单，两条路径产出的代码完全一致。
+- [调用场景编排](./ai-scenario)：把多条命令 / API 的调用依赖编排成流程说明交给 AI 执行；v3.0 起取代已移除的旧版 AI Workflow。
 
 ## 核心特性
 
@@ -41,7 +42,7 @@ curl http://127.0.0.1:8889/health   # 返回 ok 即为正常
 配置文件的查找顺序为「命令行 `-config` → 环境变量 `GVA_MCP_CONFIG` → 当前目录 `config.yaml` → `cmd/mcp/config.yaml` → …」。在 `server/` 下直接执行 `go run ./cmd/mcp`，会**先命中主项目的 `server/config.yaml`**——虽然靠默认值也能起来，但加载的并不是你以为的那份配置。请始终显式带上 `-config`。
 :::
 
-除命令行外，**AI 工坊 → Mcp Tools管理** 页面也提供了启动 / 停止按钮，效果等同于上述命令（后台会先 `go build` 再拉起独立进程，因此运行 GVA 后端的机器上需装有 Go）。若 MCP 是你自己在终端启动的，页面会显示为「外部启动」状态，此时无法从页面停止。
+除命令行外，**AI 工坊 → Mcp Tools管理** 页面也提供了「启动 / 停用」按钮，效果等同于上述命令（后台会先 `go build` 再拉起独立进程，因此运行 GVA 后端的机器上需装有 Go）。若 MCP 是你自己在终端启动的，页面会显示为「外部服务运行中」状态，此时无法从页面停用。
 
 <!-- 📷 截图位（待补）：AI 工坊 → Mcp Tools管理 页面——需露出顶部的 MCP 服务状态（running/external）、「启动 / 停止」按钮，以及下方的 MCP 地址 http://127.0.0.1:8889/mcp。图片放 docs/public/ai-generate/mcp-manage.png -->
 
@@ -296,17 +297,32 @@ web/src/
 
 每次生成都会写入一条历史记录，可以整体撤销。回滚会把生成的文件**移动**到项目根目录的 `rm_file/` 下（而非直接删除），并撤销所有代码注入，因此是可挽回的；勾选后还可同时删除 API、菜单与数据表。
 
-回滚入口是 **自动代码管理** 页。注意该菜单**默认隐藏，不会出现在左侧菜单里**，需要直接访问：
+回滚入口是 **编程辅助 → 自动代码管理** 页（v3.0 起该菜单默认显示，不再隐藏），也可以直接访问：
 
 ```text
 http://localhost:8080/#/layout/autoCodeAdmin
 ```
 
-若页面打不开，请到 **权限管理 → 角色管理** 确认当前角色已勾选「自动代码管理」这个菜单。
+若菜单不可见或页面打不开，请到 **权限管理 → 角色管理** 确认当前角色已勾选「自动代码管理」这个菜单。
 
 回滚只能在后台界面操作，AI 无法通过 MCP 触发。另外要注意，`gva_analyze` 清理空包时会删除对应的历史记录，那**只删记录、不做回滚**；一旦记录被删除，该模块就再也无法回滚了。
 
 <!-- 📷 截图位（待补）：自动代码管理页（直接访问 #/layout/autoCodeAdmin）——需露出生成历史列表、「回滚标记」列（已回滚/未回滚标签）和行内的「回滚」按钮，最好再露出点击回滚后的确认弹窗（可勾选 删除API/删除菜单/删除表）。图片放 docs/public/ai-generate/rollback.png -->
+
+## 大模型直出：AI 辅助与 AI 页面绘制
+
+除了经 AI 编辑器驱动的 MCP 工作流，GVA 还内置了不依赖外部编辑器的大模型直出能力，链路为「前端 → GVA 后端 → 上游大模型」，后端把上游的流式响应转发为 SSE 事件回给前端。入口有两处：
+
+- **代码生成器的 AI 辅助**：**编程辅助 → 代码生成器**（`web/src/plugin/auto/view/autoCode/`）顶部的「使用AI创建」，用文字描述表结构、或直接粘贴图片（Ctrl+V）让 AI 生成结构定义并自动回填表单，确认后走正常的预览、落库流程。
+- **AI 页面绘制**：**AI 工坊 → AI页面绘制**（页内标题「AI前端工程师」，`web/src/plugin/ai/view/picture/picture.vue`），用多轮对话流式生成前端页面，左侧为 AI 输出，右侧可切换「页面预览 / 源代码」。该功能属于授权功能。
+
+使用前需在 `server/config.yaml` 配置 `autocode.ai-path`（到插件市场的个人中心获取，填入后重启后端生效）。
+
+实现上，前端 `web/src/api/autoCode.js` 提供三个函数：`llmAuto`（POST `/autoCode/llmAuto`，非流式）、`llmAutoSSEStream`（POST `/autoCode/llmAutoSSE`，fetch 流式读取）、`createWebStream`（页面绘制专用，预设 `mode: newCreateWeb`）。后端的 `LLMAutoSSE`（`server/api/v1/system/sys_auto_code_sse.go`）挂在 PublicGroup（无需 JWT），强制 `response_mode=streaming` 后调用 `server/service/system/auto_code_llm.go` 请求上游大模型，再把流式响应逐段转发为 SSE 事件。
+
+:::tip 旧版 AI Workflow 已移除
+v3.0 已移除旧版「AI Workflow」（AI 工作流）页面与对应后端实现。需要让 AI 按顺序调用多个接口时，请改用 [调用场景编排](./ai-scenario)。
+:::
 
 ## 附录：关键参数速查
 
@@ -440,7 +456,7 @@ autocode:
 
 `auth_header` 只作用于**入站**方向（AI 编辑器 → MCP）。MCP 转发到后端时固定使用 `x-token`，因为后端的 JWT 中间件只认这个头。这样即便把 `auth_header` 改成非默认值，也不会导致所有工具 401。
 
-还有一处容易改错的地方：`server/config.yaml` 中仍保留了一个 `mcp:` 配置块，那是 2.9.0 及更早版本的遗留，3.0 中已**不被任何代码读取**，请只修改 `server/cmd/mcp/config.yaml`。同理，`sse_path`、`message_path`、`url_prefix`、`separate` 这几个旧字段也已废弃。
+还有一处容易改错的地方：`server/config.yaml` 中也保留了一个 `mcp:` 配置块（默认只有 `name`、`version`、`addr`、`separate` 四项）。3.0 中主服务仍会读取它，用于定位与托管独立进程（如 `addr`）；但独立进程自身启动时读的是 `server/cmd/mcp/config.yaml`，两处配置各司其职，注意保持 `addr` 一致。另外，`sse_path`、`message_path`、`url_prefix`、`separate` 这几个字段已在源码中标注 Deprecated，仅为兼容旧配置保留。
 
 ## 常见问题
 

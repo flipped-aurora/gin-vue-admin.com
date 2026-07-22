@@ -112,8 +112,8 @@
    ```json
    {
      "devDependencies": {
-       "@vitejs/plugin-vue": "^2.3.3",
-       "vite": "^3.0.0"
+       "@vitejs/plugin-vue": "^6.0.6",
+       "vite": "^8.0.10"
      }
    }
    ```

@@ -6,10 +6,10 @@ title: k8s资源配置
 # k8s资源配置
 
 ## 使用声明
-1. 上云需要手动初始化数据库,不支持在线初始化操作 (/deployment/server/gva-server-configmap.yaml)
+1. 上云需要手动初始化数据库,不支持在线初始化操作 (deploy/kubernetes/server/gva-server-configmap.yaml)
 
    ```
-   自定义初始化数据库后，将配置写入/deployment/server/gva-server-configmap.yaml
+   自定义初始化数据库后，将配置写入deploy/kubernetes/server/gva-server-configmap.yaml
    ```
 
 

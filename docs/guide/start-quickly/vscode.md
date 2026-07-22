@@ -67,7 +67,7 @@ code .
     "recommendations": [
       "golang.go",
       "vue.volar",
-      "bradlc.vscode-tailwindcss",
+      "antfu.unocss",
       "esbenp.prettier-vscode",
       "ms-vscode.vscode-typescript-next"
     ]
@@ -103,8 +103,8 @@ code .
 2. **ESLint** (dbaeumer.vscode-eslint)
    - JavaScript/TypeScript 代码检查
 
-3. **Tailwind CSS IntelliSense** (bradlc.vscode-tailwindcss)
-   - Tailwind CSS 智能提示
+3. **UnoCSS** (antfu.unocss)
+   - UnoCSS 原子化 CSS 智能提示
 
 4. **Auto Rename Tag** (formulahendry.auto-rename-tag)
    - 自动重命名配对的 HTML/XML 标签
@@ -121,7 +121,7 @@ code --install-extension vue.volar
 code --install-extension vue.vscode-typescript-vue-plugin
 code --install-extension esbenp.prettier-vscode
 code --install-extension dbaeumer.vscode-eslint
-code --install-extension bradlc.vscode-tailwindcss
+code --install-extension antfu.unocss
 code --install-extension formulahendry.auto-rename-tag
 code --install-extension christian-kohler.path-intellisense
 ```

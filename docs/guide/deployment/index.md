@@ -47,10 +47,6 @@ GOOS=linux GOARCH=amd64 go build -o app-linux
 
 ```
 
-    ├── breakpointDir  // 后续断点续传自动生成
-    ├── chunk   // 后续断点续传自动生成
-    ├── fileDir   // 后续断点续传自动生成
-    ├── finish   // 后续断点续传自动生成
     ├── resource
     │   └── 子目录文件					
     ├── dist

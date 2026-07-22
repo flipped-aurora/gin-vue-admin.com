@@ -1,7 +1,7 @@
 # 按钮权限
 
 > 实现方式是采用 vue 原生的注册指令方式，
-> 实现代码
+> 实现代码（/web/src/directive/auth.js）
 ```js
 // 权限按钮展示指令
 import { useUserStore } from '@/pinia/modules/user'
@@ -10,29 +10,14 @@ export default {
     const userStore = useUserStore()
     app.directive('auth', {
       // 当被绑定的元素插入到 DOM 中时……
-      mounted: function(el, binding) {
+      mounted: function (el, binding) {
         const userInfo = userStore.userInfo
-        let type = ''
-        switch (Object.prototype.toString.call(binding.value)) {
-          case '[object Array]':
-            type = 'Array'
-            break
-          case '[object String]':
-            type = 'String'
-            break
-          case '[object Number]':
-            type = 'Number'
-            break
-          default:
-            type = ''
-            break
-        }
-        if (type === '') {
+        if (!binding.value){
           el.parentNode.removeChild(el)
           return
         }
         const waitUse = binding.value.toString().split(',')
-        let flag = waitUse.some(item => item === userInfo.authorityId)
+        let flag = waitUse.some((item) => Number(item) === userInfo.authorityId)
         if (binding.modifiers.not) {
           flag = !flag
         }
@@ -44,6 +29,8 @@ export default {
   }
 }
 ```
+
+指令按当前用户角色 ID（authorityId）匹配传入值，支持数组、字符串、数字传参，`.not` 修饰符可对结果取反。
 
 ## 创建按钮
 
@@ -76,6 +63,7 @@ export default {
 
 <script setup>
     import { useBtnAuth } from '@/utils/btnAuth'
+    // useBtnAuth 返回当前路由 meta.btns（由后端菜单下发并注入路由）
     const btnAuth = useBtnAuth()
 </script>
 

@@ -178,7 +178,7 @@ export default defineConfig({
                             link: '/guide/generator/server',
                         },
                         {
-                            text: '表单生成器 `127.0.0.1` 拒绝连接',
+                            text: '表单生成器',
                             link: '/guide/generator/web',
                         },
                         {
@@ -208,8 +208,12 @@ export default defineConfig({
                             link: '/guide/web/dictionary'
 												},
                         {
-                            text: '自定义全局皮肤',
+                            text: '主题系统',
                             link: '/guide/web/menu-theme'
+                        },
+                        {
+                            text: '基础组件库',
+                            link: '/guide/web/component-library'
                         },
                         {
                             text:'自定义图标【菜单以及直接使用】',
@@ -238,12 +242,16 @@ export default defineConfig({
                             link: '/guide/server/'
                         },
                         {
-                            text: '配置文件',
-                            link: '/guide/server/config'
-                        },
-                        {
                             text: '认证系统',
                             link: '/guide/server/authentication'
+                        },
+                        {
+                            text: '安全中心',
+                            link: '/guide/server/security'
+                        },
+                        {
+                            text: '缓存体系',
+                            link: '/guide/server/cache'
                         },
                         {
                             text: '权限系统',
@@ -292,8 +300,74 @@ export default defineConfig({
                     ]
                 },
                 {
+                    text: '配置文件',
+                    collapsed: true,
+                    items: [
+                        {
+                            text: '配置总览',
+                            link: '/guide/server/config/'
+                        },
+                        {
+                            text: 'JWT',
+                            link: '/guide/server/config/jwt'
+                        },
+                        {
+                            text: 'Zap 日志',
+                            link: '/guide/server/config/zap'
+                        },
+                        {
+                            text: 'Redis',
+                            link: '/guide/server/config/redis'
+                        },
+                        {
+                            text: 'MongoDB',
+                            link: '/guide/server/config/mongo'
+                        },
+                        {
+                            text: 'Email',
+                            link: '/guide/server/config/email'
+                        },
+                        {
+                            text: 'System 系统',
+                            link: '/guide/server/config/system'
+                        },
+                        {
+                            text: 'Captcha 验证码',
+                            link: '/guide/server/config/captcha'
+                        },
+                        {
+                            text: '数据库',
+                            link: '/guide/server/config/database'
+                        },
+                        {
+                            text: '对象存储',
+                            link: '/guide/server/config/oss'
+                        },
+                        {
+                            text: 'AutoCode',
+                            link: '/guide/server/config/autocode'
+                        },
+                        {
+                            text: 'Media 媒体',
+                            link: '/guide/server/config/media'
+                        },
+                        {
+                            text: 'CORS 跨域',
+                            link: '/guide/server/config/cors'
+                        },
+                        {
+                            text: 'MCP',
+                            link: '/guide/server/config/mcp'
+                        },
+                        {
+                            text: '其他配置',
+                            link: '/guide/server/config/other'
+                        }
+                    ]
+                },
+                {
                     text: '最佳实践',
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                         {
                             text: '开发规范指南',
@@ -303,7 +377,7 @@ export default defineConfig({
                 },
                 {
                     text: '故障排除',
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                         {
                             text: '常见问题解答',
@@ -385,7 +459,7 @@ export default defineConfig({
             '/experience/': [
                 {
                     text: '体验项目',
-                    collapsed: false,
+                    collapsed: true,
                     items: [
                         {
                             text: '在线体验',
