@@ -26,11 +26,11 @@
         <!-- 左侧：未使用 GVA -->
         <div class="flex min-w-0 flex-col">
           <div
-            class="flex h-full min-h-0 flex-col overflow-hidden rounded-[13px] border border-[#F6C9C5] bg-[#FEF4F3]"
+            class="flex h-full min-h-0 flex-col overflow-hidden rounded-[13px] border border-[#F6C9C5] dark:border-[rgba(239,81,72,0.30)] bg-[#FEF4F3] dark:bg-[rgba(239,81,72,0.08)]"
           >
             <!-- 左侧标题栏 -->
             <div
-              class="flex h-[48px] shrink-0 items-center gap-[10px] border-b border-[#F0D2CF] bg-[#FEF4F3] px-[21px] max-[859px]:h-[42px] max-[859px]:px-[16px]"
+              class="flex h-[48px] shrink-0 items-center gap-[10px] border-b border-[#F0D2CF] dark:border-[rgba(239,81,72,0.20)] bg-[#FEF4F3] dark:bg-[rgba(239,81,72,0.08)] px-[21px] max-[859px]:h-[42px] max-[859px]:px-[16px]"
             >
               <span
                 class="h-[11px] w-[11px] shrink-0 rounded-full bg-[#EF5148]"
@@ -86,7 +86,7 @@ but no dependency defined
 
             <!-- 左侧结果栏 -->
             <div
-              class="flex h-[52px] shrink-0 items-center justify-center border-t border-[#F0D2CF] bg-[#FEF4F3] text-[14px] font-semibold text-[#F05A51] max-[859px]:h-[40px]"
+              class="flex h-[52px] shrink-0 items-center justify-center border-t border-[#F0D2CF] dark:border-[rgba(239,81,72,0.20)] bg-[#FEF4F3] dark:bg-[rgba(239,81,72,0.08)] text-[14px] font-semibold text-[#F05A51] max-[859px]:h-[40px]"
             >
               调用失败
             </div>
@@ -105,11 +105,11 @@ but no dependency defined
         <!-- 右侧：使用 GVA CLI -->
         <div class="flex min-w-0 flex-col">
           <div
-            class="flex h-full min-h-0 flex-col overflow-hidden rounded-[13px] border border-[#BFEAD1] bg-[#F4FCF7]"
+            class="flex h-full min-h-0 flex-col overflow-hidden rounded-[13px] border border-[#BFEAD1] dark:border-[rgba(53,185,102,0.30)] bg-[#F4FCF7] dark:bg-[rgba(53,185,102,0.08)]"
           >
             <!-- 右侧标题栏 -->
             <div
-              class="flex h-[48px] shrink-0 items-center gap-[10px] border-b border-[#CFE9DA] bg-[#F4FCF7] px-[21px] max-[859px]:h-[42px] max-[859px]:px-[16px]"
+              class="flex h-[48px] shrink-0 items-center gap-[10px] border-b border-[#CFE9DA] dark:border-[rgba(53,185,102,0.20)] bg-[#F4FCF7] dark:bg-[rgba(53,185,102,0.08)] px-[21px] max-[859px]:h-[42px] max-[859px]:px-[16px]"
             >
               <span
                 class="h-[11px] w-[11px] shrink-0 rounded-full bg-[#35B966]"
@@ -167,7 +167,7 @@ Step 2 → createOrder({
 
             <!-- 右侧结果栏 -->
             <div
-              class="flex h-[52px] shrink-0 items-center justify-center border-t border-[#CFE9DA] bg-[#F4FCF7] text-[14px] font-semibold text-[#34B765] max-[859px]:h-[40px]"
+              class="flex h-[52px] shrink-0 items-center justify-center border-t border-[#CFE9DA] dark:border-[rgba(53,185,102,0.20)] bg-[#F4FCF7] dark:bg-[rgba(53,185,102,0.08)] text-[14px] font-semibold text-[#34B765] max-[859px]:h-[40px]"
             >
               调用成功
             </div>

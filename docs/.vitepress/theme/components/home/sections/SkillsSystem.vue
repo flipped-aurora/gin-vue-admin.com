@@ -293,7 +293,7 @@
               text-[14px]
               font-normal
               leading-[1.5]
-              text-[#777b82]
+              text-[#777b82] dark:text-[var(--gva-text-muted)]
               min-[860px]:hidden
             "
           >
@@ -307,7 +307,7 @@
               hidden
               text-center
               text-[14px]
-              text-[#60656f]
+              text-[#60656f] dark:text-[var(--gva-text-body)]
               min-[860px]:block
             "
           >
@@ -336,20 +336,20 @@
               font-bold
               leading-[1.2]
               tracking-[-0.04em]
-              text-[#050505]
+              text-[#050505] dark:text-[var(--gva-text-strong)]
               min-[860px]:hidden
             "
           >
             <span class="block">不只是接入</span>
 
-            <span class="block text-[#2264F2]">
+            <span class="block text-[#2264F2] dark:text-[var(--gva-primary)]">
              让 AI 直接调用
             </span>
 
             <span class="block">你的</span>
 
             <span class="block">
-              <span class="text-[#2264F2]">GVA</span>
+              <span class="text-[#2264F2] dark:text-[var(--gva-primary)]">GVA</span>
               <span class="ml-[4px]">系统</span>
             </span>
           </h3>
@@ -362,7 +362,7 @@
               font-semibold
               leading-[1.32]
               tracking-tight
-              text-[#030303]
+              text-[#030303] dark:text-[var(--gva-text-strong)]
               min-[860px]:block
               min-[860px]:text-[40px]
               min-[860px]:leading-[1.32]
@@ -371,7 +371,7 @@
           >
             不只是接入<br />
             让AI
-            <span class="text-[#2264F2]">直接调用</span>你的系统
+            <span class="text-[#2264F2] dark:text-[var(--gva-primary)]">直接调用</span>你的系统
           </h3>
 
           <!-- 移动端正文 -->
@@ -382,7 +382,7 @@
                 text-[14px]
                 font-light
                 leading-[1.58]
-                text-[#4f535a]
+                text-[#4f535a] dark:text-[var(--gva-text-body)]
               "
             >
               在后台勾选要开放的接口，<br />
@@ -397,7 +397,7 @@
                 text-[14px]
                 font-light
                 leading-[1.58]
-                text-[#4f535a]
+                text-[#4f535a] dark:text-[var(--gva-text-body)]
               "
             >
               一次 login 完成鉴权，<br />
@@ -409,13 +409,13 @@
 
           <!-- 桌面端正文 -->
           <div class="hidden min-[860px]:block">
-            <p class="mt-6 text-[16px] leading-[1.72] text-[#60656f]">
+            <p class="mt-6 text-[16px] leading-[1.72] text-[#60656f] dark:text-[var(--gva-text-body)]">
               在后台勾选要开放的接口，<br />
               GVA 依据 Swagger 自动生成命令行，<br />
               打包成 Skill 装进 Claude Code 等 AI 助手。
             </p>
 
-            <p class="mt-5 text-[16px] leading-[1.72] text-[#60656f]">
+            <p class="mt-5 text-[16px] leading-[1.72] text-[#60656f] dark:text-[var(--gva-text-body)]">
               一次 login 完成鉴权，<br />
               AI 就能在终端直接调用你的后台接口，<br />
               不必再逐个解释接口怎么用。
@@ -438,13 +438,13 @@
               :key="s"
               class="
                 rounded-lg
-                bg-[#EBF2FC]
+                bg-[#EBF2FC] dark:bg-[var(--gva-primary-soft)]
                 px-3.5
                 py-1.5
                 text-[12px]
                 font-medium
                 leading-none
-                text-[#2264F2]
+                text-[#2264F2] dark:text-[var(--gva-primary)]
               "
             >
               {{ s }}
@@ -460,12 +460,12 @@
               items-center
               gap-[8px]
               border-b-2
-              border-[#2264F2]
+              border-[#2264F2] dark:border-[var(--gva-primary)]
               pb-[4px]
               text-[14px]
               font-medium
               leading-none
-              text-[#2264F2]
+              text-[#2264F2] dark:text-[var(--gva-primary)]
               transition-opacity
               hover:opacity-80
               min-[860px]:mt-8

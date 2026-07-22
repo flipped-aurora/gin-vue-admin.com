@@ -1,6 +1,6 @@
 <template>
   <section
-    class="gva-section bg-[#F9F9F9] max-[859px]:!py-[22px]"
+    class="gva-section bg-[#F9F9F9] dark:bg-[var(--gva-bg-base)] max-[859px]:!py-[22px]"
   >
     <div class="gva-container">
       <!-- =====================================================
@@ -12,23 +12,23 @@
 
         <!-- 标题 -->
         <h3
-          class="mt-[17px] text-[34px] font-extrabold leading-[1.43] tracking-[-0.045em] text-[#050505]"
+          class="mt-[17px] text-[34px] font-extrabold leading-[1.43] tracking-[-0.045em] text-[#050505] dark:text-[var(--gva-text-strong)]"
         >
           <span class="block">
             从
-            <span class="ml-[5px] text-[#2264F2]">一句话需求</span>
+            <span class="ml-[5px] text-[#2264F2] dark:text-[var(--gva-primary)]">一句话需求</span>
           </span>
 
           <span class="block">到完整的</span>
 
-          <span class="block text-[#2264F2]">业务</span>
+          <span class="block text-[#2264F2] dark:text-[var(--gva-primary)]">业务</span>
 
-          <span class="block text-[#2264F2]">模块</span>
+          <span class="block text-[#2264F2] dark:text-[var(--gva-primary)]">模块</span>
         </h3>
 
         <!-- 正文 -->
         <div
-          class="mt-[18px] text-[14px] font-light leading-[1.82] tracking-[0.005em] text-[#555a63]"
+          class="mt-[18px] text-[14px] font-light leading-[1.82] tracking-[0.005em] text-[#555a63] dark:text-[var(--gva-text-body)]"
         >
           <p>
             描述你需要什么，AI 在 GVA 里<br />
@@ -47,7 +47,7 @@
         <!-- 链接 -->
         <a
           href="/guide/server/ai-generate.html"
-          class="mt-[18px] inline-flex w-fit items-center gap-[8px] border-b-2 border-[#2264F2] pb-[4px] text-[14px] font-medium leading-none text-[#2264F2] transition-opacity hover:opacity-80"
+          class="mt-[18px] inline-flex w-fit items-center gap-[8px] border-b-2 border-[#2264F2] dark:border-[var(--gva-primary)] pb-[4px] text-[14px] font-medium leading-none text-[#2264F2] dark:text-[var(--gva-primary)] transition-opacity hover:opacity-80"
         >
           <span>查看演示文档</span>
           <span class="text-[14px] leading-none">→</span>
@@ -55,33 +55,33 @@
 
         <!-- 移动端演示图 -->
         <div
-          class="mt-[24px] overflow-hidden rounded-[14px] border border-[#dce2eb] bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)] p-[20px] shadow-[0_16px_34px_-20px_rgba(23,43,77,0.34)]"
+          class="mt-[24px] overflow-hidden rounded-[14px] border border-[#dce2eb] dark:border-[var(--gva-border)] bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)] dark:bg-[#0f1628] p-[20px] shadow-[0_16px_34px_-20px_rgba(23,43,77,0.34)]"
         >
           <!-- AI Agent 面板 -->
           <div
-            class="overflow-hidden rounded-[10px] border border-[#dce3ed] bg-white"
+            class="overflow-hidden rounded-[10px] border border-[#dce3ed] dark:border-[var(--gva-border)] bg-white dark:bg-[#0c1322]"
           >
             <!-- Agent 标题栏 -->
             <div
-              class="flex h-[31px] items-center gap-[8px] border-b border-[#e2e7ee] px-[10px]"
+              class="flex h-[31px] items-center gap-[8px] border-b border-[#e2e7ee] dark:border-[var(--gva-border)] px-[10px]"
             >
               <span
-                class="grid h-[19px] w-[19px] shrink-0 place-items-center rounded-full bg-black text-[10px] font-semibold leading-none text-white"
+                class="grid h-[19px] w-[19px] shrink-0 place-items-center rounded-full bg-black dark:bg-[var(--gva-primary)] text-[10px] font-semibold leading-none text-white"
               >
                 I
               </span>
 
-              <span class="text-[12px] font-medium text-[#555a63]">
+              <span class="text-[12px] font-medium text-[#555a63] dark:text-[var(--gva-text-body)]">
                 AI Coding Agent
               </span>
             </div>
 
             <!-- 输入框 -->
             <div
-              class="relative m-[11px] min-h-[75px] rounded-[10px] border border-[#dce3ed] bg-white px-[13px] pb-[24px] pt-[11px]"
+              class="relative m-[11px] min-h-[75px] rounded-[10px] border border-[#dce3ed] dark:border-[var(--gva-border)] bg-white dark:bg-[#0c1322] px-[13px] pb-[24px] pt-[11px]"
             >
               <p
-                class="text-[12px] font-medium leading-[1.72] text-[#17191d]"
+                class="text-[12px] font-medium leading-[1.72] text-[#17191d] dark:text-[var(--gva-text-strong)]"
               >
                 帮我创建一个用户管理模块，<br />
                 包含列表、编辑和权限控制。
@@ -89,7 +89,7 @@
 
               <!-- 发送按钮 -->
               <svg
-                class="absolute bottom-[9px] right-[10px] h-[18px] w-[18px] text-[#2264F2]"
+                class="absolute bottom-[9px] right-[10px] h-[18px] w-[18px] text-[#2264F2] dark:text-[var(--gva-primary)]"
                 viewBox="0 0 24 24"
                 fill="none"
                 aria-hidden="true"
@@ -111,11 +111,11 @@
           <!-- 中间流程箭头 -->
           <div class="flex h-[47px] items-center justify-center gap-[18px]">
             <span
-              class="h-px flex-1 border-t border-dashed border-[#b8d2ff]"
+              class="h-px flex-1 border-t border-dashed border-[#b8d2ff] dark:border-[rgba(79,134,255,0.35)]"
             ></span>
 
             <svg
-              class="h-[26px] w-[26px] shrink-0 text-[#2264F2]"
+              class="h-[26px] w-[26px] shrink-0 text-[#2264F2] dark:text-[var(--gva-primary)]"
               viewBox="0 0 24 24"
               fill="none"
               aria-hidden="true"
@@ -130,31 +130,31 @@
             </svg>
 
             <span
-              class="h-px flex-1 border-t border-dashed border-[#b8d2ff]"
+              class="h-px flex-1 border-t border-dashed border-[#b8d2ff] dark:border-[rgba(79,134,255,0.35)]"
             ></span>
           </div>
 
           <!-- GVA Admin 面板 -->
           <div
-            class="overflow-hidden rounded-[10px] border border-[#dce3ed] bg-white"
+            class="overflow-hidden rounded-[10px] border border-[#dce3ed] dark:border-[var(--gva-border)] bg-white dark:bg-[#0c1322]"
           >
             <!-- Admin 标题栏 -->
             <div
-              class="flex h-[31px] items-center justify-between border-b border-[#e2e7ee] px-[11px]"
+              class="flex h-[31px] items-center justify-between border-b border-[#e2e7ee] dark:border-[var(--gva-border)] px-[11px]"
             >
-              <span class="text-[11px] font-medium text-[#555a63]">
+              <span class="text-[11px] font-medium text-[#555a63] dark:text-[var(--gva-text-body)]">
                 GVA Admin
               </span>
 
               <span
-                class="h-[8px] w-[8px] rounded-full bg-[#2264F2] shadow-[0_0_7px_rgba(34,100,242,0.34)]"
+                class="h-[8px] w-[8px] rounded-full bg-[#2264F2] dark:bg-[var(--gva-primary)] shadow-[0_0_7px_rgba(34,100,242,0.34)]"
               ></span>
             </div>
 
             <div class="flex h-[184px]">
               <!-- 左侧菜单 -->
               <div
-                class="w-[29%] shrink-0 border-r border-[#e3e8ef] bg-[#fafbfc] py-[7px]"
+                class="w-[29%] shrink-0 border-r border-[#e3e8ef] dark:border-[var(--gva-border)] bg-[#fafbfc] dark:bg-[#0c1322] py-[7px]"
               >
                 <div
                   v-for="i in 4"
@@ -162,21 +162,21 @@
                   class="relative flex h-[35px] items-center gap-[8px] px-[11px]"
                   :class="
                     i === 3
-                      ? 'bg-[#eef4ff] before:absolute before:inset-y-0 before:left-0 before:w-[3px] before:bg-[#2264F2]'
+                      ? 'bg-[#eef4ff] dark:bg-[var(--gva-primary-soft)] before:absolute before:inset-y-0 before:left-0 before:w-[3px] before:bg-[#2264F2] dark:before:bg-[var(--gva-primary)]'
                       : ''
                   "
                 >
                   <span
                     class="h-[10px] w-[10px] shrink-0 rounded-[1px]"
-                    :class="i === 3 ? 'bg-[#b8c4d8]' : 'bg-[#c4c8cf]'"
+                    :class="i === 3 ? 'bg-[#b8c4d8] dark:bg-[rgba(255,255,255,0.20)]' : 'bg-[#c4c8cf] dark:bg-[rgba(255,255,255,0.12)]'"
                   ></span>
 
                   <span
                     class="h-[4px] rounded-full"
                     :class="
                       i === 3
-                        ? 'w-[30px] bg-[#8fa2c2]'
-                        : 'w-[27px] bg-[#9da1a8]'
+                        ? 'w-[30px] bg-[#8fa2c2] dark:bg-[rgba(255,255,255,0.24)]'
+                        : 'w-[27px] bg-[#9da1a8] dark:bg-[rgba(255,255,255,0.14)]'
                     "
                   ></span>
                 </div>
@@ -186,13 +186,13 @@
               <div class="min-w-0 flex-1 px-[10px] pb-[8px] pt-[9px]">
                 <div class="flex items-center justify-between">
                   <h4
-                    class="text-[12px] font-semibold leading-none text-[#202329]"
+                    class="text-[12px] font-semibold leading-none text-[#202329] dark:text-[var(--gva-text-strong)]"
                   >
                     用户管理
                   </h4>
 
                   <button
-                    class="rounded-[4px] bg-[#2264F2] px-[8px] py-[5px] text-[9px] font-medium leading-none text-white"
+                    class="rounded-[4px] bg-[#2264F2] dark:bg-[var(--gva-primary)] px-[8px] py-[5px] text-[9px] font-medium leading-none text-white"
                   >
                     新增用户
                   </button>
@@ -200,16 +200,16 @@
 
                 <!-- 表格 -->
                 <div
-                  class="mt-[9px] overflow-hidden rounded-[4px] border border-[#e1e6ed]"
+                  class="mt-[9px] overflow-hidden rounded-[4px] border border-[#e1e6ed] dark:border-[var(--gva-border)]"
                 >
                   <!-- 表头 -->
                   <div
-                    class="grid h-[28px] grid-cols-4 items-center border-b border-[#e3e8ee] bg-[#f7f8fa] px-[10px]"
+                    class="grid h-[28px] grid-cols-4 items-center border-b border-[#e3e8ee] dark:border-[var(--gva-border)] bg-[#f7f8fa] dark:bg-[rgba(255,255,255,0.03)] px-[10px]"
                   >
-                    <span class="h-[5px] w-[24px] bg-[#c1c5cc]"></span>
-                    <span class="h-[5px] w-[20px] bg-[#c1c5cc]"></span>
-                    <span class="h-[5px] w-[22px] bg-[#c1c5cc]"></span>
-                    <span class="h-[5px] w-[20px] bg-[#c1c5cc]"></span>
+                    <span class="h-[5px] w-[24px] bg-[#c1c5cc] dark:bg-[rgba(255,255,255,0.14)]"></span>
+                    <span class="h-[5px] w-[20px] bg-[#c1c5cc] dark:bg-[rgba(255,255,255,0.14)]"></span>
+                    <span class="h-[5px] w-[22px] bg-[#c1c5cc] dark:bg-[rgba(255,255,255,0.14)]"></span>
+                    <span class="h-[5px] w-[20px] bg-[#c1c5cc] dark:bg-[rgba(255,255,255,0.14)]"></span>
                   </div>
 
                   <!-- 表格行 -->
@@ -219,25 +219,25 @@
                     class="grid h-[35px] grid-cols-4 items-center px-[10px]"
                     :class="
                       index < rows.length - 1
-                        ? 'border-b border-[#e6eaf0]'
+                        ? 'border-b border-[#e6eaf0] dark:border-[var(--gva-border)]'
                         : ''
                     "
                   >
-                    <span class="h-[5px] w-[25px] bg-[#bfc3ca]"></span>
-                    <span class="h-[5px] w-[20px] bg-[#bfc3ca]"></span>
+                    <span class="h-[5px] w-[25px] bg-[#bfc3ca] dark:bg-[rgba(255,255,255,0.12)]"></span>
+                    <span class="h-[5px] w-[20px] bg-[#bfc3ca] dark:bg-[rgba(255,255,255,0.12)]"></span>
 
                     <span
-                      class="w-fit rounded-full bg-[#edf4ff] px-[5px] py-[3px] text-[8px] font-medium leading-none text-[#2264F2]"
+                      class="w-fit rounded-full bg-[#edf4ff] dark:bg-[var(--gva-primary-soft)] px-[5px] py-[3px] text-[8px] font-medium leading-none text-[#2264F2] dark:text-[var(--gva-primary)]"
                     >
                       启用
                     </span>
 
-                    <span class="h-[5px] w-[25px] bg-[#bfc3ca]"></span>
+                    <span class="h-[5px] w-[25px] bg-[#bfc3ca] dark:bg-[rgba(255,255,255,0.12)]"></span>
                   </div>
                 </div>
 
                 <div
-                  class="mt-[8px] flex items-center justify-end gap-[3px] text-[9px] font-medium leading-none text-[#2264F2]"
+                  class="mt-[8px] flex items-center justify-end gap-[3px] text-[9px] font-medium leading-none text-[#2264F2] dark:text-[var(--gva-primary)]"
                 >
                   <span>✓</span>
                   <span>Module generated</span>
@@ -249,7 +249,7 @@
 
         <!-- 图片说明 -->
         <p
-          class="mt-[19px] text-center text-[14px] font-normal leading-[1.5] text-[#777b82]"
+          class="mt-[19px] text-center text-[14px] font-normal leading-[1.5] text-[#777b82] dark:text-[var(--gva-text-muted)]"
         >
           一句话输入，一个可运行的业务模块
         </p>
@@ -264,20 +264,20 @@
         <!-- ============ LEFT: text ============ -->
         <div class="flex min-w-0 flex-col">
           <h3
-            class="text-[34px] font-extrabold leading-[1.22] tracking-tight text-[#1c1c1c] min-[860px]:text-[36px]"
+            class="text-[34px] font-extrabold leading-[1.22] tracking-tight text-[#1c1c1c] dark:text-[var(--gva-text-strong)] min-[860px]:text-[36px]"
           >
             从
-            <span class="text-[#2264F2]">一句话需求</span><br />
+            <span class="text-[#2264F2] dark:text-[var(--gva-primary)]">一句话需求</span><br />
             到完整的业务模块
           </h3>
 
-          <p class="mt-6 text-[16px] leading-[1.72] text-[#60656f]">
+          <p class="mt-6 text-[16px] leading-[1.72] text-[#60656f] dark:text-[var(--gva-text-body)]">
             描述你需要什么，AI 在 GVA 里完成<br />
             数据模型定义、API 生成、<br />
             路由注册和权限配置。
           </p>
 
-          <p class="mt-5 text-[16px] leading-[1.72] text-[#60656f]">
+          <p class="mt-5 text-[16px] leading-[1.72] text-[#60656f] dark:text-[var(--gva-text-body)]">
             你不需要手动介入每一步，<br />
             只需要审查最终结果。
           </p>
@@ -286,17 +286,17 @@
             <li
               v-for="b in bullets"
               :key="b"
-              class="flex items-center gap-3 text-[15px] font-medium text-[#33373f]"
+              class="flex items-center gap-3 text-[15px] font-medium text-[#33373f] dark:text-[var(--gva-text-body)]"
             >
               <span
-                class="h-[7px] w-[7px] shrink-0 rounded-full bg-[#9aa1ac]"
+                class="h-[7px] w-[7px] shrink-0 rounded-full bg-[#9aa1ac] dark:bg-[rgba(255,255,255,0.28)]"
               ></span>
               {{ b }}
             </li>
           </ul>
 
           <a
-            class="mt-9 inline-flex w-fit items-center gap-2.5 border-b-2 border-[#2264F2] pb-[3px] text-[16px] font-medium leading-none text-[#2264F2] transition-opacity hover:opacity-80"
+            class="mt-9 inline-flex w-fit items-center gap-2.5 border-b-2 border-[#2264F2] dark:border-[var(--gva-primary)] pb-[3px] text-[16px] font-medium leading-none text-[#2264F2] dark:text-[var(--gva-primary)] transition-opacity hover:opacity-80"
             href="/guide/server/ai-generate.html"
           >
             查看演示文档
@@ -306,11 +306,11 @@
 
         <!-- ============ RIGHT: browser-window card ============ -->
         <div
-          class="overflow-hidden rounded-2xl border border-[#e6e7ea] bg-white shadow-[0_30px_70px_-30px_rgba(20,30,60,0.28)]"
+          class="overflow-hidden rounded-2xl border border-[#e6e7ea] dark:border-[var(--gva-border)] bg-white dark:bg-[#0f1628] shadow-[0_30px_70px_-30px_rgba(20,30,60,0.28)]"
         >
           <!-- window title bar -->
           <div
-            class="relative flex h-12 items-center border-b border-[#ececef] bg-[#f7f7f9] px-5"
+            class="relative flex h-12 items-center border-b border-[#ececef] dark:border-[var(--gva-border)] bg-[#f7f7f9] dark:bg-[#0c1322] px-5"
           >
             <div class="flex items-center gap-2">
               <span class="h-3 w-3 rounded-full bg-[#ff5f56]"></span>
@@ -319,7 +319,7 @@
             </div>
 
             <span
-              class="absolute left-1/2 -translate-x-1/2 text-[13px] font-medium text-[#8a8b90]"
+              class="absolute left-1/2 -translate-x-1/2 text-[13px] font-medium text-[#8a8b90] dark:text-[var(--gva-text-muted)]"
             >
               GVA AI 开发演示
             </span>
@@ -366,21 +366,21 @@
             </div>
 
             <!-- white admin table -->
-            <div class="w-full flex-1 bg-white p-6 min-[860px]:p-7">
+            <div class="w-full flex-1 bg-white dark:bg-[#0f1628] p-6 min-[860px]:p-7">
               <div class="mb-5 flex items-center justify-between">
-                <h4 class="text-[18px] font-bold text-[#1c1c1e]">
+                <h4 class="text-[18px] font-bold text-[#1c1c1e] dark:text-[var(--gva-text-strong)]">
                   用户管理
                 </h4>
 
                 <button
-                  class="rounded-lg bg-[#2264F2] px-3.5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#1B52D4]"
+                  class="rounded-lg bg-[#2264F2] dark:bg-[var(--gva-primary)] px-3.5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#1B52D4] dark:hover:bg-[var(--gva-primary-hover)]"
                 >
                   + 新增用户
                 </button>
               </div>
 
               <div
-                class="grid grid-cols-[44px_1fr_1.3fr_0.9fr_0.7fr] gap-2 border-b border-[#eef0f3] pb-3 text-[13px] text-[#8a8b90]"
+                class="grid grid-cols-[44px_1fr_1.3fr_0.9fr_0.7fr] gap-2 border-b border-[#eef0f3] dark:border-[var(--gva-border)] pb-3 text-[13px] text-[#8a8b90] dark:text-[var(--gva-text-muted)]"
               >
                 <span>ID</span>
                 <span>用户名</span>
@@ -393,11 +393,11 @@
                 v-for="(r, i) in rows"
                 :key="r.id"
                 class="grid grid-cols-[44px_1fr_1.3fr_0.9fr_0.7fr] items-center gap-2 py-[18px] text-[14px]"
-                :class="i < rows.length - 1 ? 'border-b border-[#f2f3f5]' : ''"
+                :class="i < rows.length - 1 ? 'border-b border-[#f2f3f5] dark:border-[var(--gva-border)]' : ''"
               >
                 <span
                   :class="
-                    r.muted ? 'text-[#bcbfc7]' : 'text-[#2a2a2e]'
+                    r.muted ? 'text-[#bcbfc7] dark:text-[var(--gva-text-muted)]' : 'text-[#2a2a2e] dark:text-[var(--gva-text-strong)]'
                   "
                 >
                   {{ r.id }}
@@ -406,8 +406,8 @@
                 <span
                   :class="
                     r.muted
-                      ? 'text-[#bcbfc7]'
-                      : 'font-medium text-[#2a2a2e]'
+                      ? 'text-[#bcbfc7] dark:text-[var(--gva-text-muted)]'
+                      : 'font-medium text-[#2a2a2e] dark:text-[var(--gva-text-strong)]'
                   "
                 >
                   {{ r.name }}
@@ -415,7 +415,7 @@
 
                 <span
                   :class="
-                    r.muted ? 'text-[#bcbfc7]' : 'text-[#2a2a2e]'
+                    r.muted ? 'text-[#bcbfc7] dark:text-[var(--gva-text-muted)]' : 'text-[#2a2a2e] dark:text-[var(--gva-text-strong)]'
                   "
                 >
                   {{ r.role }}
@@ -426,8 +426,8 @@
                     class="inline-block rounded-md border px-2 py-[3px] text-[12px] leading-none"
                     :class="
                       r.active
-                        ? 'border-[#c6efd5] bg-[#ecfdf3] text-[#16a34a]'
-                        : 'border-[#e6e8eb] bg-[#f4f5f6] text-[#9aa0aa]'
+                        ? 'border-[#c6efd5] dark:border-[rgba(22,163,74,0.30)] bg-[#ecfdf3] dark:bg-[rgba(22,163,74,0.12)] text-[#16a34a]'
+                        : 'border-[#e6e8eb] dark:border-[var(--gva-border)] bg-[#f4f5f6] dark:bg-[rgba(255,255,255,0.06)] text-[#9aa0aa] dark:text-[var(--gva-text-muted)]'
                     "
                   >
                     {{ r.active ? '启用' : '停用' }}
@@ -439,8 +439,8 @@
                   class="text-[14px]"
                   :class="
                     r.muted
-                      ? 'text-[#bcbfc7]'
-                      : 'text-[#2264F2] hover:opacity-80'
+                      ? 'text-[#bcbfc7] dark:text-[var(--gva-text-muted)]'
+                      : 'text-[#2264F2] dark:text-[var(--gva-primary)] hover:opacity-80'
                   "
                 >
                   编辑
@@ -450,9 +450,9 @@
 
             <!-- floating arrow button on the seam -->
             <div
-              class="absolute left-[43%] top-1/2 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#eceef2] bg-white shadow-[0_8px_24px_-6px_rgba(20,30,60,0.25)] min-[860px]:grid"
+              class="absolute left-[43%] top-1/2 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#eceef2] dark:border-[var(--gva-border)] bg-white dark:bg-[#0f1628] shadow-[0_8px_24px_-6px_rgba(20,30,60,0.25)] min-[860px]:grid"
             >
-              <span class="text-[20px] font-semibold text-[#2264F2]">
+              <span class="text-[20px] font-semibold text-[#2264F2] dark:text-[var(--gva-primary)]">
                 →
               </span>
             </div>

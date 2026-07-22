@@ -1,5 +1,5 @@
 <template>
-  <section class="gva-section bg-white">
+  <section class="gva-section bg-white dark:bg-[var(--gva-bg-base)]">
     <div class="gva-container">
       <!-- 标题区 -->
       <div class="mb-14 text-center max-[859px]:mb-10">
@@ -32,7 +32,7 @@
           v-for="(demo, index) in demos"
           :key="demo.title"
           type="button"
-          class="group relative flex h-full w-full flex-col overflow-hidden rounded-[12px] borderd  bg-white p-7 text-left [font:inherit] transition-[transform,border-color] duration-200 hover:-translate-y-[2px] hover:border-[#B7C2D2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2264F2]/25 min-[860px]:min-h-[310px] max-[859px]:min-h-0 max-[859px]:rounded-[12px] max-[859px]:p-6"
+          class="group relative flex h-full w-full flex-col overflow-hidden rounded-[12px] borderd  bg-white dark:bg-[var(--gva-bg-dark-soft)] p-7 text-left [font:inherit] transition-[transform,border-color] duration-200 hover:-translate-y-[2px] hover:border-[#B7C2D2] dark:hover:border-[var(--gva-border-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2264F2]/25 min-[860px]:min-h-[310px] max-[859px]:min-h-0 max-[859px]:rounded-[12px] max-[859px]:p-6"
           @click="openDemo(index)"
         >
           <!-- 淡蓝数字 -->
@@ -58,7 +58,7 @@
 
           <!-- 底部入口 -->
           <span
-            class="relative mt-auto inline-flex w-fit items-center gap-2.5 pb-[13px] pt-[18px] text-[16px] font-medium leading-none text-[#2264F2] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-[#2264F2] after:content-[''] max-[859px]:text-[17px]"
+            class="relative mt-auto inline-flex w-fit items-center gap-2.5 pb-[13px] pt-[18px] text-[16px] font-medium leading-none text-[#2264F2] dark:text-[var(--gva-primary)] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-[#2264F2] dark:after:bg-[var(--gva-primary)] after:content-[''] max-[859px]:text-[17px]"
           >
             试一下
 
@@ -81,8 +81,10 @@
           class="fixed inset-0 z-[9999] grid place-items-center bg-[rgba(6,8,15,0.6)] p-6 backdrop-blur-[6px]"
           @click.self="close"
         >
+          <!-- PC 端宽度按视口等比放大：1080P 约 1090px，2K 约 1450px，超出 1600px 封顶；
+               高度随内部 aspect 比例自适应，因此整体宽高同步缩放。移动端保持原 820px 上限。 -->
           <div
-            class="w-full max-w-[820px] rounded-[var(--gva-radius)] border border-[var(--gva-border)] bg-[var(--gva-bg-base)] p-6 shadow-[var(--gva-shadow-sm)] max-[859px]:rounded-[14px] max-[859px]:p-4"
+            class="w-full max-w-[820px] rounded-[var(--gva-radius)] border border-[var(--gva-border)] bg-[var(--gva-bg-base)] p-6 shadow-[var(--gva-shadow-sm)] max-[859px]:rounded-[14px] max-[859px]:p-4 min-[860px]:max-w-[clamp(880px,56vw,1600px)] min-[860px]:p-[clamp(24px,2vw,40px)]"
           >
             <div class="flex justify-end">
               <button
@@ -111,7 +113,7 @@
 
             <!-- 截图 + 热点提示 -->
             <div
-              class="relative mt-1 grid aspect-[35/19] w-full place-items-center overflow-hidden rounded-[10px] border border-[var(--gva-border)] bg-[#15171c]"
+              class="relative mt-1 grid aspect-[35/19] w-full place-items-center overflow-hidden rounded-[10px] border border-[var(--gva-border)] bg-[var(--gva-bg-alt)]"
             >
               <!-- 截图按自身比例居中。热点与气泡都挂在这一层，hotspot 的百分比才与截图严格对齐；
                    若挂在外层，比例不同的截图（如 demo10）会因留白导致小球指偏。 -->
@@ -518,5 +520,8 @@ onBeforeUnmount(() => {
 
 .borderd{
   border: 1px solid #DCDCDC !important;
+}
+.dark .borderd{
+  border-color: var(--gva-border) !important;
 }
 </style>
