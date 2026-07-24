@@ -312,6 +312,36 @@ sequenceDiagram
     SFMono-Regular, Menlo, Consolas, monospace;
 }
 
+/* 深色模式：本页 :root 覆写了整套 GVA token（仅浅色值），需同步补一份
+   .dark 覆写，否则会盖掉 vars.css 的 .dark，导致侧栏/正文在暗色下仍为白底。
+   取值与 styles/vars.css 的 .dark 保持一致；--gva-title / --gva-amber-strong
+   为本页特有 token，给出暗色下的对应值。 */
+:global(.dark) {
+  --gva-primary: #4f86ff;
+  --gva-primary-hover: #6b9bf8;
+  --gva-primary-soft: rgba(79, 134, 255, 0.16);
+
+  --gva-title: #f3f5f9;
+  --gva-text-strong: #f3f5f9;
+  --gva-text-body: #aab2c0;
+  --gva-text-muted: #7c8595;
+
+  --gva-bg-base: #0f1115;
+  --gva-bg-alt: #15181e;
+
+  --gva-border: rgba(255, 255, 255, 0.1);
+  --gva-border-soft: rgba(255, 255, 255, 0.06);
+  --gva-border-strong: rgba(255, 255, 255, 0.16);
+
+  --gva-amber-strong: #fbbf24;
+
+  --gva-shadow-sm:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+
+  --gva-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
 h1,
 h2,
 h3,
