@@ -2,7 +2,7 @@
   <section class="gva-section">
     <div class="gva-container">
       <div class="text-center mb-14 max-[860px]:mb-10">
-        <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)]" style="margin-top: 16px">
+        <h2 class="text-[clamp(28px,3.6vw,40px)] leading-[1.18] font-bold tracking-[-0.02em] text-[var(--gva-text-strong)] dark:text-[var(--gva-text-strong)]" style="margin-top: 16px">
           <span class="block"><span class="text-[var(--gva-primary)]">3 万+</span> 开发者</span>
           <span class="block">已经在用 GVA</span>
         </h2>

@@ -7,7 +7,7 @@
         <span class="hidden">核心功能</span>
 
         <h2
-          class="m-0 text-[clamp(28px,3.6vw,40px)] font-bold leading-[1.18] tracking-[-0.02em] text-[var(--gva-text-strong)] max-[859px]:text-[34px] max-[859px]:leading-[1.22]"
+          class="m-0 text-[clamp(28px,3.6vw,40px)] font-bold leading-[1.18] tracking-[-0.02em] text-[var(--gva-text-strong)] dark:text-[var(--gva-text-strong)] max-[859px]:text-[34px] max-[859px]:leading-[1.22]"
         >
           <span class="block">亲自试一试：</span>
 
