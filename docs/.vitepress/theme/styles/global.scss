@@ -251,6 +251,20 @@ body.gva-nav-scrolled .VPNav .content {
     font-weight: 600;
 }
 
+/* 文档是全站首要导航入口，桌面与移动导航都保持品牌蓝强调。 */
+.VPNavBarMenuLink[href^="/guide/start-quickly/initialization"],
+.VPNavScreenMenuLink[href^="/guide/start-quickly/initialization"] {
+    color: var(--gva-primary) !important;
+    font-weight: 600;
+}
+
+.VPNavBarMenuLink[href^="/guide/start-quickly/initialization"]:hover,
+.VPNavBarMenuLink[href^="/guide/start-quickly/initialization"]:focus-visible,
+.VPNavScreenMenuLink[href^="/guide/start-quickly/initialization"]:hover,
+.VPNavScreenMenuLink[href^="/guide/start-quickly/initialization"]:focus-visible {
+    color: var(--gva-primary-hover) !important;
+}
+
 /* 多语言 + GitHub 徽标：已迁移到 theme/components/GithubNav.vue（顶栏右侧自定义项），
    图标 / 药丸 / 镜像下拉样式随组件 scoped，此处不再保留全局规则。 */
 

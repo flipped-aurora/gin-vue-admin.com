@@ -227,6 +227,39 @@
   border-color: var(--gva-primary);
   color: var(--gva-primary);
 }
+.gva-btn--commercial {
+  position: relative;
+  overflow: hidden;
+}
+.gva-btn__badge {
+  position: absolute;
+  top: 3px;
+  right: -16px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 15px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--gva-danger);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(239, 68, 68, 0.28);
+  transform: rotate(35deg);
+  transform-origin: center;
+  pointer-events: none;
+}
+.gva-btn:focus-visible {
+  outline: 3px solid var(--gva-primary-ring);
+  outline-offset: 3px;
+}
 .gva-section--dark .gva-btn--ghost {
   color: #fff;
   border-color: rgba(255, 255, 255, 0.28);
