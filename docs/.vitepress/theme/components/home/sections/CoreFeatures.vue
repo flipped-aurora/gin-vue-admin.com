@@ -67,6 +67,7 @@
               :src="arrRightIcon"
               alt=""
               aria-hidden="true"
+              loading="lazy"
             />
           </span>
         </button>
@@ -126,6 +127,7 @@
                   class="absolute inset-0 h-full w-full object-contain"
                   :src="currentStep.img"
                   :alt="currentStep.t"
+                  loading="lazy"
                   draggable="false"
                 />
 

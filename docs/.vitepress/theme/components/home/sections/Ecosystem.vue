@@ -9,7 +9,7 @@
           </p>
           <a class="relative inline-flex items-center gap-2.5 pb-[13px] text-[16px] leading-none font-medium text-[#2264F2] dark:text-[var(--gva-primary)] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-[#2264F2] dark:after:bg-[var(--gva-primary)] max-[860px]:text-[14px]" href="https://plugin.gin-vue-admin.com/#/layout/home" target="_blank" rel="noopener">
             逛逛插件市场
-            <img class="block w-3.5 h-3.5 object-contain" :src="arrRightIcon" alt="" aria-hidden="true" />
+            <img class="block w-3.5 h-3.5 object-contain" :src="arrRightIcon" alt="" aria-hidden="true" loading="lazy" />
           </a>
         </div>
 

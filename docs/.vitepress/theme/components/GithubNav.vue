@@ -16,16 +16,16 @@ const REPOS = {
     <!-- GitHub 徽标：图标(跳仓库) + 25k 药丸；悬停展开镜像下拉 -->
     <div class="gva-gh">
       <a class="gva-gh__btn" :href="REPOS.github" target="_blank" rel="noopener" aria-label="GitHub">
-        <img class="gva-gh__logo" src="https://qmplusimg.henrongyi.top/website/github.png" alt="GitHub" width="24" height="24" />
+        <img class="gva-gh__logo" src="https://qmplusimg.henrongyi.top/website/github.png" alt="GitHub" width="24" height="24" loading="lazy" />
         <span class="gva-gh__count">25k</span>
       </a>
       <div class="gva-gh__menu">
         <div class="gva-gh__menu-inner">
           <a :href="REPOS.gitee" target="_blank" rel="noopener" aria-label="Gitee">
-            <img src="https://qmplusimg.henrongyi.top/website/gitee.png" alt="Gitee" width="24" height="24" />
+            <img src="https://qmplusimg.henrongyi.top/website/gitee.png" alt="Gitee" width="24" height="24" loading="lazy" />
           </a>
           <a :href="REPOS.gitcode" target="_blank" rel="noopener" aria-label="GitCode">
-            <img src="https://qmplusimg.henrongyi.top/website/gitcode.png" alt="GitCode" width="24" height="24" />
+            <img src="https://qmplusimg.henrongyi.top/website/gitcode.png" alt="GitCode" width="24" height="24" loading="lazy" />
           </a>
         </div>
       </div>
@@ -33,8 +33,8 @@ const REPOS = {
 
     <!-- 多语言（从 config 迁来，排在 GitHub 之后） -->
     <a class="gva-nav-bilingual" href="#" aria-label="多语言">
-      <img class="gva-nav-bilingual__img gva-nav-bilingual__img--light" src="https://qmplusimg.henrongyi.top/website/bilingual.png" alt="" />
-      <img class="gva-nav-bilingual__img gva-nav-bilingual__img--dark" src="https://qmplusimg.henrongyi.top/website/bilingual_day.png" alt="" />
+      <img class="gva-nav-bilingual__img gva-nav-bilingual__img--light" src="https://qmplusimg.henrongyi.top/website/bilingual.png" alt="" loading="lazy" />
+      <img class="gva-nav-bilingual__img gva-nav-bilingual__img--dark" src="https://qmplusimg.henrongyi.top/website/bilingual_day.png" alt="" loading="lazy" />
     </a>
   </div>
 </template>

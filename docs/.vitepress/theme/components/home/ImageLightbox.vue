@@ -47,6 +47,7 @@
               :key="slides[index] + index"
               :src="slides[index]"
               :alt="`GVA 演示 ${index + 1}`"
+              loading="lazy"
               class="lb-img max-w-[92vw] max-h-full w-auto h-auto object-contain rounded-[var(--gva-radius)] shadow-[0_40px_90px_rgba(0,0,0,0.55)] select-none"
               draggable="false"
             />

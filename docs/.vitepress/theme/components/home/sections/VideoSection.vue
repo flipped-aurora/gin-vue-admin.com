@@ -4,7 +4,7 @@
       <!-- 标题行：左对齐，小播放图标 + 文案 -->
       <div class="flex items-center gap-2.5 mb-2.5 max-[860px]:mb-3">
         <span class="inline-flex text-[var(--gva-primary)]" aria-hidden="true">
-          <img class="block w-[18px] h-[18px]" :src="playerIcon" alt="" />
+          <img class="block w-[18px] h-[18px]" :src="playerIcon" alt="" loading="lazy" />
         </span>
         <span class="text-[14px] font-medium text-[var(--gva-text-strong)] max-[860px]:font-semibold">观看工作流程演示</span>
       </div>
@@ -31,6 +31,7 @@
             :key="slides[current] + current"
             :src="slides[current]"
             :alt="`GVA 演示 ${current + 1}`"
+            loading="lazy"
             class="carousel-slide absolute inset-0 w-full h-full object-cover select-none"
             draggable="false"
           />

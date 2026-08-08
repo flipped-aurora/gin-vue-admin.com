@@ -13,6 +13,7 @@
             <img
               :src="item.img"
               :alt="item.name"
+              loading="lazy"
               :style="getImageStyle(item)"
               data-nosnippet
             >
@@ -38,6 +39,7 @@
             <img
               :src="item.img"
               :alt="item.name"
+              loading="lazy"
               :style="getImageStyle(item)"
               data-nosnippet
             >

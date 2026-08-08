@@ -16,6 +16,7 @@
               alt="flipped-aurora/gin-vue-admin | Trendshift"
               width="250"
               height="55"
+              loading="lazy"
             />
           </a>
           <div class="flex gap-2.5">
@@ -128,12 +129,12 @@ const socials = [
   {
     name: 'Gitee',
     href: 'https://gitee.com/pixelmax/gin-vue-admin',
-    icon: '<img src="/icons/gitee.png" alt="Gitee" width="20" height="20" />',
+    icon: '<img src="/icons/gitee.png" alt="Gitee" width="20" height="20" loading="lazy" />',
   },
   {
     name: 'GitCode',
     href: 'https://gitcode.com/flipped-aurora/gin-vue-admin',
-    icon: '<img src="/icons/gitcode.svg" alt="GitCode" width="20" height="20" />',
+    icon: '<img src="/icons/gitcode.svg" alt="GitCode" width="20" height="20" loading="lazy" />',
   },
 ]
 </script>

@@ -4,41 +4,6 @@ $opq-blue-center-left: #23A3DC;
 $opq-yellow: #FCDB29; */
 
 /**
- * MiSans 字体（托管在 https://qmplusimg.henrongyi.top/website/）
- * 字重按标准值声明：Normal=300 / Regular=400 / Medium=500 / Semibold=600。
- * （曾用 305/330/380/520，导致正文 font-weight:400 就近匹配到 Medium 而偏粗；
- *   改回标准值后 400 精确命中 Regular，600/700 标题仍命中 Semibold，粗细不变。）
- * -------------------------------------------------------------------------- */
-@font-face {
-  font-family: 'MiSans';
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-  src: url('https://qmplusimg.henrongyi.top/website/MiSans-Normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'MiSans';
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url('https://qmplusimg.henrongyi.top/website/MiSans-Regular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'MiSans';
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-  src: url('https://qmplusimg.henrongyi.top/website/MiSans-Medium.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'MiSans';
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-  src: url('https://qmplusimg.henrongyi.top/website/MiSans-Semibold.woff2') format('woff2');
-}
-
-/**
  * Colors
  * -------------------------------------------------------------------------- */
 

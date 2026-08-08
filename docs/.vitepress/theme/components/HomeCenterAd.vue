@@ -9,6 +9,7 @@
             width="97"
             height="36"
             src="https://vuejs.org/images/sponsors/hbuilder.avif"
+            loading="lazy"
         />
       </picture>
     </a>
