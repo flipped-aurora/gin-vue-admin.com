@@ -9,6 +9,7 @@
     <CallDeps />
     <Permissions />
     <CoreFeatures />
+    <LicensedEdition />
     <Ecosystem />
     <Community />
     <Trust />
@@ -28,6 +29,7 @@ import ApiCli from './sections/ApiCli.vue'
 import CallDeps from './sections/CallDeps.vue'
 import Permissions from './sections/Permissions.vue'
 import CoreFeatures from './sections/CoreFeatures.vue'
+import LicensedEdition from './sections/LicensedEdition.vue'
 import Ecosystem from './sections/Ecosystem.vue'
 import Community from './sections/Community.vue'
 import Trust from './sections/Trust.vue'
