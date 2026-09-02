@@ -24,7 +24,8 @@
     <div
       v-if="open"
       :id="menuId"
-      class="absolute left-1/2 top-[calc(100%+8px)] z-30 w-[280px] max-w-[calc(100vw-32px)] -translate-x-1/2 overflow-hidden rounded-[8px] border border-[var(--gva-border)] bg-white p-1.5 text-left shadow-[0_16px_36px_rgba(15,23,42,0.16)] dark:bg-[var(--gva-bg-dark-soft)]"
+      class="absolute top-[calc(100%+8px)] z-30 w-[280px] max-w-[calc(100vw-32px)] overflow-hidden rounded-[8px] border border-[var(--gva-border)] bg-white p-1.5 text-left shadow-[0_16px_36px_rgba(15,23,42,0.16)] dark:bg-[var(--gva-bg-dark-soft)]"
+      :class="menuAlign === 'left' ? 'left-0' : 'left-1/2 -translate-x-1/2'"
       role="menu"
       aria-label="选择体验版本"
     >
@@ -56,6 +57,14 @@
 
 <script setup>
 import { onBeforeUnmount, onMounted, ref, useId } from 'vue'
+
+const { menuAlign } = defineProps({
+  menuAlign: {
+    type: String,
+    default: 'center',
+    validator: (value) => ['center', 'left'].includes(value),
+  },
+})
 
 const open = ref(false)
 const root = ref(null)

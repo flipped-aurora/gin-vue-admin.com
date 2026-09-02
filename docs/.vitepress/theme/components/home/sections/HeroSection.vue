@@ -1,5 +1,5 @@
 <template>
-  <section class="gva-section flex justify-center overflow-hidden pt-[240px] px-6 pb-[80px] bg-[#F9F9F9] dark:bg-[var(--gva-bg-base)] max-[860px]:pt-[60px] max-[860px]:pb-[18px] min-[2560px]:pt-[210px] min-[2560px]:pb-[110px]">
+  <section class="gva-section flex justify-center pt-[240px] px-6 pb-[80px] bg-[#F9F9F9] dark:bg-[var(--gva-bg-base)] max-[860px]:pt-[60px] max-[860px]:pb-[18px] min-[2560px]:pt-[210px] min-[2560px]:pb-[110px]">
     <div class="gva-container text-center flex flex-col items-center max-[860px]:w-[min(100%,300px)]">
       <h1 class="text-[clamp(34px,5vw,56px)] min-[2560px]:text-[clamp(56px,3.2vw,76px)] leading-[1.2] font-semibold tracking-[-0.02em] text-[#1a1a1a] dark:text-[var(--gva-text-strong)] mx-0 mt-0 mb-5 max-[860px]:hidden">
         用 AI 构建<span class="text-[#2264F2] dark:text-[var(--gva-primary)]">系统</span>，让系统为 <span class="text-[#2264F2] dark:text-[var(--gva-primary)]">AI</span> 工作
